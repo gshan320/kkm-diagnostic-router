@@ -1,0 +1,39 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+backend/.env
+
+# Vector store (rebuildable: python -m app.ingest --reset)
+backend/data/chroma_db/
+
+# Node
+frontend/node_modules/
+frontend/.next/
+frontend/next-env.d.ts
+frontend/.env.local
+*.tsbuildinfo
+
+# macOS
+.DS_Store
+
+# ---------------------------------------------------------------------------
+# Corpus inputs. Deliberately NOT committed, for three separate reasons:
+#   1. They are inputs, not source - the same category as chroma_db above, and
+#      regenerable. See README §Ingestion and §Data quality for where each
+#      document comes from and how to rebuild the index from them.
+#   2. Licence terms differ across the 53 PDFs. Most MaHTAS/AMM guidelines
+#      permit reproduction with a copyright acknowledgement, but one states
+#      "No part of this publication may be reproduced or distributed" and
+#      others state nothing at all. Redistributing the folder wholesale would
+#      publish all of them under whichever terms are strictest.
+#   3. 254 MB of binaries, which git keeps in history even after a later delete.
+# To populate: download per README §Ingestion into backend/data/raw_pdfs/,
+# then `cd backend && python -m app.scrape_fukkm && python -m app.ingest --reset`.
+# Note the `/*` plus negation: git does not descend into an ignored DIRECTORY,
+# so `raw_pdfs/` followed by `!raw_pdfs/README.md` would not work - the README
+# explaining how to populate the folder has to survive the ignore.
+backend/data/raw_pdfs/*
+!backend/data/raw_pdfs/README.md
+backend/data/raw_json/*
+!backend/data/raw_json/README.md

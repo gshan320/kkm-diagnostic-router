@@ -1,0 +1,21 @@
+# KKM Diagnostic Router — backend dependencies
+# Verified installed on macOS arm64 (Apple Silicon) / Python 3.14.6
+
+fastapi>=0.141.0
+uvicorn[standard]>=0.52.0
+pydantic>=2.13.0
+python-dotenv>=1.2.0
+
+# Vector store + local embeddings (all-MiniLM-L6-v2)
+chromadb>=1.5.0
+sentence-transformers>=6.0.0
+
+# PDF text extraction
+pymupdf>=1.28.0
+
+# FUKKM scraper
+requests>=2.32.0
+beautifulsoup4>=4.13.0
+
+# Local LLM via Apple Silicon MLX
+mlx-lm>=0.16.0
