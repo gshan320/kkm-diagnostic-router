@@ -727,7 +727,31 @@ actually happened.
 ## Scope and safety
 
 Clinical decision-support prototype for registered clinicians. Not a medical
-device, not validated, not for patient-facing use. Every recommendation must be
-checked against the cited source before acting. The MTS 2022 file in
-`raw_pdfs/` is a third-party re-host with page watermarks (stripped at ingest);
-replace it with the official KKM copy before any real use.
+device, not validated, not submitted to any regulatory authority, not for
+patient-facing use. Every recommendation must be checked against the cited
+source document, at the cited page, before acting — the reports carry
+machine-authored warnings naming what could not be verified, and those warnings
+are part of the output, not decoration. `drug_recommendations` in particular is
+**not usable prescribing output**; see §Why indication support is deliberately
+conservative.
+
+The MTS 2022 file in `raw_pdfs/` is a third-party re-host with page watermarks
+(stripped at ingest); **replace it with the official KKM copy before any real
+use.** It is the document that sets every triage level.
+
+Full statement in [`NOTICE`](NOTICE).
+
+## Licence and corpus
+
+The source code is Apache-2.0 — see [`LICENSE`](LICENSE).
+
+That licence covers **only the code**. It does not and cannot cover the MOH
+guidelines, protocols and formulary data the software reads; those remain the
+property of their owners under their own terms, and are deliberately not
+distributed in this repository. [`CORPUS.md`](CORPUS.md) documents every
+document, its owner, its reproduction terms and where to obtain it, and
+[`NOTICE`](NOTICE) carries the copyright acknowledgement those terms require.
+
+A clone will therefore **not run as-is**: there is no corpus to retrieve from
+until `backend/data/raw_pdfs/` is populated. Each empty data folder carries a
+README with the rebuild procedure.

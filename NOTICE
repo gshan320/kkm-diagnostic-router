@@ -1,0 +1,64 @@
+KKM Diagnostic Router & CPG Comparative Intelligence
+Copyright 2026 DnG
+
+This product includes software developed by the copyright holder and is
+licensed under the Apache License, Version 2.0. See the LICENSE file.
+
+
+--------------------------------------------------------------------------
+NOT A MEDICAL DEVICE
+--------------------------------------------------------------------------
+
+The Apache License's "AS IS" clause disclaims warranty. It says nothing about
+clinical use, so this does:
+
+This software is a research and training prototype for use by REGISTERED
+CLINICIANS. It is not a medical device, it has not been clinically validated,
+it has not been submitted to or approved by any regulatory authority, and it
+must not be used for patient-facing decisions or as a substitute for clinical
+judgement.
+
+Its own generated reports carry machine-authored warnings naming what could not
+be verified. Those warnings are part of the output, not decoration: every
+recommendation must be checked against the cited source document, at the cited
+page, before any action is taken. The drug recommendation path in particular is
+documented in README section "Why indication support is deliberately
+conservative" as NOT usable prescribing output.
+
+
+--------------------------------------------------------------------------
+THIRD-PARTY CONTENT
+--------------------------------------------------------------------------
+
+The Apache-2.0 licence above covers ONLY the source code in this repository.
+It does NOT and cannot cover the Malaysian Ministry of Health clinical
+guidelines, protocols and formulary data the software reads. Those remain the
+property of their respective owners, under their own terms, and are
+deliberately NOT distributed in this repository. See CORPUS.md.
+
+Copyright in the source documents is held by, among others:
+
+  * Malaysian Health Technology Assessment Section (MaHTAS), Medical
+    Development Division, Ministry of Health Malaysia
+  * National Heart Association of Malaysia (NHAM) and the Academy of
+    Medicine Malaysia
+  * Malaysian Society of Neurosciences (MSN) and the Academy of Medicine
+    Malaysia
+  * Ministry of Health Malaysia (Medical Care Quality Section; Pharmaceutical
+    Services Programme; Selangor State Health Department)
+
+Most of those documents permit reproduction provided a copyright
+acknowledgement to the owners is included, the content is not changed, not
+sold, and not used to promote or endorse any product or service. This notice
+is that acknowledgement. Not all of them grant those permissions, which is one
+of the reasons the corpus is not redistributed here.
+
+Model weights and embedding models are obtained at runtime from their
+publishers under their own licences, and are not redistributed here either:
+
+  * mlx-community/Qwen3-8B-4bit
+  * abhinand/MedEmbed-large-v0.1
+  * BAAI/bge-reranker-base
+
+Third-party Python and JavaScript dependencies are listed in
+backend/requirements.txt and frontend/package.json, each under its own licence.
