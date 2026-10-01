@@ -1,0 +1,228 @@
+{
+  "id": "eclampsia-35w-24f",
+  "title": "Eclampsia at 35 weeks (24F)",
+  "tier": "management",
+  "provenance": "Vignette written 2026-09-30; expected answers quoted from the MOH Training Manual on Hypertensive Disorders in Pregnancy 2018.",
+  "intake": {
+    "age": 24,
+    "gender": "female",
+    "weight_kg": 70,
+    "vitals": {
+      "systolic_bp": 172,
+      "diastolic_bp": 112,
+      "heart_rate": 104,
+      "respiratory_rate": 20,
+      "temperature": 36.9,
+      "spo2": 97,
+      "gcs": 13,
+      "pain_score": 6
+    },
+    "complaint": "Fitted once at home 30 minutes ago, severe headache and blurred vision.",
+    "history": "First pregnancy, leg swelling for a week.",
+    "pregnancy": "pregnant",
+    "gestation_weeks": 35
+  },
+  "scored_sections": [
+    "triage",
+    "diagnosis",
+    "red_flags",
+    "actions",
+    "investigations",
+    "drugs",
+    "disposition",
+    "grounding"
+  ],
+  "expected": {
+    "triage": {
+      "level": 2,
+      "acceptable": [
+        1,
+        2
+      ],
+      "note": "GCS 13 - MTS p7 L2; post-ictal eclampsia may justify L1."
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Eclampsia",
+        "match": [
+          "(?<!pre-)(?<!pre )eclampsi"
+        ]
+      },
+      "acceptable_alternatives": [
+        {
+          "label": "Severe pre-eclampsia with seizure",
+          "match": [
+            "pre-?eclampsi"
+          ]
+        }
+      ]
+    },
+    "red_flags": [
+      {
+        "id": "ich",
+        "label": "Intracranial haemorrhage / stroke",
+        "match": [
+          "cerebral ha?emorrhag|intracranial|stroke"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Training Manual Hypertensive Disorders in Pregnancy (3rd Edition) 2018.pdf",
+            "page": 82,
+            "quote": "Cerebral haemorrhage is a complication of eclampsia"
+          }
+        ]
+      },
+      {
+        "id": "pulmonary-oedema",
+        "label": "Pulmonary oedema",
+        "match": [
+          "pulmonary o?edema"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Training Manual Hypertensive Disorders in Pregnancy (3rd Edition) 2018.pdf",
+            "page": 109,
+            "quote": "acute pulmonary oedema is a leading cause of death in women with pre-eclampsia"
+          }
+        ]
+      },
+      {
+        "id": "hellp",
+        "label": "HELLP syndrome",
+        "match": [
+          "\\bHELLP\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Training Manual Hypertensive Disorders in Pregnancy (3rd Edition) 2018.pdf",
+            "page": 15,
+            "quote": "HELLP syndrome is a severe form of PE"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "mgso4-load",
+        "label": "Magnesium sulphate loading dose",
+        "match": [
+          "magnesium sul(?:ph|f)ate",
+          "\\bMgSO4\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Training Manual Hypertensive Disorders in Pregnancy (3rd Edition) 2018.pdf",
+            "page": 103,
+            "quote": "Loading dose: IV 4g MgSO4 slow bolus"
+          }
+        ]
+      },
+      {
+        "id": "bp-control",
+        "label": "Antihypertensive for severe BP",
+        "match": [
+          "labetalol|hydralazine|nifedipine|antihypertensiv"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Training Manual Hypertensive Disorders in Pregnancy (3rd Edition) 2018.pdf",
+            "page": 40,
+            "quote": "give oral nifedipine (10mg stat) or IM hydralazine 6.25mg"
+          }
+        ]
+      },
+      {
+        "id": "obstetric",
+        "label": "Obstetric team / delivery plan",
+        "match": [
+          "obstetric|\\bO ?& ?G\\b|deliver|caesarean|labou?r (?:room|ward)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Training Manual Hypertensive Disorders in Pregnancy (3rd Edition) 2018.pdf",
+            "page": 62,
+            "quote": "ICU admission is indicated in the following"
+          }
+        ]
+      }
+    ],
+    "investigations": [
+      {
+        "id": "fetal-monitoring",
+        "label": "Fetal heart monitoring / CTG",
+        "match": [
+          "\\bCTG\\b|fetal heart|foetal heart|cardiotocograph"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Training Manual Hypertensive Disorders in Pregnancy (3rd Edition) 2018.pdf",
+            "page": 41,
+            "quote": "fetal heart rate every 15 minute"
+          }
+        ]
+      },
+      {
+        "id": "hellp-bloods",
+        "label": "FBC/platelets and liver enzymes",
+        "match": [
+          "platelet|\\bFBC\\b|full blood count",
+          "\\bLFT\\b|liver (?:function|enzyme)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Training Manual Hypertensive Disorders in Pregnancy (3rd Edition) 2018.pdf",
+            "page": 15,
+            "quote": "Elevated Liver Enzymes and Low Platelets"
+          }
+        ]
+      }
+    ],
+    "drugs_allowed": [
+      {
+        "id": "mgso4",
+        "label": "Magnesium sulphate",
+        "match": [
+          "magnesium sul(?:ph|f)ate",
+          "\\bMgSO4\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Training Manual Hypertensive Disorders in Pregnancy (3rd Edition) 2018.pdf",
+            "page": 41,
+            "quote": "maintenance IV infusion of MgSO4 1g per hour"
+          }
+        ]
+      }
+    ],
+    "drugs_forbidden": [],
+    "disposition": {
+      "acceptable": [
+        "ADMIT_ICU_HDU",
+        "RESUSCITATION_BAY"
+      ],
+      "preferred": "ADMIT_ICU_HDU",
+      "evidence": [
+        {
+          "source": "MOH Training Manual Hypertensive Disorders in Pregnancy (3rd Edition) 2018.pdf",
+          "page": 62,
+          "quote": "ICU admission is indicated in the following"
+        }
+      ]
+    },
+    "sources_forbidden": [
+      {
+        "doc_type": "PAEDIATRIC_PROTOCOL",
+        "why": "adult patient"
+      }
+    ]
+  }
+}

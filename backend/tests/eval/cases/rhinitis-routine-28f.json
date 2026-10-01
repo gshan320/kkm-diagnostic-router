@@ -1,0 +1,700 @@
+{
+  "id": "rhinitis-routine-28f",
+  "title": "Allergic rhinitis symptoms, 28-year-old woman (saved regression case 2)",
+  "tier": "management",
+  "provenance": "Vignette written 2026-09-30 for the evaluation harness; expected answers extracted from the cited documents.",
+  "intake": {
+    "age": 28,
+    "gender": "female",
+    "weight_kg": 55,
+    "vitals": {
+      "systolic_bp": 118,
+      "diastolic_bp": 76,
+      "heart_rate": 78,
+      "respiratory_rate": 16,
+      "temperature": 36.7,
+      "spo2": 99,
+      "gcs": 15,
+      "pain_score": 0
+    },
+    "complaint": "Sneezing, runny and itchy nose with nasal blockage for 3 weeks, worse in the mornings.",
+    "history": "No fever. Similar episodes every year.",
+    "pregnancy": "not_pregnant",
+    "facility": "district_hospital_with_specialist"
+  },
+  "scored_sections": [
+    "triage",
+    "diagnosis",
+    "red_flags",
+    "differentials",
+    "actions",
+    "investigations",
+    "drugs",
+    "disposition",
+    "grounding"
+  ],
+  "expected": {
+    "triage": {
+      "level": 5,
+      "acceptable": [
+        4,
+        5
+      ],
+      "time_to_treatment": "under 90 minutes",
+      "note": "Both extractors: level 5. A: All vital signs are normal, afebrile, pain 0. Adult vitals p7: 'Vital Signs within normal limits' is printed in BOTH the Level 4 (x~358) and Level 5 (x~453) columns; 'No Fever', 'No Pain' are Level 5 (x~453). Complaint list: EAR/ENT p9 'All other presentations' is Level 5 (x~453); RESPIRATORY p10 'Mild URTI symptoms' is Level 5 (x~453). The complaint list separates L4 from L5, so Level 5. Level 4 is defensible under the 'higher modifier' rule because the normal-vitals cell sits in both columns. MTS p6 also allows triage-away to outpatient services for non-urgent presentations with normal vital signs. B: The Ear/ENT complaint row gives Level 5 'All other presentations' (p9, x~453). Respiratory 'Mild URTI symptoms' is Level 5 (p10, x~453). Vital signs, afebrile and no pain are all Level 5 (p7, x~453). But the adult vital-signs table prints 'Vital Signs within normal limits' in both the Level 4 (x~358) and Level 5 (x~453) columns. A literal reading of the 'higher level modifier when modifiers do not differentiate' rule (p7) would give Level 4, so 4 is in 'acceptable'. The quotes 'All other presentations' also appear in the Eye row on p9; the ENT row is the relevant one.",
+      "evidence": [
+        {
+          "source": "MTS 2022.pdf",
+          "page": 9,
+          "quote": "• Foreign Body ENT • All other presentations"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 10,
+          "quote": "• Hyperventilation, SpO2 > 98% • Mild URTI symptoms"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• History of Fever • No documented fever • No Fever • No Pain"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• Vital Signs within normal limits • BP > 180/110 No symptoms • Vital Signs within normal limits"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 3,
+          "quote": "Level 5 - Routine - under 90 minutes"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 6,
+          "quote": "In a small group of patients with presentations that are non-urgent and non-emergency, which can be better addressed in other outpatient services, the patients may be triaged-away."
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 9,
+          "quote": "All other presentations"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "Vital Signs within normal limits • BP > 180/110 No symptoms"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "If modiﬁers do not differentiate between two triage levels, the higher triage level modiﬁer should be selected."
+        }
+      ]
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Allergic rhinitis (persistent, probable house dust mite)",
+        "match": [
+          "allergic\\s+rhinitis",
+          "\\bAR\\b",
+          "hay\\s+fever",
+          "allergic\\s+rhinoconjunctivitis",
+          "perennial\\s+rhinitis",
+          "allergic rhinitis",
+          "hay ?fever",
+          "(perennial|seasonal) rhinitis",
+          "allergic rhino"
+        ],
+        "evidence": [
+          {
+            "source": "MSAI Consensus Statement on Sublingual Immunotherapy in Allergic Rhinitis 2023.pdf",
+            "page": 3,
+            "quote": "symptoms worsening at a speciﬁc time at night or morning may indicate a house dust mite allergy, in contrast to pollen allergy, where symptoms occur throughout the day"
+          },
+          {
+            "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+            "page": 34,
+            "quote": "Antihistamines should be prescribed in rhinosinusitis with associated symptoms suggestive of allergic rhinitis (sneezing, nasal itchiness, nasal obstruction and rhinorrhoea)."
+          },
+          {
+            "source": "MSAI Consensus Statement on Sublingual Immunotherapy in Allergic Rhinitis 2023.pdf",
+            "page": 3,
+            "quote": "symptoms worsening at a speciﬁc time at night or morning may indicate a house dust mite allergy"
+          }
+        ]
+      },
+      "acceptable_alternatives": [
+        {
+          "label": "Rhinitis, unspecified / non-allergic rhinitis",
+          "match": [
+            "\\brhinitis\\b",
+            "vasomotor\\s+rhinitis",
+            "non[- ]allergic\\s+rhinitis"
+          ]
+        },
+        {
+          "label": "Rhinitis, allergic type (non-specific)",
+          "match": [
+            "\\brhinitis\\b"
+          ]
+        }
+      ]
+    },
+    "red_flags": [
+      {
+        "id": "orbital-complications",
+        "label": "Orbital complication signs (periorbital oedema, diplopia, reduced vision) - urgent referral",
+        "match": [
+          "periorbital",
+          "orbital\\s+(complication|cellulitis)",
+          "double\\s+vision|diplopia",
+          "ophthalmoplegia|ophtalmoplegia",
+          "(reduced|loss\\s+of)\\s+visual\\s+acuity|visual\\s+(loss|disturbance)",
+          "orbital",
+          "diplopia|double vision",
+          "visual acuity|vision loss|reduced vision",
+          "displaced globe|proptosis"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+            "page": 28,
+            "quote": "Urgent referral (within 24 hours) is required in the presence of:1, level lll; 23, level III • orbital complications (Figure 8)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "intracranial-headache-signs",
+        "label": "Severe frontal headache, forehead swelling, neurological signs",
+        "match": [
+          "frontal\\s+headache",
+          "severe\\s+headache",
+          "forehead\\s+swelling",
+          "meningitis",
+          "neurolog",
+          "altered\\s+conscious",
+          "seizure",
+          "severe (frontal|retro-?orbital) headache",
+          "altered consciousness|seizure|neurolog"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+            "page": 28,
+            "quote": "severe frontal/retro-orbital headache • forehead swelling (subperiosteal abscess) • neurological manifestations e.g. meningitis, altered consciousness, seizure"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "suspected-malignancy",
+        "label": "Features suggesting malignancy or anatomical obstruction (early referral)",
+        "match": [
+          "malignan",
+          "tumou?r",
+          "unilateral",
+          "blood[- ]stained|epistaxis",
+          "blood[- ]stained",
+          "epistaxis",
+          "malignan|tumou?r"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+            "page": 28,
+            "quote": "frequent recurrence (≥4 episodes per year) • anatomical defects causing obstruction • suspected malignancy"
+          },
+          {
+            "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+            "page": 25,
+            "quote": "atypical or severe disease, i.e. unilateral symptoms, blood-stained discharge, displacement of the eye and severe pain"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "differentials": [
+      {
+        "id": "rhinosinusitis",
+        "label": "Acute or chronic rhinosinusitis",
+        "match": [
+          "rhinosinusitis",
+          "\\bsinusitis\\b",
+          "\\bARS\\b|\\bCRS\\b|\\bABRS\\b",
+          "\\bARS\\b|\\bCRS\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+            "page": 12,
+            "quote": "Presence of ≥2 symptoms one of which should be nasal obstruction or purulent/greenish nasal discharge ± facial pain, headache ± smell disturbance"
+          },
+          {
+            "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+            "page": 28,
+            "quote": "The following are clinical features to differentiate between rhinosinusitis with other ORL condition with similar presentation."
+          },
+          {
+            "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+            "page": 28,
+            "quote": "Allergic Rhinitis Rhinosinusitis Allergic Fungal Rhinosinusitis"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "allergic-fungal-rhinosinusitis",
+        "label": "Allergic fungal rhinosinusitis",
+        "match": [
+          "fungal\\s+rhinosinusitis",
+          "fungal\\s+sinusitis",
+          "fungal rhinosinusitis",
+          "fungal sinusitis",
+          "\\bAFRS\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+            "page": 28,
+            "quote": "Allergic Rhinitis Rhinosinusitis Allergic Fungal Rhinosinusitis Nasal discharge clear mucopurulent mucin"
+          },
+          {
+            "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+            "page": 28,
+            "quote": "Allergic Rhinitis Rhinosinusitis Allergic Fungal Rhinosinusitis"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "allergen-avoidance",
+        "label": "Identify triggers and advise allergen avoidance (e.g. house dust mite, pets)",
+        "match": [
+          "allergen\\s+avoidance",
+          "avoid(ance)?\\s+(of\\s+)?(the\\s+)?(allergen|trigger|dust|mite)",
+          "house\\s+dust\\s+mite",
+          "trigger",
+          "allergen avoid",
+          "avoid(ance of)? (the )?(trigger|allergen)",
+          "house dust mite"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MSAI Consensus Statement on Sublingual Immunotherapy in Allergic Rhinitis 2023.pdf",
+            "page": 1,
+            "quote": "AR treatment consists of allergen avoidance, use of pharmacotherapy that provides symptomatic relief, and allergen-speciﬁc immunotherapy (AIT)."
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 74,
+            "quote": "Symptoms may vary with environmental and/or occupational exposure (e.g. furred pets, house dust mite, molds, pollens)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "nasal-spray-technique",
+        "label": "Teach correct nasal spray technique",
+        "match": [
+          "spray\\s+technique",
+          "(how|correct(ly)?)\\s+(to\\s+)?use\\s+(the\\s+)?nasal\\s+spray",
+          "technique",
+          "(nasal )?spray technique",
+          "how to use.{0,20}spray"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+            "page": 45,
+            "quote": "Nasal spray is used to treat symptoms rhinosinusitis and allergic rhinitis. A correct technique is essential for effective delivery of the medicines."
+          },
+          {
+            "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+            "page": 45,
+            "quote": "A correct technique is essential for effective delivery of the medicines."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "outpatient-follow-up-immunotherapy",
+        "label": "Outpatient / primary-care follow-up; specialist referral for allergen immunotherapy if uncontrolled on pharmacotherapy",
+        "match": [
+          "follow[- ]up",
+          "(ENT|ORL|allergy|allergist|immunolog)\\s*(clinic|specialist|referral)?",
+          "immunotherapy",
+          "\\bSLIT\\b|\\bAIT\\b|\\bSCIT\\b",
+          "klinik\\s+kesihatan|primary\\s+care|GP\\b",
+          "allerg(ist|y clinic|y testing)",
+          "\\bORL\\b|\\bENT\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MSAI Consensus Statement on Sublingual Immunotherapy in Allergic Rhinitis 2023.pdf",
+            "page": 3,
+            "quote": "In light of these recommendations, AIT should be offered to patients with uncontrolled AR despite the use of pharmacotherapy and proven IgE sensitization by either serum IgE or skin prick test [3]."
+          },
+          {
+            "source": "MSAI Consensus Statement on Sublingual Immunotherapy in Allergic Rhinitis 2023.pdf",
+            "page": 3,
+            "quote": "AIT should be offered to patients with uncontrolled AR despite the use of pharmacotherapy and proven IgE sensitization by either serum IgE or skin prick test"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "investigations": [
+      {
+        "id": "skin-prick-specific-ige",
+        "label": "Skin prick test / serum specific IgE (outpatient, if immunotherapy considered)",
+        "match": [
+          "skin\\s+prick",
+          "\\bSPT\\b",
+          "specific\\s+IgE",
+          "\\bIgE\\b",
+          "allergy\\s+test",
+          "RAST",
+          "skin prick",
+          "specific IgE|serum IgE|\\bRAST\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MSAI Consensus Statement on Sublingual Immunotherapy in Allergic Rhinitis 2023.pdf",
+            "page": 3,
+            "quote": "The European Academy of Allergy and Clinical Immunology (EAACI) guidelines recommended the usage of a positive diagnostic test (allergen-speciﬁc IgE or skin prick test)"
+          },
+          {
+            "source": "MSAI Consensus Statement on Sublingual Immunotherapy in Allergic Rhinitis 2023.pdf",
+            "page": 3,
+            "quote": "AIT should be offered to patients with uncontrolled AR despite the use of pharmacotherapy and proven IgE sensitization by either serum IgE or skin prick test"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_allowed": [
+      {
+        "id": "intranasal-corticosteroid",
+        "label": "Intranasal corticosteroid (e.g. mometasone, fluticasone, budesonide)",
+        "match": [
+          "intranasal\\s+(cortico)?steroid",
+          "\\bINCS\\b|\\bINS\\b",
+          "nasal\\s+(steroid|corticosteroid)",
+          "topical\\s+(nasal\\s+)?steroid",
+          "mometasone",
+          "fluticasone",
+          "budesonide\\s+nasal|nasal\\s+budesonide",
+          "beclometasone|beclomethasone",
+          "intranasal (cortico)?steroid",
+          "nasal steroid",
+          "\\bINCS\\b",
+          "budesonide",
+          "topical (nasal )?steroid"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 74,
+            "quote": "Intranasal corticosteroids is the most effective therapy for allergic rhinitis."
+          },
+          {
+            "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+            "page": 48,
+            "quote": "Fluticasone propionate 50 mcg/dose nasal spray • Prophylaxis and treatment of seasonal and perennial allergic rhinitis"
+          },
+          {
+            "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+            "page": 48,
+            "quote": "Budesonide 64 mcg/dose nasal spray • Seasonal and perennial allergic rhinitis and nasal polyposis"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "oral-antihistamine",
+        "label": "Oral (non-sedating) antihistamine",
+        "match": [
+          "antihistamine",
+          "anti-histamine",
+          "loratadine",
+          "cetirizine",
+          "levocetirizine",
+          "desloratadine",
+          "fexofenadine",
+          "chlorpheniramine|chlorphenamine",
+          "\\bH1\\b",
+          "antihistamin",
+          "cetirizine|levocetirizine",
+          "bilastine",
+          "chlorphenamine|chlorpheniramine"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+            "page": 34,
+            "quote": "Antihistamines should be prescribed in rhinosinusitis with associated symptoms suggestive of allergic rhinitis (sneezing, nasal itchiness, nasal obstruction and rhinorrhoea)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_forbidden": [
+      {
+        "id": "prolonged-topical-decongestant",
+        "label": "Topical nasal decongestant beyond two weeks (rebound)",
+        "match": [
+          "(oxymetazoline|xylometazoline|topical\\s+decongestant).{0,60}(long[- ]term|prolonged|regular|weeks|month)",
+          "(long[- ]term|prolonged|regular)\\s+.{0,30}(oxymetazoline|xylometazoline|decongestant)",
+          "(oxymetazoline|xylometazoline|topical (nasal )?decongestant).{0,60}(regular|long[- ]term|prolonged|weeks|daily)"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+            "page": 35,
+            "quote": "Topical decongestants should not be prescribed for more than two weeks due to rebound phenomenon."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "disposition": {
+      "acceptable": [
+        "DISCHARGE_WITH_FOLLOW_UP"
+      ],
+      "preferred": "DISCHARGE_WITH_FOLLOW_UP",
+      "evidence": [
+        {
+          "source": "MTS 2022.pdf",
+          "page": 6,
+          "quote": "In a small group of patients with presentations that are non-urgent and non-emergency, which can be better addressed in other outpatient services, the patients may be triaged-away."
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 6,
+          "quote": "It is necessary to ensure their vital signs are normal and provide them with a note recording down their complaints and vital signs readings."
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 6,
+          "quote": "In a small group of patients with presentations that are non-urgent and non-emergency, which can be better addressed in other outpatient services, the patients may be triaged-away."
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 6,
+          "quote": "It is necessary to ensure their vital signs are normal and provide them with a note recording down their complaints and vital signs readings."
+        }
+      ],
+      "note": "Stable, normal vital signs, no red flags: discharge with treatment and primary-care follow-up. ORL/allergy referral only if symptoms stay uncontrolled on pharmacotherapy, or if a referral criterion from the rhinosinusitis CPG appears (none is present). Check the ETD redirection policy: triage-away is permitted by MTS for non-urgent cases, but the Selangor redirection clauses may restrict sending patients away. / Normal vital signs and a chronic non-urgent complaint: discharge with treatment and follow-up at a primary care clinic (KK). Refer to ORL or allergy only if symptoms stay uncontrolled or red flags appear."
+    },
+    "sources_forbidden": [
+      {
+        "doc_type": "PAEDIATRIC_PROTOCOL",
+        "why": "adult patient"
+      }
+    ]
+  },
+  "disputed": [
+    {
+      "section": "differentials",
+      "id": "common-cold-viral-urti",
+      "label": "Common cold / viral URTI",
+      "match": [
+        "common\\s+cold",
+        "viral\\s+(URTI|rhinitis|infection)",
+        "\\bURTI\\b",
+        "upper\\s+respiratory\\s+(tract\\s+)?infection",
+        "coryza"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+          "page": 12,
+          "quote": "Symptoms increasing after 5 days or persistent after 10 days Common cold Treat accordingly"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "differentials",
+      "id": "non-allergic-rhinitis",
+      "label": "Non-allergic rhinitis",
+      "match": [
+        "non[- ]allergic\\s+rhinitis",
+        "vasomotor",
+        "rhinitis\\s+medicamentosa"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+          "page": 74,
+          "quote": "Rhinitis is defined as irritation and inflammation of the mucous membranes of the nose and can be either allergic or non-allergic."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "screen-for-asthma",
+      "label": "Ask about asthma symptoms (wheeze, SOB) - common comorbidity",
+      "match": [
+        "asthma",
+        "wheez",
+        "lower\\s+airway"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+          "page": 74,
+          "quote": "Most patients with asthma have allergic rhinitis while 10 – 40% of patients with allergic rhinitis have asthma."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "anterior-rhinoscopy",
+      "label": "Anterior rhinoscopy (nasal examination)",
+      "match": [
+        "rhinoscopy",
+        "nasal\\s+(exam|examination|speculum)",
+        "turbinate"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+          "page": 12,
+          "quote": "± facial pain, headache ± smell disturbance Examination: anterior rhinoscopy"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "nasal-saline-irrigation",
+      "label": "Nasal saline irrigation",
+      "match": [
+        "saline\\s+(irrigation|rinse|douche|spray)",
+        "nasal\\s+(irrigation|douching|rinse)"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+          "page": 12,
+          "quote": "**may include analgesics, nasal saline irrigation & decongestants"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "short-course-topical-decongestant",
+      "label": "Short-course topical decongestant (no more than 2 weeks)",
+      "match": [
+        "decongestant",
+        "oxymetazoline",
+        "xylometazoline",
+        "pseudoephedrine"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Rhinosinusitis in Adolescents and Adults 2016.pdf",
+          "page": 35,
+          "quote": "Topical decongestants should not be prescribed for more than two weeks due to rebound phenomenon."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "ltra-if-asthma",
+      "label": "Leukotriene receptor antagonist add-on only if concomitant asthma",
+      "match": [
+        "montelukast",
+        "\\bLTRA\\b",
+        "leukotriene"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+          "page": 74,
+          "quote": "LTRA as an add-on therapy can be beneficial in patients with concomitant seasonal allergic rhinitis and asthma."
+        }
+      ],
+      "proposed_by": "A"
+    }
+  ],
+  "adjudication": {
+    "method": "two independent extraction passes (A, B); agreed items scored",
+    "notes": [],
+    "open_questions": {
+      "A": [
+        "The corpus has no dedicated KKM allergic-rhinitis CPG (no ARIA-type guideline). Treatment items rely on the Asthma in Adults CPG 2024 comorbidity section, the Rhinosinusitis CPG 2016 (antihistamine recommendation, differential table, INCS formulary) and the MSAI SLIT consensus 2023 (a society statement, not MOH).",
+        "Antibiotics: no source explicitly forbids them for allergic rhinitis. The Rhinosinusitis CPG reserves antibiotics for severe acute bacterial rhinosinusitis. Not listed as forbidden; the adjudicator may want an 'antibiotics not indicated' check.",
+        "Level 4 vs 5: the adult vitals table prints 'Vital Signs within normal limits' under both Level 4 and Level 5."
+      ],
+      "B": [
+        "No KKM CPG is written for allergic rhinitis itself. The evidence is borrowed from the Rhinosinusitis CPG (differential table, Recommendation 7, Appendix 5 drug table) and the MSAI SLIT consensus.",
+        "Triage 4 vs 5 depends on how the 'Vital Signs within normal limits' cell, printed in both the L4 and L5 columns, combines with the 'higher level' rule.",
+        "The forbidden decongestant item concerns duration only (topical decongestant > 2 weeks). A short course is not forbidden, so its matcher is deliberately narrow and required=false.",
+        "If the ED is in Selangor, the JKN Selangor redirection policy may limit triaging her away; this was not checked for this case."
+      ]
+    }
+  }
+}

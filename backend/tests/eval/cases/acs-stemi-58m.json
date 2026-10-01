@@ -1,0 +1,1127 @@
+{
+  "id": "acs-stemi-58m",
+  "title": "Chest pain with ST elevation, 58-year-old man (saved regression case 1)",
+  "tier": "management",
+  "provenance": "Vignette written 2026-09-30 for the evaluation harness; expected answers extracted from the cited documents.",
+  "intake": {
+    "age": 58,
+    "gender": "male",
+    "weight_kg": 75,
+    "vitals": {
+      "systolic_bp": 150,
+      "diastolic_bp": 90,
+      "heart_rate": 96,
+      "respiratory_rate": 20,
+      "temperature": 36.8,
+      "spo2": 96,
+      "gcs": 15,
+      "pain_score": 7
+    },
+    "complaint": "Central crushing chest pain radiating to the left arm for 1 hour, with sweating.",
+    "history": "Smoker. Hypertension on amlodipine.",
+    "ecg_findings": [
+      "st_elevations_or_depressions"
+    ],
+    "comorbidities": [
+      "diabetes"
+    ],
+    "onset": "1 hour ago, at rest",
+    "facility": "state_or_tertiary_with_pci_and_ct"
+  },
+  "scored_sections": [
+    "triage",
+    "diagnosis",
+    "red_flags",
+    "differentials",
+    "actions",
+    "investigations",
+    "drugs",
+    "disposition",
+    "grounding"
+  ],
+  "expected": {
+    "triage": {
+      "level": 2,
+      "acceptable": [
+        1,
+        2
+      ],
+      "time_to_treatment": "under 10 minutes",
+      "note": "Adjudicated (C): MTS cells give Level 2; the ACS CPG 2026 p85 places STEMI in 'RED or MTS Level 1 or 2', so Level 1 is accepted as well. Both extractors: level 2. A: Level 2 cells that apply (by x-position): ECG row p7 'ST elevations or depressions' (x~131 = Level 2); Chest Pain complaint p8 'New Onset < 6 H', 'On-going chest pain', 'Profuse sweating', 'STEMI / NSTEMI / UA (referral)' (all x~131 = Level 2); primary triage Critical First Look p4 'Severe Chest Pain' (x~246 = Level 2). No Level 1 cell applies (not arrested, no shock, SpO2 96%). The ACS CPG 2026 places STEMI in a critical zone 'RED or MTS Level 1 or 2', so Level 1 is also defensible. B: ECG 'ST elevations or depressions' is a Level 2 cell (adult vital signs p7, ECG row, x~131). Chest pain complaint Level 2 cells (p8, x~131): 'New Onset < 6 H', 'On-going chest pain', 'Profuse sweating', 'STEMI / NSTEMI / UA (referral)'. Primary triage 'Severe Chest Pain' is Level 2 (p4, x~246). RR 20 and pain 7 are only Level 3 (p7, x~244); HR 96, BP 150/90 and SpO2 96 are not abnormal. No Level 1 criterion (cardiac arrest, severe respiratory distress, shock) is present. The ACS CPG groups MTS Levels 1 and 2 together as the critical (red) zone.",
+      "evidence": [
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• Bradycardia < 40 • ST elevations or depressions"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 8,
+          "quote": "• New Onset < 6 H • Arrhythmias on ECG • On-going chest pain • Profuse sweating • STEMI / NSTEMI / UA (referral)"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "• Not responding to call • Severe Chest Pain • Severe Pain"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 3,
+          "quote": "Level 2 - Emergency - under 10 minutes"
+        },
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 85,
+          "quote": "Patients who have chest symptoms and ECG changes of STEMI should be triaged immediately."
+        },
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 85,
+          "quote": "These patients require a critical (RED or MTS Level 1 or 2) zone."
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "Bradycardia < 40 • ST elevations or depressions"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 8,
+          "quote": "New Onset < 6 H • Arrhythmias on ECG • On-going chest pain • Profuse sweating • STEMI / NSTEMI / UA (referral)"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "Not responding to call • Severe Chest Pain • Severe Pain"
+        },
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 28,
+          "quote": "should require at least a monitored (YELLOW or MTS LEVEL 3) or critical (RED or MTS Level 1 & 2) zone. These patients should NOT be triaged to a green/non-critical zone."
+        }
+      ]
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "ST-elevation myocardial infarction (STEMI)",
+        "match": [
+          "\\bSTEMI\\b",
+          "ST[- ]?(segment\\s+)?elevation\\s+(myocardial\\s+infarction|MI\\b)",
+          "\\bSTEACS\\b",
+          "ST[- ]elevation (myocardial infarction|MI)",
+          "ST[- ]segment elevation (myocardial infarction|MI)"
+        ],
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 22,
+            "quote": "STEMI is diagnosed when there is:  ST elevation of > 1 mm in 2 contiguous leads,  in a patient with ischemic type chest pains of > 30 minutes and"
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 22,
+            "quote": "We should not, however, wait for the results of the cardiac biomarkers before initiating definitive treatment."
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 61,
+            "quote": "The presence of ST elevation in two contiguous leads in a patient with symptoms of ischemia is the cardinal feature of STEMI."
+          }
+        ]
+      },
+      "acceptable_alternatives": [
+        {
+          "label": "Acute coronary syndrome / acute myocardial infarction",
+          "match": [
+            "acute\\s+coronary\\s+syndrome",
+            "\\bACS\\b",
+            "(acute\\s+)?myocardial\\s+infarction",
+            "\\bAMI\\b"
+          ]
+        },
+        {
+          "label": "Acute coronary syndrome (with ST changes)",
+          "match": [
+            "acute coronary syndrome",
+            "\\bACS\\b",
+            "acute (myocardial infarction|MI)\\b"
+          ]
+        }
+      ]
+    },
+    "red_flags": [
+      {
+        "id": "arrhythmia-vf",
+        "label": "Malignant arrhythmias (VF/VT) - need monitoring and defibrillation capability",
+        "match": [
+          "arrhythmi",
+          "ventricular\\s+(fibrillation|tachycardia)",
+          "\\bVF\\b",
+          "\\bVT\\b",
+          "defibrillat",
+          "ventricular (fibrillation|tachycardia)",
+          "\\bVF\\b|\\bVT\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 23,
+            "quote": "Important complications following ACS are arrhythmias and HF."
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 124,
+            "quote": "All patients with ACS should have their ECG monitored for at least the first 24 hours. Longer monitoring could be considered in patients at intermediate to high risk of cardiac arrhythmias."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "cardiogenic-shock",
+        "label": "Cardiogenic shock / hypotension",
+        "match": [
+          "cardiogenic\\s+shock",
+          "hypotensi",
+          "\\bshock\\b",
+          "cardiogenic shock",
+          "acute (heart|cardiac) failure",
+          "pulmonary o?edema",
+          "\\bAHF\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 29,
+            "quote": "Cardiogenic shock irrespective of time delay."
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 97,
+            "quote": "Hypotension and cardiogenic shock."
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 102,
+            "quote": "STEMI presenting with acute HF. These patients should be stabilised rapidly and ventilated if necessary."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "differentials": [
+      {
+        "id": "aortic-dissection",
+        "label": "Aortic dissection",
+        "match": [
+          "aortic\\s+dissection",
+          "dissecting\\s+aneurysm",
+          "dissection",
+          "aortic dissection",
+          "dissecting aneurysm"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 91,
+            "quote": "Non-coronary cardiac causes of chest pain  Aortic dissection.  Pulmonary embolism.  Pericarditis and myocarditis."
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 71,
+            "quote": "Use of CT should be confined to selected cases where acute aortic dissection or pulmonary embolism is suspected."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "pulmonary-embolism",
+        "label": "Pulmonary embolism",
+        "match": [
+          "pulmonary\\s+embol",
+          "\\bPE\\b",
+          "pulmonary embol"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 91,
+            "quote": "Non-coronary cardiac causes of chest pain  Aortic dissection.  Pulmonary embolism.  Pericarditis and myocarditis."
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 71,
+            "quote": "Use of CT should be confined to selected cases where acute aortic dissection or pulmonary embolism is suspected."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "pericarditis-myocarditis",
+        "label": "Pericarditis / myocarditis",
+        "match": [
+          "pericarditis",
+          "myocarditis",
+          "myopericarditis"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 91,
+            "quote": "Non-coronary cardiac causes of chest pain  Aortic dissection.  Pulmonary embolism.  Pericarditis and myocarditis."
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 91,
+            "quote": "Pericarditis and myocarditis."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "primary-pci-activation",
+        "label": "Immediate reperfusion: activate primary PCI (FMC-to-wire <= 90 min at a PCI centre)",
+        "match": [
+          "primary\\s+PCI",
+          "\\bPPCI\\b",
+          "cath(eter(isation|ization)?)?\\s*lab",
+          "percutaneous\\s+coronary\\s+intervention",
+          "door[- ]to[- ](balloon|device)",
+          "angioplasty",
+          "reperfusion",
+          "primary (PCI|percutaneous coronary|angioplasty)",
+          "cath(eter(isation|ization)?)? lab",
+          "\\bPCI\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 28,
+            "quote": "Time is crucial in Primary PCI. If the patient presents at a PCI center, then the time from FMC I,A (First Medical Contact) to wire crossing should be ≤ 90 minutes."
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 96,
+            "quote": "If both choices are available, the reperfusion strategy of choice is still primary PCI if it can be done in a timely manner (within120 min of STEMI diagnosis) by experienced operators in PCI-capable centers."
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 28,
+            "quote": "Reperfusion therapy is indicated in all patients with symptoms of ischemia of <12hours duration and I,A persistent ST-segment elevation."
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 28,
+            "quote": "Patients with STEMI should undergo reperfusion"
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 102,
+            "quote": "If the patient presents at a PCI center, then the time from FMC (First Medical Contact) to wire crossing should be ≤ 90 minutes."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "fibrinolysis-if-pci-delayed",
+        "label": "Fibrinolysis (door-to-needle <= 30 min) if primary PCI delay > 120 min",
+        "match": [
+          "fibrinoly",
+          "thromboly",
+          "tenecteplase|alteplase|streptokinase|\\bTNK",
+          "door[- ]to[- ]needle",
+          "tenecteplase|alteplase|streptokinase"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 102,
+            "quote": "If the time delay to primary PCI is > 120minutes, the best option is to give fibrinolytic therapy and plan to transfer the patient to a PCI capable center for a pharmaco-invasive strategy."
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 98,
+            "quote": "The Door to Needle Time (DNT) should be within 30 minutes."
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 102,
+            "quote": "plan to transfer the patient to a PCI capable center for a pharmaco-invasive strategy."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "continuous-cardiac-monitoring",
+        "label": "Continuous cardiac monitoring with defibrillation capability",
+        "match": [
+          "cardiac\\s+monitor",
+          "continuous\\s+ECG",
+          "ECG\\s+monitor",
+          "telemetry",
+          "defibrillat",
+          "cardiac monitor",
+          "continuous ECG",
+          "ECG monitor"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 38,
+            "quote": "Continuous ECG monitoring"
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 124,
+            "quote": "All patients with ACS should have their ECG monitored for at least the first 24 hours."
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 38,
+            "quote": "CHEST PAIN / CHEST PAIN EQUIVALENT Continuous ECG monitoring Sublingual glyceryl trinitrate (GTN) (if no contraindication)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "iv-access",
+        "label": "Large-bore IV access",
+        "match": [
+          "IV\\s+(access|cannula|line)",
+          "i\\.v\\.\\s+(access|line)",
+          "intravenous\\s+(access|cannula)",
+          "large[- ]bore",
+          "branula",
+          "(IV|i\\.v\\.|intravenous) (access|line|cannula)",
+          "cannulat"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 95,
+            "quote": "Intravenous Access - Establish at least one I,C large-bore i.v. line (preferably two)."
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 95,
+            "quote": "large-bore i.v. line (preferably two). Obtain blood samples:"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "oxygen-only-if-hypoxic",
+        "label": "Oxygen only if SpO2 < 94% (not routine; SpO2 96% here)",
+        "match": [
+          "oxygen",
+          "\\bO2\\b",
+          "SpO2\\s*[<≥>]"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 38,
+            "quote": "Oxygen [if oxygen saturation (SpO2) < 94%]"
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 125,
+            "quote": "Routine supplemental oxygen administration may not be beneficial or harmful, and high-flow oxygen may be unnecessary in normoxemic patients in the acute phase of MI."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "investigations": [
+      {
+        "id": "ecg-12-lead-10min",
+        "label": "12-lead ECG within 10 minutes, repeat/serial",
+        "match": [
+          "\\bECG\\b",
+          "\\bEKG\\b",
+          "electrocardiogra",
+          "12[- ]lead"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 85,
+            "quote": "A 12-lead ECG should be performed within 10 minutes of arrival and compared with previous or pre-hospital ECGs if available."
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 25,
+            "quote": "An ECG should be performed within 10 minutes of"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "cardiac-troponin",
+        "label": "Cardiac biomarkers (hs-troponin / troponin, CK-MB) - without delaying reperfusion",
+        "match": [
+          "troponin",
+          "\\bhs-?cTn",
+          "\\bcTn",
+          "\\bTnI\\b|\\bTnT\\b",
+          "CK-?MB",
+          "cardiac\\s+(biomarker|enzyme|marker)",
+          "\\bhs-?c?Tn[IT]?\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 95,
+            "quote": "Cardiac biomarkers (preferably hs-cTn, cTns, CKMB )"
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 37,
+            "quote": "should be triaged for immediate appropriate treatment without waiting for the results of cardiac biomarkers."
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 26,
+            "quote": "These cardiac biomarkers (troponins and CK-MB) should be measured at the time of first assessment."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "fbc",
+        "label": "Full blood count",
+        "match": [
+          "\\bFBC\\b",
+          "full\\s+blood\\s+count",
+          "\\bCBC\\b",
+          "complete\\s+blood\\s+count",
+          "h(a)?emoglobin|platelet",
+          "full blood count",
+          "renal profile|\\bRP\\b|\\bBUSE\\b|renal function|creatinine",
+          "glucose|\\bRBS\\b|\\bCBG\\b|dextrostix",
+          "lipid profile|cholesterol"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 95,
+            "quote": "Full blood count  Renal profile  Glucose  Lipid profile"
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 95,
+            "quote": " Full blood count  Renal profile  Glucose  Lipid profile"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_allowed": [
+      {
+        "id": "aspirin-300",
+        "label": "Aspirin 300 mg chewable/soluble loading dose",
+        "match": [
+          "aspirin",
+          "acetylsalicylic",
+          "\\bASA\\b",
+          "cardiprin"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 95,
+            "quote": "Aspirin 300mg (chewable or soluble) if not I,A taken prior45,46,109-111"
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 103,
+            "quote": "All patients with STEMI undergoing Primary PCI should receive loading doses of:"
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 83,
+            "quote": "Give soluble or chewable aspirin (300mg)"
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 95,
+            "quote": "Aspirin 300mg (chewable or soluble) if not"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "p2y12-loading",
+        "label": "P2Y12 inhibitor loading: clopidogrel 600 mg (primary PCI) or ticagrelor 180 mg",
+        "match": [
+          "clopidogrel",
+          "ticagrelor",
+          "P2Y12",
+          "plavix|brilinta",
+          "\\bDAPT\\b|dual\\s+anti-?platelet",
+          "prasugrel"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 95,
+            "quote": "Clopidogrel 300mg (or 600mg if primary I,A PCI is planned).119,120"
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 95,
+            "quote": "Ticagrelor 180mg177 (only for PCI)"
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 95,
+            "quote": "Clopidogrel 300mg (or 600mg if primary"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "iv-morphine-titrated",
+        "label": "IV morphine titrated if pain persists (with anti-emetic)",
+        "match": [
+          "morphine",
+          "opioid",
+          "fentanyl"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 95,
+            "quote": "i.v. morphine (3-5mg slow bolus every 5-15 I,C minutes, titrated). Advice co-administration of an anti-emetic (i.v. metoclopramide 10mg or promethazine 25mg)."
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 81,
+            "quote": "Administer i.v. morphine (3-5 mg) for pain relief if indicated. Usually, an anti-emetic e.g. metoclopramide (i.v. 10 mg) is given at the same time."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "high-intensity-statin",
+        "label": "High-intensity statin early",
+        "match": [
+          "statin",
+          "atorvastatin",
+          "rosuvastatin"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 101,
+            "quote": "High intensity statins should be initiated soon after diagnosis. (Section 8)"
+          },
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 32,
+            "quote": "High dose statins should be initiated soon after diagnosis."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_forbidden": [
+      {
+        "id": "enteric-coated-aspirin-loading",
+        "label": "Enteric-coated aspirin as the loading dose",
+        "match": [
+          "enteric[- ]coated\\s+aspirin",
+          "\\bEC\\s+aspirin",
+          "enteric[- ]coated aspirin",
+          "aspirin \\(?EC\\)?",
+          "\\bEC aspirin"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+            "page": 105,
+            "quote": "Enteric-coated aspirin is not recommended as an initial loading dose because of its slow onset of action."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "disposition": {
+      "acceptable": [
+        "ADMIT_ICU_HDU"
+      ],
+      "preferred": "ADMIT_ICU_HDU",
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 124,
+          "quote": "All STEMI patients should be admitted to the Critical Care Unit or Equivalent with adequate ECG and hemodynamic monitoring facilities."
+        },
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 85,
+          "quote": "These patients require a critical (RED or MTS Level 1 or 2) zone."
+        },
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 124,
+          "quote": "All STEMI patients should be admitted to the Critical Care Unit or Equivalent with adequate ECG and hemodynamic monitoring facilities."
+        }
+      ],
+      "note": "Managed in the ED critical (red) zone, straight to the cath lab for primary PCI (the facility is PCI-capable), then CCU. ADMIT_ICU_HDU stands for CCU; RESUSCITATION_BAY for the ED critical-zone phase. / Straight to the cath lab for primary PCI (the facility is PCI-capable), then CCU. REFER_SPECIALIST (cardiology/cath lab) is acceptable as the immediate step. RESUSCITATION_BAY is only where he waits in the ED, not the final disposition."
+    },
+    "sources_forbidden": [
+      {
+        "doc_type": "PAEDIATRIC_PROTOCOL",
+        "why": "adult patient"
+      }
+    ]
+  },
+  "disputed": [
+    {
+      "section": "red_flags",
+      "id": "acute-heart-failure",
+      "label": "Acute heart failure / pulmonary oedema",
+      "match": [
+        "heart\\s+failure",
+        "\\bHF\\b",
+        "pulmonary\\s+o?edema",
+        "LV\\s+(failure|dysfunction)",
+        "killip"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 29,
+          "quote": "STEMI presenting with acute HF. These patients should be stabilised rapidly and ventilated if necessary."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "red_flags",
+      "id": "rv-infarct",
+      "label": "Right ventricular infarction (nitrate caution)",
+      "match": [
+        "right\\s+ventricular\\s+infarct",
+        "\\bRV\\s+infarct",
+        "V4R|right[- ]sided\\s+leads"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 85,
+          "quote": "Right-sided leads (V3R - V4R) for right ventricular infarction."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "red_flags",
+      "id": "time-critical-reperfusion",
+      "label": "Time-critical: total ischaemic time drives mortality",
+      "match": [
+        "time\\s+is\\s+(muscle|myocardium)",
+        "ischemic\\s+time|ischaemic\\s+time",
+        "door[- ]to[- ](balloon|needle)",
+        "time[- ]critical"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 23,
+          "quote": "There is a definite relationship between total ischemic time (duration of total coronary artery occlusion) and mortality."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "red_flags",
+      "id": "aortic-dissection-before-lysis",
+      "label": "Suspected aortic dissection (absolute contraindication to fibrinolysis)",
+      "match": [
+        "aortic dissection",
+        "dissecting aneurysm"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 171,
+          "quote": "Suspected aortic dissection."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "actions",
+      "id": "risk-stratify-timi-killip",
+      "label": "Risk stratification (TIMI STEMI score, Killip class)",
+      "match": [
+        "\\bTIMI\\b",
+        "killip",
+        "\\bGRACE\\b"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 92,
+          "quote": "STEMI: TIMI (Thrombolysis in Myocardial Infarction) STEMI score (Table 6, pg 43 & Appendix II, pg 162)"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "ask-pde5-before-nitrate",
+      "label": "Ask about phosphodiesterase-5 inhibitor use before GTN",
+      "match": [
+        "sildenafil",
+        "tadalafil",
+        "phosphodiesterase",
+        "\\bPDE[- ]?5"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 27,
+          "quote": "(Need to enquire about phosphodiesterase inhibitor (Sildenafil/Tadalafil) use within the last 24 to 48 hours)."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "activate-cardiology-stemi-network",
+      "label": "Activate STEMI pathway / call cardiologist",
+      "match": [
+        "cardiolog",
+        "STEMI (network|pathway|team|activation)",
+        "activate.{0,30}(cath|STEMI)"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 81,
+          "quote": "Contact the coordinator/cardiologist at the Hub/PCI capable center."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "investigations",
+      "id": "renal-profile",
+      "label": "Renal profile / electrolytes",
+      "match": [
+        "renal\\s+(profile|function)",
+        "creatinine",
+        "\\burea\\b",
+        "electrolyte",
+        "\\bBUSE\\b|\\bRP\\b|\\bRFT\\b|\\bU\\s*&\\s*E",
+        "potassium"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 95,
+          "quote": "Full blood count  Renal profile  Glucose  Lipid profile"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "glucose",
+      "label": "Blood glucose (known diabetic)",
+      "match": [
+        "glucose",
+        "\\bRBS\\b|\\bCBG\\b|\\bBSL\\b|\\bDXT\\b",
+        "blood\\s+sugar"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 95,
+          "quote": "Full blood count  Renal profile  Glucose  Lipid profile"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "lipid-profile",
+      "label": "Lipid profile",
+      "match": [
+        "lipid\\s+profile",
+        "fasting\\s+lipid",
+        "\\bLDL\\b",
+        "cholesterol"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 95,
+          "quote": "Full blood count  Renal profile  Glucose  Lipid profile"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "posterior-right-leads",
+      "label": "Posterior (V7-V9) / right-sided (V3R-V4R) leads if diagnosis unclear",
+      "match": [
+        "V7",
+        "V4R|V3R",
+        "right[- ]sided\\s+leads",
+        "posterior\\s+leads"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 85,
+          "quote": "If the diagnosis remains unclear, additional ECG leads may be helpful:"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "echo-pocus",
+      "label": "Echocardiography / POCUS for wall-motion abnormality",
+      "match": [
+        "echocardiogra",
+        "\\becho\\b",
+        "\\bPOCUS\\b",
+        "bedside\\s+ultraso"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 91,
+          "quote": "Echocardiography/POCUS to look for new wall motion abnormalities."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "parenteral-anticoagulant",
+      "label": "Parenteral anticoagulant (UFH / enoxaparin / fondaparinux) with reperfusion",
+      "match": [
+        "heparin",
+        "\\bUFH\\b",
+        "enoxaparin",
+        "\\bLMWH\\b",
+        "fondaparinux",
+        "anticoagula"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 103,
+          "quote": "In addition, following the administration of the fibrinolytic agent, patients should receive parenteral anticoagulants."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "fibrinolytic-agent",
+      "label": "Fibrinolytic agent (tenecteplase / alteplase / streptokinase) only if PCI cannot be timely",
+      "match": [
+        "tenecteplase|\\bTNK",
+        "alteplase|\\btPA\\b",
+        "streptokinase",
+        "fibrinolytic",
+        "thrombolytic"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 99,
+          "quote": "Table 26: Fibrinolytic Agents that are Available in Malaysia"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "oral-beta-blocker",
+      "label": "Oral beta-blocker if no heart failure and SBP > 120 mmHg",
+      "match": [
+        "oral\\s+(β|beta)[- ]?blocker",
+        "metoprolol",
+        "bisoprolol",
+        "carvedilol",
+        "(β|beta)[- ]?blocker"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 112,
+          "quote": "Oral β-blockers may be considered at the time of presentation in patients with no signs of acute heart failure, SBP > 120mmHg, and no other contraindications."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "sublingual-gtn",
+      "label": "Sublingual GTN if SBP > 90 and ongoing pain (ask about PDE-5 inhibitor use)",
+      "match": [
+        "\\bGTN\\b",
+        "glyceryl trinitrate",
+        "nitroglycerin",
+        "nitrate"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 83,
+          "quote": "Serve sublingual GTN if SBP is > 90mmHg and the patient has recurrent or ongoing chest pains."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "drugs_forbidden",
+      "id": "iv-beta-blocker",
+      "label": "Intravenous beta-blockers",
+      "match": [
+        "(i\\.?v\\.?|intravenous)\\s+(β|beta)[- ]?blocker",
+        "(i\\.?v\\.?|intravenous)\\s+(metoprolol|esmolol|atenolol|labetalol)"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 112,
+          "quote": "The use of i.v. β-blockers, however, is associated with an increased occurrence of shock. 175,360 For this reason, the use of i.v. β-blockers is not advocated."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_forbidden",
+      "id": "immediate-release-nifedipine",
+      "label": "Immediate-release nifedipine",
+      "match": [
+        "nifedipine"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Acute Coronary Syndromes (1st Edition) 2026.pdf",
+          "page": 115,
+          "quote": "Immediate-release nifedipine is contraindicated."
+        }
+      ],
+      "proposed_by": "B"
+    }
+  ],
+  "adjudication": {
+    "method": "two independent extraction passes (A, B); agreed items scored",
+    "notes": [
+      "C widened triage acceptable to [1,2] on ACS CPG 2026 p85 (extractor A's evidence)."
+    ],
+    "open_questions": {
+      "A": [
+        "The corpus holds both the ACS CPG 2026 and the older NSTE-ACS CPG 2021; only the 2026 ACS CPG was used. Should older STEMI/NSTEMI guidance be treated as superseded?",
+        "Level 1 versus Level 2: the MTS cells for STEMI are all Level 2, but the ACS CPG allows 'MTS Level 1 or 2' for STEMI. Recorded as level 2 with 1 acceptable.",
+        "Nitrates are contraindicated with PDE5-inhibitor use, SBP < 90 or RV infarction. None of these is recorded in the intake, so nitrates are not listed as forbidden."
+      ],
+      "B": [
+        "The triage level from the MTS cells is 2. The ACS CPG's red zone covers MTS Levels 1 and 2 together; the adjudicator may choose to accept 1."
+      ]
+    }
+  }
+}

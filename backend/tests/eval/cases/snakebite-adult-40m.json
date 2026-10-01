@@ -1,0 +1,1366 @@
+{
+  "id": "snakebite-adult-40m",
+  "title": "Pit viper bite with spreading swelling, 40-year-old plantation worker",
+  "tier": "management",
+  "provenance": "Vignette written 2026-09-30 for the evaluation harness; expected answers extracted from the cited documents.",
+  "intake": {
+    "age": 40,
+    "gender": "male",
+    "weight_kg": 70,
+    "vitals": {
+      "systolic_bp": 124,
+      "diastolic_bp": 78,
+      "heart_rate": 102,
+      "respiratory_rate": 18,
+      "temperature": 37.0,
+      "spo2": 98,
+      "gcs": 15,
+      "pain_score": 7
+    },
+    "complaint": "Bitten on the right foot by a snake in an oil palm plantation 2 hours ago; the foot is swollen and painful and the bite marks keep bleeding.",
+    "history": "Snake described as brown with a triangular head; it was killed and brought in a bag. Swelling is spreading up to the ankle.",
+    "onset": "2 hours ago",
+    "facility": "state_or_tertiary_with_pci_and_ct"
+  },
+  "scored_sections": [
+    "triage",
+    "diagnosis",
+    "red_flags",
+    "differentials",
+    "actions",
+    "investigations",
+    "drugs",
+    "disposition",
+    "grounding"
+  ],
+  "expected": {
+    "triage": {
+      "level": 2,
+      "acceptable": [
+        2,
+        3
+      ],
+      "time_to_treatment": null,
+      "note": "Extractors disagreed (A 3, B 2); more urgent kept. A: The most urgent directly applicable MTS cells are Level 3. Adult Vital Signs Level 3 column (p7, x~244): 'Pain Score 4 - 7' (pain 7) and 'HR 100 - 120' (102). Primary triage Bleeding Level 3 column (p5, x~356): 'Bleeding from ... Wounds' and 'Bleeding Disorders' (bite marks keep bleeding). Level 2 is defensible for two reasons. (1) The MOH Snakebite guideline 2017 (p62) says patients with possible systemic and local envenomation go to the critical/red zone. (2) The MTS LETHARGY/WEAKNESS Level 2 cell (p10, x~131) lists 'Post exposure to drugs, bites, stings, toxins', but that row applies only if he is weak or lethargic, which the intake does not report. No L1/L2 bleeding cell (uncontrolled bleeding, compartment syndrome) is met. B: The MOH Snakebite guideline says to triage possible local or systemic envenomation to the critical/red zone. In MTS, the only Level 2 cell naming bites is 'Post exposure to drugs, bites, stings, toxins, environment' (x~131, p10), and it sits under the LETHARGY/WEAKNESS complaint, which this alert patient does not strictly have. The strictly applicable cells are all Level 3 (x~244): HR 102 and pain 7 (p7), and on p5 'Bleeding from ... Wounds' and 'Bleeding Disorders' (x~356 = Level 3 column there). So Level 2 is preferred, following the guideline and the most-urgent rule, and Level 3 is accepted.",
+      "evidence": [
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• Temp 37.5 - 39 C • Pain Score 4 - 7 • Appears unwell"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• HR 100 - 120 • RR 20 - 30"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 5,
+          "quote": "• Bleeding from Fractures/ Dislocations / Joints / Wounds • Menorrhagia • ENT Bleeding • Expanding haematoma • Bleeding Disorders"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 10,
+          "quote": "• Post exposure to drugs, bites, stings, toxins, environment"
+        },
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 62,
+          "quote": "Triage patients with possible systemic and local envenomation to critical/red zone."
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 3,
+          "quote": "Level 3 - Urgent - under 30 minutes"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 10,
+          "quote": "• Airway reﬂexes lost • Unable to swallow, speak • Post exposure to drugs, bites, stings, toxins, environment"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 3,
+          "quote": "Level 2 - Emergency - under 10 minutes"
+        }
+      ]
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Pit viper snakebite (probable Malayan pit viper, Calloselasma rhodostoma) with local envenoming (progressive swelling, pain) and suspected haematotoxic envenoming (persistent bleeding from bite site). Record as 'unidentified snakebite' until the brought-in snake is identified by an expert.",
+        "match": [
+          "pit ?viper",
+          "calloselasma",
+          "rhodostoma",
+          "viperid",
+          "h(a)?ematotoxic",
+          "viper(ine)? (bite|envenom)",
+          "snake ?bite",
+          "envenom",
+          "pit viper",
+          "calloselasma|rhodostoma",
+          "ular kapak"
+        ],
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 52,
+            "quote": "Malayan pit viper (Calloselasma rhodostoma) snakebite with local and haematotoxic envenoming (severe coagulopathy)"
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 40,
+            "quote": "Prolonged bleeding from the bitten site, site of venepuncture, conjunctiva, oral cavity, petechial rashes or bleeding from occult sites."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 52,
+            "quote": "If the patient can only give a verbal description of the snake the diagnosis should be stated as an unidentified snakebite."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 52,
+            "quote": "Malayan pit viper (Calloselasma rhodostoma) snakebite with local and haematotoxic envenoming (severe coagulopathy)"
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 19,
+            "quote": "Calloselasma rhodostoma Malayan pit viper Ular kapak bodoh Pain, Swelling, Bruising, Blistering, Necrosis, Bleeding Consumptive coagulopathy"
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 52,
+            "quote": "If the patient can only give a verbal description of the snake the diagnosis should be stated as an unidentified snakebite."
+          }
+        ]
+      },
+      "acceptable_alternatives": [
+        {
+          "label": "Unidentified / venomous snakebite with local (and haematotoxic) envenoming",
+          "match": [
+            "unidentified snake ?bite",
+            "venomous snake ?bite",
+            "snake ?bite.{0,40}envenom",
+            "envenomation"
+          ]
+        },
+        {
+          "label": "Unidentified snakebite with local envenoming",
+          "match": [
+            "unidentified snake"
+          ]
+        },
+        {
+          "label": "Viper / crotalid envenomation",
+          "match": [
+            "viper",
+            "crotal",
+            "ha?ematotoxic"
+          ]
+        }
+      ]
+    },
+    "red_flags": [
+      {
+        "id": "coagulopathy-bleeding",
+        "label": "Coagulopathy / spontaneous or persistent bleeding (bite site, gums, venepuncture sites, haematuria)",
+        "match": [
+          "coagulopath",
+          "bleed",
+          "haemorrh|hemorrh",
+          "incoagulab",
+          "\\bDIV?C\\b",
+          "defibrinat",
+          "\\bVICC\\b",
+          "haematuria|hematuria",
+          "(spontaneous|systemic) bleed|gum bleed|ha?ematuria|ha?ematemesis|epistaxis",
+          "thrombocytop|low platelet",
+          "(prolonged|deranged) (PT|APTT|INR|clotting)",
+          "\\bVICC\\b|consumptive|defibrinat"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 40,
+            "quote": "Prolonged bleeding from the bitten site, site of venepuncture, conjunctiva, oral cavity, petechial rashes or bleeding from occult sites."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 75,
+            "quote": "Haemostatic abnormalities: Spontaneous systemic bleeding (clinical),coagulopathy (20WBCT or other laboratory tests such as prothrombin time) or thrombocytopenia"
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 55,
+            "quote": "Coagulopathy - reducing platelet count, prolonged PT, aPTT & INR"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "rapid-swelling-progression",
+        "label": "Rapid proximal extension of swelling (beyond ankle within hours), or > half the limb",
+        "match": [
+          "(spread|progress|extension|extend)\\w*.{0,30}swelling",
+          "swelling.{0,40}(spread|progress|extend|proximal)",
+          "\\bRPP\\b",
+          "rate of proximal",
+          "(rapid|progressive|spreading|extend|extension|proximal).{0,30}swelling",
+          "swelling.{0,40}(spread|progress|extend|ankle|proximal)",
+          "\\bRPP\\b|rate of proximal"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 75,
+            "quote": "Rapid extension of swelling (for example, beyond the wrist or ankle within a few hours of bite on the hands or feet)."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 75,
+            "quote": "Local swelling involving more than half of the bitten limb (in the absence of a tourniquet) within 48 hours of the bite."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "shock-hypotension",
+        "label": "Hypotension / shock (venom, hypovolaemia, haemorrhage, anaphylaxis)",
+        "match": [
+          "hypotens",
+          "shock",
+          "hypotension|shock",
+          "arrhythmi"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 63,
+            "quote": "Profound hypotension and shock can be due to direct cardiovascular effects of the venom or secondary effects,"
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 75,
+            "quote": "Cardiovascular abnormalities: hypotension, shock, cardiac arrhythmia (clinical), abnormal ECG"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "neurovascular-compromise",
+        "label": "Progressive neurovascular compromise of the bitten limb (monitor with compartment pressure / Doppler)",
+        "match": [
+          "neurovascular",
+          "compartment",
+          "doppler",
+          "pulseless",
+          "paraesthesi|paresthesi",
+          "compartment (syndrome|pressure)",
+          "neurovascular (compromise|status)",
+          "pulseless|paraesthesi|paresthesi"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 63,
+            "quote": "Clinical findings suggesting progressive neurovascular compromise should be serially monitored with intracompartmental pressure measurements and/or bedside Doppler."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 89,
+            "quote": "1. Pain out of proportion to injury 2. Increased compartmental Pressure 3. Paresthesia and 4. Paralysis 5. Pulselessness or weak pulse"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "differentials": [
+      {
+        "id": "cobra-neurotoxic",
+        "label": "Cobra bite (local swelling/necrosis) - watch for neurotoxic signs e.g. ptosis",
+        "match": [
+          "cobra",
+          "\\bnaja\\b",
+          "neurotox",
+          "ptosis",
+          "cobra|naja",
+          "trimeresurus|green pit viper",
+          "elapid"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 41,
+            "quote": "Patients present with a descending type of paralysis. The early sign is ptosis."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 17,
+            "quote": "Caution: Accurate snake species identification is important and may be difficult due to morphological variations between sexes and ontological progression, even within the same species."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "non-venomous-bite",
+        "label": "Non-venomous snakebite (discharge only if expert-identified and clinically consistent)",
+        "match": [
+          "non-?venomous",
+          "dry bite",
+          "\\bNFFC\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 53,
+            "quote": "The snake can be positively identified as a non-venomous species by a trained expert."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "compartment-syndrome-mimic",
+        "label": "True compartment syndrome (rare; envenomation mimics it)",
+        "match": [
+          "compartment syndrome"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 88,
+            "quote": "snake envenomation causes superficial edema and increased subcutaneous tissue pressure that often mimics compartment syndrome."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 88,
+            "quote": "First, snake envenomation causes superficial edema and increased subcutaneous tissue pressure that often mimics compartment syndrome."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "immobilise-limb",
+        "label": "Immobilise bitten limb in neutral position at heart level; examine for swelling, bleeding, neurovascular compromise",
+        "match": [
+          "immobili[sz]",
+          "splint",
+          "neutral position",
+          "heart level",
+          "same level as the heart",
+          "(neutral|heart) (position|level)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 63,
+            "quote": "Immobilize the bitten limb and examine the bite site for swelling, bleeding and neurovascular compromise."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 63,
+            "quote": "Position the affected limb in a neutral position or at the same level as the heart."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "serial-monitoring-rpp-psp",
+        "label": "Serial monitoring on snakebite chart: rate of proximal progression (RPP), pain score progression, vital signs every 5-15 min in acute stage",
+        "match": [
+          "\\bRPP\\b",
+          "proximal progression",
+          "(mark|measur|monitor)\\w*.{0,30}(swelling|oedema|edema)",
+          "snake ?bite chart",
+          "serial (clinical )?(assessment|monitoring|observation)",
+          "pain score progression",
+          "\\bRPP\\b|rate of proximal",
+          "serial (assessment|monitor|observ)|snake ?bite chart",
+          "(mark|measure|monitor).{0,30}(swelling|edge|margin|progression)",
+          "pain score progression|\\bPSP\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 57,
+            "quote": "By monitoring the serial Pain Score Progression (PSP) and the Rate of Proximal swelling Progression (RPP) (measured in centimetre per hour), we can monitor the progression and assess the severity of local envenoming."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 63,
+            "quote": "Close serial monitoring of blood pressure, heart rate, respiratory rate, SpO2, pain score, PEFR (if applicable) every 5-15 minutes in acute stage is required."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 55,
+            "quote": "Serial assessment of the patient’s clinical progression should be performed for the first 48 hours of presentation and charted into the snakebite chart (refer Appendix 1)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "assess-antivenom-indication",
+        "label": "Assess antivenom indications (systemic: coagulopathy/bleeding/thrombocytopenia; local: rapid swelling extension) and give antivenom promptly when indicated",
+        "match": [
+          "anti-?ven(om|in)",
+          "\\bAVS?\\b",
+          "fasciotom"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 74,
+            "quote": "Antivenom treatment should be given as soon as it is indicated."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 74,
+            "quote": "Antivenom treatment is recommended if patient with proven or suspected snake bite develops one or more of the following signs:"
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 88,
+            "quote": "In any case fasciotomy must not be contemplated until anti-venom therapy has been fully optimized and haemostatic abnormalities have been corrected."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "snake-identification-expert",
+        "label": "Expert identification of the brought-in snake / Remote Envenomation Consultation Services (RECS)",
+        "match": [
+          "identif\\w*.{0,40}(snake|species)",
+          "(snake|species).{0,30}identif",
+          "\\bRECS\\b",
+          "remote envenomation",
+          "expert",
+          "herpetolog",
+          "identif.{0,30}(snake|species|specimen)",
+          "(snake|specimen|species).{0,30}identif",
+          "toxinolog",
+          "\\bRECS\\b|remote envenomation"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 16,
+            "quote": "Verification of snake identification is best to be performed by experts in the field."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 12,
+            "quote": "Services), provide phone consultations (on 24/7 basis) to guide doctors in diagnosis and"
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 17,
+            "quote": "Get an experienced physician or clinical toxinologist familiar with snake species to verify."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 16,
+            "quote": "Proper identification of the snake is possible only by examining the snake if it was killed or restrained and brought to the hospital."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "avoid-im-injections",
+        "label": "Avoid intramuscular injections (coagulopathy risk); use oral/IV route",
+        "match": [
+          "avoid\\w* (all )?(im|intramuscular)",
+          "no (im|intramuscular)",
+          "(im|intramuscular) (injections? )?(should be )?avoid",
+          "(avoid|no|not).{0,20}(intramuscular|\\bIM\\b)",
+          "(intramuscular|\\bIM\\b) (injection|route).{0,30}avoid"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 64,
+            "quote": "Intramuscular injections should be avoided in pit-viper snakebite victims due to risk of haematoma formation"
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 64,
+            "quote": "Intramuscular injections should be avoided in pit-viper snakebite victims due to risk of haematoma formation as patient has potential risk of coagulopathy."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "no-arterial-puncture",
+        "label": "Avoid arterial puncture when viper coagulopathy suspected",
+        "match": [
+          "arterial puncture",
+          "avoid\\w* (an? )?\\bABG\\b",
+          "(avoid|no|not).{0,20}\\bABG\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 47,
+            "quote": "Arterial puncture is contraindicated in patients with suspected coagulopathy (viperidae)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "observe-24h",
+        "label": "Close observation for at least 24 hours (serial assessment for first 48 hours)",
+        "match": [
+          "24 ?(h|hours)",
+          "48 ?(h|hours)",
+          "observ",
+          "(vital|observation|monitor).{0,30}(5|15) ?(-|–|to) ?15 ?min",
+          "(close|frequent|continuous) (vital|monitor|observ)",
+          "urine output"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 55,
+            "quote": "Serial assessment of the patient’s clinical progression should be performed for the first 48 hours of presentation and charted into the snakebite chart"
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 63,
+            "quote": "Close serial monitoring of blood pressure, heart rate, respiratory rate, SpO2, pain score, PEFR (if applicable) every 5-15 minutes in acute stage is required."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "investigations": [
+      {
+        "id": "coagulation-profile",
+        "label": "Coagulation profile (PT/APTT/INR), repeat 6-hourly for pit viper",
+        "match": [
+          "coag",
+          "\\bPT\\b",
+          "\\bINR\\b",
+          "\\bAPTT\\b|\\bPTT\\b",
+          "prothrombin",
+          "coagulation (profile|studies|screen)",
+          "\\bPT\\b|\\bAPTT\\b|\\baPTT\\b|\\bINR\\b",
+          "clotting (profile|screen)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 47,
+            "quote": "Coagulation profile should be repeated 6 hourly for suspected pit viper cases."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 47,
+            "quote": "Coagulation profile: APTT/PT and INR. Fibrinogen level and D-dimer can be sent if available. Coagulation profile should be repeated 6 hourly for suspected pit viper cases."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "fbc-platelets",
+        "label": "Full blood count (platelets, haemoglobin), 6-hourly",
+        "match": [
+          "\\bFBC\\b",
+          "full blood count",
+          "complete blood count",
+          "\\bCBC\\b",
+          "platelet",
+          "\\bFBC\\b|full blood count|\\bCBC\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 47,
+            "quote": "Platelet count may be decreased in victims of envenoming by vipers."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 47,
+            "quote": "Full blood count: Platelet count may be decreased in victims of envenoming by vipers."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "20wbct",
+        "label": "20-minute whole blood clotting test (bedside; if lab coagulation unavailable)",
+        "match": [
+          "20 ?-?(min(ute)?)? ?WBCT",
+          "whole blood clotting",
+          "\\bWBCT\\b",
+          "20 ?WBCT|20[- ]min(ute)? whole[- ]blood clotting|whole blood clotting"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 48,
+            "quote": "It is a quick bed side test for an unidentified bite or when a pit viper bite is suspected."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 48,
+            "quote": "When laboratory test for coagulation profile is not available, consider doing 20WBCT. It is a quick bed side test for an unidentified bite or when a pit viper bite is suspected."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "renal-profile",
+        "label": "Renal profile (creatinine, electrolytes)",
+        "match": [
+          "renal (profile|function)",
+          "\\bRFT\\b",
+          "\\bBUSE",
+          "creatinine",
+          "electrolyte",
+          "\\bU&?E\\b",
+          "renal (profile|function)|\\bRFT\\b|\\bBUSE|\\bU ?& ?E\\b|creatinine"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 47,
+            "quote": "Serum creatinine is necessary to rule out renal failure."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 47,
+            "quote": "Renal profile: Serum creatinine is necessary to rule out renal failure."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "creatine-kinase",
+        "label": "Creatine kinase (serial, 6-hourly)",
+        "match": [
+          "\\bCK\\b",
+          "creatine kinase",
+          "creatinine kinase",
+          "\\bCPK\\b",
+          "creatin(in)?e (phospho)?kinase|\\bCK\\b|\\bCPK\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 47,
+            "quote": "For early detection of rhabdomyolysis. Serial monitoring to monitor trend."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 47,
+            "quote": "Creatine kinase: For early detection of rhabdomyolysis. Serial monitoring to monitor trend."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "fibrinogen-ddimer",
+        "label": "Fibrinogen and D-dimer if coagulopathy present",
+        "match": [
+          "fibrinogen",
+          "d-?dimer"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 47,
+            "quote": "Fibrinogen level and D-dimer can be sent if available."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 60,
+            "quote": "D-dimer and serum fibrinogen level if coagulopathy present to determine defibrination syndrome."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "lft",
+        "label": "Liver function test (baseline)",
+        "match": [
+          "\\bLFTs?\\b",
+          "liver function",
+          "\\bLFTs?\\b|liver function"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 47,
+            "quote": "Mild hepatic dysfunction is reflected in slight increases in serum enzymes after severe local muscle damage."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 47,
+            "quote": "Liver function test: Mild hepatic dysfunction is reflected in slight increases in serum enzymes after severe local muscle damage."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "urinalysis",
+        "label": "Urinalysis (haematuria, myoglobinuria, proteinuria)",
+        "match": [
+          "urinalysis",
+          "urine (dip|feme|analysis)",
+          "\\bUFEME\\b",
+          "haematuria|hematuria",
+          "urinalysis|urine (FEME|dip|analysis)|UFEME"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 47,
+            "quote": "To assess for myoglobinuria, hematuria and proteinuria."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 47,
+            "quote": "Urinalysis: To assess for myoglobinuria, hematuria and proteinuria."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_allowed": [
+      {
+        "id": "malayan-pit-viper-antivenom",
+        "label": "QSMI Malayan pit viper antivenin (2nd choice QSMI Haemato Polyvalent), initial 4 vials IV, repeat after 6 h per response - when indicated",
+        "match": [
+          "anti-?ven(om|in)",
+          "haemato ?polyvalent|hemato ?polyvalent",
+          "\\bHPAV\\b",
+          "anti-?venom|anti-?venin|\\bAVS\\b|\\bASV\\b",
+          "(haemato|hemato) polyvalent|\\bHPAV\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 78,
+            "quote": "All antivenom is administered intravenously."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 74,
+            "quote": "Antivenom treatment should be given as soon as it is indicated."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "iv-opioid",
+        "label": "IV opioid (e.g. morphine, fentanyl) titrated",
+        "match": [
+          "opioid",
+          "morphine",
+          "fentanyl",
+          "opioid|morphine|fentanyl|pethidine"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 65,
+            "quote": "For moderate to severe pain, intravenous opioids should be administered in titrated doses."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "paracetamol",
+        "label": "Paracetamol for mild pain",
+        "match": [
+          "paracetamol",
+          "acetaminophen",
+          "paracetamol|acetaminophen"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 65,
+            "quote": "For mild pain, paracetamol can be administered every 4-6 hours orally as required."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "adrenaline-for-reaction",
+        "label": "Adrenaline 0.5 mg IM for antivenom anaphylaxis (IV infusion instead if coagulopathic)",
+        "match": [
+          "adrenaline",
+          "epinephrine",
+          "adrenaline|epinephrine"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 85,
+            "quote": "If the patient is having coagulopathy IM injection should be avoided, proceed directly to IV infusion."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 78,
+            "quote": "Adrenaline should be prepared in readiness to treat possible anaphylaxis, that may occur in response to antivenom."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_forbidden": [
+      {
+        "id": "nsaids-aspirin",
+        "label": "NSAIDs and aspirin",
+        "match": [
+          "\\bNSAID",
+          "non-?steroidal anti-?inflammatory",
+          "aspirin",
+          "diclofenac",
+          "ibuprofen",
+          "mefenamic",
+          "naproxen",
+          "ketorolac",
+          "celecoxib",
+          "etoricoxib",
+          "\\bNSAIDs?\\b|non-?steroidal anti-?inflammator",
+          "ibuprofen|diclofenac|naproxen|mefenamic|celecoxib|etoricoxib"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 64,
+            "quote": "avoid the use of NSAIDS in pit-viper bite."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 65,
+            "quote": "Aspirin or non-steroidal anti-inflammatory drugs should be avoided in patients who are at risk to developing coagulopathy."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 64,
+            "quote": "Patient can be given an analgesic but avoid the use of NSAIDS in pit-viper bite."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "prophylactic-steroid-antihistamine",
+        "label": "Prophylactic hydrocortisone / antihistamines (only if allergic reaction)",
+        "match": [
+          "prophylactic (hydrocortisone|steroid|antihistamine)",
+          "pre-?medicat\\w*.{0,40}(hydrocortisone|steroid|antihistamine|chlorphen)",
+          "(hydrocortisone|antihistamine|chlorphenamine|chlorpheniramine).{0,30}(before|prior to).{0,20}anti-?ven",
+          "(prophylactic|pre-?medicat).{0,40}(hydrocortisone|steroid|antihistamine|chlorphen)",
+          "(hydrocortisone|antihistamine|chlorphen[a-z]*).{0,40}(prophyla|before antivenom|pre-?medicat)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 64,
+            "quote": "Prophylactic hydrocortisone and antihistamines are not recommended."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 64,
+            "quote": "Steroid and antihistamines should not be administered without clear indication."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "tranexamic-vitamin-k",
+        "label": "Tranexamic acid and vitamin K (ineffective for venom-induced coagulopathy)",
+        "match": [
+          "tranexamic",
+          "\\bTXA\\b",
+          "vitamin k",
+          "phytomenadione",
+          "phytonadione",
+          "tranexamic|\\bTXA\\b|anti-?fibrinolytic",
+          "vitamin k|phytomenadione"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 66,
+            "quote": "Anti-fibrinolytic agents (e.g. tranexamic acid) and vitamin K are not effective in envenomation induced coagulopathy."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "indian-polyvalent-antivenom",
+        "label": "Indian polyvalent antivenom",
+        "match": [
+          "indian (polyvalent )?anti-?ven",
+          "indian (polyvalent|antivenom|anti-?venin)"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 77,
+            "quote": "*The Indian Polyvalent antivenom (that may still available in some hospitals) is NOT appropriate for treating snake envenomation in Malaysia."
+          },
+          {
+            "source": "MOH Guideline Management of Snakebite 2017.pdf",
+            "page": 77,
+            "quote": "The Indian Polyvalent antivenom (that may still available in some hospitals) is NOT appropriate for treating snake envenomation in Malaysia."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "disposition": {
+      "acceptable": [
+        "ADMIT_WARD",
+        "ADMIT_ICU_HDU"
+      ],
+      "preferred": "ADMIT_WARD",
+      "evidence": [
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 53,
+          "quote": "Snakebite with local and/or systemic envenomation"
+        },
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 40,
+          "quote": "If the biting species is unknown, patient should be observed closely for at least 24 hours"
+        },
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 53,
+          "quote": "4.8.1 Indication for observation and admission: i. Snakebite with local and/or systemic envenomation"
+        },
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 55,
+          "quote": "Serial assessment of the patient’s clinical progression should be performed for the first 48 hours of presentation and charted into the snakebite chart (refer Appendix 1)."
+        }
+      ],
+      "note": "Admission is indicated (local ± systemic envenomation, venomous snake). Ward with serial snakebite-chart monitoring. HDU/ICU if there is severe bleeding, shock or antivenom anaphylaxis. / Admit for antivenom and 48-hour serial monitoring. HDU/ICU is correct if he develops systemic bleeding with instability, shock or AKI. ED observation or discharge is not acceptable, because he has local envenoming and the CPG requires 48 h of serial assessment."
+    },
+    "sources_forbidden": [
+      {
+        "doc_type": "PAEDIATRIC_PROTOCOL",
+        "why": "adult patient"
+      }
+    ]
+  },
+  "disputed": [
+    {
+      "section": "red_flags",
+      "id": "thrombocytopenia",
+      "label": "Thrombocytopenia (< 100 x 10^9/L)",
+      "match": [
+        "thrombocytopeni",
+        "low platelet",
+        "platelets?.{0,20}(<|below|less than|low)"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 75,
+          "quote": "coagulopathy (20WBCT or other laboratory tests such as prothrombin time) or thrombocytopenia (<100 x 109/litre or 100"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "red_flags",
+      "id": "antivenom-anaphylaxis",
+      "label": "Antivenom reaction / anaphylaxis",
+      "match": [
+        "anaphyla",
+        "antivenom reaction",
+        "allergic reaction"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 85,
+          "quote": "In the event of antivenom induced anaphylaxis, antivenom should be temporarily withheld,"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "red_flags",
+      "id": "aki-rhabdo",
+      "label": "Acute kidney injury / dark urine",
+      "match": [
+        "acute (kidney|renal) (injury|failure)|\\bAKI\\b",
+        "oliguri|anuri",
+        "dark (brown )?urine|myoglobinuri|ha?emoglobinuri"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 75,
+          "quote": "Acute kidney injury (renal failure): oliguria/anuria (clinical), rising blood creatinine/ urea (laboratory)."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "red_flags",
+      "id": "neurotoxic-signs",
+      "label": "Neurotoxic signs (ptosis, ophthalmoplegia), if the species is not a pit viper",
+      "match": [
+        "ptosis",
+        "ophthalmopleg",
+        "neurotox",
+        "descending paralysis|bulbar"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 75,
+          "quote": "Neurotoxic signs: ptosis, external ophthalmoplegia, paralysis etc (clinical)."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "actions",
+      "id": "adrenaline-ready",
+      "label": "Prepare adrenaline before antivenom; monitor for at least 1 hour after infusion",
+      "match": [
+        "adrenaline",
+        "epinephrine"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 78,
+          "quote": "Adrenaline should be prepared in readiness to treat possible anaphylaxis, that may occur in response to antivenom."
+        },
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 78,
+          "quote": "Patient must be monitored during and for at least one hour AFTER completion of intravenous infusion."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "analgesia",
+      "label": "Analgesia: titrated IV opioid for moderate-severe pain (non-sedating, no effect on coagulation)",
+      "match": [
+        "analges",
+        "opioid",
+        "morphine",
+        "fentanyl",
+        "pain (relief|control|management)"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 65,
+          "quote": "For moderate to severe pain, intravenous opioids should be administered in titrated doses."
+        },
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 64,
+          "quote": "Non-sedating analgesics which do not affect coagulation can be administered."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "tetanus-prophylaxis",
+      "label": "Tetanus prophylaxis as indicated",
+      "match": [
+        "tetanus",
+        "\\bATT\\b",
+        "\\bADT\\b"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 64,
+          "quote": "Anti tetanus toxin should be administered as indicated."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "no-early-fasciotomy",
+      "label": "No fasciotomy until antivenom optimised and haemostasis corrected; confirm with compartment pressure",
+      "match": [
+        "fasciotomy"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 88,
+          "quote": "In any case fasciotomy must not be contemplated until anti-venom therapy has been fully optimized and haemostatic abnormalities have been corrected."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "abcde-resus",
+      "label": "Rapid ABCDE assessment and resuscitation in the red zone",
+      "match": [
+        "\\bABCDE?\\b",
+        "primary (survey|assessment)",
+        "resuscitat",
+        "red zone|critical zone"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 62,
+          "quote": "The goal of primary assessment is to identify any life threatening conditions. Resuscitation must be initiated immediately upon recognition."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "actions",
+      "id": "tape-not-marker",
+      "label": "Mark swelling with removable tape, not permanent marker",
+      "match": [
+        "micropore|tape",
+        "permanent marker"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 43,
+          "quote": "DO NOT mark the wound with permanent marker. Use removable small micropore tape for labelling."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "actions",
+      "id": "specialist-consult",
+      "label": "Specialist / consultant input (can be sought at any stage)",
+      "match": [
+        "specialist|consultant|toxinolog|\\bRECS\\b|poison cent(re|er)"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 102,
+          "quote": "Specialist/Consultant can be consulted at any stage of management"
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "blood-products-if-life-threatening",
+      "label": "Blood products only for life-threatening bleeding when antivenom not yet available (not a substitute)",
+      "match": [
+        "blood products?",
+        "\\bFFP\\b",
+        "fresh frozen plasma",
+        "cryoprecipitate",
+        "platelet transfusion"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 64,
+          "quote": "In cases where the antivenom is not readily available, blood products should be administered if the bleeding is life threatening until the appropriate antivenom is available."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "anti-tetanus",
+      "label": "Tetanus prophylaxis as indicated",
+      "match": [
+        "tetanus|\\bATT\\b|\\bTT\\b|\\bTdap\\b|\\bADT\\b"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 64,
+          "quote": "Anti tetanus toxin should be administered as indicated."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "antibiotics-if-necrosis",
+      "label": "Antibiotics only if there is necrosis or extensive tissue injury",
+      "match": [
+        "antibiotic"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Guideline Management of Snakebite 2017.pdf",
+          "page": 66,
+          "quote": "Antibiotics should be considered in snakebite with local tissue necrosis/dermonecrosis or extensive tissue injury/damage (e.g. bite by a python)."
+        }
+      ],
+      "proposed_by": "B"
+    }
+  ],
+  "adjudication": {
+    "method": "two independent extraction passes (A, B); agreed items scored",
+    "notes": [
+      "Extractors disagreed (A 3, B 2); more urgent kept."
+    ],
+    "open_questions": {
+      "A": [
+        "Triage L3 vs L2: MTS table cells give L3. The MOH Snakebite guideline sends possible local+systemic envenomation to the red zone (L1/L2). The adjudicator should decide which governs.",
+        "Antivenom at triage: the intake gives swelling 'up to the ankle' at 2 h (the local criterion is 'beyond the ankle within a few hours') and persistent bite-site bleeding (not yet documented as systemic bleeding or coagulopathy). The antivenom decision therefore depends on coagulation/platelet results or further spread. The gold requires 'assess indication and give when indicated' rather than unconditional antivenom.",
+        "The species label should wait for expert identification of the killed snake (guideline p52). Pit viper/Calloselasma is accepted as the working diagnosis given the description and location.",
+        "Forbidden-drug regex for hydrocortisone/antihistamine is limited to prophylactic use, because both are legitimately used to treat antivenom anaphylaxis."
+      ],
+      "B": [
+        "MTS triage: the only Level 2 'bites' cell sits under LETHARGY/WEAKNESS. Level 2 rests on the MOH guideline's red-zone instruction; strictly applicable MTS cells give Level 3.",
+        "Does the antivenom indication already apply at presentation? Swelling has reached the ankle at 2 h ('rapid extension ... beyond the wrist or ankle within a few hours'), and the bite marks keep bleeding. That bleeding is local, not spontaneous systemic bleeding; the coagulation result will decide. Antivenom is marked required on the swelling criterion.",
+        "Tranexamic acid and vitamin K are called 'not effective', not 'avoid', so that forbidden item is non-required."
+      ]
+    }
+  }
+}

@@ -144,7 +144,24 @@ class Qualifier:
                 pass
         if self.pattern.search(text or ""):
             return Resolution(True, DOCUMENTED, self.name)
+        # A written NEGATIVE settles it too. Found 2026-09-30 by the evaluation
+        # harness: "CBG 22, feels well" was leaned symptoms-PRESENT and raised
+        # to Level 2, although page 7 prints "> 18 mmol/L no symptoms" as
+        # Level 3 and the intake says, in words, that there are none. Leaning
+        # is for when nothing is recorded - not for overriding what is.
+        # Positive evidence is tested first, so "feels well apart from a
+        # headache" still resolves present.
+        if DOCUMENTED_NEGATIVE_RE.search(text or ""):
+            return Resolution(False, DOCUMENTED, self.name)
         return Resolution(self.lean, ASSUMED, self.name)
+
+
+# An intake that says, in words, that the patient has no symptoms.
+DOCUMENTED_NEGATIVE_RE = re.compile(
+    r"\b(?:feels? (?:well|fine|ok|okay)|feeling (?:well|fine)|asymptomatic|symptom[- ]?free"
+    r"|no (?:other )?(?:complaints?|symptoms?)|otherwise well|well in himself|well in herself)\b",
+    re.IGNORECASE,
+)
 
 
 # Every alternative below is either an exact word or carries an explicit \w*.

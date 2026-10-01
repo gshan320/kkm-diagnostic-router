@@ -1,7 +1,10 @@
 "use client";
 
+import { useState } from "react";
+
+import { flagReport } from "@/lib/api";
 import { downloadTriageReport, printTriageReport } from "@/lib/report";
-import type { Contraindication, TriageColour, TriageResponse } from "@/lib/types";
+import type { Contraindication, FlagReason, TriageColour, TriageResponse } from "@/lib/types";
 import SourceList from "./SourceList";
 
 const COLOUR_STYLES: Record<TriageColour, string> = {
@@ -104,6 +107,11 @@ export default function DiagnosticCard({ result }: { result: TriageResponse }) {
             <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
               {d.triage_rationale}
             </p>
+            {d.triage_provisional_note ? (
+              <p className="mt-2 rounded-md border border-amber-300 bg-amber-50 px-3 py-2 text-xs font-medium text-amber-900 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-200">
+                {d.triage_provisional_note}
+              </p>
+            ) : null}
             {d.reassessment ? (
               <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
                 {d.reassessment}
@@ -114,6 +122,11 @@ export default function DiagnosticCard({ result }: { result: TriageResponse }) {
             <div className="text-right text-[11px] text-slate-400">
               <p>{result.model}</p>
               <p>{(result.latency_ms / 1000).toFixed(1)}s</p>
+              {result.provenance?.audit_id ? (
+                <p className="font-mono" title="Audit record of this report">
+                  {result.provenance.audit_id}
+                </p>
+              ) : null}
             </div>
             <div className="flex gap-2">
               <button
@@ -132,6 +145,9 @@ export default function DiagnosticCard({ result }: { result: TriageResponse }) {
               >
                 Print / PDF
               </button>
+              {result.provenance?.audit_id ? (
+                <FlagButton reportId={result.provenance.audit_id} />
+              ) : null}
             </div>
           </div>
         </div>
@@ -160,9 +176,9 @@ export default function DiagnosticCard({ result }: { result: TriageResponse }) {
                 </p>
                 {nAbs > 0 && (
                   <p className="mt-1 text-sm font-semibold text-rose-900 dark:text-rose-100">
-                    {nAbs} recommendation{nAbs > 1 ? "s" : ""} above{" "}
+                    {nAbs} recommendation{nAbs > 1 ? "s" : ""} the model proposed{" "}
                     {nAbs > 1 ? "are" : "is"} absolutely contraindicated for this
-                    patient. Do not act without re-reading the cited guideline.
+                    patient and {nAbs > 1 ? "were" : "was"} removed from the plan.
                   </p>
                 )}
                 <ul className="mt-2 space-y-2">
@@ -213,13 +229,57 @@ export default function DiagnosticCard({ result }: { result: TriageResponse }) {
             <p className="mt-1 text-sm text-orange-900 dark:text-orange-200">
               {d.completeness_gaps!.map((g) => g.element).join(" · ")}
             </p>
+            {d.completeness_gaps!
+              .filter((g) => g.quote)
+              .map((g, i) => (
+                <p key={i} className="mt-1 text-xs text-orange-900 dark:text-orange-200">
+                  <span className="font-semibold">{g.element} — the guideline says: </span>
+                  &ldquo;{g.quote}&rdquo;{" "}
+                  <span className="opacity-80">[{g.quote_source}]</span>
+                </p>
+              ))}
             <p className="mt-1 text-xs text-orange-800/80 dark:text-orange-300/80">
               Read {d.completeness_gaps![0].guideline} before acting.
             </p>
           </div>
         )}
 
-        {(d.dose_completeness_warning ||
+        {(d.knowledge_gaps?.length ?? 0) > 0 && (
+          <div className="mx-5 mb-4 rounded-lg border border-violet-300 bg-violet-50 px-4 py-3 dark:border-violet-800 dark:bg-violet-950/40">
+            <p className="text-xs font-semibold text-violet-900 dark:text-violet-300">
+              Not covered by KKM sources
+            </p>
+            {d.knowledge_gaps!.map((g, i) => (
+              <p key={i} className="mt-1 text-sm text-violet-900 dark:text-violet-200">
+                {g.statement}
+              </p>
+            ))}
+            {(() => {
+              const links = d.knowledge_gaps!.flatMap((g) => g.references ?? [])
+                .filter((r, i, all) => all.findIndex((x) => x.url === r.url) === i);
+              return links.length > 0 ? (
+                <ul className="mt-1 list-disc pl-5 text-xs text-violet-900 dark:text-violet-200">
+                  {links.map((r, i) => (
+                    <li key={i}>
+                      <a href={r.url} target="_blank" rel="noopener noreferrer" className="underline">
+                        {r.title}
+                      </a>
+                      {r.reason ? <span className="opacity-80"> — {r.reason}</span> : null}
+                    </li>
+                  ))}
+                </ul>
+              ) : null;
+            })()}
+          </div>
+        )}
+
+        {(d.consistency_warning ||
+          d.dose_completeness_warning ||
+          d.avoid_warning ||
+          d.differential_warning ||
+          d.second_pass_note ||
+          d.complication_note ||
+          d.citation_alignment_note ||
           d.drug_indication_warning ||
           d.citation_warning ||
           d.urgency_warning ||
@@ -231,6 +291,12 @@ export default function DiagnosticCard({ result }: { result: TriageResponse }) {
             </p>
             {[
               d.parse_warning,
+              d.consistency_warning,
+              d.avoid_warning,
+              d.differential_warning,
+              d.second_pass_note,
+              d.complication_note,
+              d.citation_alignment_note,
               d.dose_completeness_warning,
               d.drug_indication_warning,
               d.urgency_warning,
@@ -257,19 +323,48 @@ export default function DiagnosticCard({ result }: { result: TriageResponse }) {
           </div>
         )}
 
+        {(d.source_cautions?.length ?? 0) > 0 && (
+          <Section title="Cautions from the guidelines" count={d.source_cautions!.length}>
+            <ul className="space-y-2">
+              {d.source_cautions!.map((c, i) => (
+                <li
+                  key={`${i}-${c.label}`}
+                  className="rounded-lg border-l-4 border-amber-500 bg-amber-50/60 px-3 py-2 dark:bg-amber-950/30"
+                >
+                  <p className="text-sm font-medium text-slate-900 dark:text-slate-100">
+                    {c.label}
+                    <Cite id={c.source_id} />
+                    {c.external && (
+                      <span className="ml-2 rounded bg-slate-200 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-700 dark:bg-slate-700 dark:text-slate-200">
+                        non-KKM source
+                      </span>
+                    )}
+                  </p>
+                  <p className="mt-0.5 text-xs text-slate-600 dark:text-slate-400">&ldquo;{c.quote}&rdquo;</p>
+                </li>
+              ))}
+            </ul>
+          </Section>
+        )}
+
         <Section title="Red flags" count={d.red_flags.length}>
           {d.red_flags.length === 0 ? (
             EMPTY
           ) : (
             <ul className="space-y-2">
-              {d.red_flags.map((flag) => (
+              {d.red_flags.map((flag, i) => (
                 <li
-                  key={flag.flag}
+                  key={`${i}-${flag.flag}`}
                   className="rounded-lg border-l-4 border-rose-500 bg-rose-50/60 px-3 py-2 dark:bg-rose-950/30"
                 >
                   <p className="text-sm font-medium text-slate-900 dark:text-slate-100">
                     {flag.flag}
                     <Cite id={flag.source_id} />
+                    {flag.origin === "source" && (
+                      <span className="ml-2 rounded bg-slate-200 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-700 dark:bg-slate-700 dark:text-slate-200">
+                        added from source
+                      </span>
+                    )}
                   </p>
                   <p className="mt-0.5 text-xs text-slate-600 dark:text-slate-400">
                     {flag.why_it_matters}
@@ -305,8 +400,8 @@ export default function DiagnosticCard({ result }: { result: TriageResponse }) {
                 Differentials to exclude
               </p>
               <ul className="space-y-1">
-                {d.differential_diagnoses.map((diff) => (
-                  <li key={diff.condition} className="text-xs text-slate-600 dark:text-slate-400">
+                {d.differential_diagnoses.map((diff, i) => (
+                  <li key={`${i}-${diff.condition}`} className="text-xs text-slate-600 dark:text-slate-400">
                     <span className="font-medium text-slate-800 dark:text-slate-200">
                       {diff.condition}
                     </span>{" "}
@@ -325,8 +420,8 @@ export default function DiagnosticCard({ result }: { result: TriageResponse }) {
             <ol className="space-y-2">
               {[...d.immediate_actions]
                 .sort((a, b) => a.sequence - b.sequence)
-                .map((action) => (
-                  <li key={action.sequence} className="flex gap-3">
+                .map((action, i) => (
+                  <li key={`${i}-${action.sequence}`} className="flex gap-3">
                     <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-sky-600 text-[11px] font-semibold text-white">
                       {action.sequence}
                     </span>
@@ -334,10 +429,21 @@ export default function DiagnosticCard({ result }: { result: TriageResponse }) {
                       <p className="text-sm text-slate-800 dark:text-slate-200">
                         {action.action}
                         <Cite id={action.source_id} />
+                        {action.origin === "source" && (
+                        <span className="ml-2 rounded bg-slate-200 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-700 dark:bg-slate-700 dark:text-slate-200">
+                          added from source
+                        </span>
+                      )}
                       </p>
                       <p className="text-xs font-medium text-sky-700 dark:text-sky-400">
                         {action.timeframe}
                       </p>
+                      {action.source_quote && (
+                        <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
+                          &ldquo;{action.source_quote}&rdquo;{" "}
+                          <span className="opacity-80">[{action.source_where}]</span>
+                        </p>
+                      )}
                     </div>
                   </li>
                 ))}
@@ -357,13 +463,25 @@ export default function DiagnosticCard({ result }: { result: TriageResponse }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {d.investigations.map((investigation) => (
+                  {d.investigations.map((investigation, i) => (
                     <tr
-                      key={investigation.test}
+                      key={`${i}-${investigation.test}`}
                       className="border-t border-slate-100 dark:border-slate-800"
                     >
                       <td className="px-3 py-2 font-medium text-slate-800 dark:text-slate-200">
                         {investigation.test}
+                        {investigation.source_id && <Cite id={investigation.source_id} />}
+                        {investigation.origin === "source" && (
+                        <span className="ml-2 rounded bg-slate-200 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-700 dark:bg-slate-700 dark:text-slate-200">
+                          added from source
+                        </span>
+                      )}
+                      {investigation.source_quote && (
+                        <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
+                          &ldquo;{investigation.source_quote}&rdquo;{" "}
+                          <span className="opacity-80">[{investigation.source_where}]</span>
+                        </p>
+                      )}
                       </td>
                       <td className="px-3 py-2 whitespace-nowrap text-sky-700 dark:text-sky-400">
                         {investigation.urgency}
@@ -385,12 +503,12 @@ export default function DiagnosticCard({ result }: { result: TriageResponse }) {
             EMPTY
           ) : (
             <ul className="grid gap-3 lg:grid-cols-2">
-              {d.drug_recommendations.map((drug) => {
+              {d.drug_recommendations.map((drug, i) => {
                 const unverified =
                   drug.prescriber_category === "NOT_IN_RETRIEVED_SOURCES";
                 return (
                   <li
-                    key={`${drug.drug_name}-${drug.indication}`}
+                    key={`${i}-${drug.drug_name}`}
                     className="rounded-lg border border-slate-200 p-3 dark:border-slate-800"
                   >
                     <div className="flex flex-wrap items-center gap-2">
@@ -482,6 +600,26 @@ export default function DiagnosticCard({ result }: { result: TriageResponse }) {
                           )}
                       </div>
                     )}
+                    {drug.indication_status && (
+                      <p
+                        className={`mt-1 text-[11px] ${
+                          drug.indication_status === "CONDITIONAL"
+                            ? "text-amber-800 dark:text-amber-400"
+                            : "text-slate-500 dark:text-slate-400"
+                        }`}
+                        title={drug.indication_basis}
+                      >
+                        <span className="font-semibold">
+                          {drug.indication_status === "SUPPORTED"
+                            ? "Indication supported"
+                            : drug.indication_status === "SYMPTOMATIC"
+                              ? "For a symptom this patient has"
+                              : "Only if the differential it treats is confirmed"}
+                          :{" "}
+                        </span>
+                        {drug.indication_basis}
+                      </p>
+                    )}
                     <p className="mt-1 text-[11px] text-slate-400">
                       {drug.prescriber_category_meaning}
                     </p>
@@ -544,7 +682,112 @@ export default function DiagnosticCard({ result }: { result: TriageResponse }) {
         </div>
       </div>
 
-      <SourceList sources={result.sources} />
+      {(d.external_references?.length ?? 0) > 0 && (
+          <div className="mx-5 mb-4 rounded-lg border border-sky-200 bg-sky-50 px-4 py-3 dark:border-sky-900 dark:bg-sky-950/40">
+            <p className="text-xs font-semibold text-sky-900 dark:text-sky-300">
+              References to consult — not used to generate this report
+            </p>
+            <ul className="mt-1 list-disc pl-5 text-sm text-sky-900 dark:text-sky-200">
+              {d.external_references!.map((r, i) => (
+                <li key={i}>
+                  <a href={r.url} target="_blank" rel="noopener noreferrer" className="underline">
+                    {r.title}
+                  </a>{" "}
+                  <span className="text-xs opacity-80">— {r.reason}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {(result.retrieval_notes?.length ?? 0) > 0 && (
+          <details className="mx-5 mb-3 text-xs text-slate-500 dark:text-slate-400">
+            <summary className="cursor-pointer select-none">How the sources were chosen</summary>
+            <ul className="mt-1 list-disc pl-5">
+              {result.retrieval_notes!.map((n, i) => (
+                <li key={i}>{n}</li>
+              ))}
+            </ul>
+          </details>
+        )}
+        <SourceList sources={result.sources} />
     </div>
+  );
+}
+
+const FLAG_REASONS: Array<[FlagReason, string]> = [
+  ["wrong_triage", "Triage level is wrong"],
+  ["wrong_diagnosis", "Diagnosis is wrong"],
+  ["wrong_drug", "A drug or dose is wrong"],
+  ["missing_item", "Something important is missing"],
+  ["wrong_source", "A citation does not support its claim"],
+  ["other", "Other"],
+];
+
+/** One-click objection, recorded against this report's audit row. Every
+ *  clinician who uses the tool becomes a reviewer of it. */
+function FlagButton({ reportId }: { reportId: string }) {
+  const [open, setOpen] = useState(false);
+  const [reason, setReason] = useState<FlagReason>("wrong_triage");
+  const [note, setNote] = useState("");
+  const [state, setState] = useState<"idle" | "saving" | "saved" | "error">("idle");
+
+  async function save() {
+    setState("saving");
+    try {
+      await flagReport(reportId, reason, note);
+      setState("saved");
+      setOpen(false);
+    } catch {
+      setState("error");
+    }
+  }
+
+  if (state === "saved") {
+    return <span className="text-xs text-emerald-700 dark:text-emerald-400">Flag recorded</span>;
+  }
+  return (
+    <span className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        title="Record an objection to this report"
+        className="rounded-lg border border-rose-300 px-3 py-1.5 text-xs font-medium text-rose-700 transition hover:bg-rose-50 dark:border-rose-800 dark:text-rose-300 dark:hover:bg-rose-950/40"
+      >
+        Flag this report
+      </button>
+      {open && (
+        <span className="absolute right-0 z-10 mt-2 flex w-72 flex-col gap-2 rounded-lg border border-slate-200 bg-white p-3 text-left shadow-lg dark:border-slate-700 dark:bg-slate-900">
+          <select
+            value={reason}
+            onChange={(e) => setReason(e.target.value as FlagReason)}
+            className="rounded border border-slate-300 bg-transparent px-2 py-1 text-xs dark:border-slate-700"
+          >
+            {FLAG_REASONS.map(([value, label]) => (
+              <option key={value} value={value}>
+                {label}
+              </option>
+            ))}
+          </select>
+          <textarea
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+            placeholder="What is wrong? (optional)"
+            rows={3}
+            className="rounded border border-slate-300 bg-transparent px-2 py-1 text-xs dark:border-slate-700"
+          />
+          <button
+            type="button"
+            onClick={save}
+            disabled={state === "saving"}
+            className="rounded bg-rose-600 px-3 py-1 text-xs font-medium text-white hover:bg-rose-700 disabled:opacity-50"
+          >
+            {state === "saving" ? "Saving…" : "Record flag"}
+          </button>
+          {state === "error" && (
+            <span className="text-xs text-rose-700">Could not record the flag - is the API running?</span>
+          )}
+        </span>
+      )}
+    </span>
   );
 }

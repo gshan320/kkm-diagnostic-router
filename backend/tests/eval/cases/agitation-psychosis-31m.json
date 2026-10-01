@@ -1,0 +1,139 @@
+{
+  "id": "agitation-psychosis-31m",
+  "title": "Acute agitation, schizophrenia relapse off medication (31M)",
+  "tier": "management",
+  "provenance": "Vignette written 2026-09-30; expected answers quoted from the MaHTAS CPG Management of Schizophrenia 2nd Ed 2021.",
+  "intake": {
+    "age": 31,
+    "gender": "male",
+    "weight_kg": 75,
+    "vitals": {
+      "systolic_bp": 150,
+      "diastolic_bp": 90,
+      "heart_rate": 112,
+      "respiratory_rate": 20,
+      "temperature": 37.0,
+      "spo2": 98,
+      "gcs": 15,
+      "pain_score": 0,
+      "capillary_blood_glucose": 6.1
+    },
+    "complaint": "Brought by police, shouting, threatening staff, hearing voices, refusing to stay.",
+    "history": "Known schizophrenia, stopped medication one month ago."
+  },
+  "scored_sections": [
+    "triage",
+    "diagnosis",
+    "actions",
+    "investigations",
+    "drugs",
+    "grounding"
+  ],
+  "expected": {
+    "triage": {
+      "level": 3,
+      "acceptable": [
+        2,
+        3
+      ]
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Acute relapse of schizophrenia / psychotic agitation",
+        "match": [
+          "schizophren",
+          "psychos[ie]s|psychotic",
+          "agitat"
+        ]
+      }
+    },
+    "actions": [
+      {
+        "id": "rapid-tranq",
+        "label": "Rapid tranquillisation if needed (IM haloperidol + lorazepam/promethazine)",
+        "match": [
+          "haloperidol|lorazepam|midazolam|olanzapine|promethazine|rapid tranquil"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Schizophrenia (2nd Edition) 2021 v20230111.pdf",
+            "page": 32,
+            "quote": "a combination of IM haloperidol plus lorazepam or promethazine"
+          }
+        ]
+      },
+      {
+        "id": "risk",
+        "label": "Risk assessment (self/others)",
+        "match": [
+          "risk (?:assessment|to (?:self|others))|harm to (?:self|others)|suicid"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Schizophrenia (2nd Edition) 2021 v20230111.pdf",
+            "page": 27,
+            "quote": "risk assessment (risk to self and/or others)"
+          }
+        ]
+      },
+      {
+        "id": "psych",
+        "label": "Psychiatric referral",
+        "match": [
+          "psychiatr"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Schizophrenia (2nd Edition) 2021 v20230111.pdf",
+            "page": 27,
+            "quote": "risk assessment (risk to self and/or others)"
+          }
+        ]
+      }
+    ],
+    "investigations": [
+      {
+        "id": "organic",
+        "label": "Organic cause / intoxication excluded",
+        "match": [
+          "glucose|\\bCBG\\b|toxicolog|drug screen|intoxicat|substance|alcohol|organic|delirium"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Schizophrenia (2nd Edition) 2021 v20230111.pdf",
+            "page": 83,
+            "quote": "not attributable to organic brain disease"
+          }
+        ]
+      }
+    ],
+    "drugs_allowed": [
+      {
+        "id": "antipsychotic",
+        "label": "Antipsychotic and/or benzodiazepine",
+        "match": [
+          "haloperidol|olanzapine|risperidone|lorazepam|midazolam|promethazine|zuclopenthixol"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Schizophrenia (2nd Edition) 2021 v20230111.pdf",
+            "page": 32,
+            "quote": "a combination of IM haloperidol plus lorazepam or promethazine"
+          }
+        ]
+      }
+    ],
+    "drugs_forbidden": [],
+    "sources_forbidden": [
+      {
+        "doc_type": "PAEDIATRIC_PROTOCOL",
+        "why": "adult patient"
+      }
+    ]
+  }
+}

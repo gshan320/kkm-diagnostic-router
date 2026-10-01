@@ -1,0 +1,50 @@
+{
+  "id": "mimic-stay36428628-esi2",
+  "title": "MIMIC-IV-ED demo stay 36428628: Transfer, CVA",
+  "tier": "mimic",
+  "provenance": "MIMIC-IV-ED Demo v2.2 (ODbL), stay_id 36428628; age from MIMIC-IV Demo hosp/patients.",
+  "intake": {
+    "age": 60,
+    "gender": "male",
+    "vitals": {
+      "systolic_bp": 118.0,
+      "diastolic_bp": 49.0,
+      "heart_rate": 63.0,
+      "respiratory_rate": 16.0,
+      "temperature": 36.8,
+      "spo2": 97.0,
+      "pain_score": 7
+    },
+    "complaint": "Transfer, CVA.",
+    "history": "",
+    "arrival_mode": "ambulance"
+  },
+  "scored_sections": [
+    "triage",
+    "disposition"
+  ],
+  "expected": {
+    "triage": {
+      "level": 2,
+      "acceptable": [
+        1,
+        2,
+        3
+      ],
+      "reference_scale": "ESI",
+      "time_to_treatment": null,
+      "note": "ESI acuity 2 assigned at triage. ESI is not MTS: scored as a +/-1 band.",
+      "evidence": []
+    },
+    "disposition": {
+      "acceptable": [
+        "ADMIT_WARD",
+        "ADMIT_ICU_HDU"
+      ],
+      "preferred": "ADMIT_WARD",
+      "note": "The disposition this patient actually received.",
+      "evidence": []
+    }
+  },
+  "disputed": []
+}

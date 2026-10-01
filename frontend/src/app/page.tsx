@@ -5,8 +5,17 @@ import CPGQueryForm from "@/components/CPGQueryForm";
 import ComparativeResponseCard from "@/components/ComparativeResponseCard";
 import DiagnosticCard from "@/components/DiagnosticCard";
 import PatientInputForm from "@/components/PatientInputForm";
-import { API_BASE, fetchProgress, fetchStats, runInquiry, runTriage } from "@/lib/api";
+import {
+  API_BASE,
+  fetchProgress,
+  fetchStats,
+  runInquiry,
+  runPreview,
+  runTriage,
+} from "@/lib/api";
+import { TriagePreviewCard } from "@/components/TriagePreviewCard";
 import type {
+  TriagePreview,
   ProgressResponse,
   CorpusStats,
   InquiryRequest,
@@ -31,6 +40,7 @@ export default function Home() {
   const [triageError, setTriageError] = useState<string | null>(null);
   const [triageLoading, setTriageLoading] = useState(false);
   const [triageProgress, setTriageProgress] = useState<ProgressResponse | null>(null);
+  const [triagePreview, setTriagePreview] = useState<TriagePreview | null>(null);
 
   const [inquiryResult, setInquiryResult] = useState<InquiryResponse | null>(null);
   const [inquiryError, setInquiryError] = useState<string | null>(null);
@@ -58,6 +68,10 @@ export default function Home() {
     setTriageError(null);
     setTriageResult(null);
     setTriageProgress(null);
+    setTriagePreview(null);
+    // The code-decided triage arrives in about a second; show it while the
+    // model writes the full report.
+    void runPreview(request).then((p) => setTriagePreview(p));
 
     let polling = true;
     const poll = async () => {
@@ -158,6 +172,7 @@ export default function Home() {
             loading={triageLoading}
             progress={triageProgress}
           />
+          {triageLoading && triagePreview && <TriagePreviewCard preview={triagePreview} />}
           {triageError && <ErrorBanner message={triageError} />}
           {triageResult && <DiagnosticCard result={triageResult} />}
         </div>

@@ -1,0 +1,62 @@
+{
+  "id": "ktas-row1008-expert1",
+  "title": "KTAS record 1008: post-CPR state (Cardiac arrest with successful resuscitation)",
+  "tier": "ktas",
+  "provenance": "Moon SH et al. PLoS ONE 2019;14(9):e0216972, supporting data S1 (CC BY 4.0), spreadsheet row 1008.",
+  "intake": {
+    "age": 58,
+    "gender": "female",
+    "vitals": {
+      "systolic_bp": 140.0,
+      "diastolic_bp": 80.0,
+      "heart_rate": 122.0,
+      "temperature": 36.0,
+      "spo2": 90.0
+    },
+    "complaint": "Post-cpr state.",
+    "history": "Unconscious on arrival. Injury-related attendance.",
+    "arrival_mode": "ambulance",
+    "appearance": "not_responding_to_call"
+  },
+  "scored_sections": [
+    "triage",
+    "disposition",
+    "diagnosis"
+  ],
+  "expected": {
+    "triage": {
+      "level": 1,
+      "acceptable": [
+        1,
+        2
+      ],
+      "reference_scale": "KTAS",
+      "time_to_treatment": null,
+      "note": "KTAS expert level 1 (triage nurse gave 1). KTAS is not MTS: scored as a +/-1 band; a level LESS urgent than the band is the safety failure.",
+      "evidence": []
+    },
+    "disposition": {
+      "acceptable": [
+        "ADMIT_WARD",
+        "ADMIT_ICU_HDU"
+      ],
+      "preferred": "ADMIT_WARD",
+      "note": "The disposition this patient actually received.",
+      "evidence": []
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Cardiac arrest with successful resuscitation",
+        "match": [
+          "cardiac arrest",
+          "post[- ]?(cardiac[- ]arrest|CPR|resuscitation)",
+          "\\bROSC\\b",
+          "return of spontaneous circulation"
+        ],
+        "evidence": []
+      },
+      "acceptable_alternatives": []
+    }
+  },
+  "disputed": []
+}

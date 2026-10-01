@@ -191,10 +191,20 @@ export interface VitalInterpretation {
   mts_level_triggered: string;
 }
 
+export interface SourceCaution {
+  label: string;
+  quote: string;
+  source_id: string;
+  /** True when the source is a non-KKM guideline. */
+  external?: boolean;
+}
+
 export interface RedFlag {
   flag: string;
   why_it_matters: string;
   source_id: string;
+  /** "source" when the server added it from a verbatim guideline sentence (A4.3). */
+  origin?: string;
 }
 
 export interface DifferentialDiagnosis {
@@ -214,12 +224,21 @@ export interface ImmediateAction {
   action: string;
   timeframe: string;
   source_id: string;
+  /** "source" when the server added it from a verbatim guideline sentence (F5). */
+  origin?: string;
+  /** Server-set with origin "source": the verbatim sentence the action rests on. */
+  source_quote?: string;
+  source_where?: string;
 }
 
 export interface Investigation {
   test: string;
   rationale: string;
   urgency: string;
+  source_id?: string;
+  origin?: string;
+  source_quote?: string;
+  source_where?: string;
 }
 
 export interface DrugRecommendation {
@@ -243,14 +262,48 @@ export interface DrugRecommendation {
   /** Server-set. True only when the drug is named in the excerpt cited for THIS
    *  patient. Presence elsewhere in the guideline is deliberately not enough. */
   indication_supported?: boolean | null;
+  /** Server-set by the indication gate: SUPPORTED / SYMPTOMATIC / CONDITIONAL.
+   *  WITHHELD drugs never appear in the list - see `withheld_drugs`. */
+  indication_status?: string | null;
+  /** The FUKKM field or guideline sentence the verdict rests on, quoted. */
+  indication_basis?: string;
+}
+
+/** Server-set. A verified link to consult - chosen by code, never model-written. */
+export interface ExternalReference {
+  title: string;
+  publisher: string;
+  url: string;
+  reason: string;
+  checked?: string | null;
+}
+
+/** Server-set. A drug the model proposed that no source links to this patient. */
+export interface WithheldDrug {
+  drug_name: string;
+  route: string;
+  stated_dose: string;
+  reason: string;
+  basis: string;
 }
 
 /** Server-set. A required element of this presentation the answer omitted.
  *  Never generated content - only the statement that something is missing. */
+/** Server-set. Something this diagnosis needs that no indexed KKM document
+ *  states - said plainly, with verified links. Never filled by the model. */
+export interface KnowledgeGap {
+  element: string;
+  statement: string;
+  references?: ExternalReference[];
+}
+
 export interface CompletenessGap {
   element: string;
   why: string;
   guideline: string;
+  /** Server-set. The guideline's own sentence covering this element, verbatim. */
+  quote?: string;
+  quote_source?: string;
 }
 
 /** Server-set conflict between a recommendation and this patient's own intake. */
@@ -282,8 +335,31 @@ export interface DiagnosticSchema {
   dose_completeness_warning?: string;
   contraindication_warning?: string;
   contraindications?: Contraindication[];
+  withheld_drugs?: WithheldDrug[];
+  external_references?: ExternalReference[];
+  /** Server-set. What the diagnosis-conditioned second pass added, and from where. */
+  second_pass_note?: string;
+  /** F2: "do not" statements for the working diagnosis, each quoted from its source. */
+  source_cautions?: SourceCaution[];
+  /** A4.3: red flags added from a verbatim source sentence, or dropped as restatements. */
+  complication_note?: string;
+  /** A4.2: citations moved to the passage that supports the item. */
+  citation_alignment_note?: string;
+  /** Server-set. Differentials removed because they restate or belong to the diagnosis. */
+  differential_warning?: string;
+  /** Server-set. A core vital sign was not measured: the level can still rise. */
+  triage_provisional?: boolean;
+  triage_provisional_note?: string;
+  /** Server-set. Onset read from the complaint when the field was left blank. */
+  onset_derived?: string;
+  /** Server-set. A source sentence advising against a recommended drug here. */
+  avoid_warning?: string;
   completeness_warning?: string;
   completeness_gaps?: CompletenessGap[];
+  /** Server-set. What KKM sources do not state for this diagnosis, with links. */
+  knowledge_gaps?: KnowledgeGap[];
+  /** Server-set. Statements contradicting the recorded findings or each other. */
+  consistency_warning?: string;
   citation_warning?: string;
   /** Server-set. Urgency claimed that the triage level does not support. */
   urgency_warning?: string;
@@ -313,6 +389,19 @@ export interface RetrievedSource {
   prescriber_category?: string | null;
   score?: number | null;
   excerpt: string;
+  /** Web-only guidelines (the NAG 2024): the live page this passage came from. */
+  url?: string | null;
+}
+
+/** What produced a report - see backend/app/versioning.py and audit.py.
+ *  `audit_id` is empty when auditing is off or the write failed. */
+export interface ReportProvenance {
+  audit_id: string;
+  git_sha: string;
+  git_dirty: boolean;
+  code_fingerprint: string;
+  corpus_fingerprint: string;
+  queue_wait_ms: number;
 }
 
 export interface TriageResponse {
@@ -325,7 +414,32 @@ export interface TriageResponse {
   model: string;
   latency_ms: number;
   corpus_warnings: string[];
+  /** How the sources were chosen: red-flag rules that forced a guideline in,
+   *  the working hypotheses, and what the population and topic gates left out. */
+  retrieval_notes?: string[];
   disclaimer: string;
+  provenance?: ReportProvenance;
+  /** A4.1: stage times, tokens, and which passages the answer cited. */
+  attention?: AttentionReport;
+}
+
+export interface AttentionReport {
+  stages_ms: Record<string, number>;
+  prompt_tokens: number;
+  prompt_tokens_reused: number;
+  output_tokens: number;
+  stage2_output_tokens: number;
+  hypothesis_output_tokens: number;
+  passages_given: number;
+  passages_cited: number;
+  cited: string[];
+  uncited_documents: string[];
+  cited_by_position: Record<string, number>;
+  given_by_position: Record<string, number>;
+  citation_moves: number;
+  citations_unsupported: number;
+  complications_added: number;
+  second_pass: string;
 }
 
 export interface InquiryRequest {
@@ -342,6 +456,7 @@ export interface InquiryResponse {
   model: string;
   latency_ms: number;
   corpus_warnings: string[];
+  provenance?: ReportProvenance;
 }
 
 export interface CorpusStats {
@@ -374,3 +489,24 @@ export interface ProgressResponse {
   error: string;
   elapsed_s: number;
 }
+
+/** The deterministic triage, returned in about a second with no model call. */
+export interface TriagePreview {
+  mts_triage_level: number;
+  triage_colour: TriageColour;
+  mts_triage_label: string;
+  time_to_treatment: string;
+  reassessment: string;
+  reasons: string[];
+  red_flags: string[];
+  provisional_note: string;
+  note: string;
+}
+
+export type FlagReason =
+  | "wrong_triage"
+  | "wrong_diagnosis"
+  | "wrong_drug"
+  | "missing_item"
+  | "wrong_source"
+  | "other";

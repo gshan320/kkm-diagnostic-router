@@ -1,0 +1,66 @@
+{
+  "id": "mimic-stay33258284-esi3",
+  "title": "MIMIC-IV-ED demo stay 33258284: Abd pain, Abdominal distention",
+  "tier": "mimic",
+  "provenance": "MIMIC-IV-ED Demo v2.2 (ODbL), stay_id 33258284; age from MIMIC-IV Demo hosp/patients.",
+  "intake": {
+    "age": 52,
+    "gender": "female",
+    "vitals": {
+      "systolic_bp": 106.0,
+      "diastolic_bp": 63.0,
+      "heart_rate": 70.0,
+      "respiratory_rate": 16.0,
+      "temperature": 36.9,
+      "spo2": 97.0,
+      "pain_score": 0
+    },
+    "complaint": "Abd pain, Abdominal distention.",
+    "history": "",
+    "arrival_mode": "ambulance"
+  },
+  "scored_sections": [
+    "triage",
+    "disposition",
+    "diagnosis"
+  ],
+  "expected": {
+    "triage": {
+      "level": 3,
+      "acceptable": [
+        2,
+        3,
+        4
+      ],
+      "reference_scale": "ESI",
+      "time_to_treatment": null,
+      "note": "ESI acuity 3 assigned at triage. ESI is not MTS: scored as a +/-1 band.",
+      "evidence": []
+    },
+    "disposition": {
+      "acceptable": [
+        "ADMIT_WARD",
+        "ADMIT_ICU_HDU"
+      ],
+      "preferred": "ADMIT_WARD",
+      "note": "The disposition this patient actually received.",
+      "evidence": []
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Ascites from chronic liver disease",
+        "match": [
+          "ascites",
+          "cirrho",
+          "chronic liver disease",
+          "(hepatic|liver) decompensation",
+          "decompensated (liver|cirrhosis)",
+          "portal hypertension"
+        ],
+        "evidence": []
+      },
+      "acceptable_alternatives": []
+    }
+  },
+  "disputed": []
+}

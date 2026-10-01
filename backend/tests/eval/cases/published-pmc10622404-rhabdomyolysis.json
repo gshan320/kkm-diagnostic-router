@@ -1,0 +1,40 @@
+{
+  "id": "published-pmc10622404-rhabdomyolysis",
+  "title": "Published case: fatigue, myalgia and confusion in a 65-year-old man (PMC10622404)",
+  "tier": "published",
+  "provenance": "Clinical Case Reports 2023; PMC10622404 via MedCaseReasoning (CC BY 4.0). Arrival findings only - the CK and myoglobin results are withheld.",
+  "intake": {
+    "age": 65,
+    "gender": "male",
+    "complaint": "Progressive fatigue, diffuse muscle pain and confusion; several days of worsening leg and shoulder pain and now unable to walk independently.",
+    "history": "Chronic ischaemic heart disease after coronary bypass grafting, hypertension, diabetes, COPD and stage 3 chronic kidney disease. Hypotensive on arrival. ECG: atrial fibrillation, left bundle-branch block, ST-segment depression and peaked, high T waves.",
+    "ecg_findings": [
+      "st_elevations_or_depressions",
+      "tall_tented_t_waves"
+    ],
+    "comorbidities": [
+      "diabetes",
+      "copd_or_asthma",
+      "chronic_kidney_disease_or_dialysis"
+    ],
+    "appearance": "appears_unwell",
+    "arrival_mode": "ambulance",
+    "facility": "state_or_tertiary_with_pci_and_ct"
+  },
+  "scored_sections": [
+    "diagnosis"
+  ],
+  "expected": {
+    "diagnosis": {
+      "primary": {
+        "label": "Rhabdomyolysis",
+        "match": [
+          "rhabdomyoly"
+        ],
+        "evidence": []
+      },
+      "acceptable_alternatives": []
+    }
+  },
+  "disputed": []
+}

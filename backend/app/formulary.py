@@ -330,3 +330,99 @@ def lookup(drug_name: str, route: str = "", dose: str = "", min_score: int = 45)
         siblings = (best,)
     matched = bool(route) and _route_bonus(route, best) > 0
     return Match(query=drug_name, best=best, entries=siblings, route_matched=matched)
+
+
+# ---------------------------------------------------------------- by-name index
+# Attention layer A1 (2026-09-30). The formulary rows put in front of the model
+# used to be found by EMBEDDING treatment sentences from the clinical chunks -
+# which, for a rhabdomyolysis patient whose context held a snakebite page,
+# returned pit-viper and sea-snake antivenom, Factor IX and fondaparinux. A
+# formulary is a table: the rows worth showing are the drugs the kept guideline
+# text actually NAMES, found by name.
+
+# A generic name is the first word of the normalised product name, or the first
+# two when the first alone is a salt or a class word ("sodium chloride").
+_TWO_WORD_HEADS = frozenset("""sodium potassium calcium magnesium glyceryl tranexamic folic
+mefenamic valproic ferrous human vitamin hydrogen amino isosorbide compound insulin
+factor""".split())
+# Single words that name lab analytes or everyday substances far more often than
+# a prescription - searching for them would pull a row into every context.
+_NOT_A_MENTION = frozenset("""sodium potassium calcium magnesium glucose water oxygen iron zinc
+phosphate chloride human vitamin normal compound multiple combined sterile
+factor protein continuous essential active total standard simple special general balanced
+plain natural liquid soft white yellow black green super extra fresh concentrated purified
+activated modified recombinant ready single double triple""".split())
+
+
+def _head(normalised: str) -> str:
+    words = normalised.split()
+    if not words:
+        return ""
+    # The second word must be a word: "salbutamol 0 5" (0.5%) is not "salbutamol 0".
+    if words[0] in _TWO_WORD_HEADS and len(words) > 1 and words[1].isalpha():
+        return f"{words[0]} {words[1]}"
+    return words[0]
+
+
+# Class abbreviation -> the FUKKM generic it means at the bedside. Kept to
+# abbreviations with ONE first-line agent; "ICS" or "ACEI" name many drugs.
+CLASS_SHORTHAND: dict[str, str] = {
+    "saba": "salbutamol",
+    # Not classes, but the same kind of bedside shorthand: the HDP manual writes
+    # "IV 4g MgSO4", the PPH guide "Syntocinon", and no MgSO4 row was offered
+    # for eclampsia (2026-09-30).
+    "mgso4": "magnesium sulphate",
+    "syntocinon": "oxytocin",
+    "sama": "ipratropium",
+    "saac": "ipratropium",
+    "ocs": "prednisolone",
+}
+
+_index: dict[str, list[Entry]] | None = None
+_index_rx: re.Pattern | None = None
+
+
+def _build_index() -> tuple[dict[str, list[Entry]], re.Pattern]:
+    global _index, _index_rx
+    if _index is None:
+        idx: dict[str, list[Entry]] = {}
+        for e in _load():
+            # Multi-ingredient product lines ("Continuous Ambulatory Peritoneal
+            # Dialysis Solution containing ...") are named by what they are
+            # for, not by a drug - their first word is ordinary English.
+            if len(e.normalised.split()) > 4:
+                continue
+            h = _head(e.normalised)
+            # The stoplist guards single words only: "sodium" alone is a lab
+            # value, "sodium chloride" is the fluid.
+            if len(h) >= 5 and (" " in h or h not in _NOT_A_MENTION):
+                idx.setdefault(h, []).append(e)
+        # Clinical synonyms resolve to the head FUKKM files the drug under.
+        for key, syns in SYNONYMS.items():
+            for sy in syns:
+                if sy in idx and key not in idx and len(key) >= 3:
+                    idx[key] = idx[sy]
+        # Guideline shorthand for the one drug the class stands for in an acute
+        # setting. The Asthma CPG 2024 acute pages say "SABA", never
+        # "salbutamol", so the reliever was never offered (2026-09-30).
+        for abbr, generic in CLASS_SHORTHAND.items():
+            if generic in idx and abbr not in idx:
+                idx[abbr] = idx[generic]
+        _index = idx
+        alt = "|".join(re.escape(k) for k in sorted(idx, key=len, reverse=True))
+        _index_rx = re.compile(rf"(?<![a-z])(?:{alt})(?![a-z])", re.IGNORECASE)
+    return _index, _index_rx
+
+
+def mentioned(text: str) -> list[str]:
+    """Generic names this text mentions, in order of first mention."""
+    idx, rx = _build_index()
+    seen: dict[str, None] = {}
+    for m in rx.finditer(text or ""):
+        seen.setdefault(m.group(0).lower(), None)
+    return [k for k in seen if k in idx]
+
+
+def entries_for(generic: str) -> list[Entry]:
+    idx, _ = _build_index()
+    return idx.get(generic.lower(), [])

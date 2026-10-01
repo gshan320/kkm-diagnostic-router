@@ -150,9 +150,55 @@ permission.
 | Paediatric Protocols for Malaysian Hospitals | 2025 | `PAEDIATRIC_PROTOCOL` | 834 | unstated |
 | JKN Selangor Emergency Medicine and Trauma Services Redirection Policy | 2024 | `PATIENT_FLOW_POLICY` | 19 | unstated |
 | Malaysian Triage Scale _(third-party re-host)_ | 2022 | `TRIAGE_PROTOCOL` | 19 | unstated |
+| MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department _(heathealth.info mirror of the MOH file)_ | 2016 | `CPG_FULL` | 21 | not yet reviewed |
+| MOH Guideline Management of Snakebite _(MyBIS)_ | 2017 | `CPG_FULL` | 113 | not yet reviewed |
+| Malaysian Consensus on the Management of Acute and Persistent Hyperkalaemia _(society consensus, not MOH)_ | 2024 | `CPG_FULL` | 50 | not yet reviewed |
+| MSIC ICU Management Protocols _(year inferred - the book prints none)_ | 2019 | `CPG_FULL` | 94 | © MSIC, terms not yet reviewed |
+| WHO Guidelines for the Prevention and Control of CRE, Acinetobacter and Pseudomonas in Health Care Facilities | 2017 | `CPG_FULL` | 76 | CC BY-NC-SA 3.0 IGO |
 
-Totals: **53 PDFs / 8,973 chunks** (7,277 from PDFs, 1,696 from 1,686 FUKKM
-drug records) as of the 2026-09-11 rebuild. Per-`doc_type` chunk counts and what
+| Management of Non-Variceal Upper Gastrointestinal Bleeding _(scanned - text by OCR, `tools/ocr_pdf.swift`)_ | 2003 | `CPG_FULL` | 55 | not yet reviewed |
+| Management of Acute Variceal Bleeding | 2007 | `CPG_FULL` | 35 | not yet reviewed |
+| Prevention, Diagnosis and Management of Infective Endocarditis | 2017 | `CPG_FULL` | 182 | not yet reviewed |
+| Management of Sore Throat _(scanned - text by OCR)_ | 2003 | `CPG_FULL` | 26 | not yet reviewed |
+| Management of Gout (2nd Edition) _(quick reference only)_ | 2015 | `CPG_QUICK_REFERENCE` | 8 | not yet reviewed |
+| Management of Immune Thrombocytopenic Purpura | 2006 | `CPG_FULL` | 43 | not yet reviewed |
+| Management of Haemophilia | 2018 | `CPG_FULL` | 101 | not yet reviewed |
+| Management of Menorrhagia | 2004 | `CPG_FULL` | 22 | not yet reviewed |
+| Management of Foreign Body Ingestion in Children | 2025 | `CPG_FULL` | 86 | not yet reviewed |
+| Management of Cancer Pain (2nd Edition) | 2024 | `CPG_FULL` | 120 | not yet reviewed |
+| Management of Schizophrenia (2nd Edition) - CPG + QR _(re-release 2023-01-11)_ | 2021 | `CPG_FULL` + `CPG_QUICK_REFERENCE` | 102 + 8 | acknowledge (MaHTAS) |
+| Management of Bipolar Disorder (2nd Edition) - CPG + QR | 2024 | `CPG_FULL` + `CPG_QUICK_REFERENCE` | 91 + 8 | acknowledge (MaHTAS) |
+| Management of Gout (2nd Edition) - CPG; the QR already held was misdated 2015 (year scraped from "ACR-EULAR 2015") and is renamed 2021 | 2021 | `CPG_FULL` + `CPG_QUICK_REFERENCE` | 96 + 8 | acknowledge (MaHTAS) |
+| Management of Erectile Dysfunction - CPG + QR _(priapism; PDE5 inhibitor + nitrate)_ | 2024 | `CPG_FULL` + `CPG_QUICK_REFERENCE` | 74 + 8 | acknowledge (MaHTAS) |
+| Management of Avulsed Permanent Anterior Teeth (3rd Edition) - MOH Oral Health Programme | 2019 | `CPG_FULL` | 60 | acknowledge (OHP) |
+| Management of Mandibular Condyle Fractures _(update 2020-06-30)_ - MOH Oral Health Programme | 2019 | `CPG_FULL` | 48 | acknowledge (OHP) |
+| Heart Disease in Pregnancy (2nd Edition) - NHAM / AMM / MOH _(scanned - text by OCR)_ | 2016 | `CPG_FULL` | 173 | not yet reviewed |
+| MOH Quick Reference Guide Postpartum Haemorrhage (PPH) - Family Health Development Division | 2016 | `CPG_QUICK_REFERENCE` | 76 | not yet reviewed |
+| MOH Training Manual Hypertensive Disorders in Pregnancy (3rd Edition) - FHDD, fetched from hq.moh.gov.my/bpkk | 2018 | `CPG_FULL` | 140 | not yet reviewed |
+| MOH Perinatal Care Manual (4th Edition) _(released 2023-05-11)_ - FHDD | 2020 | `CPG_FULL` | 460 | not yet reviewed |
+| MSN Consensus Guidelines on the Management of Epilepsy (4th Edition) - Epilepsy Council, Malaysian Society of Neurosciences _(copy from Monash research repository; the society site lists only 2017)_ | 2024 | `CPG_FULL` | 130 | no statement (statement of intent only) |
+| MOH Antidotes Quick Guide (Adult Dose) (1st Edition) - Pharmaceutical Services Programme, MOH/S/FAR/53.21(HB)-e | 2022 | `CPG_FULL` | 76 | "Permission is hereby granted to reproduce ... with due acknowledgement and shall not modify the text" |
+| CHAMP Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis in Warfighters (US DoD, not KKM) _(filename prefix `EXT `)_ | 2025 | `EXTERNAL_GUIDELINE` | 44 | no copyright statement; US DoD / USU publication, "opinions ... do not reflect the official policy" disclaimer |
+
+Scanned PDFs have no text layer; `swift backend/tools/ocr_pdf.swift <pdf>` writes
+`<pdf>.ocr.json` (Apple Vision, no installs) and ingest uses it for image-only pages.
+Add new PDFs without a rebuild: `python -m app.ingest --new-only`.
+
+**Web-only guideline** (not a PDF; fetched by `python -m app.scrape_nag` into
+the git-ignored `backend/data/raw_json/nag_pages.json`, indexed by
+`python -m app.ingest --web-only`, each chunk citing its live page URL):
+
+| Document | Year | `doc_type` | Pages | Terms |
+|---|---|---|---|---|
+| National Antimicrobial Guideline (NAG), 4th Edition - <https://sites.google.com/moh.gov.my/nag> | 2024 | `CPG_FULL` | 40 chapter pages | MOH website, not yet reviewed |
+
+Totals: **84 PDFs + FUKKM + NAG 2024 = 12,576 chunks** as of 2026-09-30 16:15 (+ MSN Epilepsy
+2024 and MOH Antidotes Quick Guide 2022, 264 chunks). Before that: 82 PDFs / 12,312 chunks at 15:40 (13 PDFs /
+1,584 chunks added from the user's download batch + the MOH HDP manual; gout QR re-indexed under
+its true year). Before that: 69 PDFs / 10,738 (CHAMP 2025 added: 104 chunks); **68 PDFs + FUKKM + NAG 2024 = 10,634 chunks** (58 PDFs /
+9,427 chunks at the 04:40 rebuild, +348 NAG web chunks, +859 from ten CPGs added with
+`--new-only`).
+(2026-09-11: 53 PDFs / 8,973 chunks.) Per-`doc_type` chunk counts and what
 each type is permitted to ground are in README §Ingestion.
 
 ## Documents deliberately excluded
@@ -178,3 +224,35 @@ Trauma Department. The Selangor redirection policy supplies *who may be sent
 there* — enforced in `app/redirection.py` — but nothing states what care the
 destination provides, so "refer to outpatient services" remains unsourced on
 the receiving end.
+
+## Non-KKM guidelines (`EXTERNAL_GUIDELINE`)
+
+Indexed **only** where no KKM document covers a presentation, and labelled
+wherever they appear: the filename starts `EXT `, the indexed title ends
+"(US DoD, not KKM)" (or the equivalent for another publisher), and the UI labels
+the type "Non-KKM guideline — international". The model is told that where a
+KKM source and a non-KKM one both speak, the KKM source wins; A4.3 ranks KKM
+sentences first when it quotes a complication.
+
+| document | why it is here | source |
+|---|---|---|
+| CHAMP / WHEC Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis in Warfighters, September 2025 | No KKM adult rhabdomyolysis guideline exists. Supplies admission criteria (p5, p25), IV fluid rates (p24, p26), serial labs, NSAID and furosemide avoidance (p30, p26), compartment syndrome (p20, p29). | <https://www.hprc-online.org/resources-partners/whec/clinical-care/clinical-practice> (PDF: `/sites/default/files/document/WHEC_Clinical_Practice_Guidelines_ER_091025_508.pdf`) |
+
+Its PDF text layer carries 438 soft hyphens and words broken across lines
+without one; `ingest.clean_text` strips the former and
+`ingest.rejoin_broken_words` re-joins the latter (37 joins, each only where the
+whole word appears elsewhere in the document and a fragment is not a word).
+
+**Considered and not added (2026-09-30):** *Management of Menorrhagia* (exact duplicate of the
+2004 file already indexed) and *Management of Menopause in Malaysia 2022* (no ED use, and its
+front matter forbids reproduction: "no reproduction of any part may take place without the written
+permission").
+
+**Adult sources searched but NOT added (2026-09-30), pending a decision** - each would be a
+labelled `EXTERNAL_GUIDELINE`: Resuscitation Council UK *Emergency treatment of anaphylaxis* 2021
+(forbids reproduction without permission), China NCMSA anaphylaxis CPG 2020 (Front Pharmacol 2022,
+CC BY), ISBI *Practice Guidelines for Burn Care* 2016, Singapore MOH CPG *Management of Poisoning*
+2011. No Malaysian adult anaphylaxis or burns guideline was found openly; hq.moh.gov.my and
+www.moh.gov.my refused scripted downloads for two MOH candidates (a primary-care wound-care
+guideline, and the 2023 Assistant Medical Officer emergency practice guideline).
+

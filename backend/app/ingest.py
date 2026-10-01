@@ -25,7 +25,7 @@ from typing import Iterable, Iterator, Sequence
 
 import pymupdf
 
-from . import config
+from . import config, source_policy
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s  %(levelname)-7s %(message)s", stream=sys.stdout
@@ -46,6 +46,8 @@ NOISE_PATTERNS = [
     re.compile(r"^Malaysian Triage Scale New Revised 2022 \d+ \d+$"),
     re.compile(r"^studocu.*$", re.IGNORECASE),
     re.compile(r"^This document is available free of charge on.*$", re.IGNORECASE),
+    # Running headers of the MOH AMO Standard Practice Guidelines (2023).
+    re.compile(r"^(?:Clinical|Standard Practice) Guidelines For AMO in EMTS MOH$", re.IGNORECASE),
 ]
 
 ACRONYM_TITLES = {"MTS": "Malaysian Triage Scale"}
@@ -200,6 +202,10 @@ class IngestReport:
 
 def clean_text(raw: str) -> str:
     """Drop watermark furniture, collapse the ligatures PyMuPDF leaves behind."""
+    # A soft hyphen (U+00AD) marks where a word MAY break; the CHAMP 2025 PDF
+    # carries 438 of them, each splitting a word ("Mo\xadnitor") for BM25,
+    # the embedder and every citation check.
+    raw = re.sub(r"\xad\s*", "", raw or "")
     out: list[str] = []
     for line in raw.splitlines():
         s = line.strip()
@@ -219,6 +225,68 @@ def clean_text(raw: str) -> str:
         .replace("•", "- ").replace("‣", "- ").replace("▪", "- ")
     )
     return re.sub(r"[ \t]{2,}", " ", text).strip()
+
+
+_WORDS: set[str] | None = None
+
+
+def _known_words() -> set[str]:
+    """Whole-word tokens of the embedding model's vocabulary - what counts as
+    a word on its own when deciding whether a line break split one."""
+    global _WORDS
+    if _WORDS is None:
+        try:
+            from transformers import AutoTokenizer  # noqa: PLC0415
+            vocab = AutoTokenizer.from_pretrained(config.EMBEDDING_MODEL).get_vocab()
+            _WORDS = {w for w in vocab if w.isalpha() and not w.startswith("##")}
+        except Exception as exc:  # noqa: BLE001
+            log.warning("No tokenizer vocabulary for word re-joining (%s); skipping it.", exc)
+            _WORDS = set()
+    return _WORDS
+
+
+_BROKEN3 = re.compile(r"\b([A-Za-z]{2,})\n([a-z]{2,})\n([a-z]{2,})\b")
+_BROKEN2 = re.compile(r"\b([A-Za-z]{2,})\n([a-z]{2,})\b")
+
+
+def rejoin_broken_words(pages: list[str]) -> tuple[list[str], int]:
+    """Re-join words a PDF layout broke across lines without a hyphen.
+
+    The CHAMP 2025 algorithm pages extract as "diagno\nstic", "phos\npho\nrus".
+    Two (or three) line-break fragments are joined only when BOTH hold:
+      - the joined word appears whole elsewhere in the same document, and
+      - at least one fragment is not a word on its own (so "in\nformation"
+        and "heat\nstroke" stay two words).
+    Returns (pages, number of joins)."""
+    known = _known_words()
+    if not known:
+        return pages, 0
+    whole: dict[str, int] = {}
+    for t in pages:
+        for w in re.findall(r"[a-z]{4,}", t.lower()):
+            whole[w] = whole.get(w, 0) + 1
+    joins = 0
+
+    def ok(parts: tuple[str, ...]) -> bool:
+        word = "".join(parts).lower()
+        return whole.get(word, 0) >= 1 and any(p.lower() not in known for p in parts)
+
+    def fix3(m: re.Match) -> str:
+        nonlocal joins
+        if ok(m.groups()):
+            joins += 1
+            return "".join(m.groups())
+        return m.group(0)
+
+    def fix2(m: re.Match) -> str:
+        nonlocal joins
+        if ok(m.groups()):
+            joins += 1
+            return "".join(m.groups())
+        return m.group(0)
+
+    out = [_BROKEN2.sub(fix2, _BROKEN3.sub(fix3, t)) for t in pages]
+    return out, joins
 
 
 class Tokenizer:
@@ -291,6 +359,10 @@ def classify_doc(filename: str) -> str:
     # HTA test below would type a clinical guideline as an evidence appraisal
     # and quietly drop it out of CLINICAL_DOC_TYPES - it could then no longer
     # ground a drug or a dose, and nothing would report that it had stopped.
+    # "EXT " first: a non-KKM guideline must never be typed as a KKM CPG, and
+    # its title may well contain "Clinical Practice Guideline".
+    if low.startswith("ext "):
+        return config.DOC_TYPE_EXTERNAL
     if low.startswith("qr ") or "quick reference" in low:
         return config.DOC_TYPE_CPG_QR
     if low.startswith("cpg "):
@@ -348,7 +420,7 @@ def parse_version_date(filename: str) -> str:
 def parse_title(filename: str) -> str:
     stem = Path(filename).stem
     stem = VERSION_DATE_RE.sub("", stem)
-    stem = re.sub(r"^QR\s+", "", stem, flags=re.IGNORECASE)
+    stem = re.sub(r"^(?:QR|EXT)\s+", "", stem, flags=re.IGNORECASE)
     stem = re.sub(r"^CPG\s+", "", stem, flags=re.IGNORECASE)
     stem = re.sub(r"\((?:[^()]*edition[^()]*)\)", "", stem, flags=re.IGNORECASE)
     stem = re.sub(r"\b\d+\s*(?:st|nd|rd|th)\s+Edition\b", "", stem, flags=re.IGNORECASE)
@@ -781,13 +853,73 @@ def extract_action_rows(doc, meta: DocMeta, key: str) -> Iterator[Chunk]:
                 )
 
 
-def load_pdf_chunks(tokenizer: Tokenizer, report: IngestReport) -> Iterator[Chunk]:
+# Documents whose content lives in tables and figures: extracted by
+# structured_pdf.py rather than as a text stream.
+STRUCTURED_TABLE_RE = re.compile(r"Standard Practice Guidelines for Assistant Medical Officer", re.I)
+_VOCAB: set[str] | None = None
+
+
+def _vocabulary() -> set[str]:
+    """Words a figure's OCR may use: the embedder's vocabulary plus every word
+    already in the index (medical terms - SABA, TBSA, FEV - that no general
+    vocabulary holds)."""
+    global _VOCAB
+    if _VOCAB is None:
+        words = set(_known_words())
+        try:
+            for t in get_collection().get(include=["documents"])["documents"]:
+                words.update(re.findall(r"[a-z]{3,}", (t or "").lower()))
+        except Exception as exc:  # noqa: BLE001 - an empty index still has the embedder's words
+            log.warning("Index vocabulary unavailable for OCR checks (%s).", exc)
+        _VOCAB = words
+    return _VOCAB
+
+
+def _ocr_sidecar(path: Path) -> dict:
+    side = path.with_name(path.name + ".ocr.json")
+    if not side.exists():
+        return {}
+    try:
+        return json.loads(side.read_text(encoding="utf-8"))
+    except Exception as exc:  # noqa: BLE001
+        log.error("Unreadable OCR sidecar %s: %s", side.name, exc)
+        return {}
+
+
+def _ocr_pages(path: Path) -> list[str]:
+    """OCR text for a scanned PDF, from `<file>.pdf.ocr.json` written by
+    tools/ocr_pdf.swift (Apple Vision). Used only for pages whose own text
+    layer is empty - two MOH CPGs (Sore Throat 2003, Non-Variceal UGIB 2003)
+    are page images with no text layer at all."""
+    side = path.with_name(path.name + ".ocr.json")
+    if not side.exists():
+        return []
+    try:
+        return list(json.loads(side.read_text(encoding="utf-8")).get("pages", []))
+    except Exception as exc:
+        log.error("Unreadable OCR sidecar %s: %s", side.name, exc)
+        return []
+
+
+def load_pdf_chunks(
+    tokenizer: Tokenizer, report: IngestReport, only: set[str] | None = None
+) -> Iterator[Chunk]:
+    """`only`: filenames to process (the rest are skipped) - `--new-only`."""
     pdfs = sorted(config.RAW_PDF_DIR.glob("*.pdf"))
-    if not pdfs:
+    if only is not None:
+        pdfs = [p for p in pdfs if p.name in only]
+    if not pdfs and only is None:
         report.warnings.append(f"No PDFs found in {config.RAW_PDF_DIR}")
         return
 
     for path in pdfs:
+        # KKM, Malaysian, or cited by a KKM document - see source_policy.py.
+        if not source_policy.allowed(path.name):
+            report.warnings.append(
+                f"Skipped {path.name}: not a KKM or Malaysian document and no KKM citation is recorded "
+                f"for it in {source_policy.QUALIFICATIONS.name}")
+            log.warning("Skipped %s (source policy)", path.name)
+            continue
         try:
             doc = pymupdf.open(path)
         except Exception as exc:
@@ -796,6 +928,25 @@ def load_pdf_chunks(tokenizer: Tokenizer, report: IngestReport) -> Iterator[Chun
             continue
 
         pages = [clean_text(page.get_text()) for page in doc]
+        if STRUCTURED_TABLE_RE.search(path.name):
+            # Table rows, chapter headings and the text of figure images - see
+            # structured_pdf.py. Everything below (OCR fill, re-joining) still runs.
+            from . import structured_pdf  # noqa: PLC0415
+            side = _ocr_sidecar(path)
+            pages = [clean_text(t) for t in structured_pdf.pages(
+                doc, side.get("pages", []), _vocabulary(), side.get("lines", []))]
+            log.info("     structured extraction: table rows, headings and figure text (%d pages)", len(pages))
+        ocr = _ocr_pages(path)
+        if ocr:
+            filled = 0
+            for i, text in enumerate(pages):
+                if len(text.strip()) < 30 and i < len(ocr) and len(ocr[i].strip()) >= 30:
+                    pages[i] = clean_text(ocr[i])
+                    filled += 1
+            log.info("     OCR sidecar: text for %d image-only page(s)", filled)
+        pages, joined = rejoin_broken_words(pages)
+        if joined:
+            log.info("     re-joined %d word(s) broken across lines", joined)
         head = "\n".join(pages[: min(4, len(pages))])
         meta = describe_pdf(path, head, "\n".join(pages))
         key = _doc_key(meta.filename)
@@ -1080,6 +1231,57 @@ def load_fukkm_chunks(tokenizer: Tokenizer, report: IngestReport) -> Iterator[Ch
 # ===========================================================================
 
 
+# ===========================================================================
+# Web-only guidelines (scrape_nag.py) -> chunks
+# ===========================================================================
+# Population is carried in the TITLE, because population.py reads it from
+# there: an adult-section page must never ground a child, and the reverse.
+NAG_TITLES = {
+    "adult": "National Antimicrobial Guideline 2024 (Adults)",
+    "paediatric": "National Antimicrobial Guideline 2024 (Paediatrics)",
+    "all": "National Antimicrobial Guideline 2024 (Primary Care Pathways)",
+}
+
+
+def load_web_chunks(tokenizer: Tokenizer, report: IngestReport) -> Iterator[Chunk]:
+    """The NAG 2024 pages saved by `python -m app.scrape_nag`, if present.
+
+    Each chunk starts with its chapter title (a split page is otherwise a
+    table fragment with no subject) and carries `url` in place of a page
+    number, so a citation opens the live page."""
+    path = config.RAW_JSON_DIR / "nag_pages.json"
+    if not path.exists():
+        return
+    pages = json.loads(path.read_text(encoding="utf-8"))
+    n = 0
+    for page in pages:
+        title = NAG_TITLES.get(page.get("population", "all"), NAG_TITLES["all"])
+        chapter = page["title"].replace("National Antimicrobial Guideline 2024 - ", "")
+        for ci, part in enumerate(tokenizer.split(clean_text(page["text"]),
+                                                  config.CHUNK_TOKENS - 32,
+                                                  config.CHUNK_OVERLAP_TOKENS)):
+            n += 1
+            yield Chunk(
+                id=f"{page['id']}-{ci}",
+                text=f"[NAG 2024 - {chapter}]\n{part}",
+                metadata={
+                    "filename": f"{page['id']}.html",
+                    "cpg_title": title,
+                    "edition_year": "2024",
+                    "edition": "4",
+                    "doc_type": config.DOC_TYPE_CPG_FULL,
+                    "chunk_index": ci,
+                    "url": page["url"],
+                    "section": chapter,
+                    "version_date": page.get("fetched", ""),
+                    "status": "active",
+                },
+            )
+    report.per_document["National Antimicrobial Guideline 2024 (web)"] = {
+        "doc_type": config.DOC_TYPE_CPG_FULL, "chunks": n, "pages": len(pages)}
+    log.info("WEB  National Antimicrobial Guideline 2024 | %d pages -> %d chunks", len(pages), n)
+
+
 def build_embedding_function():
     """all-MiniLM-L6-v2 via sentence-transformers; the ONNX build of the same
     model is the fallback so a torch problem does not block ingestion."""
@@ -1135,7 +1337,20 @@ def _batched(items: Iterable[Chunk], size: int) -> Iterator[list[Chunk]]:
         yield batch
 
 
-def build_index(reset: bool = False, dry_run: bool = False) -> IngestReport:
+def _indexed_filenames() -> set[str]:
+    try:
+        coll = get_collection()
+        total = coll.count()
+        if not total:
+            return set()
+        got = coll.get(include=["metadatas"], limit=total)
+        return {str(m.get("filename", "")) for m in got["metadatas"] if m}
+    except Exception:
+        return set()
+
+
+def build_index(reset: bool = False, dry_run: bool = False, web_only: bool = False,
+                new_only: bool = False) -> IngestReport:
     report = IngestReport()
     tokenizer = Tokenizer()
 
@@ -1147,9 +1362,20 @@ def build_index(reset: bool = False, dry_run: bool = False) -> IngestReport:
             "the LLM in full). Set CHUNK_TOKENS={config.EMBEDDING_MAX_TOKENS} for lossless embeddings."
         )
 
-    chunks = list(load_pdf_chunks(tokenizer, report)) + list(
-        load_fukkm_chunks(tokenizer, report)
-    )
+    if web_only:
+        # Adds (or refreshes) only the web-only guidelines - no hour-long rebuild.
+        chunks = list(load_web_chunks(tokenizer, report))
+    elif new_only:
+        # Only PDFs not yet in the index: minutes instead of an hour. Chunk ids
+        # are derived from the file and page, so an upsert never duplicates.
+        have = _indexed_filenames()
+        fresh = {p.name for p in config.RAW_PDF_DIR.glob("*.pdf")} - have
+        log.info("--new-only: %d PDF(s) not yet indexed: %s", len(fresh), ", ".join(sorted(fresh)) or "none")
+        chunks = list(load_pdf_chunks(tokenizer, report, only=fresh))
+    else:
+        chunks = (list(load_pdf_chunks(tokenizer, report))
+                  + list(load_fukkm_chunks(tokenizer, report))
+                  + list(load_web_chunks(tokenizer, report)))
     total = len(chunks)
     log.info(
         "Parsed %d chunks (%d from %d PDFs, %d from %d drug records).",
@@ -1204,12 +1430,18 @@ def main() -> None:
     ap.add_argument("--reset", action="store_true", help="drop the collection first")
     ap.add_argument("--dry-run", action="store_true", help="parse and report only")
     ap.add_argument("--stats", action="store_true", help="show what is already indexed")
+    ap.add_argument("--web-only", action="store_true",
+                    help="index only the web-only guidelines (scrape_nag.py), without a rebuild")
+    ap.add_argument("--new-only", action="store_true",
+                    help="index only PDFs not already in the index, without a rebuild")
     args = ap.parse_args()
 
     if args.stats:
         print_stats()
         return
-    build_index(reset=args.reset, dry_run=args.dry_run)
+    if (args.web_only or args.new_only) and args.reset:
+        ap.error("--web-only / --new-only add to the existing index; they cannot be combined with --reset")
+    build_index(reset=args.reset, dry_run=args.dry_run, web_only=args.web_only, new_only=args.new_only)
 
 
 if __name__ == "__main__":

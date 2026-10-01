@@ -1,0 +1,64 @@
+{
+  "id": "ktas-row755-expert2",
+  "title": "KTAS record 755: ant. chest pain (Myocardial infarction with non-ST elevation)",
+  "tier": "ktas",
+  "provenance": "Moon SH et al. PLoS ONE 2019;14(9):e0216972, supporting data S1 (CC BY 4.0), spreadsheet row 755.",
+  "intake": {
+    "age": 49,
+    "gender": "male",
+    "vitals": {
+      "systolic_bp": 140.0,
+      "diastolic_bp": 90.0,
+      "heart_rate": 60.0,
+      "respiratory_rate": 20.0,
+      "temperature": 36.0,
+      "spo2": 99.0,
+      "pain_score": 8
+    },
+    "complaint": "Ant. chest pain.",
+    "history": "Alert on arrival."
+  },
+  "scored_sections": [
+    "triage",
+    "disposition",
+    "diagnosis"
+  ],
+  "expected": {
+    "triage": {
+      "level": 2,
+      "acceptable": [
+        1,
+        2,
+        3
+      ],
+      "reference_scale": "KTAS",
+      "time_to_treatment": null,
+      "note": "KTAS expert level 2 (triage nurse gave 2). KTAS is not MTS: scored as a +/-1 band; a level LESS urgent than the band is the safety failure.",
+      "evidence": []
+    },
+    "disposition": {
+      "acceptable": [
+        "ADMIT_WARD",
+        "ADMIT_ICU_HDU"
+      ],
+      "preferred": "ADMIT_WARD",
+      "note": "The disposition this patient actually received.",
+      "evidence": []
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Non-ST elevation myocardial infarction",
+        "match": [
+          "\\bNSTEMI\\b",
+          "non[- ]?ST[- ]?(segment[- ])?elevation",
+          "myocardial infarction",
+          "acute coronary syndrome",
+          "\\bACS\\b"
+        ],
+        "evidence": []
+      },
+      "acceptable_alternatives": []
+    }
+  },
+  "disputed": []
+}

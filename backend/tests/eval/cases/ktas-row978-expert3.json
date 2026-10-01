@@ -1,0 +1,63 @@
+{
+  "id": "ktas-row978-expert3",
+  "title": "KTAS record 978: hematemesis (Gastrointestinal haemorrhage, unspecified)",
+  "tier": "ktas",
+  "provenance": "Moon SH et al. PLoS ONE 2019;14(9):e0216972, supporting data S1 (CC BY 4.0), spreadsheet row 978.",
+  "intake": {
+    "age": 52,
+    "gender": "male",
+    "vitals": {
+      "systolic_bp": 130.0,
+      "diastolic_bp": 90.0,
+      "heart_rate": 84.0,
+      "respiratory_rate": 20.0,
+      "temperature": 36.0,
+      "spo2": 99.0
+    },
+    "complaint": "Hematemesis.",
+    "history": "Alert on arrival."
+  },
+  "scored_sections": [
+    "triage",
+    "disposition",
+    "diagnosis"
+  ],
+  "expected": {
+    "triage": {
+      "level": 3,
+      "acceptable": [
+        2,
+        3,
+        4
+      ],
+      "reference_scale": "KTAS",
+      "time_to_treatment": null,
+      "note": "KTAS expert level 3 (triage nurse gave 3). KTAS is not MTS: scored as a +/-1 band; a level LESS urgent than the band is the safety failure.",
+      "evidence": []
+    },
+    "disposition": {
+      "acceptable": [
+        "ADMIT_WARD",
+        "ADMIT_ICU_HDU"
+      ],
+      "preferred": "ADMIT_WARD",
+      "note": "The disposition this patient actually received.",
+      "evidence": []
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Gastrointestinal haemorrhage",
+        "match": [
+          "gastrointestinal (haemorrhage|hemorrhage|bleed)",
+          "\\bU?GIB\\b",
+          "\\bGI bleed",
+          "(peptic|gastric|duodenal) ulcer",
+          "variceal"
+        ],
+        "evidence": []
+      },
+      "acceptable_alternatives": []
+    }
+  },
+  "disputed": []
+}

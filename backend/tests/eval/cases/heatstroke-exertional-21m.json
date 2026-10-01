@@ -1,0 +1,1500 @@
+{
+  "id": "heatstroke-exertional-21m",
+  "title": "Exertional heat stroke during a road race, 21-year-old man",
+  "tier": "management",
+  "provenance": "Vignette written 2026-09-30 for the evaluation harness; expected answers extracted from the cited documents.",
+  "intake": {
+    "age": 21,
+    "gender": "male",
+    "weight_kg": 65,
+    "vitals": {
+      "systolic_bp": 94,
+      "diastolic_bp": 58,
+      "heart_rate": 138,
+      "respiratory_rate": 28,
+      "temperature": 41.0,
+      "spo2": 96,
+      "gcs": 12,
+      "capillary_blood_glucose": 5.8
+    },
+    "complaint": "Collapsed while running a 10 km race in the afternoon heat; confused and not making sense.",
+    "history": "Previously well. Had been running for about 90 minutes in hot weather.",
+    "appearance": "appears_unwell",
+    "arrival_mode": "ambulance",
+    "onset": "30 minutes ago",
+    "facility": "state_or_tertiary_with_pci_and_ct"
+  },
+  "scored_sections": [
+    "triage",
+    "diagnosis",
+    "red_flags",
+    "differentials",
+    "actions",
+    "investigations",
+    "drugs",
+    "disposition",
+    "grounding"
+  ],
+  "expected": {
+    "triage": {
+      "level": 2,
+      "acceptable": [
+        1,
+        2
+      ],
+      "time_to_treatment": "under 10 minutes",
+      "note": "Both extractors: level 2. A: Level 2 comes from several cells. ENVIRONMENTAL complaint Level 2 column (p9, x~131): 'Heat Stroke Temp > 39' (41.0). Adult Vital Signs Level 2 column (p7, x~131): 'HR > 120' (138), 'Temp > 39' and 'GCS < 13' (12). Primary triage Level 2 column (p4, x~246): 'Confused, agitated, disoriented' and 'Tachycardia, Weak Pulses'. Level 1 is defensible via primary triage Shock State L1 'Severe Tachycardia' (p4, x~136), but MTS gives no HR threshold for 'severe'. The MOH Heat Related Illness guideline flowchart (p16) says to triage heat stroke to the red zone. SBP 94 is not < 90. B: Level 2 comes from several cells: ENVIRONMENTAL 'Heat Stroke Temp > 39' (x~131, p9); the vital-signs cells 'Temp > 39', 'GCS < 13' and 'HR > 120' (x~131, p7); and the Rapid Assessment cells 'Confused, agitated, disoriented' and 'Tachycardia, Weak Pulses' (x~246, p4). Level 1 is defensible if HR 138 with SBP 94 is read as the Shock State cell 'Severe Tachycardia' (x~136, p4). The MOH heat-illness guideline says 'Triage to red zone'.",
+      "evidence": [
+        {
+          "source": "MTS 2022.pdf",
+          "page": 9,
+          "quote": "• Heat Stroke Temp > 39"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• SBP < 90 • HR > 120 • RR > 30"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• Temp > 39 or < 36 • Appears Septic, Ill • Immunocompromised • Severe Pain (8 - 10) • GCS < 13 or drop > 2"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "• Confused, agitated, disoriented"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "• Pale, cyanosed, cold peripheries • Severe Tachycardia / Bradycardia • Absent Radial Pulse"
+        },
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 16,
+          "quote": "Primary triage – confirm heat stroke"
+        },
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 16,
+          "quote": "Look out for pulmonary edema Triage to red zone"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 3,
+          "quote": "Level 2 - Emergency - under 10 minutes"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• SBP < 90 • HR > 120 • RR > 30 • BP > 220/130 with symptoms • SpO2 < 92%"
+        }
+      ]
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Exertional heat stroke (core temperature > 40 C with CNS dysfunction after exertion in heat)",
+        "match": [
+          "heat ?stroke",
+          "\\bEHS\\b",
+          "exertional hyperthermia"
+        ],
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 7,
+            "quote": "Heat stroke is defined classically as a core temperature more than 40.5°C accompanied by central nervous system (CNS) dysfunction."
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 8,
+            "quote": "Heat stroke is a clinical diagnosis with a history of exposure to heat and based on the following criteria:"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 7,
+            "quote": "Exertion beyond physiological capability"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 7,
+            "quote": "Heat stroke is defined classically as a core temperature more than 40.5°C accompanied by central nervous system (CNS) dysfunction."
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 8,
+            "quote": "Heat stroke is a clinical diagnosis with a history of exposure to heat and based on the following criteria: 4.1. Core body temperature greater than 40oC. 4.2. Signs of CNS dysfunction"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 7,
+            "quote": "Overly motivated healthy young individuals"
+          }
+        ]
+      },
+      "acceptable_alternatives": [
+        {
+          "label": "Severe heat-related illness",
+          "match": [
+            "heat[- ]related illness",
+            "heat illness"
+          ]
+        },
+        {
+          "label": "Severe heat-related illness with hyperthermia and encephalopathy",
+          "match": [
+            "(severe )?heat[- ]related illness",
+            "hyperthermia.{0,40}(encephalopath|CNS|confus)"
+          ]
+        }
+      ]
+    },
+    "red_flags": [
+      {
+        "id": "cns-dysfunction",
+        "label": "CNS dysfunction: confusion, delirium, ataxia, seizures, coma (GCS 12)",
+        "match": [
+          "\\bCNS\\b",
+          "encephalopath",
+          "confus",
+          "delirium",
+          "seizure|convuls",
+          "\\bGCS\\b",
+          "altered (mental|conscious)",
+          "coma",
+          "CNS (dysfunction|involvement)",
+          "confus|delirium|encephalopath",
+          "coma|(low|reduced|falling|drop).{0,10}GCS|GCS.{0,10}12"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 7,
+            "quote": "Heat stroke is defined classically as a core temperature more than 40.5°C accompanied by central nervous system (CNS) dysfunction."
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 8,
+            "quote": "4.2. Signs of CNS dysfunction 4.2.1. Confusion 4.2.2. Delirium 4.2.3. Ataxia 4.2.4. Seizures 4.2.5. Coma"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "rhabdo-aki",
+        "label": "Rhabdomyolysis and acute kidney injury",
+        "match": [
+          "rhabdomyoly",
+          "myoglobin",
+          "acute kidney injury",
+          "\\bAKI\\b",
+          "renal (failure|impairment)",
+          "rhabdomyolys",
+          "acute (kidney|renal) (injury|failure)|\\bAKI\\b",
+          "oliguri"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 13,
+            "quote": "The goal of therapy for a heat stroke patient is to prevent further metabolic derangement (rhabdomyolysis, coagulopathy, leading to liver and acute kidney injury) due to thermal injury"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 4,
+            "quote": "The serious complications of heat stroke include encephalopathy, rhabdomyolysis, acute renal failure, acute respiratory distress syndrome, myocardial injury and intravascular injury."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "coagulopathy-dic",
+        "label": "Coagulopathy / DIC and liver dysfunction",
+        "match": [
+          "coagulopath",
+          "\\bDIV?C\\b",
+          "disseminated intravascular",
+          "liver (dysfunction|injury|failure)",
+          "hepat",
+          "\\bDIVC?\\b|disseminated intravascular",
+          "bleeding tendency|thrombocytop"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 15,
+            "quote": "Look for signs of coagulopathies, acute kidney injury and liver dysfunction."
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 5,
+            "quote": "Poor prognostic signs include coagulopathy with liver hepatocyte damage, rectal temperature more than 42.2°C, prolonged hyperthermia, residual brain damage and acute renal failure."
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 10,
+            "quote": "Any derangement of coagulation is a sign of poor prognosis."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "potassium-derangement",
+        "label": "Hyper-/hypokalaemia (muscle damage, treatment)",
+        "match": [
+          "hyperkal(a)?emi",
+          "hypokal(a)?emi",
+          "potassium",
+          "hyperkala?emi|hypokala?emi|potassium"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 9,
+            "quote": "To detect hypokalemia or hyperkalemia that can occurs in early phases of heat stroke and muscle damages and during treatment"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "treatment-complications",
+        "label": "Complications of treatment: hypothermia (overcooling) and acute pulmonary oedema",
+        "match": [
+          "hypotherm",
+          "overcool|over-?cool|over-?correct",
+          "pulmonary o?edema",
+          "fluid overload",
+          "hypothermi|over-?cool|overcorrect",
+          "pulmonary o?edema|fluid overload"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 15,
+            "quote": "Prevent complications from treatment such as hypothermia and acute pulmonary oedema."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "differentials": [
+      {
+        "id": "sepsis-cns-infection",
+        "label": "Infection / septicaemia (incl. CNS infection)",
+        "match": [
+          "sepsis",
+          "septic",
+          "infection",
+          "meningitis",
+          "encephalitis",
+          "sepsis|septic|septica?emia",
+          "meningitis|encephalitis"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 8,
+            "quote": "5.1.3. Infection /Septicemia"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 8,
+            "quote": "5.1. Intrinsic Factors 5.1.1. Central nervous system (CNS) injury 5.1.2. Hyperthyroid storm 5.1.3. Infection /Septicemia 5.1.4. Neuroleptic malignant syndrome (NMS) 5.1.5. Pheochromocytoma"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "cns-injury",
+        "label": "CNS injury (e.g. head injury from collapse, intracranial bleed)",
+        "match": [
+          "head injur",
+          "\\bCNS injur",
+          "intracranial",
+          "traumatic brain",
+          "CNS injury",
+          "head injur|intracranial (ha?emorrhage|bleed|patholog)",
+          "stroke"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 8,
+            "quote": "5.1.1. Central nervous system (CNS) injury"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 8,
+            "quote": "5.1. Intrinsic Factors 5.1.1. Central nervous system (CNS) injury 5.1.2. Hyperthyroid storm 5.1.3. Infection /Septicemia 5.1.4. Neuroleptic malignant syndrome (NMS) 5.1.5. Pheochromocytoma"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 16,
+            "quote": "CT brain – to look for complications or rule out intracranial pathology"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "drug-ingestion-toxidrome",
+        "label": "Drug ingestion / anticholinergic poisoning / sympathomimetics",
+        "match": [
+          "drug (ingestion|toxicity|overdose|use)",
+          "anticholinergic",
+          "sympathomimetic",
+          "amphetamine",
+          "stimulant",
+          "cocaine",
+          "ecstasy|mdma",
+          "toxidrome",
+          "poisoning",
+          "drug (ingestion|toxicity|induced)|stimulant|amphetamine|ecstasy|\\bMDMA\\b|cocaine|toxidrome|overdose"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 8,
+            "quote": "5.2.1. Anticholinergic poisoning"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 8,
+            "quote": "5.2.2. Drug ingestion"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 8,
+            "quote": "5.2. Extrinsic Factors 5.2.1. Anticholinergic poisoning 5.2.2. Drug ingestion 5.2.3. Heat exhaustion"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "thyroid-storm",
+        "label": "Thyroid storm",
+        "match": [
+          "thyroid storm",
+          "thyrotoxic",
+          "thyroid storm|thyrotoxic"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 8,
+            "quote": "5.1.2. Hyperthyroid storm"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 8,
+            "quote": "5.1. Intrinsic Factors 5.1.1. Central nervous system (CNS) injury 5.1.2. Hyperthyroid storm 5.1.3. Infection /Septicemia 5.1.4. Neuroleptic malignant syndrome (NMS) 5.1.5. Pheochromocytoma"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "nms",
+        "label": "Neuroleptic malignant syndrome",
+        "match": [
+          "neuroleptic malignant",
+          "\\bNMS\\b",
+          "neuroleptic malignant|\\bNMS\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 8,
+            "quote": "5.1.4. Neuroleptic malignant syndrome (NMS)"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 8,
+            "quote": "5.1. Intrinsic Factors 5.1.1. Central nervous system (CNS) injury 5.1.2. Hyperthyroid storm 5.1.3. Infection /Septicemia 5.1.4. Neuroleptic malignant syndrome (NMS) 5.1.5. Pheochromocytoma"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "heat-exhaustion",
+        "label": "Heat exhaustion (no CNS involvement, temp < 40 C)",
+        "match": [
+          "heat exhaustion"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 8,
+            "quote": "5.2.3. Heat exhaustion"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 8,
+            "quote": "5.2. Extrinsic Factors 5.2.1. Anticholinergic poisoning 5.2.2. Drug ingestion 5.2.3. Heat exhaustion"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "hypoglycaemia",
+        "label": "Hypoglycaemia (excluded by CBG 5.8)",
+        "match": [
+          "hypoglyc",
+          "hyponatr|hypernatr|sodium"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 9,
+            "quote": "Exclude diagnosis of hypoglycaemia in unconscious patient"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 9,
+            "quote": "Exclude diagnosis of hypoglycaemia in unconscious patient and also hyperglycaemia in patient with underlying diabetes or undiagnosed diabetes."
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 9,
+            "quote": "Detection of hypernatremia or hyponatremia due to reduced intake fluid and dehydration and guide the choice of fluid for resuscitation"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "active-cooling",
+        "label": "Immediate active cooling to core temperature < 39 C: remove clothing, evaporative cooling (mist fan / cool water spray), ice packs to neck/axilla/groin, tepid sponging",
+        "match": [
+          "cool",
+          "ice ?pack",
+          "evaporat",
+          "tepid spong",
+          "ice[- ]water",
+          "immersion",
+          "mist fan",
+          "(active|rapid|aggressive|immediate) cool",
+          "evaporative",
+          "(mist|stand) fan|\\bfan\\b",
+          "(cold|ice)[- ]water (immersion|spray)|immersion",
+          "cooling (blanket|measure)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 13,
+            "quote": "to lower the core body temperature to below 39°C."
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 14,
+            "quote": "Ice packs at groins, neck and axilla, spray cool water"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 14,
+            "quote": "Use mist fan / air conditioned room / Stand fans."
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 13,
+            "quote": "Institute active cooling measures such as the following:"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 14,
+            "quote": "Ice packs at groins, neck and axilla, spray cool water 7.2.8.3. Use mist fan / air conditioned room / Stand fans."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "cooling-target-avoid-overcooling",
+        "label": "Cooling rate ~0.2 C/min to about 38 C; do not overcorrect below 38 C",
+        "match": [
+          "3[89](\\.\\d)?\\s*°?\\s*c",
+          "overcool|over-?cool|over-?correct",
+          "0\\.2\\s*°?\\s*c",
+          "stop (active )?cooling",
+          "0\\.2 ?°? ?C",
+          "(stop|cease|target|until).{0,30}(38|39) ?(\\.\\d)? ?°? ?C",
+          "(below|<|less than) ?39",
+          "overcorrect|over-?cool"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 14,
+            "quote": "Target to reduce temperature by 0.2°C per minute up to approximately 38°C."
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 16,
+            "quote": "Temperature every 15-30 minutes (do not overcorrect to less than 38°C)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "core-temperature-monitoring",
+        "label": "Core temperature monitoring (rectal / oesophageal probe) every 15-30 min",
+        "match": [
+          "core (body )?temp",
+          "rectal",
+          "(o)?esophageal (probe|temp)",
+          "tympanic",
+          "temperature probe",
+          "rectal (temp|probe|thermometer)",
+          "o?esophageal (temp|probe)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 13,
+            "quote": "Check body core temperature - rectal or esophageal probe or tympanic, ensure the correct placement of probe to the patient."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "airway-nbm",
+        "label": "Ensure patent airway, nil by mouth; definitive airway if necessary",
+        "match": [
+          "airway",
+          "nil by mouth",
+          "\\bNBM\\b",
+          "intubat",
+          "nil by mouth|\\bNBM\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 13,
+            "quote": "Ensure patent airway, keep patient nil by mouth."
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 16,
+            "quote": "Provide definitive airway protection if necessary"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "iv-fluids-uo",
+        "label": "IV fluids guided by haemodynamics, target urine output > 0.5 ml/kg/h; watch for pulmonary oedema",
+        "match": [
+          "(iv|intravenous) (fluid|drip|crystalloid|saline|hydration)",
+          "normal saline",
+          "0\\.9 ?% (sodium chloride|saline|nacl)",
+          "fluid (resusc|bolus|challenge)",
+          "cold saline",
+          "hartmann|ringer",
+          "crystalloid",
+          "(IV|intravenous) (fluid|access|cannula|drip)",
+          "(fluid|volume) resuscitat",
+          "urine output|urinary catheter|\\bCBD\\b|bladder drainage",
+          "(cold|chilled) (normal )?saline"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 13,
+            "quote": "Fluid resuscitation guided based on hemodynamic status, comorbid and ensure urine output (UO) more than 0.5 ml/kg/hr in adult."
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 16,
+            "quote": "Administer Intravenous fluids judiciously (caution on patient premorbid)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "cardiac-monitoring",
+        "label": "Continuous ECG, BP, SpO2 monitoring",
+        "match": [
+          "cardiac monitor",
+          "continuous (ecg|cardiac)",
+          "\\bECG monitor",
+          "telemetry",
+          "(cardiac|continuous|ECG) monitor",
+          "(hourly|half-?hourly|serial|frequent).{0,15}(GCS|neuro)",
+          "capillary (blood )?(glucose|sugar)|\\bCBG\\b|\\bDXT\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 14,
+            "quote": "12 lead ECG and continuous ECG monitoring."
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 14,
+            "quote": "½ hourly Glasgow Coma Scale (GCS)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "urine-output-catheter",
+        "label": "Hourly urine output (bladder catheter)",
+        "match": [
+          "urine output",
+          "urinary catheter",
+          "\\bCBD\\b",
+          "catheteri[sz]",
+          "input.{0,10}output",
+          "fluid balance",
+          "lavage",
+          "cold (saline|fluid).{0,30}(nasogastric|\\bNGT?\\b|catheter|bladder)"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 14,
+            "quote": "Hourly urine output (for patient with continuous bladder drainage)."
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 14,
+            "quote": "Consider lavage with cold saline via nasogastric tube or 3 way urinary catheter."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "icu-referral",
+        "label": "Co-management with emergency physician and referral to ICU",
+        "match": [
+          "\\bICU\\b",
+          "intensive care",
+          "critical care",
+          "\\bHDU\\b",
+          "\\bICU\\b|intensive care|critical care"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 15,
+            "quote": "Co-management and referral to Intensive Care Unit for further care."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "investigations": [
+      {
+        "id": "abg",
+        "label": "Arterial blood gas (hypoxaemia, metabolic acidosis), repeated",
+        "match": [
+          "\\bABG\\b",
+          "arterial blood gas",
+          "blood gas",
+          "\\bVBG\\b",
+          "\\bABG\\b|\\bVBG\\b",
+          "lactate"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 9,
+            "quote": "6.1.1. Arterial Blood Gases"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 16,
+            "quote": "Arterial Blood Gases regularly – look for metabolic acidosis"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "electrolytes",
+        "label": "Electrolytes: sodium, potassium, calcium",
+        "match": [
+          "electrolyte",
+          "sodium",
+          "potassium",
+          "calcium",
+          "\\bBUSE",
+          "\\bU&?E\\b",
+          "\\bBUSE|\\bU ?& ?E\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 9,
+            "quote": "Detection of hypernatremia or hyponatremia due to reduced intake fluid and dehydration"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 9,
+            "quote": "To detect hypokalemia or hyperkalemia that can occurs in early phases of heat stroke and muscle damages and during treatment"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "renal-function",
+        "label": "Renal function tests",
+        "match": [
+          "renal (function|profile)",
+          "\\bRFT\\b",
+          "creatinine",
+          "urea",
+          "\\bBUSE",
+          "renal (profile|function)|\\bRFT\\b|creatinine|urea"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 10,
+            "quote": "Acute kidney injury due to inadequacy of volume, dehydration and may also due to rhadomyolysis,"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 10,
+            "quote": "Acute kidney injury due to inadequacy of volume, dehydration and may also due to rhadomyolysis, or direct thermal injury to renal parenchyma."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "creatine-kinase",
+        "label": "Creatine kinase (muscle enzymes)",
+        "match": [
+          "\\bCK\\b",
+          "creatine kinase",
+          "creatinine kinase",
+          "\\bCPK\\b",
+          "muscle enzyme",
+          "creatin(in)?e (phospho)?kinase|\\bCK\\b|\\bCPK\\b|muscle enzyme"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 10,
+            "quote": "6.1.8. Muscle enzymes (Creatinine kinase)"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 10,
+            "quote": "Muscle enzymes (Creatinine kinase)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "urine-myoglobin",
+        "label": "Urinalysis for protein, casts, myoglobin",
+        "match": [
+          "urin(e|alysis).{0,30}myoglobin",
+          "myoglobinuri",
+          "urine myoglobin",
+          "urinalysis",
+          "urine (dip|feme)",
+          "urin(e|alysis).{0,30}(myoglobin|FEME|dip)|urinalysis|UFEME"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 10,
+            "quote": "6.1.9. Urine analysis for protein, cast and myoglobin"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 10,
+            "quote": "Urine analysis for protein, cast and myoglobin"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "coagulation",
+        "label": "Coagulation studies",
+        "match": [
+          "coag",
+          "\\bPT\\b",
+          "\\bINR\\b",
+          "\\bAPTT\\b",
+          "fibrinogen",
+          "d-?dimer",
+          "coagulation (profile|studies|screen)|\\bPT\\b|\\bAPTT\\b|\\bINR\\b|clotting (screen|profile)|fibrinogen|d-?dimer"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 10,
+            "quote": "Any derangement of coagulation is a sign of poor prognosis."
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 10,
+            "quote": "Direct thermal injury also leads to denaturation of proteins exhibited by dysfunctional enzymes. Any derangement of coagulation is a sign of poor prognosis."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "fbc",
+        "label": "Full blood count (platelets, haemoconcentration)",
+        "match": [
+          "\\bFBC\\b",
+          "full blood count",
+          "complete blood count",
+          "\\bCBC\\b",
+          "platelet",
+          "\\bFBC\\b|full blood count|\\bCBC\\b|platelet"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 10,
+            "quote": "6.1.6. Full Blood Count"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 10,
+            "quote": "Thermal injury to vascular endothelium causes platelet aggregation and deactivation of protein plasma leading to platelet aggregation and decrease clotting factor."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "lft",
+        "label": "Liver function tests (transaminases)",
+        "match": [
+          "\\bLFTs?\\b",
+          "liver function",
+          "transaminase",
+          "\\bALT\\b",
+          "\\bAST\\b",
+          "\\bLFTs?\\b|liver function|transaminase|\\bALT\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 9,
+            "quote": "Hepatic transaminases (ALT) usually elevated in heat stroke patient"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 9,
+            "quote": "Hepatic transaminases (ALT) usually elevated in heat stroke patient due to centrilobular necrosis of the liver."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "ecg",
+        "label": "12-lead ECG (arrhythmia, myocardial injury)",
+        "match": [
+          "\\bECG\\b",
+          "\\bEKG\\b",
+          "electrocardiogra",
+          "12[- ]lead"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 10,
+            "quote": "Arrhythmias is one of the complications of heat stroke and ruling out underlying cardiac disease / myocardial injury."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "blood-glucose",
+        "label": "Blood glucose (repeat 4-hourly)",
+        "match": [
+          "glucose",
+          "blood sugar",
+          "\\bCBG\\b",
+          "\\bRBS\\b",
+          "\\bDXT\\b",
+          "glucose|\\bCBG\\b|\\bRBS\\b|\\bBSL\\b|\\bDXT\\b|blood sugar"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 9,
+            "quote": "6.1.2. Glucose / random blood sugar"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 9,
+            "quote": "Exclude diagnosis of hypoglycaemia in unconscious patient and also hyperglycaemia in patient with underlying diabetes or undiagnosed diabetes."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "cxr",
+        "label": "Chest X-ray",
+        "match": [
+          "\\bCXR\\b",
+          "chest (x-?ray|radiograph)"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 10,
+            "quote": "CXR carried out to detect presence atelectasis, pneumonia, pulmonary infarction and pulmonary oedema"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 10,
+            "quote": "CXR carried out to detect presence atelectasis, pneumonia, pulmonary infarction and pulmonary oedema complementing clinical examination."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "ct-brain",
+        "label": "CT brain once stable if neurology does not improve",
+        "match": [
+          "\\bCT\\b.{0,20}(brain|head)",
+          "(brain|head)\\s+CT",
+          "computed tomograph",
+          "\\bCTB\\b",
+          "(brain|head) \\bCT\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 10,
+            "quote": "CT scan can be performed once patient is hemodynamically stable and helpful to rule out intracranial bleeding for patient who did not show improvement in neurological signs."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_allowed": [
+      {
+        "id": "iv-normal-saline",
+        "label": "IV 0.9% normal saline (cold saline if possible), volume per haemodynamics",
+        "match": [
+          "normal saline",
+          "0\\.9 ?% (sodium chloride|saline|nacl)",
+          "cold saline",
+          "\\bNS\\b",
+          "crystalloid",
+          "hartmann|ringer",
+          "(normal|0\\.9 ?%|cold|chilled) saline",
+          "(IV|intravenous) (fluid|crystalloid|drip)",
+          "crystalloid|hartmann|ringer"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 19,
+            "quote": "Set IV lines and administer 0.9% normal saline,"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 12,
+            "quote": "If possible, start IV drip infusion of cold saline"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 13,
+            "quote": "Intravenous fluids infusion."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "benzodiazepine",
+        "label": "Benzodiazepine (titrated) for agitation / seizures",
+        "match": [
+          "benzodiazepine",
+          "midazolam",
+          "diazepam",
+          "lorazepam",
+          "midazolam|diazepam|lorazepam"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 16,
+            "quote": "Seizure – treat with benzodiazepines"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 14,
+            "quote": "Administer benzodiazepine in titrated doses for agitated patient and prepare for securing the airway definitively."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "barbiturate-refractory-seizure",
+        "label": "Barbiturates for benzodiazepine-resistant seizures",
+        "match": [
+          "barbiturat",
+          "phenobarb",
+          "thiopent",
+          "barbiturate|phenobarb|thiopent"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 14,
+            "quote": "Barbiturates may be used for patients having seizures and resistance to benzodiazepines."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_forbidden": [
+      {
+        "id": "paracetamol",
+        "label": "Paracetamol (antipyretic) - ineffective and not to be given in heat stroke",
+        "match": [
+          "paracetamol",
+          "acetaminophen",
+          "panadol",
+          "antipyretic",
+          "paracetamol|acetaminophen|panadol"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 14,
+            "quote": "DO NOT administer Paracetamol or Aspirin or other NSAIDS."
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 16,
+            "quote": "Avoid Paracetamol or NSAIDS"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "aspirin-nsaids",
+        "label": "Aspirin and other NSAIDs",
+        "match": [
+          "aspirin",
+          "\\bNSAID",
+          "non-?steroidal anti-?inflammatory",
+          "ibuprofen",
+          "diclofenac",
+          "mefenamic",
+          "naproxen",
+          "\\bNSAIDs?\\b|non-?steroidal anti-?inflammator",
+          "ibuprofen|diclofenac|naproxen|mefenamic"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 14,
+            "quote": "DO NOT administer Paracetamol or Aspirin or other NSAIDS."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "disposition": {
+      "acceptable": [
+        "ADMIT_ICU_HDU",
+        "RESUSCITATION_BAY"
+      ],
+      "preferred": "ADMIT_ICU_HDU",
+      "evidence": [
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 15,
+          "quote": "Co-management and referral to Intensive Care Unit for further care."
+        },
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 16,
+          "quote": "Co management and referral to intensive care unit"
+        },
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 15,
+          "quote": "Co-management and referral to Intensive Care Unit for further care."
+        },
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 16,
+          "quote": "9. Co management and referral to intensive care unit"
+        },
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 16,
+          "quote": "Look out for pulmonary edema Triage to red zone"
+        }
+      ],
+      "note": "Cool and resuscitate in the ED red zone / resuscitation bay first, then refer to ICU. / Resuscitation in the red zone, then ICU. A general ward, ED observation or discharge is not acceptable for heat stroke with GCS 12 and borderline shock."
+    },
+    "sources_forbidden": [
+      {
+        "doc_type": "PAEDIATRIC_PROTOCOL",
+        "why": "adult patient"
+      }
+    ]
+  },
+  "disputed": [
+    {
+      "section": "red_flags",
+      "id": "hypotension-shock",
+      "label": "Hypotension / circulatory compromise (SBP 94, HR 138)",
+      "match": [
+        "hypotens",
+        "shock",
+        "tachycardi",
+        "haemodynamic|hemodynamic"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 14,
+          "quote": "Cooling alone may improve hypotension and cardiac function by allowing blood to redistribute centrally;"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "red_flags",
+      "id": "poor-prognostic-signs",
+      "label": "Poor prognosis: coagulopathy with liver damage, rectal temp > 42.2 C, prolonged hyperthermia, AKI",
+      "match": [
+        "prognos",
+        "42(\\.2)?\\s*°?\\s*c",
+        "prolonged hyperthermia"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 5,
+          "quote": "Poor prognostic signs include coagulopathy with liver hepatocyte damage, rectal temperature more than 42.2°C, prolonged hyperthermia,"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "red_flags",
+      "id": "liver-injury",
+      "label": "Liver injury (raised transaminases)",
+      "match": [
+        "liver (injury|failure|dysfunction)|hepat(ic|o)",
+        "transaminase|\\bALT\\b|\\bAST\\b"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 9,
+          "quote": "Hepatic transaminases (ALT) usually elevated in heat stroke patient due to centrilobular necrosis of the liver."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "red_flags",
+      "id": "arrhythmia-myocardial-injury",
+      "label": "Arrhythmia / myocardial injury",
+      "match": [
+        "arrhythmi",
+        "myocardial (injury|ischa?emia)",
+        "troponin"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 10,
+          "quote": "Arrhythmias is one of the complications of heat stroke and ruling out underlying cardiac disease / myocardial injury."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "actions",
+      "id": "oxygen",
+      "label": "Oxygen supplementation",
+      "match": [
+        "oxygen",
+        "\\bO2\\b"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 13,
+          "quote": "7.2.4. Provide oxygen supplementation."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "gcs-half-hourly",
+      "label": "Half-hourly GCS; 4-hourly capillary glucose",
+      "match": [
+        "\\bGCS\\b.{0,20}(monitor|hourly|serial|30 ?min)",
+        "neuro(logical)? ob",
+        "(hourly|serial) GCS"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 14,
+          "quote": "½ hourly Glasgow Coma Scale (GCS)."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "benzodiazepine-agitation-seizure",
+      "label": "Titrated benzodiazepine for agitation or seizures; prevent shivering",
+      "match": [
+        "benzodiazepine",
+        "midazolam",
+        "diazepam",
+        "lorazepam",
+        "shiver"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 14,
+          "quote": "Administer benzodiazepine in titrated doses for agitated patient and prepare for securing the airway definitively."
+        },
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 14,
+          "quote": "Prevent heat production by stopping the seizure and prevent shivering from occurring."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "cold-saline-lavage",
+      "label": "Consider cold saline lavage (NG / bladder) - not routine",
+      "match": [
+        "lavage",
+        "bladder irrigation",
+        "cold saline"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 14,
+          "quote": "Consider lavage with cold saline via nasogastric tube or 3 way urinary catheter."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "oxygen",
+      "label": "Supplemental oxygen",
+      "match": [
+        "oxygen",
+        "\\bO2\\b"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 13,
+          "quote": "Provide oxygen supplementation."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "paralysis-if-intubated",
+      "label": "Neuromuscular paralysis to prevent shivering if intubated",
+      "match": [
+        "paraly[sz]|neuromuscular block|muscle relaxant|rocuronium|vecuronium|atracurium"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 16,
+          "quote": "Prevent shivering by paralyzing patient if intubated and close monitoring of temperature"
+        }
+      ],
+      "proposed_by": "B"
+    }
+  ],
+  "adjudication": {
+    "method": "two independent extraction passes (A, B); agreed items scored",
+    "notes": [],
+    "open_questions": {
+      "A": [
+        "The MOH HRI guideline does not mention cold/ice-water immersion. I did not add it from non-KKM sources, since KKM describes the cooling methods to use.",
+        "Rhabdomyolysis fluid targets (urine output 200-300 ml/h) appear only in the non-KKM CHAMP/AAST references. KKM gives urine output > 0.5 ml/kg/h, so the KKM target is used.",
+        "Triage L1 vs L2: MTS has no HR threshold for 'Severe Tachycardia' (L1). The guideline's 'red zone' covers both L1 and L2 in Malaysian EDs.",
+        "The HRI guideline's two cooling end-points differ: 'below 39 C' (p13) vs 'approximately 38 C / do not overcorrect below 38 C' (p14, p16). Both are accepted in the regex."
+      ],
+      "B": [
+        "Is HR 138 with SBP 94 'Severe Tachycardia' (MTS Level 1)? MTS gives no numeric threshold beyond HR > 120 for Level 2, so both levels are accepted.",
+        "The KKM heat-illness guideline gives a 0.2 °C/min cooling target and 'do not overcorrect to less than 38°C'. It does not name cold-water immersion. The non-KKM rhabdomyolysis references were not needed and were not used."
+      ]
+    }
+  }
+}

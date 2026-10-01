@@ -1,7 +1,8 @@
 # `raw_pdfs/` — the source corpus (not in git)
 
-This folder is intentionally empty in the repository. It holds the 53 KKM /
-MOH PDFs the index is built from; they are inputs rather than source code, they
+This folder is intentionally empty in the repository. It holds the 84 PDFs
+the index is built from - 83 KKM / Malaysian documents plus one clearly labelled
+non-KKM guideline (`EXT ` filename prefix, see CORPUS.md); they are inputs rather than source code, they
 are large (254 MB), and their licence terms are not uniform — see the
 `.gitignore` entry for the reasoning.
 

@@ -1,0 +1,63 @@
+{
+  "id": "mimic-stay39467106-esi1",
+  "title": "MIMIC-IV-ED demo stay 39467106: Dyspnea, Hypoxia",
+  "tier": "mimic",
+  "provenance": "MIMIC-IV-ED Demo v2.2 (ODbL), stay_id 39467106; age from MIMIC-IV Demo hosp/patients.",
+  "intake": {
+    "age": 63,
+    "gender": "male",
+    "vitals": {
+      "systolic_bp": 98.0,
+      "diastolic_bp": 60.0,
+      "heart_rate": 99.0,
+      "respiratory_rate": 23.0,
+      "temperature": 36.8,
+      "spo2": 78.0,
+      "pain_score": 0
+    },
+    "complaint": "Dyspnea, Hypoxia.",
+    "history": "",
+    "arrival_mode": "walk_in"
+  },
+  "scored_sections": [
+    "triage",
+    "disposition",
+    "diagnosis"
+  ],
+  "expected": {
+    "triage": {
+      "level": 1,
+      "acceptable": [
+        1,
+        2
+      ],
+      "reference_scale": "ESI",
+      "time_to_treatment": null,
+      "note": "ESI acuity 1 assigned at triage. ESI is not MTS: scored as a +/-1 band.",
+      "evidence": []
+    },
+    "disposition": {
+      "acceptable": [
+        "ADMIT_WARD",
+        "ADMIT_ICU_HDU"
+      ],
+      "preferred": "ADMIT_WARD",
+      "note": "The disposition this patient actually received.",
+      "evidence": []
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Pneumonia",
+        "match": [
+          "pneumonia",
+          "\\bCAP\\b",
+          "lower respiratory tract infection",
+          "\\bLRTI\\b"
+        ],
+        "evidence": []
+      },
+      "acceptable_alternatives": []
+    }
+  },
+  "disputed": []
+}

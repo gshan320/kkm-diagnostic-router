@@ -1,0 +1,1221 @@
+{
+  "id": "ahf-72f",
+  "title": "Acute decompensated heart failure, 72-year-old woman",
+  "tier": "management",
+  "provenance": "Vignette written 2026-09-30 for the evaluation harness; expected answers extracted from the cited documents.",
+  "intake": {
+    "age": 72,
+    "gender": "female",
+    "weight_kg": 65,
+    "vitals": {
+      "systolic_bp": 168,
+      "diastolic_bp": 96,
+      "heart_rate": 112,
+      "respiratory_rate": 28,
+      "temperature": 36.7,
+      "spo2": 89,
+      "gcs": 15,
+      "pain_score": 0
+    },
+    "complaint": "Increasing breathlessness over 3 days, now breathless lying flat, with swollen legs.",
+    "history": "Known heart failure. Has not taken her furosemide for a week. Diabetic.",
+    "breathing": "needs_oxygen_support",
+    "comorbidities": [
+      "diabetes"
+    ],
+    "pregnancy": "not_pregnant",
+    "facility": "state_or_tertiary_with_pci_and_ct"
+  },
+  "scored_sections": [
+    "triage",
+    "diagnosis",
+    "red_flags",
+    "differentials",
+    "actions",
+    "investigations",
+    "drugs",
+    "disposition",
+    "grounding"
+  ],
+  "expected": {
+    "triage": {
+      "level": 1,
+      "acceptable": [
+        1,
+        2
+      ],
+      "time_to_treatment": null,
+      "note": "Both extractors: level 1. A: Primary triage Rapid Assessment, Respiratory Distress row: the Level 1 column (x~136, p4) lists 'SpO2 < 90% room air'; SpO2 89% meets it only if it was read on room air, which the intake does not say. If she was already on oxygen, the most urgent cell is the adult Vital Signs Level 2 column (x~131, p7) 'SpO2 < 92%'. 'Need O2 support' (p4, x~356) is Level 3; HR 112 and RR 28 are Level 3 on p7. Level 1 is expected (worst applicable cell, MTS p7 higher-level rule). Level 2 is acceptable. B: SpO2 89% is taken as a room-air reading, which falls in the Level 1 Rapid Assessment cell 'SpO2 < 90% room air' (x~136, p4). If the reading was on oxygen or the cell is judged not to apply, the adult vital-signs cell 'SpO2 < 92%' (x~131, p7) gives Level 2. HR 112 and RR 28 are Level 3 cells (x~244); the intake's 'needs O2 support' is a Level 3 cell (x~356, p4). The most urgent applicable cell is chosen.",
+      "evidence": [
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "• Require assisted breathing • SpO2 < 90% room air"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• BP > 220/130 with symptoms • SpO2 < 92%"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "• Wheeze, expiratory rhonchi; airway intact • SpO2 92 - 94% room air • Need O2 support"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• HR 100 - 120 • RR 20 - 30"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 3,
+          "quote": "Level 1 - Resuscitation - 0 minutes (requires rapid team activation mechanism)"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "• Confused, lethargic • Require assisted breathing • SpO2 < 90% room air"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• SBP < 90 • HR > 120 • RR > 30 • BP > 220/130 with symptoms • SpO2 < 92%"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "If modiﬁers do not differentiate between two triage levels, the higher triage level modiﬁer should be selected."
+        }
+      ]
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Acute decompensated heart failure (acute-on-chronic HF, warm and wet), precipitated by stopping her furosemide",
+        "match": [
+          "acute(ly)?[- ]decompensated (heart|cardiac) failure",
+          "\\bADHF\\b",
+          "acute heart failure",
+          "\\bAHF\\b",
+          "decompensat\\w* (congestive )?(heart|cardiac) failure",
+          "acute[- ]on[- ]chronic (heart|cardiac) failure",
+          "acute pulmonary o?edema",
+          "(heart|cardiac) failure.{0,40}decompensat",
+          "acute(ly)? decompensated (congestive )?(heart|cardiac) failure",
+          "decompensated (congestive )?(heart|cardiac) failure",
+          "(warm|wet)[- /]+(and )?(wet|warm)"
+        ],
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 74,
+            "quote": "Acute decompensated HF (ADHF) - this is a more common presentation occurring in"
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 75,
+            "quote": "Non-compliance to treatment especially oral diuretics and or dietary/fluid restriction."
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 76,
+            "quote": "**Congestion: peripheral edema, orthopnoea, paroxysmal nocturnal dyspnea, lung crepitations, jugular venous dilatation"
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 74,
+            "quote": "Acute decompensated HF (ADHF) - this is a more common presentation occurring in a previously stable patient with HF who has now deteriorated."
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 76,
+            "quote": "Most patients admitted with Acute HF are in the ‘wet-warm’ category."
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 75,
+            "quote": "N - Non-compliance to treatment especially oral diuretics and or dietary/fluid restriction."
+          }
+        ]
+      },
+      "acceptable_alternatives": [
+        {
+          "label": "Congestive cardiac failure exacerbation",
+          "match": [
+            "congestive (cardiac|heart) failure",
+            "\\bCCF\\b",
+            "\\bCHF\\b"
+          ]
+        },
+        {
+          "label": "Warm and wet acute heart failure",
+          "match": [
+            "warm[ -]and[ -]wet",
+            "wet[ -]and[ -]warm",
+            "warm ?/ ?wet",
+            "wet-warm"
+          ]
+        },
+        {
+          "label": "Acute pulmonary oedema / cardiogenic pulmonary oedema",
+          "match": [
+            "(acute |cardiogenic )pulmonary o?edema",
+            "\\bAPO\\b"
+          ]
+        },
+        {
+          "label": "Congestive cardiac failure exacerbation / fluid overload",
+          "match": [
+            "(congestive (cardiac|heart) failure|\\bCCF\\b|\\bCHF\\b).{0,40}(exacerbat|decompens|worsen)",
+            "fluid overload"
+          ]
+        }
+      ]
+    },
+    "red_flags": [
+      {
+        "id": "hypoxaemia-despite-o2",
+        "label": "SpO2 < 90% despite supplemental oxygen (consider ICU/CCU)",
+        "match": [
+          "spo2\\s*(<|below|less than|of)?\\s*(8\\d|90)\\s*%?",
+          "hypox(a)?emi",
+          "desaturat",
+          "low (oxygen )?saturation",
+          "despite (supplemental )?oxygen",
+          "SpO2.{0,25}(<|below|less than|under) ?9[0-4]"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Oxygen saturation (SpO2) < 90% despite supplemental oxygen."
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Initial care in the critical care unit (ICU/CCU) should be considered for high-risk patients with features such as:"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "hypoperfusion-cardiogenic-shock",
+        "label": "Hypoperfusion / cardiogenic shock (cold peripheries, CRT > 2 s, confusion, oliguria, hypotension)",
+        "match": [
+          "hypoperfus",
+          "cardiogenic shock",
+          "cold (and|/)? ?(wet|clammy|peripher)",
+          "capillary refill",
+          "\\bCRT\\b",
+          "poor (tissue )?perfusion",
+          "oliguri",
+          "cold peripher",
+          "cold[- /]+(and )?wet",
+          "\\bCRT\\b|capillary refill",
+          "hypotension"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Hypoperfused state-cold peripheries, capillary refill time more than 2 seconds, diaphoresis,"
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Hypoperfused state-cold peripheries, capillary refill time more than 2 seconds, diaphoresis, oliguria, dizziness, confusion, narrow pulse pressure, hypotension."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "respiratory-failure-exhaustion",
+        "label": "Respiratory failure / exhaustion not managed by NIV (consider intubation)",
+        "match": [
+          "respiratory failure",
+          "exhaust",
+          "respiratory (muscle )?fatigue",
+          "tiring",
+          "intubat",
+          "respiratory muscle fatigue",
+          "(invasive|mechanical) ventilat"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 79,
+            "quote": "Intubation may be considered in patients with respiratory failure, who cannot be managed with NIV techniques and who show signs of exhaustion and respiratory muscle fatigue."
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Need for invasive ventilatory support."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "differentials": [
+      {
+        "id": "acs-precipitant",
+        "label": "Acute coronary syndrome / myocardial ischaemia as precipitant",
+        "match": [
+          "acute coronary syndrome",
+          "\\bACS\\b",
+          "myocardial (infarction|isch(a)?emi)",
+          "\\bN?STE-?MI\\b",
+          "\\bNSTE-ACS\\b",
+          "myocardial (infarction|isch)",
+          "\\bN?STEMI\\b",
+          "\\bMI\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 75,
+            "quote": "Coronary artery disease - Acute Coronary Syndrome (Myocardial infarction/Ischemia)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "arrhythmia-precipitant",
+        "label": "Arrhythmia (e.g. atrial fibrillation) as precipitant",
+        "match": [
+          "arrhythmi",
+          "atrial fibrillation",
+          "\\bAF\\b",
+          "tachyarrhythm",
+          "\\bSVT\\b",
+          "atrial fibrillation|\\bAF\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 57,
+            "quote": "A  -  Arrhythmias (e.g., atrial fibrillation)"
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 84,
+            "quote": "Unstable tachy - or bradyarrhythmias need to be identified and treated appropriately"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "infection-pneumonia",
+        "label": "Infection / pneumonia as precipitant",
+        "match": [
+          "pneumonia",
+          "chest infection",
+          "infection",
+          "sepsis",
+          "\\bLRTI\\b",
+          "(lower )?respiratory (tract )?infection"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 57,
+            "quote": "P  -  Pulmonary - e.g., pulmonary embolism, pneumonia"
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 75,
+            "quote": "P - Pulmonary embolism, pulmonary infections."
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 80,
+            "quote": "No longer congested but patient is still dyspneic - consider other causes of dyspnea e.g., pulmonary embolism, chest infection etc."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "pulmonary-embolism",
+        "label": "Pulmonary embolism",
+        "match": [
+          "pulmonary embol",
+          "\\bPE\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 84,
+            "quote": "Acute pulmonary embolism can mimic Acute Coronary Syndromes and Acute HF."
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 75,
+            "quote": "P - Pulmonary embolism, pulmonary infections."
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 80,
+            "quote": "No longer congested but patient is still dyspneic - consider other causes of dyspnea e.g., pulmonary embolism, chest infection etc."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "hypertensive-emergency",
+        "label": "Hypertensive emergency as precipitant",
+        "match": [
+          "hypertensive (emergenc|crisis)",
+          "uncontrolled hypertension",
+          "severe hypertension",
+          "hypertensi"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 75,
+            "quote": "H  - Severe and uncontrolled hypertension."
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 75,
+            "quote": "H - Severe and uncontrolled hypertension."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "oxygen-target-95",
+        "label": "Supplemental oxygen titrated to SpO2 >= 95%",
+        "match": [
+          "oxygen",
+          "\\bO2\\b",
+          "nasal prong",
+          "venturi",
+          "face ?mask",
+          "non-?rebreath",
+          "nasal prong|face ?mask|venturi|non-?rebreath"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 78,
+            "quote": "Supplemental oxygen therapy is recommended when the SpO2 < 94% and should be titrated to achieve SpO2 ≥ 95%."
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 74,
+            "quote": "Adequate oxygenation-SpO2 ≥ 95%."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "early-iv-diuretic",
+        "label": "Early IV loop diuretic to relieve congestion",
+        "match": [
+          "(iv|i\\.v\\.|intravenous) (furosemide|frusemide|lasix|loop diuretic|diuretic)",
+          "(furosemide|frusemide|lasix).{0,30}(iv|i\\.v\\.|intravenous)",
+          "diures",
+          "(i\\.?v\\.?|intravenous) (loop )?diuretic",
+          "(i\\.?v\\.?|intravenous) (furosemide|frusemide)",
+          "(furosemide|frusemide|lasix).{0,30}(i\\.?v\\.?|intravenous)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 79,
+            "quote": "i.v. diuretics should be administered as early as possible to relieve congestion and provide symptomatic relief."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "niv-cpap-bipap",
+        "label": "Consider early NIV (CPAP / BiPAP) for respiratory distress (RR > 25, SpO2 < 90%) despite oxygen",
+        "match": [
+          "\\bNIV\\b",
+          "\\bCPAP\\b",
+          "\\bBi-?PAP\\b",
+          "\\bNIPSV\\b",
+          "non-?invasive (positive pressure )?ventilation",
+          "\\bHFNC\\b",
+          "high[- ]flow nasal",
+          "non-?invasive (positive pressure )?ventilat",
+          "\\bBiPAP\\b|bi-?level",
+          "high[- ]flow nasal|\\bHFNC\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 79,
+            "quote": "CPAP and NIPSV should be considered early in patients with respiratory distress (respiratory rate > 25 breaths/min, SpO2 < 90%) despite high-flow oxygen administration."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "identify-precipitants",
+        "label": "Identify and treat precipitating factors (CHAMPION), including non-compliance",
+        "match": [
+          "precipitat",
+          "\\bCHAMPION\\b",
+          "trigger",
+          "non-?complian",
+          "non-?adheren",
+          "stopped (her|taking)",
+          "precipita",
+          "CHAMPION",
+          "non-?(adheren|complian)",
+          "(stopped|not taken|missed|omitted).{0,30}(furosemide|frusemide|diuretic|medication)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 74,
+            "quote": "Identifying and treating the precipitating factors."
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 74,
+            "quote": "Identifying and treating the precipitating factors. An aide memoire to common precipitants is: (see Table 11, Page 55)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "assess-congestion-perfusion",
+        "label": "Classify by congestion and perfusion (warm/cold, wet/dry)",
+        "match": [
+          "warm",
+          "wet",
+          "congestion and perfusion",
+          "perfusion status",
+          "(warm|cold)[- /]+(and )?(wet|dry)",
+          "congestion and perfusion|perfusion and congestion"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 37,
+            "quote": "Assess for Congestion and Perfusion"
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 76,
+            "quote": "The classification in the table above will help guide the initial management."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "monitor-urine-output",
+        "label": "Monitor response: urine output (aim > 100 ml/h in first 6 h), vitals, weight",
+        "match": [
+          "urine output",
+          "urinary catheter",
+          "input.{0,10}output",
+          "fluid balance",
+          "strict (i/o|intake)",
+          "\\bI/O\\b",
+          "daily weight",
+          "(input|intake).{0,5}output|fluid balance|strict I/?O",
+          "daily weigh"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 79,
+            "quote": "An adequate response is a urine output >100ml/ hour during the first 6 hours."
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Response should be assessed continuously using the following parameters:"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "specialist-review",
+        "label": "Early specialist (cardiology/physician) review",
+        "match": [
+          "cardiolog",
+          "specialist",
+          "physician (review|referral)",
+          "refer\\w* to (medical|medicine)",
+          "(medical|physician) (team|referral|review)",
+          "refer.{0,20}(medical|physician)"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 75,
+            "quote": "The patient should be seen by a specialist as soon as possible after admission to"
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 75,
+            "quote": "The patient should be seen by a specialist as soon as possible after admission to co-ordinate the initial and further management."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "investigations": [
+      {
+        "id": "ecg",
+        "label": "12-lead ECG",
+        "match": [
+          "\\bECG\\b",
+          "\\bEKG\\b",
+          "electrocardiogra",
+          "12[- ]lead"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Electrocardiogram - ECG."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "cxr",
+        "label": "Chest X-ray",
+        "match": [
+          "\\bCXR\\b",
+          "chest (x-?ray|radiograph)",
+          "chest film"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Chest Radiograph - Chest X-Ray - About 20% of patients with congestion"
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Chest Radiograph - Chest X-Ray - About 20% of patients with congestion, however, may exhibit a normal Chest X-Ray."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "renal-profile-electrolytes",
+        "label": "Serum electrolytes, urea, creatinine",
+        "match": [
+          "electrolyte",
+          "\\bBUSE\\b",
+          "renal (profile|function)",
+          "\\bRFT\\b",
+          "\\bU&?E\\b",
+          "creatinine",
+          "urea",
+          "\\bRFT\\b|\\bRP\\b",
+          "\\bU ?& ?E\\b|\\bBUSE",
+          "potassium"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Blood Investigations - FBC, serum electrolytes, urea, creatinine, cardiac biomarkers"
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Blood Investigations - FBC, serum electrolytes, urea, creatinine, cardiac biomarkers (troponins, CKMB, BNP or NT-Pro BNP), liver function tests."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "fbc",
+        "label": "Full blood count",
+        "match": [
+          "\\bFBC\\b",
+          "full blood count",
+          "complete blood count",
+          "\\bCBC\\b",
+          "ha?emoglobin"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Blood Investigations - FBC, serum electrolytes, urea, creatinine, cardiac biomarkers"
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Blood Investigations - FBC, serum electrolytes, urea, creatinine, cardiac biomarkers (troponins, CKMB, BNP or NT-Pro BNP), liver function tests."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "troponin",
+        "label": "Cardiac biomarkers - troponin",
+        "match": [
+          "troponin",
+          "\\bTnI\\b",
+          "\\bTnT\\b",
+          "cardiac (bio)?markers?",
+          "cardiac enzyme",
+          "\\bCK-?MB\\b",
+          "cardiac (bio)?markers|cardiac enzymes"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "(troponins, CKMB, BNP or NT-Pro  BNP), liver function tests."
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Blood Investigations - FBC, serum electrolytes, urea, creatinine, cardiac biomarkers (troponins, CKMB, BNP or NT-Pro BNP), liver function tests."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "natriuretic-peptide",
+        "label": "BNP or NT-proBNP",
+        "match": [
+          "\\bBNP\\b",
+          "NT-?pro ?BNP",
+          "natriuretic",
+          "NT-?pro-?BNP",
+          "natriuretic peptide"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "(troponins, CKMB, BNP or NT-Pro  BNP), liver function tests."
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Blood Investigations - FBC, serum electrolytes, urea, creatinine, cardiac biomarkers (troponins, CKMB, BNP or NT-Pro BNP), liver function tests."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "echocardiography",
+        "label": "Echocardiography (LV function, filling pressures)",
+        "match": [
+          "echo(cardiogra)?",
+          "\\bTTE\\b",
+          "\\bPOCUS\\b",
+          "echocardiogra",
+          "\\becho\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Echocardiography - To assess LV function, Pulmonary Artery Pressure and to estimate"
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Echocardiography - To assess LV function, Pulmonary Artery Pressure and to estimate right and left sided filling pressures."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "lft",
+        "label": "Liver function tests",
+        "match": [
+          "\\bLFTs?\\b",
+          "liver function"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "(troponins, CKMB, BNP or NT-Pro  BNP), liver function tests."
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Blood Investigations - FBC, serum electrolytes, urea, creatinine, cardiac biomarkers (troponins, CKMB, BNP or NT-Pro BNP), liver function tests."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "blood-gas",
+        "label": "Blood gas if SpO2 still < 90% after initial treatment",
+        "match": [
+          "\\bABG\\b",
+          "\\bVBG\\b",
+          "blood gas",
+          "\\bABG\\b|\\bVBG\\b",
+          "(arterial |venous )?blood gas"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Blood Gases - If oxygen saturation is still < 90% despite initial treatment."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "lung-ultrasound",
+        "label": "Lung ultrasound (B-lines)",
+        "match": [
+          "lung (ultrasound|us)",
+          "b-?lines",
+          "\\bPOCUS\\b",
+          "lung (ultrasound|US)\\b|\\bLUS\\b",
+          "B-?lines",
+          "point[- ]of[- ]care ultrasound|\\bPOCUS\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 77,
+            "quote": "Lung Ultrasound - To look for extravascular fluid in the lungs (B-lines)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_allowed": [
+      {
+        "id": "iv-furosemide",
+        "label": "IV furosemide (40-100 mg; on oral furosemide: 2.5x daily oral dose)",
+        "match": [
+          "furosemide",
+          "frusemide",
+          "lasix",
+          "loop diuretic",
+          "furosemide|frusemide|lasix"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 79,
+            "quote": "i.v. furosemide 40-100mg is the diuretic of choice."
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 82,
+            "quote": "Known HF and on oral furosemide: 2.5 times the daily"
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 79,
+            "quote": "A reasonable initial strategy in these patients is a daily dose of 2.5 times the previous oral dose on a mg-to-mg basis, administered as twice-daily boluses."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "iv-nitrates",
+        "label": "IV nitrates (GTN / isosorbide dinitrate) if SBP > 100 mmHg",
+        "match": [
+          "nitrate",
+          "nitroglycerin",
+          "\\bGTN\\b",
+          "glyceryl trinitrate",
+          "isosorbide",
+          "\\bISDN\\b",
+          "vasodilat",
+          "nitroglycerin|glyceryl trinitrate|\\bGTN\\b",
+          "isosorbide|\\bISDN\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 81,
+            "quote": "It should be considered if the BP is adequate (SBP > 100mmHg)."
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 81,
+            "quote": "It should be administered preferably intravenously for ease of titration."
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 81,
+            "quote": "It is most useful if there is concomitant myocardial ischemia, severe hypertension or aortic or mitral regurgitation."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_forbidden": [
+      {
+        "id": "thiazolidinediones",
+        "label": "Thiazolidinediones (pioglitazone, rosiglitazone) in a diabetic with HF",
+        "match": [
+          "thiazolidinedione",
+          "pioglitazone",
+          "rosiglitazone",
+          "\\bTZDs?\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 120,
+            "quote": "TZD use including pioglitazone and rosiglitazone should be avoided in patients with"
+          },
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 120,
+            "quote": "TZD use including pioglitazone and rosiglitazone should be avoided in patients with T2DM and symptomatic NYHA class III & IV heart failure."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "nsaids-cox2",
+        "label": "NSAIDs and COX-2 inhibitors",
+        "match": [
+          "\\bNSAID",
+          "non-?steroidal anti-?inflammatory",
+          "cox-?2 inhibitor",
+          "diclofenac",
+          "ibuprofen",
+          "mefenamic",
+          "naproxen",
+          "celecoxib",
+          "etoricoxib",
+          "\\bNSAIDs?\\b",
+          "non-?steroidal anti-?inflammator",
+          "COX-?2 inhibitor",
+          "ibuprofen|diclofenac|naproxen|mefenamic|celecoxib|etoricoxib"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 57,
+            "quote": "Inappropriate medications e.g., NSAIDs and COX-2 inhibitors"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "non-dhp-ccb-nifedipine",
+        "label": "Diltiazem, verapamil, nifedipine (HFrEF)",
+        "match": [
+          "diltiazem",
+          "verapamil",
+          "nifedipine"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+            "page": 102,
+            "quote": "Diltiazem, verapamil and nifedipine should be avoided."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "disposition": {
+      "acceptable": [
+        "ADMIT_WARD",
+        "ADMIT_ICU_HDU"
+      ],
+      "preferred": "ADMIT_WARD",
+      "evidence": [
+        {
+          "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+          "page": 77,
+          "quote": "Initial care in the critical care unit (ICU/CCU) should be considered for high-risk"
+        },
+        {
+          "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+          "page": 77,
+          "quote": "The remaining patients with Acute HF can be managed in a high-dependency unit or normal ward depending on the clinical circumstances."
+        },
+        {
+          "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+          "page": 77,
+          "quote": "Initial care in the critical care unit (ICU/CCU) should be considered for high-risk patients with features such as:"
+        },
+        {
+          "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+          "page": 77,
+          "quote": "Oxygen saturation (SpO2) < 90% despite supplemental oxygen."
+        },
+        {
+          "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+          "page": 77,
+          "quote": "The remaining patients with Acute HF can be managed in a high-dependency unit or normal ward depending on the clinical circumstances."
+        }
+      ],
+      "note": "Admit. ICU/CCU/HDU if SpO2 stays < 90% on supplemental oxygen, she needs NIV or invasive ventilation, or there is hypoperfusion, arrhythmia or haemodynamic instability. Otherwise HDU or ward. / Admission is certain. ICU/CCU/HDU is preferred because she is hypoxic (89%) with RR 28 and is a likely NIV candidate. A general ward is acceptable if SpO2 corrects on oxygen and there is no hypoperfusion. RESUSCITATION_BAY is accepted only as the initial ED zone, because the MTS triage level is 1."
+    },
+    "sources_forbidden": [
+      {
+        "doc_type": "PAEDIATRIC_PROTOCOL",
+        "why": "adult patient"
+      }
+    ]
+  },
+  "disputed": [
+    {
+      "section": "red_flags",
+      "id": "hypotension",
+      "label": "Hypotension (SBP < 90 mmHg) at presentation or during treatment",
+      "match": [
+        "hypotens",
+        "sbp\\s*(<|below|less than)\\s*90",
+        "systolic.{0,20}(<|below|less than)\\s*90"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+          "page": 83,
+          "quote": "If the blood pressure is low at initial presentation (SBP < 90 mmHg) or drops during"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "red_flags",
+      "id": "unstable-arrhythmia",
+      "label": "Unstable tachy- or bradyarrhythmia",
+      "match": [
+        "arrhythmi",
+        "atrial fibrillation|\\bAF\\b",
+        "tachyarrhythm|bradyarrhythm|brady ?cardia"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+          "page": 84,
+          "quote": "Unstable tachy - or bradyarrhythmias need to be identified and treated appropriately"
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "differentials",
+      "id": "other-infection",
+      "label": "Other infection (e.g. urinary tract) as precipitant",
+      "match": [
+        "urinary tract infection|\\bUTI\\b",
+        "sepsis",
+        "infection"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+          "page": 75,
+          "quote": "I - Infections e.g., urinary tract, Covid."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "investigations",
+      "id": "capillary-glucose",
+      "label": "Capillary glucose (known diabetic; MTS initial test)",
+      "match": [
+        "glucose",
+        "\\bCBG\\b",
+        "\\bDXT\\b",
+        "\\bRBS\\b",
+        "blood sugar"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "Performs initial tests for ECG, and Glucose estimation"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_forbidden",
+      "id": "saxagliptin-alogliptin",
+      "label": "Saxagliptin and alogliptin in DM with HF",
+      "match": [
+        "saxagliptin",
+        "alogliptin"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+          "page": 119,
+          "quote": "Saxagliptin and Alogliptin are not recommended in patients with DM and HF."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_forbidden",
+      "id": "new-beta-blocker-while-congested",
+      "label": "Starting a beta-blocker while still congested",
+      "match": [
+        "(start|initiat|commenc|begin|add)\\w*\\s+(an? |oral |iv )*(β|beta)[- ]?blocker"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Heart Failure (5th Edition) 2023.pdf",
+          "page": 86,
+          "quote": "If β-blockers are initiated in a patient who is still congested, it can worsen the congestion."
+        }
+      ],
+      "proposed_by": "A"
+    }
+  ],
+  "adjudication": {
+    "method": "two independent extraction passes (A, B); agreed items scored",
+    "notes": [],
+    "open_questions": {
+      "A": [
+        "Triage: Level 1 depends on the SpO2 of 89% being a room-air reading, which the intake does not state. If she was on oxygen, it is Level 2.",
+        "Disposition preferred: ward vs HDU/CCU depends on her response to oxygen and diuretic. The CPG puts HDU and ward together for patients who are not high-risk. I chose ADMIT_WARD as preferred; ADMIT_ICU_HDU is equally defensible if NIV is started.",
+        "The HF CPG gives no single ED dose of GTN for this BP (168/96); nitrates are listed only as optional.",
+        "The CCB avoidance (diltiazem/verapamil/nifedipine) is stated for HFrEF. Her ejection fraction is unknown."
+      ],
+      "B": [
+        "Is SpO2 89% a room-air reading? This decides MTS Level 1 ('SpO2 < 90% room air') versus Level 2 ('SpO2 < 92%').",
+        "LVEF is unknown. The CPG's advice to avoid diltiazem/verapamil/nifedipine is written for HFrEF, so that item is non-required.",
+        "Morphine: the CPG says routine use 'cannot be recommended' but does not forbid it, so it is left out of drugs_forbidden."
+      ]
+    }
+  }
+}

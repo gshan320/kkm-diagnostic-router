@@ -1,0 +1,62 @@
+{
+  "id": "ktas-row966-expert4",
+  "title": "KTAS record 966: chest palpitation (Supraventricular tachycardia)",
+  "tier": "ktas",
+  "provenance": "Moon SH et al. PLoS ONE 2019;14(9):e0216972, supporting data S1 (CC BY 4.0), spreadsheet row 966.",
+  "intake": {
+    "age": 50,
+    "gender": "male",
+    "vitals": {
+      "systolic_bp": 100.0,
+      "diastolic_bp": 60.0,
+      "heart_rate": 110.0,
+      "respiratory_rate": 20.0,
+      "temperature": 36.2,
+      "spo2": 96.0
+    },
+    "complaint": "Chest palpitation.",
+    "history": "Alert on arrival."
+  },
+  "scored_sections": [
+    "triage",
+    "disposition",
+    "diagnosis"
+  ],
+  "expected": {
+    "triage": {
+      "level": 4,
+      "acceptable": [
+        3,
+        4,
+        5
+      ],
+      "reference_scale": "KTAS",
+      "time_to_treatment": null,
+      "note": "KTAS expert level 4 (triage nurse gave 4). KTAS is not MTS: scored as a +/-1 band; a level LESS urgent than the band is the safety failure.",
+      "evidence": []
+    },
+    "disposition": {
+      "acceptable": [
+        "DISCHARGE_WITH_FOLLOW_UP",
+        "REFER_SPECIALIST"
+      ],
+      "preferred": "DISCHARGE_WITH_FOLLOW_UP",
+      "note": "The disposition this patient actually received.",
+      "evidence": []
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Supraventricular tachycardia",
+        "match": [
+          "supraventricular tachycardia",
+          "\\bP?SVT\\b",
+          "\\bAVN?RT\\b",
+          "narrow[- ]complex tachycardia"
+        ],
+        "evidence": []
+      },
+      "acceptable_alternatives": []
+    }
+  },
+  "disputed": []
+}

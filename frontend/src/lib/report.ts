@@ -16,6 +16,7 @@ import type {
   TriageResponse,
   Vitals,
 } from "./types";
+import { sourcePdfUrl } from "./api";
 import { labelFor } from "./modifiers";
 
 /** Older API builds did not echo the intake back; the report degrades to a
@@ -42,6 +43,8 @@ const DOC_TYPE_LABEL: Record<string, string> = {
   // Neither of these is a clinical guideline: see config.CLINICAL_DOC_TYPES.
   HTA_REPORT: "HTA report — not a guideline",
   PATIENT_FLOW_POLICY: "State policy — disposition only",
+  // Indexed only where no KKM document covers the condition (config.py).
+  EXTERNAL_GUIDELINE: "Non-KKM guideline — international",
 };
 
 const COLOUR_HEX: Record<TriageColour, { bg: string; fg: string }> = {
@@ -219,7 +222,7 @@ function modifierBlock(request: TriageRequest): string {
 which is not the same as normal.</p>`;
 }
 
-function patientBlock(request: TriageRequest | null): string {
+function patientBlock(request: TriageRequest | null, derivedOnset = ""): string {
   if (!request) {
     return section(
       "1 · Patient",
@@ -238,7 +241,7 @@ function patientBlock(request: TriageRequest | null): string {
     </tr>
     <tr>
       <th>Weight</th><td>${request.weight_kg != null ? `${esc(request.weight_kg)} kg` : "not recorded"}</td>
-      <th>Onset</th><td>${dash(request.onset)}</td>
+      <th>Onset</th><td>${request.onset ? esc(request.onset) : dash(derivedOnset)}</td>
     </tr>
   </tbody>
 </table>`;
@@ -287,10 +290,35 @@ function triageBlock(result: TriageResponse): string {
     <div class="triage-body">
       <p class="ttt">Time to treatment: <strong>${dash(d.time_to_treatment)}</strong></p>
       <p class="wrap">${dash(d.triage_rationale)}</p>
+      ${d.triage_provisional_note ? `<p class="warn"><strong>${esc(d.triage_provisional_note)}</strong></p>` : ""}
       ${d.reassessment ? `<p class="reassess">${esc(d.reassessment)}</p>` : ""}
     </div>
   </div>
 </section>`;
+}
+
+function cautionsBlock(result: TriageResponse): string {
+  const items = result.diagnostic.source_cautions ?? [];
+  if (items.length === 0) return "";
+  return section(
+    `Cautions from the guidelines (${items.length})`,
+    `<table class="grid">
+  <colgroup><col style="width:38%"><col style="width:62%"></colgroup>
+  <thead><tr><th>Caution</th><th>Source, verbatim</th></tr></thead>
+  <tbody>
+    ${items
+      .map(
+        (c) => `<tr class="flag">
+      <th scope="row" class="wrap">${dash(c.label)}${cite(c.source_id)}${
+        c.external ? ` <span class="muted">(non-KKM source)</span>` : ""
+      }</th>
+      <td class="wrap">&ldquo;${dash(c.quote)}&rdquo;</td>
+    </tr>`,
+      )
+      .join("\n    ")}
+  </tbody>
+</table>`,
+  );
 }
 
 function redFlagsBlock(result: TriageResponse): string {
@@ -305,7 +333,9 @@ function redFlagsBlock(result: TriageResponse): string {
     ${flags
       .map(
         (flag) => `<tr class="flag">
-      <th scope="row" class="wrap">${dash(flag.flag)}${cite(flag.source_id)}</th>
+      <th scope="row" class="wrap">${dash(flag.flag)}${cite(flag.source_id)}${
+        flag.origin === "source" ? ` <span class="muted">(added from source)</span>` : ""
+      }</th>
       <td class="wrap">${dash(flag.why_it_matters)}</td>
     </tr>`,
       )
@@ -362,7 +392,11 @@ function actionsBlock(result: TriageResponse): string {
       .map(
         (action) => `<tr>
       <td class="num seq">${esc(action.sequence)}</td>
-      <td class="wrap">${dash(action.action)}${cite(action.source_id)}</td>
+      <td class="wrap">${dash(action.action)}${cite(action.source_id)}${
+        action.origin === "source" ? ` <span class="muted">(added from source)</span>` : ""
+      }${
+        action.source_quote ? `<br><span class="muted">&ldquo;${esc(action.source_quote)}&rdquo; [${esc(action.source_where)}]</span>` : ""
+      }</td>
       <td class="wrap when">${dash(action.timeframe)}</td>
     </tr>`,
       )
@@ -384,7 +418,11 @@ function investigationsBlock(result: TriageResponse): string {
     ${items
       .map(
         (item) => `<tr>
-      <th scope="row" class="wrap">${dash(item.test)}</th>
+      <th scope="row" class="wrap">${dash(item.test)}${item.source_id ? cite(item.source_id) : ""}${
+        item.origin === "source" ? ` <span class="muted">(added from source)</span>` : ""
+      }${
+        item.source_quote ? `<br><span class="muted">&ldquo;${esc(item.source_quote)}&rdquo; [${esc(item.source_where)}]</span>` : ""
+      }</th>
       <td class="wrap when">${dash(item.urgency)}</td>
       <td class="wrap">${dash(item.rationale)}</td>
     </tr>`,
@@ -423,6 +461,21 @@ function doseSources(drug: DrugRecommendation): string {
   return `<div class="dosebox">${badge}${lines.join("")}</div>`;
 }
 
+/** The indication gate's verdict and the sentence it rests on. CONDITIONAL is
+ *  spelled out, because "indicated for a differential" is easy to misread as
+ *  "indicated". */
+const INDICATION_LABEL: Record<string, string> = {
+  SUPPORTED: "Supported for the working diagnosis",
+  SYMPTOMATIC: "For a symptom this patient has",
+  CONDITIONAL: "Only if the differential it treats is confirmed",
+};
+function indicationLine(drug: TriageResponse["diagnostic"]["drug_recommendations"][number]): string {
+  const status = drug.indication_status ?? "";
+  if (!status) return "";
+  const label = INDICATION_LABEL[status] ?? status;
+  return drug.indication_basis ? `${label} — ${drug.indication_basis}` : label;
+}
+
 function drugsBlock(result: TriageResponse): string {
   const d = result.diagnostic;
   const warning = d.prescriber_category_warning
@@ -441,6 +494,7 @@ function drugsBlock(result: TriageResponse): string {
       const unverified = drug.prescriber_category === "NOT_IN_RETRIEVED_SOURCES";
       const rows: Array<[string, string]> = [
         ["Indication", drug.indication],
+        ["Indication check", indicationLine(drug)],
         ["Adult dose", drug.adult_dose],
         ["Paediatric dose", drug.paediatric_dose],
         ["Route", drug.route],
@@ -537,6 +591,53 @@ function gapsBlock(result: TriageResponse): string {
   return section("10 · Evidence gaps and caveats", `${gaps}${corpus}`);
 }
 
+/** The document name, linked to the PDF at the cited page when the backend
+ *  serves it. The link works while the API is running on this machine; the
+ *  printed name is always there. */
+function citationDocument(
+  result: TriageResponse,
+  citation: TriageResponse["diagnostic"]["citations"][number],
+): string {
+  const id = sid(citation.source_id);
+  const src = result.sources.find((s) => s.source_id === id);
+  if (src?.url) {
+    return `<a href="${esc(src.url)}" target="_blank" rel="noopener">${dash(citation.document)}</a>`;
+  }
+  if (!src?.filename || src.doc_type === "DRUG_FORMULARY") return dash(citation.document);
+  const href = sourcePdfUrl(src.filename, src.page_number ?? citation.page);
+  return `<a href="${esc(href)}" target="_blank" rel="noopener">${dash(citation.document)}</a>`;
+}
+
+/** Verified links to consult for what the indexed guidelines do not cover. */
+function referencesBlock(result: TriageResponse): string {
+  const refs = result.diagnostic.external_references ?? [];
+  if (refs.length === 0) return "";
+  return `<section class="sec keep">
+  <h2>References to consult</h2>
+  <p class="note">Not used to generate this report. Chosen by the system from a verified list of MOH pages, never written by the model.</p>
+  <ul>
+    ${refs
+      .map(
+        (r) =>
+          `<li><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a> — ${esc(r.reason)}${
+            r.checked ? ` <span class="note">(link checked ${esc(r.checked)})</span>` : ""
+          }</li>`,
+      )
+      .join("\n    ")}
+  </ul>
+</section>`;
+}
+
+/** One muted paragraph: why these sources and not others. Compact on purpose -
+ *  it answers "why was X left out?" without becoming a second citation table. */
+function selectionBlock(result: TriageResponse): string {
+  const notes = (result.retrieval_notes ?? []).filter((n) => n.trim());
+  if (notes.length === 0) return "";
+  return `<p class="note"><strong>How the sources were chosen:</strong> ${notes
+    .map((n) => esc(n))
+    .join(" · ")}</p>`;
+}
+
 function citationsBlock(result: TriageResponse): string {
   const items = result.diagnostic.citations;
   if (items.length === 0) return section("11 · Citations", NONE);
@@ -550,7 +651,7 @@ function citationsBlock(result: TriageResponse): string {
       .map(
         (citation) => `<tr>
       <td class="mono">${sid(citation.source_id) ? `[${esc(sid(citation.source_id))}]` : "—"}</td>
-      <td class="wrap">${dash(citation.document)}</td>
+      <td class="wrap">${citationDocument(result, citation)}</td>
       <td>${dash(citation.page)}</td>
       <td>${dash(citation.edition_year)}</td>
     </tr>`,
@@ -776,6 +877,12 @@ function contraindicationsBlock(result: TriageResponse): string {
   const items = d.contraindications ?? [];
   const extra = [
     d.parse_warning,
+    d.consistency_warning,
+    d.avoid_warning,
+    d.differential_warning,
+    d.second_pass_note,
+    d.complication_note,
+    d.citation_alignment_note,
     d.dose_completeness_warning,
     d.drug_indication_warning,
     d.urgency_warning,
@@ -785,6 +892,7 @@ function contraindicationsBlock(result: TriageResponse): string {
     items.length === 0 &&
     extra.length === 0 &&
     (d.completeness_gaps?.length ?? 0) === 0 &&
+    (d.knowledge_gaps?.length ?? 0) === 0 &&
     !d.citation_warning?.trim()
   )
     return "";
@@ -825,11 +933,11 @@ function contraindicationsBlock(result: TriageResponse): string {
   const nAbs = ordered.filter((g) => worst(g) === "ABSOLUTE").length;
   const nReasons = items.filter((c) => c.severity === "ABSOLUTE").length;
   const lead = nAbs
-    ? `<p class="wrap alert"><strong>${nAbs} recommendation${nAbs > 1 ? "s" : ""} above ${
+    ? `<p class="wrap alert"><strong>${nAbs} recommendation${nAbs > 1 ? "s" : ""} the model proposed ${
         nAbs > 1 ? "are" : "is"
       } ABSOLUTELY CONTRAINDICATED for this patient${
         nReasons > nAbs ? ` (${nReasons} independent reasons)` : ""
-      }. Do not act on ${nAbs > 1 ? "them" : "it"} without re-reading the cited guideline.</strong></p>`
+      } and ${nAbs > 1 ? "were" : "was"} removed from the plan. Listed here so the error stays visible.</strong></p>`
     : "";
   const notes = extra.map((w) => `<p class="wrap">${esc(w)}</p>`).join("\n  ");
 
@@ -839,7 +947,27 @@ function contraindicationsBlock(result: TriageResponse): string {
   const missing = gaps.length
     ? `<p class="wrap alert"><strong>Not addressed in this report:</strong>
       ${gaps.map((g) => esc(g.element)).join(" · ")}.
-      <span class="muted">Read ${esc(gaps[0].guideline)} before acting.</span></p>`
+      <span class="muted">Read ${esc(gaps[0].guideline)} before acting.</span></p>
+      ${gaps
+        .filter((g) => g.quote)
+        .map(
+          (g) =>
+            `<p class="wrap"><strong>${esc(g.element)} — the guideline says:</strong> &ldquo;${esc(
+              g.quote,
+            )}&rdquo; <span class="muted">[${esc(g.quote_source)}]</span></p>`,
+        )
+        .join("\n      ")}`
+    : "";
+
+  // Where KKM is silent: one line per element, then the links once.
+  const kgaps = d.knowledge_gaps ?? [];
+  const kLinks = kgaps.flatMap((g) => g.references ?? [])
+    .filter((r, i, all) => all.findIndex((x) => x.url === r.url) === i);
+  const silent = kgaps.length
+    ? `${kgaps.map((g) => `<p class="wrap"><strong>Not covered by KKM:</strong> ${esc(g.statement)}</p>`).join("\n  ")}
+      ${kLinks.length ? `<p class="wrap muted">Consult: ${kLinks
+        .map((r) => `<a href="${esc(r.url)}">${esc(r.title)}</a>`)
+        .join(" · ")}</p>` : ""}`
     : "";
 
   // Citation integrity is one line by design: the citation table stays compact.
@@ -847,7 +975,24 @@ function contraindicationsBlock(result: TriageResponse): string {
     ? `<p class="wrap muted">${esc(d.citation_warning)}</p>`
     : "";
 
-  return section("Safety checks — automated", `${lead}${missing}${table}${notes}${cites}`);
+  return section("Safety checks — automated", `${lead}${missing}${silent}${table}${notes}${cites}`);
+}
+
+/** The backend audit row this report was recorded as. A report with no audit
+ *  row says so rather than leaving the cell blank, which would read as "not
+ *  applicable" instead of "not recorded". */
+function auditCell(result: TriageResponse): string {
+  const id = result.provenance?.audit_id;
+  return id ? esc(id) : "not recorded";
+}
+
+/** Code and corpus fingerprints: enough to tell whether two reports came from
+ *  the same system. "uncommitted" marks a build that git alone cannot recreate. */
+function buildCell(result: TriageResponse): string {
+  const p = result.provenance;
+  if (!p || !p.code_fingerprint) return "—";
+  const dirty = p.git_dirty ? " (uncommitted)" : "";
+  return `code ${esc(p.code_fingerprint)}${dirty} · corpus ${esc(p.corpus_fingerprint)}`;
 }
 
 export function buildReportHtml(
@@ -896,6 +1041,10 @@ export function buildReportHtml(
           )}</td>
           <th>Latency</th><td>${esc((result.latency_ms / 1000).toFixed(1))} s</td>
         </tr>
+        <tr>
+          <th>Audit ID</th><td class="mono">${auditCell(result)}</td>
+          <th>Build</th><td class="mono">${buildCell(result)}</td>
+        </tr>
       </tbody>
     </table>
     <p class="banner">Decision-support output for registered clinicians. Not a
@@ -903,9 +1052,10 @@ export function buildReportHtml(
     recommendation must be verified against the cited source before acting.</p>
   </header>
 
-  ${patientBlock(request)}
+  ${patientBlock(request, d.onset_derived ?? "")}
   ${triageBlock(result)}
   ${contraindicationsBlock(result)}
+  ${cautionsBlock(result)}
   ${redFlagsBlock(result)}
   ${diagnosisBlock(result)}
   ${actionsBlock(result)}
@@ -915,6 +1065,8 @@ export function buildReportHtml(
   ${vitalsInterpretationBlock(result)}
   ${gapsBlock(result)}
   ${citationsBlock(result)}
+  ${selectionBlock(result)}
+  ${referencesBlock(result)}
   ${signOff()}
 
   <footer class="footer">

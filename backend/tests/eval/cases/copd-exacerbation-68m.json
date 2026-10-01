@@ -1,0 +1,1169 @@
+{
+  "id": "copd-exacerbation-68m",
+  "title": "Acute exacerbation of COPD, 68-year-old man",
+  "tier": "management",
+  "provenance": "Vignette written 2026-09-30 for the evaluation harness; expected answers extracted from the cited documents.",
+  "intake": {
+    "age": 68,
+    "gender": "male",
+    "weight_kg": 58,
+    "vitals": {
+      "systolic_bp": 138,
+      "diastolic_bp": 82,
+      "heart_rate": 104,
+      "respiratory_rate": 26,
+      "temperature": 37.9,
+      "spo2": 88,
+      "gcs": 15,
+      "pain_score": 0
+    },
+    "complaint": "Increased breathlessness and cough with more yellow sputum for 2 days.",
+    "history": "Ex-smoker, 40 pack-years. Known COPD on tiotropium inhaler.",
+    "breathing": "wheeze_expiratory_rhonchi_airway_intact",
+    "comorbidities": [
+      "copd_or_asthma"
+    ],
+    "facility": "state_or_tertiary_with_pci_and_ct"
+  },
+  "scored_sections": [
+    "triage",
+    "diagnosis",
+    "red_flags",
+    "differentials",
+    "actions",
+    "investigations",
+    "drugs",
+    "disposition",
+    "grounding"
+  ],
+  "expected": {
+    "triage": {
+      "level": 1,
+      "acceptable": [
+        1,
+        2
+      ],
+      "time_to_treatment": null,
+      "note": "Both extractors: level 1. A: Primary triage Rapid Assessment, Respiratory Distress row: the Level 1 column (x~136, p4) lists 'SpO2 < 90% room air'. SpO2 88% meets it if it was a room-air reading; the intake does not say. Otherwise the adult Vital Signs Level 2 column (x~131, p7) 'SpO2 < 92%' applies. 'Wheeze, expiratory rhonchi; airway intact' is Level 3 in both primary triage (p4, x~356) and the SOB complaint row (p11, x~244). HR 104, RR 26 and Temp 37.9 are Level 3 (p7). MTS does not adjust for a COPD patient's usual baseline saturation. B: SpO2 88% is taken as a room-air reading, which falls in the Level 1 Rapid Assessment cell 'SpO2 < 90% room air' (x~136, p4). If it is judged a chronic baseline or an on-oxygen reading, the vital-signs cell 'SpO2 < 92%' (x~131, p7) gives Level 2. The intake's 'wheeze, expiratory rhonchi; airway intact' is a Level 3 cell (x~356 p4; x~244 SOB p11). HR 104, RR 26 and Temp 37.9 are Level 3 cells (x~244, p7). The most urgent applicable cell is chosen.",
+      "evidence": [
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "• Require assisted breathing • SpO2 < 90% room air"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• BP > 220/130 with symptoms • SpO2 < 92%"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "• Wheeze, expiratory rhonchi; airway intact • SpO2 92 - 94% room air"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 11,
+          "quote": "• Rapid breaths • Wheeze, expiratory rhonchi; airway intact"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• Temp 37.5 - 39 C • Pain Score 4 - 7"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 3,
+          "quote": "Level 1 - Resuscitation - 0 minutes (requires rapid team activation mechanism)"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "• Confused, lethargic • Require assisted breathing • SpO2 < 90% room air"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• SBP < 90 • HR > 120 • RR > 30 • BP > 220/130 with symptoms • SpO2 < 92%"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "• Wheeze, expiratory rhonchi; airway intact • SpO2 92 - 94% room air • Need O2 support"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "If modiﬁers do not differentiate between two triage levels, the higher triage level modiﬁer should be selected."
+        }
+      ]
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Acute exacerbation of COPD, probably infective (purulent sputum, increased dyspnoea, fever), with hypoxaemia",
+        "match": [
+          "acute exacerbation of (copd|chronic obstructive)",
+          "\\bAE ?COPD\\b",
+          "copd exacerbation",
+          "exacerbation of (copd|chronic obstructive)",
+          "infective exacerbation",
+          "copd.{0,20}exacerbat",
+          "\\bAECOPD\\b",
+          "(acute |infective )*exacerbation of (COPD|chronic obstructive)",
+          "\\bCOPD\\b.{0,20}exacerbation",
+          "chronic obstructive pulmonary disease.{0,30}exacerbation",
+          "\\bIECOPD\\b"
+        ],
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 42,
+            "quote": "Exacerbation is defined as an event in the natural course of the disease characterised by a sustained"
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 42,
+            "quote": "Usual symptoms are increased dyspnoea, cough and production of sputum which may become purulent."
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 42,
+            "quote": "Most (50 to 60%) exacerbations are caused by bacterial or viral respiratory infections,"
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 42,
+            "quote": "Exacerbation is defined as an event in the natural course of the disease characterised by a sustained (lasting 48 hours or more) worsening of the patient’s baseline dyspnoea, cough, and/or sputum"
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 42,
+            "quote": "Usual symptoms are increased dyspnoea, cough and production of sputum which may become purulent."
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 42,
+            "quote": "Most (50 to 60%) exacerbations are caused by bacterial or viral respiratory infections"
+          }
+        ]
+      },
+      "acceptable_alternatives": [
+        {
+          "label": "Acute (type 2 / hypercapnic) respiratory failure due to AECOPD",
+          "match": [
+            "type (2|ii) respiratory failure",
+            "hypercapni\\w* respiratory failure",
+            "acute respiratory failure"
+          ]
+        },
+        {
+          "label": "Pneumonia in a COPD patient",
+          "match": [
+            "pneumonia"
+          ]
+        },
+        {
+          "label": "Acute respiratory failure secondary to AECOPD",
+          "match": [
+            "(acute|type (1|2|I|II)) (hypoxa?emic |hypercapni?c )?respiratory failure"
+          ]
+        }
+      ]
+    },
+    "red_flags": [
+      {
+        "id": "respiratory-acidosis-hypercapnia",
+        "label": "Respiratory acidosis / hypercapnia (pH < 7.35-7.36) - indication for assisted ventilation",
+        "match": [
+          "acidos",
+          "acidaemi|acidemi",
+          "hypercapni",
+          "hypercarbi",
+          "co2 (retention|narcosis)",
+          "pa?co2",
+          "carbon dioxide retention",
+          "(respiratory )?acidosis",
+          "\\bpH\\b.{0,15}7\\.3",
+          "CO2 (retention|narcosis)",
+          "PaCO2|pCO2"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 43,
+            "quote": "The respiratory failure and exacerbation is worse if there is respiratory acidosis [pH < 7.36 with hypercapnia"
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 43,
+            "quote": "The respiratory failure and exacerbation is worse if there is respiratory acidosis [pH < 7.36 with hypercapnia pCO2 6 - 8 kPa (45 – 60 mmHg)] and is an indication for assisted (non-invasive or invasive ventilation) ventilation."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "danger-signs",
+        "label": "Danger signs: respiratory distress, tachyarrhythmia, cyanosis, heart failure, exhaustion",
+        "match": [
+          "danger sign",
+          "exhaust",
+          "cyanos",
+          "accessory muscle",
+          "respiratory distress",
+          "tiring",
+          "paradoxical",
+          "confus",
+          "(reduced|decreased|altered) (conscious|alertness|mental)",
+          "drows"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 47,
+            "quote": "Examine for danger signs: Respiratory distress, tachyarrhythmia, cyanosis, heart failure, exhaustion."
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 43,
+            "quote": "Signs of poorer prognosis – confusion, reduced conscious level, cachexia, respiratory distress, cyanosis and evidence of cor-pulmonale."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "differentials": [
+      {
+        "id": "pneumonia",
+        "label": "Pneumonia (cause of exacerbation or alternative)",
+        "match": [
+          "pneumonia",
+          "consolidation",
+          "\\bCAP\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 44,
+            "quote": "A chest radiograph is useful to identify possible causes of the AECOPD (for example, pneumonia), alternative diagnoses that may mimic features of COPD (for example, heart failure and bronchiectasis) and possible complications (for example, lung cancer and pneumothorax)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "heart-failure",
+        "label": "Heart failure (mimic / precipitant)",
+        "match": [
+          "heart failure",
+          "\\bCCF\\b",
+          "\\bCHF\\b",
+          "pulmonary o?edema",
+          "cardiac failure",
+          "\\bCCF\\b|\\bCHF\\b",
+          "cor pulmonale"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 42,
+            "quote": "Other precipitating factors include congestive heart failure, cold air and pulmonary embolism."
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 44,
+            "quote": "A chest radiograph is useful to identify possible causes of the AECOPD (for example, pneumonia), alternative diagnoses that may mimic features of COPD (for example, heart failure and bronchiectasis) and possible complications (for example, lung cancer and pneumothorax)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "pneumothorax",
+        "label": "Pneumothorax",
+        "match": [
+          "pneumothora"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 44,
+            "quote": "A chest radiograph is useful to identify possible causes of the AECOPD (for example, pneumonia), alternative diagnoses that may mimic features of COPD (for example, heart failure and bronchiectasis) and possible complications (for example, lung cancer and pneumothorax)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "pulmonary-embolism",
+        "label": "Pulmonary embolism",
+        "match": [
+          "pulmonary embol",
+          "\\bPE\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 42,
+            "quote": "Other precipitating factors include congestive heart failure, cold air and pulmonary embolism."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "lung-cancer",
+        "label": "Lung cancer (40 pack-year ex-smoker)",
+        "match": [
+          "lung (cancer|carcinoma|malignan|neoplas)",
+          "bronchogenic",
+          "lung (cancer|carcinoma|malignan)",
+          "bronchiectasis"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 44,
+            "quote": "A chest radiograph is useful to identify possible causes of the AECOPD (for example, pneumonia), alternative diagnoses that may mimic features of COPD (for example, heart failure and bronchiectasis) and possible complications (for example, lung cancer and pneumothorax)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "asthma",
+        "label": "Asthma (may co-exist)",
+        "match": [
+          "asthma"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 44,
+            "quote": "If patients do not respond to standard therapy, they need to be reassessed to determine if they have other diagnoses that may imitate or aggravate their AECOPD such as:"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "controlled-oxygen",
+        "label": "Controlled oxygen (Venturi 24-28% or nasal prongs 1-2 L/min), target SpO2 90-93%",
+        "match": [
+          "controlled (supplemental )?oxygen",
+          "venturi",
+          "24\\s*(-|–|to)\\s*28\\s*%",
+          "(target|aim)\\w*.{0,20}(spo2|saturation)s?.{0,15}(8[89]|9[0-3])",
+          "88\\s*(-|–|to)\\s*92",
+          "90\\s*(-|–|to)\\s*93",
+          "controlled oxygen",
+          "(24|28) ?%",
+          "SpO2.{0,20}(88|90) ?(-|–|to) ?(92|93)",
+          "target.{0,20}(88|90)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 45,
+            "quote": "Controlled oxygen therapy should be given in the form of 24-28% oxygen via a Venturi mask if available to ensure accurate delivery of oxygen or 1-2 litres per minute of oxygen via nasal prongs."
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 47,
+            "quote": "Controlled oxygen therapy if SpO2 < 90%, aim for SpO2 90-93%"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "repeat-abg-30-60min",
+        "label": "Repeat ABG 30-60 minutes after starting oxygen",
+        "match": [
+          "repeat\\w* (an? )?(abg|arterial blood gas|blood gas)",
+          "(abg|blood gas)\\w*.{0,20}(after|in|at|within) (30|60)",
+          "serial (abg|blood gas)",
+          "(abg|blood gas).{0,20}(recheck|repeat)",
+          "(repeat|recheck|re-?check).{0,30}(ABG|blood gas)",
+          "(ABG|blood gas).{0,40}(30|60) ?(min|minutes)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 45,
+            "quote": "Arterial blood gases should be checked 30-60 minutes later to ensure adequate oxygenation without CO2 retention or acidosis."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "consider-niv",
+        "label": "Consider NIV (RR > 25; hypercapnic acidosis pH 7.25-7.35) if no response to medical therapy",
+        "match": [
+          "\\bNIV\\b",
+          "non-?invasive (positive pressure )?ventilation",
+          "\\bBi-?PAP\\b",
+          "\\bNIPPV\\b",
+          "bilevel",
+          "non-?invasive (positive pressure )?ventilat",
+          "\\bBiPAP\\b|bi-?level"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 53,
+            "quote": "NIV should be considered for AECOPD patients with hypercapnic respiratory failure despite optimal medical therapy."
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 52,
+            "quote": "Respiratory rate > 25 breaths per minute."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "monitor-fluid-balance",
+        "label": "Monitor fluid balance and nutrition",
+        "match": [
+          "fluid balance",
+          "input.{0,10}output",
+          "\\bI/O\\b",
+          "associated conditions|co-?morbid"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 47,
+            "quote": "Monitor fluid balance and nutrition"
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 51,
+            "quote": "Identify and treat associated conditions (e.g. heart failure, arrhythmias)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "investigations": [
+      {
+        "id": "abg",
+        "label": "Arterial blood gas (note FiO2)",
+        "match": [
+          "\\bABG\\b",
+          "arterial blood gas",
+          "blood gas"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 47,
+            "quote": "Arrange appropriate investigations: ABG (note the FiO2), FBC, BUSECr, LFT, blood glucose, CXR, ECG, sputum C&S"
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 43,
+            "quote": "It is recommended for patients attending the accident and emergency department and also in those who are hospitalised."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "cxr",
+        "label": "Chest X-ray",
+        "match": [
+          "\\bCXR\\b",
+          "chest (x-?ray|radiograph)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 47,
+            "quote": "Arrange appropriate investigations: ABG (note the FiO2), FBC, BUSECr, LFT, blood glucose, CXR, ECG, sputum C&S"
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 44,
+            "quote": "A chest radiograph is useful to identify possible causes of the AECOPD (for example, pneumonia), alternative diagnoses that may mimic features of COPD (for example, heart failure and bronchiectasis) and possible complications (for example, lung cancer and pneumothorax)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "ecg",
+        "label": "ECG (tachyarrhythmia, ischaemia, RVH)",
+        "match": [
+          "\\bECG\\b",
+          "\\bEKG\\b",
+          "electrocardiogra",
+          "12[- ]lead"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 44,
+            "quote": "An ECG is a valuable tool for the diagnosis of tachyarrhythmias, myocardial ischaemia and right ventricular hypertrophy."
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 47,
+            "quote": "Arrange appropriate investigations: ABG (note the FiO2), FBC, BUSECr, LFT, blood glucose, CXR, ECG, sputum C&S"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "fbc",
+        "label": "Full blood count",
+        "match": [
+          "\\bFBC\\b",
+          "full blood count",
+          "complete blood count",
+          "\\bCBC\\b",
+          "white (cell|blood cell) count",
+          "\\bWBC\\b",
+          "white (cell|blood cell) count|\\bWBC\\b|\\bTWC\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 47,
+            "quote": "Arrange appropriate investigations: ABG (note the FiO2), FBC, BUSECr, LFT, blood glucose, CXR, ECG, sputum C&S"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "renal-profile",
+        "label": "Renal profile / electrolytes (BUSE, creatinine)",
+        "match": [
+          "\\bBUSE",
+          "renal (profile|function)",
+          "\\bRFT\\b",
+          "\\bU&?E\\b",
+          "electrolyte",
+          "creatinine",
+          "\\bU ?& ?E\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 47,
+            "quote": "Arrange appropriate investigations: ABG (note the FiO2), FBC, BUSECr, LFT, blood glucose, CXR, ECG, sputum C&S"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "sputum-culture",
+        "label": "Sputum Gram stain / culture and sensitivity",
+        "match": [
+          "sputum (c&s|culture|gram|mc&s|c ?/ ?s)",
+          "sputum for",
+          "sputum.{0,20}(culture|C ?& ?S|gram)"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 43,
+            "quote": "Sputum examination should also be performed on patients who are hospitalised"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "lft",
+        "label": "Liver function tests",
+        "match": [
+          "\\bLFTs?\\b",
+          "liver function",
+          "(blood )?glucose|\\bRBS\\b|\\bBSL\\b|\\bCBG\\b",
+          "\\bLFTs?\\b|liver function"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 47,
+            "quote": "Arrange appropriate investigations: ABG (note the FiO2), FBC, BUSECr, LFT, blood glucose, CXR, ECG, sputum C&S"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_allowed": [
+      {
+        "id": "salbutamol-saba",
+        "label": "Salbutamol (SABA), nebulised or pMDI with spacer",
+        "match": [
+          "salbutamol",
+          "ventolin",
+          "albuterol",
+          "\\bSABA\\b",
+          "short[- ]acting (β|beta|b)[- ]?2?[- ]?agonist",
+          "combivent",
+          "duovent",
+          "fenoterol",
+          "terbutaline",
+          "salbutamol|albuterol|ventolin",
+          "beta-?2?[- ]agonist|β2?[- ]agonist",
+          "bronchodilat"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 47,
+            "quote": "Inhaled short-acting bronchodilators (SABA + SAAC) from pMDI via a spacer device or nebuliser"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "ipratropium-saac",
+        "label": "Ipratropium bromide (SAAC), combined with SABA",
+        "match": [
+          "ipratropium",
+          "atrovent",
+          "combivent",
+          "duovent",
+          "\\bSAAC\\b",
+          "short[- ]acting anticholinergic",
+          "\\bSAMA\\b",
+          "ipratropium|atrovent",
+          "\\bSAAC\\b|\\bSAMA\\b",
+          "combivent|duovent"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 49,
+            "quote": "In severe exacerbations, nebulised SABA can be combined with a SAAC, for example,"
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 49,
+            "quote": "In severe exacerbations, nebulised SABA can be combined with a SAAC, for example, Combivent® nebuliser solution 2.5 mL (ipratropium bromide 500 μg, salbutamol 2.5 mg) 6 hourly"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "prednisolone",
+        "label": "Prednisolone 30-40 mg daily for 7-14 days (or IV hydrocortisone)",
+        "match": [
+          "prednisolone",
+          "hydrocortisone",
+          "corticosteroid",
+          "steroid",
+          "prednisolone|prednisone",
+          "(systemic |oral |IV )?cortico ?steroid",
+          "methylprednisolone"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 49,
+            "quote": "A dose of 30-40 mg of oral prednisolone daily for 7-14 days appears to be safe and effective."
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 47,
+            "quote": "Oral prednisolone (intravenous hydrocortisone if patient unable to swallow or vomits)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "antibiotic-complicated-copd",
+        "label": "Antibiotic for complicated COPD (> 65 y): beta-lactam/beta-lactamase inhibitor, 2nd/3rd-gen cephalosporin, and/or macrolide",
+        "match": [
+          "amoxicillin|amoxycillin|augmentin|co-?amoxiclav|amoxicillin[/-]clavulan",
+          "cefuroxime|ceftriaxone|cephalosporin",
+          "azithromycin|clarithromycin|macrolide",
+          "levofloxacin|moxifloxacin|ciprofloxacin|fluoroquinolone",
+          "antibiotic",
+          "amoxicillin|amoxycillin|augmentin|co-?amoxiclav",
+          "levofloxacin|moxifloxacin|doxycycline"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 50,
+            "quote": "β-lactam + β-lactamase inhibitor e.g. amoxicillin 1 g three times a day or amoxycillin/clavulanate 2 g twice daily for 7 days"
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 50,
+            "quote": "e.g., cefuroxime 500 mg twice daily, ceftriaxone 1 g once daily for 7 days"
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 49,
+            "quote": "Antibiotics should be given to patients with AECOPD having at least 2 out of 3 cardinal symptoms (i.e., purulent sputum, increased sputum volume and/or increased dyspnoea)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "aminophylline",
+        "label": "IV aminophylline (loading 5 mg/kg over 20 min) if inadequate response",
+        "match": [
+          "aminophylline",
+          "theophylline",
+          "aminophylline|theophylline|methylxanthine"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 49,
+            "quote": "The recommended loading dose of intravenous aminophylline is 250-500 mg (5 mg/kg) over 20 minutes"
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 49,
+            "quote": "In severe exacerbations, intravenous methylxanthines can be considered if there is inadequate response to inhaled SABA and SAAC."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "sc-heparin",
+        "label": "Subcutaneous heparin (DVT prophylaxis)",
+        "match": [
+          "heparin",
+          "enoxaparin",
+          "\\bLMWH\\b",
+          "(subcutaneous|s\\.?c\\.?) heparin",
+          "enoxaparin|\\bLMWH\\b|clexane",
+          "(DVT|VTE|thrombo).{0,15}prophylaxis"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 51,
+            "quote": "Deep vein thrombosis prophylaxis with subcutaneous heparin especially in immobile patients"
+          },
+          {
+            "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+            "page": 51,
+            "quote": "Deep vein thrombosis prophylaxis with subcutaneous heparin especially in immobile patients and those with acute on chronic respiratory failure"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "disposition": {
+      "acceptable": [
+        "ADMIT_WARD",
+        "ADMIT_ICU_HDU"
+      ],
+      "preferred": "ADMIT_WARD",
+      "evidence": [
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 45,
+          "quote": "If the exacerbation is life threatening, the patient should be admitted to a high dependency unit or the ICU."
+        },
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 53,
+          "quote": "Patients with severe AECOPD requiring NIV should be managed by dedicated and trained staff in high dependency or intensive care units."
+        },
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 45,
+          "quote": "Failure of exacerbation to respond to initial medical management"
+        },
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 45,
+          "quote": "• Significant co-morbidities • Newly occurring cardiac arrhythmias • Older age • Insufficient home support"
+        },
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 45,
+          "quote": "If the exacerbation is life threatening, the patient should be admitted to a high dependency unit or the ICU."
+        },
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 53,
+          "quote": "Patients with severe AECOPD requiring NIV should be managed by dedicated and trained staff in high dependency or intensive care units."
+        }
+      ],
+      "note": "Admission indicated: older age, hypoxaemia, tachypnoea. General ward if he responds to controlled oxygen and bronchodilators. HDU/ICU if NIV is needed (hypercapnic acidosis) or the exacerbation is life-threatening. / He meets the admission criteria (older age, hypoxaemia, fever, likely infective cause). The ward is preferred. HDU/ICU is correct if ABG shows hypercapnic acidosis needing NIV, or if he deteriorates. RESUSCITATION_BAY is accepted only as the initial ED zone, because the MTS triage level is 1. Discharge is not acceptable: he is hypoxic at 88%."
+    },
+    "sources_forbidden": [
+      {
+        "doc_type": "PAEDIATRIC_PROTOCOL",
+        "why": "adult patient"
+      }
+    ]
+  },
+  "disputed": [
+    {
+      "section": "red_flags",
+      "id": "respiratory-failure-hypoxaemia",
+      "label": "Respiratory failure / hypoxaemia (PaO2 < 8 kPa, SaO2 < 90%)",
+      "match": [
+        "respiratory failure",
+        "hypox",
+        "spo2\\s*(<|below|less than|of)?\\s*(8\\d|90)\\s*%?",
+        "desaturat",
+        "pao2"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 43,
+          "quote": "In patients who are breathing room air, respiratory failure is defined as PaO2 < 8.0 kPa"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "red_flags",
+      "id": "reduced-consciousness",
+      "label": "Confusion / reduced conscious level (poorer prognosis; NIV contraindication)",
+      "match": [
+        "confus",
+        "reduced (conscious|alertness)",
+        "drows",
+        "somnolen",
+        "\\bGCS\\b",
+        "altered mental"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 43,
+          "quote": "Signs of poorer prognosis – confusion, reduced conscious level, cachexia, respiratory distress,"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "red_flags",
+      "id": "new-arrhythmia-instability",
+      "label": "New arrhythmia or haemodynamic instability",
+      "match": [
+        "arrhythmi",
+        "tachyarrhythm",
+        "atrial fibrillation|\\bAF\\b",
+        "ha?emodynamic(ally)? (instab|unstable)"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 47,
+          "quote": "Examine for danger signs: Respiratory distress, tachyarrhythmia, cyanosis, heart failure, exhaustion."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "differentials",
+      "id": "bronchiectasis",
+      "label": "Bronchiectasis",
+      "match": [
+        "bronchiectas"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 44,
+          "quote": "A chest radiograph is useful to identify possible causes of the AECOPD (for example, pneumonia), alternative diagnoses that may mimic features of COPD (for example, heart failure and bronchiectasis) and possible complications (for example, lung cancer and pneumothorax)."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "inhaled-bronchodilators",
+      "label": "Inhaled short-acting bronchodilators (SABA + SAAC) via nebuliser or pMDI/spacer",
+      "match": [
+        "bronchodilat",
+        "nebuli[sz]",
+        "salbutamol",
+        "ventolin",
+        "\\bSABA\\b",
+        "ipratropium",
+        "combivent",
+        "duovent",
+        "\\bSAAC\\b"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 47,
+          "quote": "Inhaled short-acting bronchodilators (SABA + SAAC) from pMDI via a spacer device or nebuliser"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "systemic-corticosteroid",
+      "label": "Systemic corticosteroid (oral prednisolone; IV hydrocortisone if unable to swallow)",
+      "match": [
+        "prednisolone",
+        "hydrocortisone",
+        "(systemic |oral |iv )?(cortico)?steroid",
+        "methylprednisolone"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 47,
+          "quote": "Oral prednisolone (intravenous hydrocortisone if patient unable to swallow or vomits)"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "antibiotics",
+      "label": "Antibiotics (2 of 3 cardinal symptoms: purulent sputum, more sputum, more dyspnoea)",
+      "match": [
+        "antibiotic",
+        "antimicrobial",
+        "amoxicillin|amoxycillin|augmentin|co-?amoxiclav",
+        "cefuroxime|ceftriaxone|cephalosporin",
+        "azithromycin|clarithromycin|macrolide",
+        "doxycycline",
+        "levofloxacin|moxifloxacin"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 47,
+          "quote": "Start antibiotics if patient has 2 out of 3 cardinal symptoms (i.e, purulent sputum, increased sputum volume, increased dyspnoea)"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "iv-aminophylline-if-inadequate",
+      "label": "Consider IV aminophylline if inadequate response to inhaled bronchodilators",
+      "match": [
+        "aminophylline",
+        "theophylline",
+        "methylxanthine"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 49,
+          "quote": "In severe exacerbations, intravenous methylxanthines can be considered if there is inadequate response to inhaled SABA and SAAC."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "dvt-prophylaxis",
+      "label": "Consider subcutaneous heparin DVT prophylaxis",
+      "match": [
+        "heparin",
+        "enoxaparin",
+        "\\bLMWH\\b",
+        "\\bDVT prophylaxis",
+        "thromboprophylaxis"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 51,
+          "quote": "Deep vein thrombosis prophylaxis with subcutaneous heparin especially in immobile patients"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "history-severity",
+      "label": "Establish baseline COPD severity and previous admissions/ICU/NIV",
+      "match": [
+        "baseline",
+        "previous (admission|exacerbation|ICU|intubation|NIV)",
+        "(COPD|disease) severity",
+        "\\bFEV1\\b"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 47,
+          "quote": "Obtain relevant history: Current symptoms, recent treatment from other doctors, COPD severity, previous episodes"
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "investigations",
+      "id": "blood-glucose",
+      "label": "Blood glucose",
+      "match": [
+        "glucose",
+        "blood sugar",
+        "\\bCBG\\b",
+        "\\bRBS\\b",
+        "\\bDXT\\b"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 47,
+          "quote": "Arrange appropriate investigations: ABG (note the FiO2), FBC, BUSECr, LFT, blood glucose, CXR, ECG, sputum C&S"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_forbidden",
+      "id": "uncontrolled-high-flow-oxygen",
+      "label": "Uncontrolled high-concentration oxygen targeting SpO2 > 93-95% (risk of CO2 narcosis)",
+      "match": [
+        "non-?rebreath",
+        "high[- ]concentration oxygen",
+        "100 ?% oxygen",
+        "15 ?(l|litres?|liters?)(/| per )?min",
+        "(target|aim)\\w*.{0,20}(spo2|saturation)s?.{0,10}(>|above|of)\\s*9[5-9]"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 43,
+          "quote": "controlled oxygen therapy using Venturi mask is recommended to avoid CO2 narcosis, aiming for SpO2 ≥ 90%."
+        },
+        {
+          "source": "CPG Management of Chronic Obstructive Pulmonary Disease (COPD) (2nd Edition) 2009.pdf",
+          "page": 43,
+          "quote": "Morbidity and mortality are increased in patients with hypercapnic respiratory failure when the SpO2 is increased to above 93-95%."
+        }
+      ],
+      "proposed_by": "A"
+    }
+  ],
+  "adjudication": {
+    "method": "two independent extraction passes (A, B); agreed items scored",
+    "notes": [],
+    "open_questions": {
+      "A": [
+        "Triage Level 1 assumes the SpO2 of 88% was read on room air. If he was already on oxygen, it is Level 2.",
+        "The only source for admission criteria is the COPD CPG 2009 list (older age, significant comorbidity, failure to respond, etc.). ABG results will decide ward vs HDU.",
+        "Oxygen targets differ between documents: the COPD CPG says 90-93%, while MTS triage treats 92-94% as Level 3. The gold uses the CPG target."
+      ],
+      "B": [
+        "Is SpO2 88% on room air? This decides MTS Level 1 versus Level 2. Chronic hypoxaemia in COPD may make Level 2 the more realistic reading.",
+        "The COPD CPG (2009) does not explicitly forbid uncontrolled high-concentration oxygen. It recommends controlled oxygen 'to avoid CO2 narcosis' and warns that outcomes are worse above SpO2 93-95% in hypercapnic failure. For that reason high-flow oxygen is not listed under drugs_forbidden; the adjudicator may want to add it.",
+        "The CPG's target is SpO2 90-93% (a 2009 document), while many clinicians write 88-92%. The regex accepts both."
+      ]
+    }
+  }
+}

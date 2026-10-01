@@ -1,0 +1,1095 @@
+{
+  "id": "head-injury-gcs13-35m",
+  "title": "Moderate head injury after a motorcycle crash, 35-year-old man",
+  "tier": "management",
+  "provenance": "Vignette written 2026-09-30 for the evaluation harness; expected answers extracted from the cited documents.",
+  "intake": {
+    "age": 35,
+    "gender": "male",
+    "weight_kg": 72,
+    "vitals": {
+      "systolic_bp": 136,
+      "diastolic_bp": 84,
+      "heart_rate": 92,
+      "respiratory_rate": 18,
+      "temperature": 36.8,
+      "spo2": 98,
+      "gcs": 13,
+      "pain_score": 6
+    },
+    "complaint": "Motorcycle accident 1 hour ago; hit his head, vomited twice and is confused.",
+    "history": "No known illnesses.",
+    "trauma_mechanism": "Motorcyclist versus car at about 50 km/h, helmet on",
+    "arrival_mode": "ambulance",
+    "onset": "1 hour ago",
+    "facility": "state_or_tertiary_with_pci_and_ct"
+  },
+  "scored_sections": [
+    "triage",
+    "diagnosis",
+    "red_flags",
+    "differentials",
+    "actions",
+    "investigations",
+    "drugs",
+    "disposition",
+    "grounding"
+  ],
+  "expected": {
+    "triage": {
+      "level": 2,
+      "acceptable": [
+        2
+      ],
+      "time_to_treatment": "under 10 minutes",
+      "note": "Both extractors: level 2. A: Level 2 comes from two cells. TRAUMA, HEAD NECK Level 2 column (p11, x~131): 'Altered Mental State' (confused), plus 'High velocity' if 50 km/h counts. Primary triage Conscious Levels Level 2 column (p4, x~246): 'Confused, agitated, disoriented'. The Vital Signs L2 cell 'GCS < 13 or drop > 2' (p7) is NOT met: GCS is 13, and a drop from an assumed 15 is only 2. Pain 6 is Level 3. No Level 1 cell applies (airway intact, no shock). The QR Head Injury triage algorithm would give Yellow zone (step 3, motorcycle crash > 30 km/h); MTS is used here. B: Level 2 comes from the TRAUMA, HEAD NECK complaint cells 'Altered Mental State' and 'High velocity' (x~131, p11), and from the Rapid Assessment cell 'Confused, agitated, disoriented' (x~246, p4). GCS 13 does NOT meet the vital-signs cell 'GCS < 13 or drop > 2' (x~131, p7), but a GCS drop of more than 2 on re-triage would. Pain 6 is a Level 3 cell. No Level 1 cell applies (airway intact, not in shock, not unresponsive).",
+      "evidence": [
+        {
+          "source": "MTS 2022.pdf",
+          "page": 11,
+          "quote": "• Penetrating type • High velocity • Active Bleeding • Visual / Hearing Impact • Altered Mental State"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "• Confused, agitated, disoriented"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• Severe Pain (8 - 10) • GCS < 13 or drop > 2"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• Temp 37.5 - 39 C • Pain Score 4 - 7"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 3,
+          "quote": "Level 2 - Emergency - under 10 minutes"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "• Confused, agitated, disoriented • Obvious Neuro deﬁcits • Ongoing Seizures • Abnormal posturing"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• Temp > 39 or < 36 • Appears Septic, Ill • Immunocompromised • Severe Pain (8 - 10) • GCS < 13 or drop > 2"
+        }
+      ]
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Traumatic head injury with GCS 13 (mild head injury by KKM classification, GCS 13-15) with high-risk features (confusion, vomiting x2); intracranial injury to be excluded",
+        "match": [
+          "head injur",
+          "traumatic brain injur",
+          "\\bTBI\\b",
+          "\\bMHI\\b",
+          "concussion",
+          "intracranial (injur|haem|hem|bleed)",
+          "intracranial (ha?emorrhage|bleed|injur)"
+        ],
+        "evidence": [
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 25,
+            "quote": "categorised into mild (GCS 13 to 15), moderate (GCS 9 to12) and severe (GCS 3 to 8)"
+          },
+          {
+            "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+            "page": 3,
+            "quote": "The severity of head injury can be classified according the presenting GCS:"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 24,
+            "quote": "mild head injury (MHI): GCS 13 - 15"
+          },
+          {
+            "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+            "page": 3,
+            "quote": "Head injury is defined as blunt and/or penetrating injury to the head (above the neck) and/or brain due to external force"
+          }
+        ]
+      },
+      "acceptable_alternatives": [
+        {
+          "label": "Moderate head injury",
+          "match": [
+            "moderate (traumatic )?(head|brain) injur",
+            "moderate TBI"
+          ]
+        },
+        {
+          "label": "Suspected traumatic intracranial haemorrhage (EDH/SDH/contusion)",
+          "match": [
+            "extradural",
+            "epidural",
+            "subdural",
+            "contusion",
+            "\\bEDH\\b",
+            "\\bSDH\\b"
+          ]
+        },
+        {
+          "label": "Moderate head injury (other classifications)",
+          "match": [
+            "moderate (head|brain) injur|moderate TBI"
+          ]
+        },
+        {
+          "label": "Traumatic intracranial haemorrhage (EDH/SDH/contusion)",
+          "match": [
+            "(extradural|epidural|subdural) ha?ematoma|\\bEDH\\b|\\bSDH\\b",
+            "(cerebral )?contusion",
+            "traumatic (ICH|SAH|subarachnoid)"
+          ]
+        },
+        {
+          "label": "Concussion",
+          "match": [
+            "concussion"
+          ]
+        }
+      ]
+    },
+    "red_flags": [
+      {
+        "id": "gcs-decline",
+        "label": "GCS < 15 and/or declining GCS",
+        "match": [
+          "\\bGCS\\b.{0,30}(drop|declin|deteriorat|fall|decreas|<\\s*15|less than 15)",
+          "(drop|declin|deteriorat|fall|decreas)\\w*.{0,20}\\bGCS\\b",
+          "deteriorat\\w* (in )?(conscious|neuro)",
+          "(drop|fall|declin|deteriorat|decreas).{0,20}GCS",
+          "GCS.{0,30}(drop|fall|declin|deteriorat|decreas|<\\s?15)",
+          "neuro(logical)? deterioration"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+            "page": 3,
+            "quote": "GCS < 15 and/or declining GCS score"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 28,
+            "quote": "decrease in GCS score within six hours"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 17,
+            "quote": "Risk factors for immediate scan: • GCS <13 on initial management • GCS <15 at 2 hours after injury"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 41,
+            "quote": "Any deterioration should prompt immediate re-evaluation of the patients by the attending doctor."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "vomiting-2-or-more",
+        "label": "Vomiting >= 2 episodes since injury (immediate CT risk factor)",
+        "match": [
+          "vomit",
+          "emesis"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+            "page": 6,
+            "quote": "• Vomiting ≥2 since the head injury"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 17,
+            "quote": "• Post-traumatic seizure • Focal neurological deficit • Vomiting ≥2 since the head injury"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "raised-icp-signs",
+        "label": "Signs of raised ICP: pupillary changes, hypertension with bradycardia, posturing, abnormal respiration",
+        "match": [
+          "intracranial (hypertension|pressure)",
+          "raised ICP",
+          "\\bICP\\b",
+          "cushing",
+          "pupil",
+          "herniat",
+          "posturing",
+          "(raised|increased) (ICP|intracranial pressure)|intracranial hypertension",
+          "hypertension (with|and) bradycardia|bradycardia",
+          "postur"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 36,
+            "quote": "Monitor for signs of intracranial hypertension such as decreased pupillary response to light, hypertension with bradycardia, posturing or respiratory abnormalities."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "focal-deficit-seizure",
+        "label": "Focal neurological deficit or post-traumatic seizure",
+        "match": [
+          "focal (neuro|deficit)",
+          "neurological deficit",
+          "seizure",
+          "convuls",
+          "hemipare",
+          "weakness",
+          "seizure|convuls|\\bfits?\\b",
+          "focal (neuro|deficit)|neurological deficit|hemipar|weakness"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+            "page": 6,
+            "quote": "• Post-traumatic seizure • Focal neurological deficit • Vomiting ≥2 since the head injury"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 17,
+            "quote": "• Post-traumatic seizure • Focal neurological deficit • Vomiting ≥2 since the head injury"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "basal-skull-fracture",
+        "label": "Signs of basal skull fracture (haemotympanum, raccoon eyes, CSF leak, Battle's sign)",
+        "match": [
+          "basal skull",
+          "base of skull",
+          "battle",
+          "raccoon",
+          "panda eyes",
+          "haemotympanum|hemotympanum",
+          "\\bCSF (leak|rhino|oto)",
+          "otorrh",
+          "rhinorrh",
+          "bas(al|e of) skull",
+          "battle'?s sign|raccoon|panda eyes|haemotympanum|hemotympanum|CSF (rhinorr|otorr|leak)",
+          "(depressed|open) skull fracture"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+            "page": 6,
+            "quote": "• Any sign of basal skull fracture (haemotympanum, ‘raccoon’ eyes, cerebrospinal fluid leakage from the ear or nose, or Battle’s sign)"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 17,
+            "quote": "• Any sign of basal skull fracture (haemotympanum, ‘raccoon’ eyes, cerebrospinal fluid leakage from the ear or nose, or Battle’s sign)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "differentials": [
+      {
+        "id": "cervical-spine-injury",
+        "label": "Associated cervical spine injury",
+        "match": [
+          "cervical (spine|spinal|cord) injur",
+          "c-?spine (injur|fracture)",
+          "neck injur",
+          "spinal injur",
+          "(cervical|c-?) ?spine (injur|fracture)",
+          "\\bc-?spine\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 27,
+            "quote": "Hence, cervical injury must be considered in all head injury."
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 48,
+            "quote": "All patients with head injury are presumed to have cervical spine injury until proven otherwise."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "other-injuries-polytrauma",
+        "label": "Other injuries (e.g. intrathoracic) - polytrauma from road traffic crash",
+        "match": [
+          "polytrauma",
+          "multiple injur",
+          "intrathoracic",
+          "chest (injur|trauma)",
+          "abdominal (injur|trauma)",
+          "other injur",
+          "polytrauma|multi(ple)?[- ](system|region)? ?trauma|other injur|extracranial injur",
+          "(chest|abdominal|pelvic|limb) injur"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 36,
+            "quote": "breathing (to detect any intrathoracic injury)"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 35,
+            "quote": "Stabilisation of airway, breathing and circulation is the priority for all ED patients before attending to other injuries."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "intoxication",
+        "label": "Alcohol / drug intoxication (diagnose only after head injury ruled out)",
+        "match": [
+          "intoxicat",
+          "alcohol",
+          "substance",
+          "drug (use|abuse|ingestion)",
+          "(substance|drug) (abuse|misuse|use)"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 25,
+            "quote": "alcohol intoxication, psychotropic drugs or substance abuse"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 35,
+            "quote": "In patients with depressed conscious level, head injury need to be ruled out before diagnosis of intoxication is made."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "non-traumatic-stroke-seizure",
+        "label": "Non-traumatic stroke, seizure or metabolic encephalopathy",
+        "match": [
+          "stroke",
+          "seizure",
+          "hypoglyc",
+          "metabolic encephalopath",
+          "post-?ictal",
+          "metabolic|encephalopath",
+          "(post-?ictal|seizure) "
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 25,
+            "quote": "brain infarction (ischaemic stroke) and intracranial haemorrhage (haemorrhagic stroke) without associated trauma"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 25,
+            "quote": "primary anoxic, inflammatory, infectious, toxic or metabolic encephalopathies, which are not complications of head trauma"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "primary-survey-abcde",
+        "label": "Primary survey (ATLS): airway with C-spine protection, breathing, circulation, disability (GCS, pupils), exposure/log roll",
+        "match": [
+          "\\bABCDE?\\b",
+          "primary survey",
+          "\\bATLS\\b",
+          "airway.{0,40}(c-?spine|cervical)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 36,
+            "quote": "Initial assessment and management of patients with head injury in emergency department (ED) includes:"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 36,
+            "quote": "disability including Glasgow Coma Scale (GCS), pupil size and reaction to light"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 35,
+            "quote": "Initial management of patients with head injury should be performed according to primary survey of trauma patients as recommended by Advanced Trauma Life Support guidelines:"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "cspine-immobilisation",
+        "label": "Cervical spine immobilisation (GCS < 15 on initial assessment)",
+        "match": [
+          "cervical (spine )?(collar|immobili[sz]|protect|precaution)",
+          "c-?spine (collar|immobili[sz]|protect|precaution|control)",
+          "hard collar",
+          "(neck|cervical) collar",
+          "in-?line (immobili|stabili)",
+          "(cervical|c-?spine|hard) collar",
+          "(c-?spine|cervical spine|spinal) (immobili[sz]|protect|precaution)",
+          "in-?line (stabili[sz]|immobili[sz])"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 27,
+            "quote": "Cervical spine immobilisation should be carried out in TBI patients with any of the following risk factors:20"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 27,
+            "quote": "GCS <15 on initial assessment by the healthcare professional"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 28,
+            "quote": "Cervical collar should be applied in head injury patients with suspected cervical injury"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 48,
+            "quote": "All patients with head injury are presumed to have cervical spine injury until proven otherwise."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "avoid-hypoxia-hypotension",
+        "label": "Oxygen; avoid hypoxia, hypotension, hypo/hypercarbia",
+        "match": [
+          "hypox",
+          "hypotens",
+          "secondary brain injury",
+          "oxygen",
+          "\\bO2\\b",
+          "normocapni|hypocarbi|hypercarbi|hypocapni",
+          "secondary (brain )?injury",
+          "(avoid|prevent|correct).{0,20}(hypox|hypotension)",
+          "(hypox|hypotension).{0,30}(avoid|prevent)",
+          "SpO2.{0,20}(>|above|at least) ?9[0-9]"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+            "page": 2,
+            "quote": "Hypotension, hypoxia, hypocarbia & hypercarbia should be avoided in patients with head injury to prevent secondary brain injury."
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 28,
+            "quote": "Oxygen supplementation should be given to all patients with head injury to prevent hypoxaemia."
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 28,
+            "quote": "Hypoxaemia [oxygen saturation (SpO2) <90%] should be avoided in head injury and corrected immediately upon identification."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "head-chart-hourly",
+        "label": "Head chart: serial GCS, BP, pulse, pupils at least hourly (including while awaiting CT)",
+        "match": [
+          "head chart",
+          "neuro(logical)? ob",
+          "serial GCS",
+          "GCS monitor",
+          "(hourly|1-hourly|regular|frequent) (GCS|neuro)",
+          "neuro(logical)? ob(s|servation)",
+          "(serial|repeat|hourly|half-?hourly).{0,20}(GCS|pupil)",
+          "GCS.{0,20}(monitor|hourly|serial)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+            "page": 3,
+            "quote": "Head chart which includes serial GCS, blood pressure, pulse rate & pupil size should be done at least hourly."
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 36,
+            "quote": "Head chart which includes serial GCS, blood pressure, pulse rate and pupil size should be done at least hourly on patients with head injury in ED including while awaiting computed tomography or transfer to another ward/hospital."
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 40,
+            "quote": "Perform and record observation on a half-hourly basis until GCS 15 has been achieved."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "secondary-survey",
+        "label": "Secondary survey (head-to-toe) including signs of base-of-skull fracture",
+        "match": [
+          "secondary survey",
+          "head[- ]to[- ]toe"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+            "page": 3,
+            "quote": "Secondary survey (head to toe examinations) should be done in patients with head injury which includes signs of base of skull fracture."
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 36,
+            "quote": "Secondary survey (head to toe examinations) should be done in patients with head injury which includes signs of base of skull fracture"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "neurotrauma-referral-teleconsult",
+        "label": "Neurosurgical / neuro-trauma referral (teleconsultation) if CT abnormal or deteriorating",
+        "match": [
+          "neurosurg",
+          "neuro-?trauma",
+          "teleconsult"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+            "page": 4,
+            "quote": "Refer to hospital with neuro-trauma services"
+          },
+          {
+            "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+            "page": 2,
+            "quote": "Teleconsultation should be used in the management of head injury if available."
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 15,
+            "quote": "Refer to hospital with neuro-trauma services"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 59,
+            "quote": "Teleconsultation should be used in the management of head injury if available."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "airway-stable-before-ct",
+        "label": "Secure airway and haemodynamic stability before CT",
+        "match": [
+          "(airway|haemodynamic|hemodynamic).{0,40}before (the )?CT",
+          "stabili[sz]\\w* before (the )?CT",
+          "(stable|stabili[sz]e).{0,30}(before|prior to).{0,10}CT"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+            "page": 6,
+            "quote": "Ensure patient’s airway secured and hemodynamically stable before CT scan."
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 17,
+            "quote": "Ensure patient’s airway secured and hemodynamically stable before CT scan."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "investigations": [
+      {
+        "id": "ct-brain-urgent",
+        "label": "CT brain within 1-2 hours (risk factors for immediate scan: vomiting >= 2, GCS < 15)",
+        "match": [
+          "\\bCT\\b.{0,20}(brain|head)",
+          "(brain|head)\\s+CT",
+          "computed tomograph",
+          "\\bCTB\\b",
+          "\\bNCCT\\b",
+          "(brain|head) \\bCT\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+            "page": 6,
+            "quote": "Perform Head CT within 1 to 2 hours of risk factor being identified"
+          },
+          {
+            "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+            "page": 6,
+            "quote": "• GCS <15 at 2 hours after injury"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 17,
+            "quote": "• Post-traumatic seizure • Focal neurological deficit • Vomiting ≥2 since the head injury"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 17,
+            "quote": "Perform Head CT within 1 to 2 hours of risk factor being identified*"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "ct-cervical-spine",
+        "label": "CT cervical spine at the same sitting (GCS < 15)",
+        "match": [
+          "CT.{0,25}(c-?spine|cervical)",
+          "(c-?spine|cervical spine) CT",
+          "(c-?spine|cervical spine).{0,20}imaging",
+          "\\bCT\\b.{0,25}(c-?spine|cervical)",
+          "(c-?spine|cervical spine) (imaging|CT|x-?ray|radiograph)"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 49,
+            "quote": "Head Computed Tomography (CT) for patient with a Glasgow Coma Scale <15 should have cervical spine CT at the same setting."
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 18,
+            "quote": "• Other body areas are being scanned for head injury or multi-region trauma"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 18,
+            "quote": "Perform CT cervical spine within 1 - 2 hours of risk factor being identified"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "blood-glucose",
+        "label": "Blood glucose",
+        "match": [
+          "glucose",
+          "blood sugar",
+          "\\bCBG\\b",
+          "\\bRBS\\b",
+          "\\bDXT\\b",
+          "glucose|\\bCBG\\b|\\bBSL\\b|\\bRBS\\b|dextrostix|\\bDXT\\b",
+          "\\bABG\\b|blood gas"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 33,
+            "quote": "full blood count, coagulation screen, blood sugar, blood group and cross-match"
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 35,
+            "quote": "To prevent secondary injuries, parameters such as PO2, PCO2, BP, PR, SpO2 and glucose level should be assessed and be normalised."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_allowed": [
+      {
+        "id": "isotonic-crystalloid",
+        "label": "Isotonic crystalloid (e.g. 0.9% saline) for IV fluids",
+        "match": [
+          "isotonic",
+          "normal saline",
+          "0\\.9 ?% (sodium chloride|saline|nacl)",
+          "crystalloid",
+          "(normal|0\\.9 ?%) saline|sodium chloride 0\\.9",
+          "hartmann|ringer"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+            "page": 2,
+            "quote": "Isotonic crystalloid is the preferred choice of intravenous fluid resuscitation in head injury."
+          },
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 53,
+            "quote": "Isotonic crystalloid is the preferred choice of intravenous fluid in head injury."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "short-acting-sedation",
+        "label": "Short-acting sedative, titrated, for agitation/restlessness",
+        "match": [
+          "sedat",
+          "midazolam",
+          "propofol",
+          "midazolam|propofol|benzodiazepine"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 53,
+            "quote": "short-acting sedative agent may be offered in titrated dose to control agitation/restlessness"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "osmotherapy-after-specialist",
+        "label": "Mannitol / hypertonic saline for raised ICP only after specialist consultation",
+        "match": [
+          "mannitol",
+          "hypertonic saline",
+          "osmotherap"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+            "page": 53,
+            "quote": "Mannitol, hypertonic saline or frusemide may be used to reduce intracranial pressure in head injury after consultation with a specialist."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "disposition": {
+      "acceptable": [
+        "ADMIT_WARD",
+        "REFER_SPECIALIST",
+        "ADMIT_ICU_HDU"
+      ],
+      "preferred": "ADMIT_WARD",
+      "evidence": [
+        {
+          "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+          "page": 7,
+          "quote": "Patients with MHI who have been observed for 6 hours in ED should be admitted to ward if they have:"
+        },
+        {
+          "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+          "page": 7,
+          "quote": "worrying signs (e.g. vomit ≥2 times, seizure, diffuse headache, amnesia,"
+        },
+        {
+          "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+          "page": 7,
+          "quote": "*Patients should have a head CT before admission."
+        },
+        {
+          "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+          "page": 42,
+          "quote": "patients whose GCS has not returned to 15 after imaging, regardless of the imaging results"
+        },
+        {
+          "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+          "page": 42,
+          "quote": "Patients with mild head injury who have been observed for six hours in emergency department should be admitted to ward if they have:"
+        },
+        {
+          "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+          "page": 37,
+          "quote": "Patients with mild head injury in whom computed tomography scan is not indicated and with all the following criteria can be safely observed in emergency department* for a minimum of six hours:"
+        }
+      ],
+      "note": "Not a candidate for ED observation and discharge: GCS is not 15, and he has worrying signs. Admit for ward observation after CT. Refer to or transfer to neuro-trauma services if the CT shows a significant lesion or GCS falls. / ED observation and discharge are NOT acceptable. The CPG's ED-observation pathway requires GCS 15, no CT indication, and no worrying signs; this patient has GCS 13 and has vomited twice. He is admitted after CT. REFER_SPECIALIST (neurosurgery/neuro-trauma) is correct if CT shows a lesion, and ICU/HDU is correct if he deteriorates."
+    },
+    "sources_forbidden": [
+      {
+        "doc_type": "PAEDIATRIC_PROTOCOL",
+        "why": "adult patient"
+      }
+    ]
+  },
+  "disputed": [
+    {
+      "section": "red_flags",
+      "id": "hypoxia-hypotension",
+      "label": "Hypoxia (SpO2 < 90%) or hypotension (secondary brain injury)",
+      "match": [
+        "hypox",
+        "hypotens",
+        "secondary brain injury"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "QR Early Management of Head Injury in Adults 2015.pdf",
+          "page": 2,
+          "quote": "Hypotension, hypoxia, hypocarbia & hypercarbia should be avoided in patients with head injury to prevent secondary brain injury."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "red_flags",
+      "id": "high-energy-mechanism",
+      "label": "High-energy mechanism (motorcycle crash > 30 km/h)",
+      "match": [
+        "high[- ](energy|velocity|speed)|dangerous mechanism",
+        "motorcycl.{0,40}(km|speed)"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+          "page": 16,
+          "quote": "• Thrown, run over, or with significant (>30 km/h) impact • Motorcycle crash >30 km/h"
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "actions",
+      "id": "analgesia",
+      "label": "Analgesia for pain (pain score 6)",
+      "match": [
+        "analges",
+        "paracetamol",
+        "pain (relief|control|management)",
+        "tramadol",
+        "morphine",
+        "fentanyl"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+          "page": 53,
+          "quote": "analgesia should be used to control pain"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "fbc",
+      "label": "Full blood count",
+      "match": [
+        "\\bFBC\\b",
+        "full blood count",
+        "complete blood count",
+        "\\bCBC\\b"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+          "page": 33,
+          "quote": "full blood count, coagulation screen, blood sugar, blood group and cross-match"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "coagulation",
+      "label": "Coagulation screen",
+      "match": [
+        "coag",
+        "\\bPT\\b",
+        "\\bINR\\b",
+        "\\bAPTT\\b"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+          "page": 33,
+          "quote": "full blood count, coagulation screen, blood sugar, blood group and cross-match"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "gxm",
+      "label": "Blood group and cross-match",
+      "match": [
+        "cross-?match",
+        "\\bGXM\\b",
+        "group and (save|screen)",
+        "blood group"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+          "page": 33,
+          "quote": "full blood count, coagulation screen, blood sugar, blood group and cross-match"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "oxygen",
+      "label": "Supplemental oxygen to prevent hypoxaemia",
+      "match": [
+        "oxygen",
+        "\\bO2\\b"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+          "page": 28,
+          "quote": "Oxygen supplementation should be given to all patients with head injury to prevent hypoxaemia."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "analgesia",
+      "label": "Analgesia for pain (paracetamol, NSAID or tramadol in MHI)",
+      "match": [
+        "analges",
+        "paracetamol|acetaminophen",
+        "tramadol",
+        "\\bNSAIDs?\\b|ibuprofen|diclofenac",
+        "morphine|fentanyl|opioid"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+          "page": 53,
+          "quote": "analgesia should be used to control pain"
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "phenytoin-prophylaxis",
+      "label": "Phenytoin seizure prophylaxis if risk factors (e.g. GCS < 10, contusion, depressed fracture, early haematoma)",
+      "match": [
+        "phenytoin|levetiracetam|keppra|anti-?convulsant|anti-?epileptic|seizure prophylaxis"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Early Management of Head Injury in Adults 2015.pdf",
+          "page": 52,
+          "quote": "In a systematic review, IV prophylactic phenytoin administered within eight hours of injury (ideally in the first one hour) was efficacious in reducing the incidence of early PTS in moderate to severe head injury."
+        }
+      ],
+      "proposed_by": "B"
+    }
+  ],
+  "adjudication": {
+    "method": "two independent extraction passes (A, B); agreed items scored",
+    "notes": [],
+    "open_questions": {
+      "A": [
+        "Severity label: the case title says 'moderate', but KKM CPG/QR classify GCS 13 as mild head injury (MHI 13-15; moderate is 9-12). Both labels are accepted.",
+        "Triage: 50 km/h motorcyclist vs car. Whether this counts as MTS 'High velocity' (L2) is a judgement call; 'Altered Mental State' gives L2 regardless. The QR head-injury triage algorithm would give Yellow zone.",
+        "drugs_forbidden is left empty. The head-injury CPG has no explicit 'avoid' statement that applies to this GCS-13, normotensive patient. Albumin harm is shown only in severe TBI; the 'diuretics should not be used' warning is for hypotensive patients.",
+        "Whether 'GCS <15 at 2 hours after injury' will be met cannot be known at triage (injury was 1 h ago). Vomiting >= 2 already qualifies him for immediate CT."
+      ],
+      "B": [
+        "The case title says 'moderate head injury', but the MOH CPG classes GCS 13 as mild head injury (GCS 13-15, at the high-risk end). The diagnosis match accepts both; the adjudicator should decide whether a report calling it 'mild' or 'moderate' is penalised.",
+        "There are no drugs_forbidden. The CPG warns only that diuretics should not be used in hypotensive patients (he is not hypotensive) and reports worse outcomes with albumin in severe TBI, without an explicit 'avoid' for this patient."
+      ]
+    }
+  }
+}

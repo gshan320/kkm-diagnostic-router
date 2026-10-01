@@ -1,0 +1,27 @@
+[
+ {
+  "filename_prefix": "EXT WAO",
+  "title": "World Allergy Organization Anaphylaxis Guidance 2020",
+  "basis": "kkm_citation",
+  "cited_by": "MOH Standard Practice Guidelines for Assistant Medical Officer in Emergency Medicine and Trauma Services",
+  "page": 46,
+  "quote": "World Allergy Organization Anaphylaxis Guidance 2020",
+  "decided": "2026-09-30: user approved adding it"
+ },
+ {
+  "filename_prefix": "EXT GINA",
+  "title": "Global Initiative for Asthma - Global Strategy for Asthma Management and Prevention 2024",
+  "basis": "kkm_citation",
+  "cited_by": "Management of Asthma in Adults",
+  "page": 22,
+  "quote": "Global Initiative for Asthma. Global Strategy for Asthma Management and Prevention, 2024",
+  "decided": "2026-09-30: user approved adding it"
+ },
+ {
+  "filename_prefix": "WHO Guidelines for the Prevention and Control of CRE",
+  "title": "WHO Guidelines for the Prevention and Control of CRE, Acinetobacter and Pseudomonas in Health Care Facilities 2017",
+  "basis": "user_approved",
+  "note": "No KKM document in the index cites it (searched 2026-09-30). Kept by the user's decision.",
+  "decided": "2026-09-30: user said keep"
+ }
+]

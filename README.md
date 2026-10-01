@@ -724,6 +724,205 @@ What is **not** guaranteed, and must be checked by the reading clinician:
 The report's cross-check sign-off block exists to record that this verification
 actually happened.
 
+## Improvement phases (2026-09-30)
+
+Built in response to the 2026-09-30 rhabdomyolysis review: 55-year-old,
+exertional rhabdomyolysis, recommended **heparin with DOSE VERIFIED**, governed
+by the Paediatric Protocols' sea-snake page, differentials "AKI" and
+"myoglobinuria", no ECG, no analgesia, no NSAID warning. There is no clinician
+on the development team, so every change below is checkable by code and by the
+evaluation harness (`backend/tests/eval/README.md`), and every warning a
+clinician sees quotes its source. **Not yet validated end to end** - the
+evaluation run is deliberately the last step.
+
+| phase | what | where |
+|---|---|---|
+| 0 | One report at a time on the GPU, FIFO, visible place in line, 503 when 8 are waiting; cross-process lock | `app/gpu_queue.py` |
+| 0 | Append-only audit store with a hash chain; every report carries code / corpus / model fingerprints and an audit ID | `app/audit.py`, `app/versioning.py`, `/api/v1/reports`, `/api/v1/audit/verify` |
+| 0 | Evaluation harness: 40 cases, evidence-anchored answer keys (903 quotes, all verified against their pages), regression gate | `backend/tests/eval/` |
+| 1 | **Indication gate**: a drug stays only if FUKKM's own indication field or a retrieved guideline sentence links it to the WORKING diagnosis (or it treats a symptom the patient has); otherwise WITHHELD, named, and never dose-checked | `app/indications.py`, `_gate_drug_indications` |
+| 1 | **Avoid-statements**: 201 "do not give / avoid" sentences mined from 30 PDFs, quoted when a recommended drug meets one for this diagnosis (warns, never removes) | `app/negatives.py` (`python -m app.negatives`) |
+| 1 | A cut-off or looping answer is marked INCOMPLETE with the sections that never arrived; generation stops when it starts repeating | `_flag_truncation`, `_generate` |
+| 2 | **Population gate**: no paediatric-only source for an adult (or adult-only for a child), in context or as governing guideline | `app/population.py` |
+| 2 | **Citation support**: a triage table, HTA report or flow policy never supports an action or drug; a drug's passage must name it; an action's must share a clinical term | `_check_citation_support` |
+| 2 | "MTS level triggered" derived from the MTS table; PROVISIONAL triage when vitals are missing, with the p7 cells that would escalate; onset read from the complaint; documented negatives ("feels well") settle MTS qualifiers | `_derive_vitals_levels`, `_flag_provisional_triage`, `mts_table.DOCUMENTED_NEGATIVE_RE` |
+| 2 | Instant code-only triage (<10 ms) shown while the report generates; "Flag this report"; citations open the PDF at the cited page | `/api/v1/triage/preview`, `/api/v1/reports/{id}/flag`, `/api/v1/sources/pdf/{file}` |
+| 3 | Four new documents indexed (MOH Heat Related Illness 2016, MOH Snakebite 2017, Malaysian Hyperkalaemia Consensus 2024, MSIC ICU Protocols 2019); red-flag rules for rhabdomyolysis, exertional muscle injury, heat illness, snakebite, hyperkalaemia, sepsis; completeness checklists for rhabdomyolysis, heat illness, snakebite, hyperkalaemia | `app/red_flags.py`, `app/completeness.py` |
+| 3 | **Verified reference links** for what the index cannot hold - the NAG 2024 is web-only - chosen by code from a crawled, link-checked registry, never written by the model | `app/references.py`, `data/reference_links.json` |
+| 4 | **Second pass**: when 2+ required elements are missing, retrieve for the working DIAGNOSIS and ask for those items only; merged, then every check runs over the result | `RagEngine._second_stage`, `TWO_STAGE*` in config |
+| 4 | Each completeness gap carries the guideline's own sentence covering it, verbatim with its page; differentials that restate or belong to the diagnosis are moved out and named | `_gap_quote`, `_check_differentials` |
+| 4 | Prompt-prefix KV cache: the fixed ~2,000-token system prompt is prefilled once per process (~15 s saved per report at 135 tok/s) | `_generate`, `PROMPT_CACHE` |
+
+**Attention layer A1** (`app/focus.py`, 2026-09-30): the model's context was 27
+passages / 11,573 prompt tokens for the rhabdomyolysis case, ~44% noise. A1
+(1) replaces the ten MTS cells with a two-line code-decided TRIAGE block
+(`TRIAGE_CONTEXT=code`); (2) picks FUKKM rows by the drug NAMES in the kept
+guideline's treatment sentences (`FORMULARY_BY_NAME=1`, `formulary.mentioned`)
+instead of embedding treatment text; (3) puts a KEY FINDINGS block, extracted by
+code with NegEx/ConText-style negation, at the top of the prompt and a reminder
+before the task (`FOCUS_BLOCK=1`); (4) strips negated clauses before red-flag
+matching ("no chest pain" no longer forces the ACS CPG in). Measured: rhabdo
+11,573 -> 9,504 tokens (27 -> 16 passages; antivenoms and Factor IX gone), ACS
+9,298 -> 7,070, dengue 8,091 -> 5,593 (Factor IX / VIII for a dengue patient
+gone). Each flag set to its old value restores the pre-A1 behaviour.
+
+**Attention layer A2** (2026-09-30): relevance scores cannot remove cause-specific
+noise - probed on four intakes, both bge-reranker-base and NCBI MedCPT ranked the
+snakebite guideline high for exertional rhabdomyolysis (shared "myalgia ... dark
+urine"). A2 therefore (1) asks the model for a working differential from the KEY
+FINDINGS alone (`HYPOTHESES=1`, ~160 tokens, merged with the red-flag rules, falls
+back to the rules on any failure); (2) searches once for the complaint, per
+hypothesis, per red-flag finding, and with two treatment-focused templates, fused by
+rank with every search keeping its best passage(s) and at most `MAX_PER_DOC` per
+document; (3) applies a deterministic topic gate (`TOPIC_GATE=1`): a clinical
+document stays only if a red-flag rule forced it, it is general-purpose, its title
+names a hypothesis, or it names an intake condition (one background passage). The
+second pass uses the same gate. Dropped documents and the hypotheses are listed in
+the report under "How the sources were chosen". Probe results (canned hypotheses):
+rhabdomyolysis keeps only the heat, hyperkalaemia and dyslipidaemia guidelines;
+chest pain now carries aspirin, clopidogrel and enoxaparin rows; the swollen leg
+keeps adult NAG + diabetic foot, never the paediatric NAG.
+
+**Attention layer A3** (2026-09-30, `app/distill.py`): the model is sent sentences,
+not whole 512-token chunks. Each kept clinical passage is split into sentences
+(case-blind; long flattened tables windowed at ~300 characters), scored against the
+key findings, the hypotheses and the treatment question with MedEmbed - only WITHIN
+documents the A2 gate accepted - and its best `DISTILL_SENTENCES` kept, plus up to
+two dose sentences, recomposed in original order under the passage's own header
+with "..." marking gaps. Passages are then ordered edge-first (best at the start,
+second-best at the end; Liu et al., TACL 2024) and cut to `CONTEXT_BUDGET_TOKENS`
+without ever removing a document's last passage. Three source-discipline rules came
+out of the measurements:
+
+- **Reference lists are not evidence** (`DROP_BIBLIOGRAPHY=1`): 1,456 of 8,306
+  clinical chunks (17.5%) are bibliography pages. They are skipped at retrieval,
+  dropped before the prompt, and a citation sentence is never kept or read for drug
+  names (paper titles had put losartan, ezetimibe and simvastatin into a
+  rhabdomyolysis prompt).
+- **A rule's secondary documents are read, not prescribed from**: the first title of
+  a red-flag rule is its own guideline; the others (Dyslipidaemia for statin myopathy,
+  COPD beside asthma) keep at most `FORCED_SECONDARY_PASSAGES` passages and supply no
+  formulary rows. Formulary-by-name reads only hypothesis-matched, general-purpose and
+  rule-primary documents, and drops drugs under `FORMULARY_MIN_SHARE` of the top one.
+- **Guideline shorthand**: "SABA", "SAMA/SAAC" and "OCS" resolve to salbutamol,
+  ipratropium and prednisolone (`formulary.CLASS_SHORTHAND`).
+
+Probe prompts (same canned hypotheses as A2): rhabdomyolysis 8,349 -> 4,361 tokens
+(13 -> 6 passages), asthma 8,221 -> 5,409 (heparin from COPD gone), ACS 10.6k ->
+7,783, dengue 5,767 -> 4,288. About 3,000 tokens of every prompt is the fixed system
+prompt, focus block and schema. `DISTILL=0` restores whole passages.
+
+**Attention layer A4** (2026-09-30). Run 7 (A3 live) was 32% faster but no more
+accurate (answer-key score 78.4 -> 78.5), and nothing recorded where its 167 s went.
+A4 measures first, then acts on what the measurements show:
+
+- **A4.1 attention audit** (`app/attention_audit.py`): every report carries
+  `attention` - time per stage (hypotheses, retrieval, reading, writing, second
+  pass, checks), prompt / cached / output tokens, and which passages the answer
+  cited by position in the prompt (front / middle / back thirds) - summarised in
+  "How the sources were chosen" and kept in the audit log. `python -m
+  app.attention_audit [--last N]` aggregates across reports. Its first finding:
+  the cross-encoder reranker was ~20 s of every report; it now reranks the top
+  `RERANK_POOL=15` at `RERANK_MAX_LENGTH=320` tokens (warm retrieval 19 s -> 8 s,
+  every key page kept on the rhabdomyolysis and ACS probes).
+- **A4.2 citation alignment**: support is judged at SENTENCE level (one sentence
+  or two adjacent), with terms weighted by rarity across the index, 7-character
+  stems ("compartment" is not "compared") and abbreviations (ECG, AKI);
+  `CITATION_SUPPORT_MIN=0.3` sits between the wrong pairs (<= 0.20) and right ones
+  (>= 0.40) of runs 6-7. An unsupported citation moves to the given passage that
+  supports the item, and the move is named. Only passages the model saw are ever
+  used, and nothing is removed: an item no passage supports keeps its place with
+  its citation stripped and named (run 8 lost "IV isotonic fluid" and "12-lead ECG"
+  when an earlier version deleted such items - the unsafe direction).
+- **A4.3 complications from source** (`app/complications.py`): for a working
+  diagnosis with a profile (rhabdomyolysis, heat stroke, hyperkalaemia), each
+  complication the red flags miss is added as a red flag whose "why" is a verbatim
+  sentence - from the given passages first, then the whole index - that is about
+  the condition itself and names no cause the patient lacks (a sea-snake sentence
+  never speaks for a runner). Red flags that only restate the diagnosis or the
+  complaint are then removed. No sentence, no flag: compartment syndrome has no
+  KKM-general sentence and is left as a gap. Seven of seven rhabdomyolysis runs had
+  listed "Rhabdomyolysis" as its own red flag and missed hyperkalaemia.
+- **A4.4 output diet** (`OUTPUT_DIET=1`): the model no longer writes vital-sign rows
+  (`_vitals_rows` builds them from the MTS table, one per supplied value) or
+  prescriber categories (read from the FUKKM record); the second pass runs only for
+  gaps an indexed KKM sentence answers; immediate-release forms rank before
+  prolonged-release ones.
+
+**After run 9 (2026-09-30).** Run 9 scored 82.8 on the answer key; everything it
+still lost was either a complication listed as a differential or content no KKM
+document holds. Three changes:
+
+- **Warm-up at start** (`WARMUP=1`, `RagEngine.warm_up`): model, BM25 and A4.2 term
+  weights, reference-list filter, embedder and reranker, formulary index and the
+  system prompt's KV cache (1,918 tokens) are built in a background thread when the
+  server starts (~70 s), holding the GPU slot so an early report queues behind it.
+  `/health` reports `warm: warming | ready (N s) | failed: ...`. Runs 8 and 9 were
+  each the first report after a reload: 28 s of retrieval and nothing cached.
+- **A complication is not a differential**: a differential that is one of the
+  working diagnosis's complications (complications.py) is removed once the red
+  flags carry it, and the report says so.
+- **One labelled non-KKM guideline** (`EXTERNAL_GUIDELINE`, filename prefix `EXT `,
+  title ending "(US DoD, not KKM)"): CHAMP/WHEC exertional rhabdomyolysis 2025,
+  because no KKM adult rhabdomyolysis guideline exists. It may ground drugs and
+  doses; KKM wins where both speak. Two retrieval fixes made it reachable: the
+  model's own hypothesis is no longer discarded when it equals a rule label
+  (`Hypotheses.proposed` - "Rhabdomyolysis" had capped CHAMP at two passages), and
+  **checklist-conditioned retrieval** searches, in the first pass, for the
+  treatment and disposition elements the completeness checklist names
+  (`_checklist_queries`: fluids, admission, oxygen, bronchodilator, antiplatelets
+  ...), their results kept ahead of the per-document cap. The rhabdomyolysis prompt
+  now carries CHAMP's fluid rates and admission criteria and a 0.9% saline row.
+  The reference filter learned APA style (CHAMP's bibliography) and never drops a
+  chunk holding two dose instructions.
+
+**Corpus expansion and fixes R1-R3, F1-F7 (2026-09-30, after run 10).** Run 10 scored 87 but a
+clinical audit found it precise in what it said (~0.8) and incomplete in what it left out (~0.55).
+Sixteen documents were added (84 PDFs / 12,576 chunks; CORPUS.md) - MOH PPH, hypertensive
+disorders in pregnancy and perinatal manuals, Schizophrenia, Bipolar, Gout, Erectile Dysfunction,
+Avulsed Teeth, Mandibular Condyle and Heart Disease in Pregnancy CPGs, the MSN epilepsy consensus
+and the MOH adult antidote guide - and routed and checked:
+
+- **R1 routing** (`red_flags.py`): rules for postpartum haemorrhage, hypertensive disorders of
+  pregnancy, obstetric emergencies, heart disease in pregnancy, acute behavioural disturbance,
+  mania/lithium, dental avulsion, jaw fracture, priapism, adult seizures and poisoning; a new
+  `unless` field keeps menorrhagia and the adult-seizure rule off obstetric patients; synonyms
+  let "eclampsia" meet "Hypertensive Disorders in Pregnancy".
+- **R2 checklists** (`completeness.py`) for PPH, eclampsia, acute agitation, lithium toxicity,
+  gout and avulsed teeth, each element quoting its page; an element the source does not state is
+  left out. Rhabdomyolysis gained serum renal function (a urine creatinine no longer counts),
+  repeat labs 6-24 hourly (CHAMP p24) and haemolysis / G6PD.
+- **R3 complications** (`complications.py`) for PPH, eclampsia, agitation and lithium, with
+  on-topic documents ranked first and "PE" trusted as pre-eclampsia only in the HDP manual.
+- **F1** `disposition_rules.py`: a raise-only floor on a quoted admission criterion (CHAMP p5 dark
+  urine -> ward; HDP manual p62 eclampsia and p41 severe pre-eclampsia -> ICU/HDU).
+- **F2** an analgesia search for pain >= 4 with a reserved analgesic row (never displacing the
+  condition's own drugs), and **source cautions** - "do not" sentences quoted from documents about
+  the condition (NSAIDs and furosemide in rhabdomyolysis, Syntometrine in hypertension, slow MgSO4
+  loading and its calcium-gluconate antidote, lithium and dehydration, colchicine/NSAIDs in CKD).
+- **F3** adult fluid volumes/rates accepted as doses; the guideline's fluid regimen shown beside
+  a generic FUKKM range and the mismatch named; the guideline sentence's route picks the
+  formulation (IM haloperidol injection, IV MgSO4); drug names that resolve to the same FUKKM
+  products are merged ("MgSO4" = magnesium sulphate) and counted once per passage.
+- **F4** a differential set aside on an unmeasured vital sign is flagged NOT EXCLUDED.
+- **F5** `STAGE2_MODE=quote`: missing checklist elements are filled with the verbatim source
+  sentence (no model call; the LLM second pass took 62 s and only repeated the plan).
+- **F6** tighter answer key (run 10: 85.6, run 9: 80.3 on it) and five new evidence-anchored
+  cases - PPH, eclampsia, agitation, gout, avulsed incisor - every quote verified on its page.
+- **F7** confidence capped at MODERATE until the defining test has a result (CK for rhabdomyolysis,
+  CHAMP p5).
+
+Regenerable data these depend on (git-ignored like the FUKKM JSON, rebuilt by
+command): `data/raw_json/avoid_statements.json` (`python -m app.negatives`).
+The reference registry `data/reference_links.json` is tracked; refresh with
+`python -m app.references --build` and `--check`.
+
+Deferred on purpose: constrained JSON decoding (a new dependency; the loop stop
+and the truncation flag cover the failure it would prevent), MED-RT / DrugCentral
+indication snapshots (FUKKM's own indication field settled the motivating case -
+add them if the evaluation shows misses), and deployment hardening (login,
+reverse proxy, backups) until the pilot leaves this machine.
+
 ## Scope and safety
 
 Clinical decision-support prototype for registered clinicians. Not a medical

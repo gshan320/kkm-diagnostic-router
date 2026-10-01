@@ -1,0 +1,107 @@
+{
+  "id": "gout-flare-thiazide-52m",
+  "title": "Acute gout flare on hydrochlorothiazide (52M)",
+  "tier": "management",
+  "provenance": "Vignette written 2026-09-30; expected answers quoted from the MaHTAS CPG Management of Gout 2nd Ed 2021.",
+  "intake": {
+    "age": 52,
+    "gender": "male",
+    "weight_kg": 88,
+    "vitals": {
+      "systolic_bp": 148,
+      "diastolic_bp": 88,
+      "heart_rate": 92,
+      "respiratory_rate": 18,
+      "temperature": 37.4,
+      "spo2": 98,
+      "gcs": 15,
+      "pain_score": 8
+    },
+    "complaint": "Sudden severe pain, redness and swelling of the right big toe overnight.",
+    "history": "Hypertension on hydrochlorothiazide, previous similar attack two years ago."
+  },
+  "scored_sections": [
+    "triage",
+    "diagnosis",
+    "differentials",
+    "actions",
+    "drugs",
+    "grounding"
+  ],
+  "expected": {
+    "triage": {
+      "level": 2,
+      "acceptable": [
+        2
+      ],
+      "note": "Pain 8/10 - MTS p7 L2."
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Acute gout flare",
+        "match": [
+          "\\bgout",
+          "podagra"
+        ]
+      }
+    },
+    "differentials": [
+      {
+        "id": "septic-arthritis",
+        "label": "Septic arthritis",
+        "match": [
+          "septic arthritis"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Gout (2nd Edition) 2021.pdf",
+            "page": 38,
+            "quote": "septic arthritis (key differential diagnosis)"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "diuretic",
+        "label": "Diuretic reviewed",
+        "match": [
+          "thiazide|diuretic"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Gout (2nd Edition) 2021.pdf",
+            "page": 8,
+            "quote": "diuretics should be avoided if possible"
+          }
+        ]
+      }
+    ],
+    "drugs_allowed": [
+      {
+        "id": "flare-drug",
+        "label": "Colchicine, NSAID or prednisolone",
+        "match": [
+          "colchicine|prednisolone|corticosteroid|naproxen|diclofenac|etoricoxib|indomethacin|ibuprofen|\\bNSAID"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Gout (2nd Edition) 2021.pdf",
+            "page": 53,
+            "quote": "prednisolone (30 mg OD for 5 days)"
+          }
+        ]
+      }
+    ],
+    "drugs_forbidden": [],
+    "sources_forbidden": [
+      {
+        "doc_type": "PAEDIATRIC_PROTOCOL",
+        "why": "adult patient"
+      }
+    ]
+  }
+}

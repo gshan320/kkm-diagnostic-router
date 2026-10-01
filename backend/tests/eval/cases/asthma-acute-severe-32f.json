@@ -1,0 +1,926 @@
+{
+  "id": "asthma-acute-severe-32f",
+  "title": "Acute severe asthma, 32-year-old woman",
+  "tier": "management",
+  "provenance": "Vignette written 2026-09-30 for the evaluation harness; expected answers extracted from the cited documents.",
+  "intake": {
+    "age": 32,
+    "gender": "female",
+    "weight_kg": 60,
+    "vitals": {
+      "systolic_bp": 128,
+      "diastolic_bp": 80,
+      "heart_rate": 118,
+      "respiratory_rate": 30,
+      "temperature": 36.9,
+      "spo2": 91,
+      "gcs": 15,
+      "pain_score": 0
+    },
+    "complaint": "Worsening shortness of breath and wheeze since this morning; can only speak in short phrases.",
+    "history": "Known asthmatic. Uses salbutamol inhaler; ran out of her preventer inhaler two weeks ago.",
+    "breathing": "difficulty_breathing_short_phrases_only",
+    "comorbidities": [
+      "copd_or_asthma"
+    ],
+    "pregnancy": "not_pregnant",
+    "facility": "state_or_tertiary_with_pci_and_ct"
+  },
+  "scored_sections": [
+    "triage",
+    "diagnosis",
+    "red_flags",
+    "differentials",
+    "actions",
+    "investigations",
+    "drugs",
+    "disposition",
+    "grounding"
+  ],
+  "expected": {
+    "triage": {
+      "level": 2,
+      "acceptable": [
+        2
+      ],
+      "time_to_treatment": "under 10 minutes",
+      "note": "Both extractors: level 2. A: Primary triage Respiratory Distress p4: 'Difficulty to breathe', 'Short phrases only', 'SpO2 90 - 92% room air' are in the x~246 column = Level 2 (SpO2 91%, short phrases). Adult vitals p7: 'SpO2 < 92%' is Level 2 (x~131); HR 118 ('HR 100 - 120') and RR 30 ('RR 20 - 30') are Level 3 (x~244). Complaint lists: SOB p11 'Wheeze, expiratory rhonchi; airway intact' and RESPIRATORY p10 'Wheezing, known asthmatic' are Level 3 (x~244). Most urgent applicable = Level 2. Level 1 criteria (cannot speak / one-word replies, SpO2 < 90%, confused/lethargic, needs assisted breathing) are absent; re-triage if she deteriorates. B: SpO2 91% is in the Level 2 cell 'SpO2 < 92%' (adult vital signs p7, x~131). Primary triage respiratory distress Level 2 cells (p4, x~246): 'Difficulty to breathe', 'Short phrases only', 'SpO2 90 - 92% room air'. HR 118 and RR 30 are only Level 3 ('HR 100 - 120', 'RR 20 - 30', p7 x~244); RR is exactly 30, not > 30. Complaint 'Wheezing, known asthmatic' is Level 3 (p10, x~244). No Level 1 feature: not one-word replies, not SpO2 < 90%, not confused (p4, x~136). If the 91% was measured on oxygen rather than room air, the level does not change.",
+      "evidence": [
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "• Difﬁculty to breathe • Short phrases only • Agitation, anxious • SpO2 90 - 92% room air"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• BP > 220/130 with symptoms • SpO2 < 92%"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• HR 100 - 120 • RR 20 - 30"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 11,
+          "quote": "• Rapid breaths • Wheeze, expiratory rhonchi; airway intact • PEFR > 250 L/min"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 3,
+          "quote": "Level 2 - Emergency - under 10 minutes"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "BP > 220/130 with symptoms • SpO2 < 92%"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "Difﬁculty to breathe • Short phrases only • Agitation, anxious • SpO2 90 - 92% room air"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 10,
+          "quote": "Wheezing, known asthmatic"
+        }
+      ]
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Acute severe asthma exacerbation",
+        "match": [
+          "(acute\\s+)?severe\\s+(acute\\s+)?asthma",
+          "asthma\\s+exacerbation",
+          "exacerbation\\s+of\\s+(bronchial\\s+)?asthma",
+          "acute\\s+asthma",
+          "status\\s+asthmaticus",
+          "asthma",
+          "\\bBA\\b exacerbation",
+          "bronchial asthma"
+        ],
+        "evidence": [
+          {
+            "source": "QR Management of Asthma in Adults (2nd Edition) 2024 v20251022.pdf",
+            "page": 7,
+            "quote": "Alert/confused/drowsy Speaks in words >25/min >120/min Normal or hypotension Very evident"
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 56,
+            "quote": "Note: Not all parameters need to be met to classify the severity. Classify using the most severe parameters."
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 55,
+            "quote": "Exacerbation of asthma is defined as progressive or sudden deterioration in baseline clinical status of a patient and characterised by worsening respiratory symptoms"
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 55,
+            "quote": "Exacerbation of asthma is defined as progressive or sudden deterioration in baseline clinical status of a patient and characterised by worsening respiratory symptoms e.g. increased shortness of breath, wheezing, coughing and chest tightness."
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 56,
+            "quote": "Note: Not all parameters need to be met to classify the severity. Classify using the most severe parameters."
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 56,
+            "quote": "Alert/confused/ drowsy Speaks in words >25/min >120/min"
+          }
+        ]
+      },
+      "acceptable_alternatives": [
+        {
+          "label": "Moderate asthma exacerbation (under-grading; RR > 25 makes it severe)",
+          "match": [
+            "moderate\\s+(asthma\\s+)?exacerbation",
+            "asthma\\s+attack"
+          ]
+        },
+        {
+          "label": "Moderate asthma exacerbation (speech, HR and SpO2 in moderate band; RR > 25 is severe)",
+          "match": [
+            "moderate (asthma|exacerbation)",
+            "asthma exacerbation"
+          ]
+        }
+      ]
+    },
+    "red_flags": [
+      {
+        "id": "life-threatening-features",
+        "label": "Life-threatening features: silent chest, confusion/drowsiness, bradycardia, hypotension, unable to speak",
+        "match": [
+          "silent\\s+chest",
+          "life[- ]threatening",
+          "drows",
+          "confus",
+          "exhaust",
+          "bradycardi",
+          "unable\\s+to\\s+speak",
+          "paradoxical",
+          "silent chest",
+          "hypercapni|rising (Pa)?CO2",
+          "(altered|drows|confus).{0,20}(mental|conscious)?",
+          "intubat"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Management of Asthma in Adults (2nd Edition) 2024 v20251022.pdf",
+            "page": 7,
+            "quote": "Confused/drowsy/coma Unable to speak <12/min Bradycardia/cardiac arrest Hypotension Paradoxical chest movement/absent Silent chest"
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 57,
+            "quote": "Patients who are having life-threatening asthma exacerbations with signs of respiratory distress, worsening hypoxaemia, hypercapnia, altered mental status, or failure to respond to maximal medical therapy should be considered for early intubation and referral to critical care."
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 61,
+            "quote": "A rising or normal PaCO2 may indicate impending respiratory arrest."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "worsening-hypoxaemia",
+        "label": "SpO2 < 90% / worsening hypoxaemia",
+        "match": [
+          "hypox",
+          "SpO2\\s*(<|below|less\\s+than)\\s*9[0-2]",
+          "desaturat",
+          "cyanos",
+          "(SpO2|sat(uration)?s?).{0,15}(<|below|under) ?90",
+          "hypoxa?emi"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 60,
+            "quote": "Oxygen saturation levels of <90% indicates the need for aggressive management."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "asthma-death-risk-nonadherence",
+        "label": "Risk factors for asthma-related death, including not using / poor adherence to ICS (ran out of preventer)",
+        "match": [
+          "adheren",
+          "non[- ]?complian",
+          "ran\\s+out",
+          "not\\s+(currently\\s+)?using\\s+(her\\s+)?(ICS|preventer|inhaled)",
+          "risk\\s+(factors?\\s+)?(for|of)\\s+(asthma[- ]related\\s+)?death",
+          "(not|stopped|ran out|run out).{0,30}(ICS|preventer|inhaled (cortico)?steroid)",
+          "(poor|non-?)adherence",
+          "asthma[- ]related death",
+          "risk factors? (for|of) (fatal|near[- ]fatal|death)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 55,
+            "quote": "The presence of any asthma-related death risk factors should be identified during exacerbations."
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 55,
+            "quote": "not currently using ICS2 • poor adherence to ICS-containing medications2"
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 55,
+            "quote": "not currently using ICS2"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "differentials": [
+      {
+        "id": "pneumothorax",
+        "label": "Pneumothorax / pneumomediastinum (complication)",
+        "match": [
+          "pneumothora",
+          "pneumomediastin"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 56,
+            "quote": "The physical examination includes vital signs assessment, evaluation of severity and, consideration of complications (e.g. pneumothorax) and differential diagnoses (e.g. heart failure)."
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 61,
+            "quote": "CXR should be considered in patients who do not respond to treatment or if an alternative diagnosis or complication e.g. pneumothorax, pneumomediastinum or pneumonia is suspected."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "pneumonia",
+        "label": "Pneumonia / respiratory infection trigger",
+        "match": [
+          "pneumonia",
+          "chest\\s+infection",
+          "respiratory\\s+(tract\\s+)?infection",
+          "\\bLRTI\\b",
+          "chest infection",
+          "(respiratory|viral) infection"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 61,
+            "quote": "CXR should be considered in patients who do not respond to treatment or if an alternative diagnosis or complication e.g. pneumothorax, pneumomediastinum or pneumonia is suspected."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "heart-failure",
+        "label": "Heart failure (cardiac asthma)",
+        "match": [
+          "heart\\s+failure",
+          "cardiac\\s+asthma",
+          "pulmonary\\s+o?edema",
+          "\\bCCF\\b|\\bAHF\\b",
+          "heart failure",
+          "cardiac asthma",
+          "pulmonary o?edema",
+          "\\bCCF\\b|\\bHF\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 56,
+            "quote": "The physical examination includes vital signs assessment, evaluation of severity and, consideration of complications (e.g. pneumothorax) and differential diagnoses (e.g. heart failure)."
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 56,
+            "quote": "consideration of complications (e.g. pneumothorax) and differential diagnoses (e.g. heart failure)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "controlled-oxygen",
+        "label": "Controlled oxygen to target SpO2 >= 94%",
+        "match": [
+          "oxygen",
+          "\\bO2\\b",
+          "SpO2\\s*(≥|>=|>|of)\\s*9[2-6]",
+          "target\\s+(sat|SpO2)",
+          "\\bHFNC\\b|high[- ]flow nasal"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 58,
+            "quote": "Oxygen saturation of ≥94% should be maintained in all hypoxic asthma patients."
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 58,
+            "quote": "In asthma exacerbation in emergency department, high flow nasal cannula should be considered over conventional oxygen therapy."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "immediate-treatment-by-severity",
+        "label": "Rapid severity assessment and immediate treatment",
+        "match": [
+          "immediate(ly)?\\s+(treat|start|initiat|commence)",
+          "severity\\s+(assessment|classif)",
+          "classif(y|ied)\\s+as\\s+severe",
+          "severity",
+          "(mild|moderate|severe|life[- ]threatening) (asthma|exacerbation)",
+          "acute severe"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 57,
+            "quote": "Rapid clinical assessment of severity* should be performed for all asthma exacerbation. • Treatment should be initiated immediately based on severity of asthma exacerbation."
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 57,
+            "quote": "Rapid clinical assessment of severity* should be performed for all asthma exacerbation."
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 57,
+            "quote": "Treatment should be initiated immediately based on severity of asthma exacerbation."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "close-monitoring",
+        "label": "Close monitoring: vitals incl. SpO2/RR/HR/BP every 15-30 min, mental status, auscultation",
+        "match": [
+          "monitor",
+          "every\\s+15",
+          "15\\s*[-–]\\s*30\\s*min",
+          "continuous\\s+(pulse\\s+)?oximetry",
+          "reassess",
+          "(every|q) ?15",
+          "continuous (SpO2|pulse oxim)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 61,
+            "quote": "Vital signs - Monitor continuously or at least every 15 – 30 minutes, including SpO2, respiratory rate, heart rate and blood pressure."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "early-critical-care-referral",
+        "label": "Early critical-care referral if poor response",
+        "match": [
+          "critical\\s+care",
+          "\\bICU\\b",
+          "intensiv",
+          "anaesthet|anesthet",
+          "intubat",
+          "critical care",
+          "\\bICU\\b|intensive care|\\bHDU\\b",
+          "anaesth|anesth"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 62,
+            "quote": "Early referral to critical care team should be considered for patients with asthma exacerbation who respond poorly to optimal treatment."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "investigations": [
+      {
+        "id": "abg",
+        "label": "Arterial blood gas",
+        "match": [
+          "\\bABG\\b",
+          "arterial\\s+blood\\s+gas",
+          "blood\\s+gas",
+          "PaCO2|PaO2",
+          "arterial blood gas",
+          "blood gas",
+          "\\bVBG\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 61,
+            "quote": "In severe and life-threatening asthma arterial blood gases should be done"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "pulse-oximetry",
+        "label": "Pulse oximetry (SpO2)",
+        "match": [
+          "SpO2",
+          "pulse\\s+oximet",
+          "oxygen\\s+saturation",
+          "\\bSpO2\\b",
+          "pulse oxim",
+          "oxygen saturation"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "QR Management of Asthma in Adults (2nd Edition) 2024 v20251022.pdf",
+            "page": 7,
+            "quote": "• Conscious level, SpO2, PR, BP • PaO2 and PaCO2 • CXR for complication and alternative diagnosis"
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 60,
+            "quote": "Saturation should be assessed before oxygen is commenced or five minutes after oxygen is removed or when saturation stabilises."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "cxr-if-indicated",
+        "label": "Chest X-ray if poor response, suspected complication or alternative diagnosis (not routine)",
+        "match": [
+          "\\bCXR\\b",
+          "chest\\s+x[- ]?ray",
+          "chest\\s+radiograph",
+          "chest (x-?ray|radiograph)"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 56,
+            "quote": "Chest X-ray (CXR) is not routinely indicated in all patients with asthma exacerbation. It should be considered in patients with atypical symptoms, suspected complications or diagnostic uncertainty in asthma management."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_allowed": [
+      {
+        "id": "nebulised-saba",
+        "label": "Nebulised salbutamol (oxygen-driven), repeated every 20 min for 1 hour",
+        "match": [
+          "salbutamol",
+          "albuterol",
+          "\\bSABA\\b",
+          "(β|beta)[- ]?2[- ]?agonist",
+          "ventolin",
+          "neb(ulis|uliz)",
+          "beta-?2[- ]agonist|β2[- ]agonist"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Management of Asthma in Adults (2nd Edition) 2024 v20251022.pdf",
+            "page": 7,
+            "quote": "• SABA via oxygen driven nebuliser, repeat every 20 minutes for 1 hour • Ipratropium bromide nebuliser 0.5 mg stat"
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 18,
+            "quote": "SABA via oxygen driven nebuliser, repeat every 20 minutes for 1 hour"
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 58,
+            "quote": "In asthma exacerbation, inhaled β2-agonist is the first-line treatment."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "ipratropium",
+        "label": "Nebulised ipratropium bromide 0.5 mg",
+        "match": [
+          "ipratropium",
+          "atrovent",
+          "\\bSAMA\\b",
+          "anticholinergic"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Management of Asthma in Adults (2nd Edition) 2024 v20251022.pdf",
+            "page": 7,
+            "quote": "• SABA via oxygen driven nebuliser, repeat every 20 minutes for 1 hour • Ipratropium bromide nebuliser 0.5 mg stat"
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 58,
+            "quote": "A Cochrane systematic review demonstrated that combined inhaled therapy (ipratropium bromide - SABA) was more effective than SABA alone in adult patients with asthma exacerbation presenting to ED"
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 18,
+            "quote": "Ipratropium bromide nebuliser 0.5 mg every 4 - 6 hours"
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 58,
+            "quote": "combined inhaled therapy (ipratropium bromide - SABA) was more effective than SABA alone in adult patients with asthma exacerbation presenting to ED"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "systemic-corticosteroid",
+        "label": "Systemic corticosteroid early (IV hydrocortisone 100 mg or oral prednisolone 0.5-1 mg/kg, max 50 mg)",
+        "match": [
+          "hydrocortisone",
+          "prednisolone",
+          "prednisone",
+          "methylprednisolone",
+          "dexamethasone",
+          "systemic\\s+(cortico)?steroid",
+          "oral\\s+(cortico)?steroid",
+          "\\bOCS\\b",
+          "systemic (cortico)?steroid"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 59,
+            "quote": "Systemic corticosteroids should be given in all patients with asthma exacerbation."
+          },
+          {
+            "source": "QR Management of Asthma in Adults (2nd Edition) 2024 v20251022.pdf",
+            "page": 7,
+            "quote": "• IV hydrocortisone 100 mg stat • IV magnesium sulphate 2 g infusion over 20 minutes (single dose)"
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 18,
+            "quote": "IV hydrocortisone 100 mg stat"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "iv-magnesium",
+        "label": "IV magnesium sulphate 2 g over 20 minutes, single dose",
+        "match": [
+          "magnesium",
+          "MgSO4",
+          "\\bMgSO4\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 60,
+            "quote": "A single dose of 2 g intravenous magnesium sulphate infusion over 20 minutes should be considered in acute severe and life-threatening asthma."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "continue-ics",
+        "label": "Continue / restart maintenance inhaled corticosteroid",
+        "match": [
+          "inhaled\\s+corticosteroid",
+          "\\bICS\\b",
+          "preventer",
+          "budesonide",
+          "beclometasone|beclomethasone",
+          "fluticasone",
+          "inhaled (cortico)?steroid",
+          "budesonide|fluticasone|beclometasone|beclomethasone",
+          "ICS-?LABA|ICS-?formoterol"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 59,
+            "quote": "Asthma patients should continue their maintenance inhaled corticosteroids (via pMDI or DPI) when prescribed with systemic corticosteroids."
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 59,
+            "quote": "These patients should continue their maintenance inhaled corticosteroids."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_forbidden": [
+      {
+        "id": "oral-saba",
+        "label": "Oral short-acting beta2-agonist (oral salbutamol)",
+        "match": [
+          "oral\\s+(salbutamol|SABA|(β|beta)[- ]?2?[- ]?agonist|terbutaline)",
+          "salbutamol\\s+(tablet|syrup)",
+          "oral (salbutamol|SABA|β2|beta)",
+          "salbutamol (tablet|syrup)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 58,
+            "quote": "Oral short-acting β2-agonist (SABA) should not be used in asthma exacerbation."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "routine-iv-aminophylline",
+        "label": "Routine IV aminophylline",
+        "match": [
+          "aminophylline",
+          "theophylline"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 60,
+            "quote": "IV aminophylline has limited effectiveness apart from unfavourable AEs compared with standard therapy. Therefore, it should not be routinely used in asthma exacerbation."
+          },
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 60,
+            "quote": "Therefore, it should not be routinely used in asthma exacerbation. Consultation with a senior physician is advisable if its use is required."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "nebulised-magnesium",
+        "label": "Nebulised magnesium sulphate",
+        "match": [
+          "neb(ulised|ulized)\\s+magnesium",
+          "magnesium.{0,20}neb",
+          "nebuli[sz]ed magnesium",
+          "magnesium.{0,20}nebuli"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+            "page": 60,
+            "quote": "Nebulised magnesium sulphate is not recommended for treatment in adults with acute asthma."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "disposition": {
+      "acceptable": [
+        "ADMIT_WARD",
+        "ADMIT_ICU_HDU"
+      ],
+      "preferred": "ADMIT_WARD",
+      "evidence": [
+        {
+          "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+          "page": 62,
+          "quote": "All patients with severe, life-threatening asthma should be admitted."
+        },
+        {
+          "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+          "page": 61,
+          "quote": "All patients with progressive deterioration following initial treatment and those with severe or life-threatening asthma should be admitted."
+        },
+        {
+          "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+          "page": 62,
+          "quote": "Patients with asthma exacerbation who respond poorly to optimal treatment and are at-risk of respiratory failure should be considered for early referral to critical care team."
+        },
+        {
+          "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+          "page": 62,
+          "quote": "All patients with severe, life-threatening asthma should be admitted."
+        },
+        {
+          "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+          "page": 62,
+          "quote": "Patients with asthma exacerbation who respond poorly to optimal treatment and are at-risk of respiratory failure should be considered for early referral to critical care team."
+        }
+      ],
+      "note": "Initial treatment in the ED critical zone (Level 2), then admission for severe asthma. ICU/HDU if poor response, hypercapnia or life-threatening features. Discharge is not acceptable: the CPG requires admission for severe exacerbations. / Severe exacerbation (RR > 25) means admission. ICU/HDU if she responds poorly, tires, or has hypercapnia or worsening hypoxaemia."
+    },
+    "sources_forbidden": [
+      {
+        "doc_type": "PAEDIATRIC_PROTOCOL",
+        "why": "adult patient"
+      }
+    ]
+  },
+  "disputed": [
+    {
+      "section": "red_flags",
+      "id": "hypercapnia",
+      "label": "Normal or rising PaCO2 (impending respiratory arrest)",
+      "match": [
+        "hypercap",
+        "PaCO2",
+        "\\bCO2\\s+retention",
+        "rising\\s+(pa)?co2",
+        "respiratory\\s+(failure|arrest)"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+          "page": 61,
+          "quote": "ABG - Monitor hypercapnia or hypoxaemia. A rising or normal PaCO2 may indicate impending respiratory arrest."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "red_flags",
+      "id": "failure-to-respond",
+      "label": "Failure to respond to maximal medical therapy (consider intubation)",
+      "match": [
+        "(fail(ure)?|not)\\s+(to\\s+)?respond",
+        "poor(ly)?\\s+respon",
+        "intubat",
+        "refractory"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+          "page": 57,
+          "quote": "Patients who are having life-threatening asthma exacerbations with signs of respiratory distress, worsening hypoxaemia, hypercapnia, altered mental status, or failure to respond to maximal medical therapy should be considered for early intubation and referral to critical care."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "hfnc",
+      "label": "Consider high-flow nasal cannula over conventional oxygen in ED",
+      "match": [
+        "high[- ]flow\\s+nasal",
+        "\\bHFNC\\b",
+        "\\bHFNO\\b"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+          "page": 58,
+          "quote": "In asthma exacerbation in emergency department, high flow nasal cannula should be considered over conventional oxygen therapy."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "focused-history-adherence",
+      "label": "Focused history: triggers, current medication, adherence, allergies",
+      "match": [
+        "trigger",
+        "adheren",
+        "current\\s+(asthma\\s+)?medication",
+        "inhaler\\s+technique"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+          "page": 55,
+          "quote": "A focused history should include time of onset, trigger factors, severity of symptoms, risk factors for asthma-related death, allergies and current asthma medications including doses, adherence pattern and response to treatment."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "pef",
+      "label": "PEF / FEV1 (if feasible)",
+      "match": [
+        "\\bPEFR?\\b",
+        "peak\\s+(expiratory\\s+)?flow",
+        "\\bFEV1\\b",
+        "spirometr"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Asthma in Adults (2nd Edition) 2024 v20260819.pdf",
+          "page": 56,
+          "quote": "While PEF or FEV1 are useful and valid measures of airway calibre, it may not be applicable to be used in acute asthma exacerbation."
+        }
+      ],
+      "proposed_by": "A"
+    }
+  ],
+  "adjudication": {
+    "method": "two independent extraction passes (A, B); agreed items scored",
+    "notes": [],
+    "open_questions": {
+      "A": [
+        "Severity grading: RR 30 (>25/min) is a 'severe' parameter; HR 118, SpO2 91% and speaking in phrases are 'moderate'. The CPG says to classify by the most severe parameter, giving severe. A report calling it moderate is listed only as a weak alternative.",
+        "The QR algorithm's severity headers for the mild/moderate and severe columns are graphics without extractable text. The severe-column drug list (x~186: SABA via O2-driven nebuliser, ipratropium 0.5 mg stat, IV hydrocortisone 100 mg, IV MgSO4 2 g) was assigned by x-position; only 'LIFE THREATENING' (x~241) is printed as text.",
+        "Non-selective beta-blockers are described only as 'can exacerbate asthma' / use with caution, not as contraindicated, so they are not listed as forbidden."
+      ],
+      "B": [
+        "Severity is mixed: RR 30 (> 25/min) is in the Severe column, but speech in phrases, HR 118 and SpO2 91% are in the Moderate column. Table 9 says to classify by the most severe parameter, which gives 'severe'. The Table 9 quote comes from column-flattened text, so the column headers do not sit next to the cells.",
+        "IV magnesium is marked required because Recommendation 12 names acute severe asthma, but the wording is 'should be considered'."
+      ]
+    }
+  }
+}

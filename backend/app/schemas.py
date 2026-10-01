@@ -672,10 +672,22 @@ class VitalInterpretation(_LLMOut):
     mts_level_triggered: str = Field(default="")
 
 
+class SourceCaution(BaseModel):
+    """Server-set (F2): a "do not" quoted verbatim from a document about the
+    working diagnosis."""
+    label: str
+    quote: str
+    source_id: str = ""
+    external: bool = False
+
+
 class RedFlag(_LLMOut):
     flag: str = Field(default="Unspecified Red Flag")
     why_it_matters: str = Field(default="")
     source_id: str = Field(default="[S1]")
+    # "" when the model wrote it; "source" when the server added it from a
+    # verbatim guideline sentence (complications.py) - never model text.
+    origin: str = Field(default="")
 
 
 class DifferentialDiagnosis(_LLMOut):
@@ -700,12 +712,21 @@ class ImmediateAction(_LLMOut):
     action: str = Field(default="Assess ABCs")
     timeframe: str = Field(default="Immediately")
     source_id: str = Field(default="[S1]")
+    origin: str = Field(default="")  # "source": added by the server from a verbatim sentence (F5)
+    # Server-set with origin "source": the guideline sentence the action rests
+    # on, shown as a sub-line under a short action (D4) - never model text.
+    source_quote: str = Field(default="")
+    source_where: str = Field(default="")
 
 
 class Investigation(_LLMOut):
     test: str = Field(default="Standard Bloods")
     rationale: str = Field(default="")
     urgency: str = Field(default="Routine")
+    source_id: str = Field(default="")
+    origin: str = Field(default="")
+    source_quote: str = Field(default="")
+    source_where: str = Field(default="")
 
 
 class DrugRecommendation(_LLMOut):
@@ -744,8 +765,40 @@ class DrugRecommendation(_LLMOut):
             "plausible-but-wrong recommendation."
         ),
     )
+    indication_status: str | None = Field(
+        default=None,
+        description=(
+            "Server-set by indications.py: SUPPORTED (a source links the drug to "
+            "the working diagnosis), SYMPTOMATIC (it treats a symptom this patient "
+            "has) or CONDITIONAL (linked only to a differential). WITHHELD drugs "
+            "are moved to `withheld_drugs` and never appear here."
+        ),
+    )
+    indication_basis: str = Field(
+        default="",
+        description="Server-set: the FUKKM field or guideline sentence the verdict rests on, quoted.",
+    )
     cautions: str = Field(default="")
     source_id: str = Field(default="[S1]")
+
+
+class ExternalReference(BaseModel):
+    """Server-set. A verified link for the clinician to consult - chosen by code
+    from data/reference_links.json, never written by the model."""
+    title: str
+    publisher: str = ""
+    url: str
+    reason: str = ""
+    checked: str | None = None
+
+
+class WithheldDrug(BaseModel):
+    """Server-set. A drug the model proposed that no source links to this patient."""
+    drug_name: str
+    route: str = ""
+    stated_dose: str = ""
+    reason: str
+    basis: str = ""
 
 
 class Contraindication(BaseModel):
@@ -758,12 +811,29 @@ class Contraindication(BaseModel):
     reason: str
 
 
+class KnowledgeGap(BaseModel):
+    """Server-set. Something this diagnosis needs that NO indexed KKM (or
+    KKM-cited) document states - said plainly, with verified links to read
+    instead. The model is never asked to fill it."""
+    element: str
+    statement: str
+    references: List["ExternalReference"] = Field(default_factory=list)
+
+
 class CompletenessGap(BaseModel):
     """Server-set. A required element of this presentation that the answer omitted.
     Never generated content - only the statement that something is missing."""
     element: str
     why: str
     guideline: str
+    quote: str = Field(
+        default="",
+        description=(
+            "Server-set: the guideline's own sentence that covers this element, "
+            "quoted VERBATIM from the indexed document - never generated."
+        ),
+    )
+    quote_source: str = Field(default="", description="Document title and page of `quote`.")
 
 
 class DiagnosticSchema(_LLMOut):
@@ -808,11 +878,71 @@ class DiagnosticSchema(_LLMOut):
         ),
     )
     contraindications: List["Contraindication"] = Field(default_factory=list)
+    withheld_drugs: List["WithheldDrug"] = Field(
+        default_factory=list,
+        description="Server-set: drugs removed by the indication gate, with the reason.",
+    )
+    second_pass_note: str = Field(
+        default="",
+        description="Server-set: what the diagnosis-conditioned second pass added, and from where.",
+    )
+    differential_warning: str = Field(
+        default="",
+        description="Server-set: differentials that restate or belong to the working diagnosis.",
+    )
+    source_cautions: List[SourceCaution] = Field(
+        default_factory=list,
+        description="Server-set: cautions for the working diagnosis, each quoted from its source.",
+    )
+    complication_note: str = Field(
+        default="",
+        description="Server-set: red flags added from a verbatim source sentence, or dropped "
+                    "because they only restated the diagnosis.",
+    )
+    citation_alignment_note: str = Field(
+        default="",
+        description="Server-set: citations moved to the passage that supports the item.",
+    )
+    external_references: List["ExternalReference"] = Field(
+        default_factory=list,
+        description="Server-set: verified links for what the indexed corpus does not cover.",
+    )
+    triage_provisional: bool = Field(
+        default=False,
+        description="Server-set: a core vital sign was not measured, so the level can still rise.",
+    )
+    triage_provisional_note: str = Field(
+        default="",
+        description="Server-set: which vitals are missing and the printed cells that would escalate.",
+    )
+    onset_derived: str = Field(
+        default="",
+        description="Server-set: onset read from the complaint text when the onset field was left blank.",
+    )
+    avoid_warning: str = Field(
+        default="",
+        description=(
+            "Server-set: a recommended drug that a source document says to avoid "
+            "for this diagnosis, with the quoted sentence and its page."
+        ),
+    )
     completeness_warning: str = Field(
         default="",
         description="Server-set. Required elements of this presentation not addressed.",
     )
     completeness_gaps: List["CompletenessGap"] = Field(default_factory=list)
+    knowledge_gaps: List["KnowledgeGap"] = Field(
+        default_factory=list,
+        description="Server-set. What KKM sources do not state for this diagnosis, with links.",
+    )
+    consistency_warning: str = Field(
+        default="",
+        description=(
+            "Server-set. Statements in the report that contradict the recorded "
+            "findings, rest on a finding that was never recorded, or contradict "
+            "each other."
+        ),
+    )
     redirection_warning: str = Field(
         default="",
         description=(
@@ -899,8 +1029,78 @@ class RetrievedSource(BaseModel):
         ),
     )
     excerpt: str
+    url: str | None = Field(
+        default=None,
+        description="For web-only guidelines (the NAG 2024): the live page this passage came from.",
+    )
     version_date: str | None = None
     status: str | None = "active"
+
+class TriagePreview(BaseModel):
+    """The deterministic part of a triage, available in about a second.
+
+    Everything here is computed by code from the intake - the MTS 2022 table,
+    the red-flag rules - with no model call, so it can be shown while the full
+    report is still generating. It is a FLOOR: the full report can only keep or
+    raise this level (bar the narrow de-escalation `_enforce_mts_level`
+    documents), and it says so."""
+    mts_triage_level: int
+    triage_colour: Literal["RED", "YELLOW", "GREEN"]
+    mts_triage_label: str
+    time_to_treatment: str
+    reassessment: str = ""
+    reasons: List[str] = Field(default_factory=list)
+    red_flags: List[str] = Field(default_factory=list)
+    provisional_note: str = ""
+    note: str = (
+        "Provisional, from the MTS 2022 table and red-flag rules alone. The full "
+        "report may raise this level; verify before acting."
+    )
+
+
+class ReportFlag(BaseModel):
+    """A clinician's one-click objection to an audited report."""
+    reason: Literal["wrong_triage", "wrong_diagnosis", "wrong_drug", "missing_item",
+                    "wrong_source", "other"]
+    note: str = Field("", max_length=2000)
+    flagged_by: str = Field("", max_length=200)
+
+
+class ReportProvenance(BaseModel):
+    """What produced this report, so it can be looked up and reproduced.
+
+    Filled by the API layer after generation (see audit.py / versioning.py).
+    `audit_id` is empty when auditing is off or the write failed."""
+    audit_id: str = ""
+    git_sha: str = ""
+    git_dirty: bool = False
+    code_fingerprint: str = ""
+    corpus_fingerprint: str = ""
+    queue_wait_ms: int = 0
+
+
+class AttentionReport(BaseModel):
+    """Server-set (A4.1): where the time went and what the model used.
+
+    Stored with the report in the audit log, so `python -m app.attention_audit`
+    can aggregate it across reports."""
+    stages_ms: dict[str, int] = Field(default_factory=dict)
+    prompt_tokens: int = 0
+    prompt_tokens_reused: int = 0
+    output_tokens: int = 0
+    stage2_output_tokens: int = 0
+    hypothesis_output_tokens: int = 0
+    passages_given: int = 0
+    passages_cited: int = 0
+    cited: List[str] = Field(default_factory=list)
+    uncited_documents: List[str] = Field(default_factory=list)
+    cited_by_position: dict[str, int] = Field(default_factory=dict)
+    given_by_position: dict[str, int] = Field(default_factory=dict)
+    citation_moves: int = 0
+    citations_unsupported: int = 0
+    complications_added: int = 0
+    second_pass: str = ""
+
 
 class TriageResponse(BaseModel):
     diagnostic: DiagnosticSchema
@@ -923,6 +1123,8 @@ class TriageResponse(BaseModel):
             "rule and the phrase in the intake that fired it."
         ),
     )
+    provenance: ReportProvenance = Field(default_factory=ReportProvenance)
+    attention: AttentionReport | None = None
     disclaimer: str = (
         "Decision-support prototype over KKM CPG/MTS/FUKKM documents. "
         "Not a medical device. Every recommendation must be verified against the "
@@ -953,6 +1155,7 @@ class InquiryResponse(BaseModel):
     model: str
     latency_ms: int
     corpus_warnings: List[str] = Field(default_factory=list)
+    provenance: ReportProvenance = Field(default_factory=ReportProvenance)
 
 # ============================================================== ops
 
@@ -977,6 +1180,9 @@ class HealthResponse(BaseModel):
             "request after boot loads them and is correspondingly slow."
         ),
     )
+    gpu_busy: bool = Field(False, description="A report is being generated right now.")
+    gpu_waiting: int = Field(0, description="Reports queued behind the one running.")
+    warm: str = Field("off", description="Start-up warm-up: off | warming | ready (N s) | failed: ...")
 
 
 class ProgressResponse(BaseModel):

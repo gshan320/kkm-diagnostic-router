@@ -1,0 +1,1132 @@
+{
+  "id": "htn-emergency-50f",
+  "title": "Severe hypertension with headache and blurred vision, 50-year-old woman",
+  "tier": "management",
+  "provenance": "Vignette written 2026-09-30 for the evaluation harness; expected answers extracted from the cited documents.",
+  "intake": {
+    "age": 50,
+    "gender": "female",
+    "weight_kg": 80,
+    "vitals": {
+      "systolic_bp": 228,
+      "diastolic_bp": 132,
+      "heart_rate": 94,
+      "respiratory_rate": 18,
+      "temperature": 36.8,
+      "spo2": 98,
+      "gcs": 15,
+      "pain_score": 8
+    },
+    "complaint": "Severe headache and blurred vision since this morning.",
+    "history": "Hypertension; stopped her medicines two months ago.",
+    "pregnancy": "not_pregnant",
+    "facility": "state_or_tertiary_with_pci_and_ct"
+  },
+  "scored_sections": [
+    "triage",
+    "diagnosis",
+    "red_flags",
+    "differentials",
+    "actions",
+    "investigations",
+    "drugs",
+    "disposition",
+    "grounding"
+  ],
+  "expected": {
+    "triage": {
+      "level": 2,
+      "acceptable": [
+        2
+      ],
+      "time_to_treatment": "under 10 minutes",
+      "note": "Both extractors: level 2. A: Level 2 comes from three cells. Adult Vital Signs Level 2 column (p7, x~131): 'BP > 220/130 with symptoms' (228/132 with headache and blurred vision) and 'Severe Pain (8 - 10)' (pain 8). HEADACHE complaint Level 2 column (p9, x~131): 'Pain Score > 7'. Primary triage Critical First Look Level 2 column (p4, x~246): 'Severe Pain'. The headache row's 'Visual / Speech difficulty' is Level 3 (x~244). No Level 1 cell applies (GCS 15, airway and circulation intact). If there is an altered mental state or neuro deficit (headache L2 cells), the level stays at 2. B: Level 2 comes from several cells: the vital-signs cells 'BP > 220/130 with symptoms' (x~131, p7) and 'Severe Pain (8 - 10)' (x~131, p7), the HEADACHE complaint cell 'Pain Score > 7' (x~131, p9), and the Primary Triage cell 'Severe Pain' (x~246, p4). 'Sudden Vision Loss' is a Level 3 cell (EYE/VISION, x~244, p9). No Level 1 cell applies.",
+      "evidence": [
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• SBP < 90 • HR > 120 • RR > 30 • BP > 220/130 with symptoms"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• Immunocompromised • Severe Pain (8 - 10) • GCS < 13 or drop > 2"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 9,
+          "quote": "• Pain Score > 7 • Sudden onset • Assoc neck pain"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "• Severe Chest Pain • Severe Pain • Ongoing Seizures"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 3,
+          "quote": "Level 2 - Emergency - under 10 minutes"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• SBP < 90 • HR > 120 • RR > 30 • BP > 220/130 with symptoms • SpO2 < 92%"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• Temp > 39 or < 36 • Appears Septic, Ill • Immunocompromised • Severe Pain (8 - 10) • GCS < 13 or drop > 2"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 9,
+          "quote": "HEADACHE • Altered mental state • Neuro deﬁcits • Pain Score > 7 • Sudden onset • Assoc neck pain"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "• Not responding to call • Severe Chest Pain • Severe Pain • Ongoing Seizures"
+        }
+      ]
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Hypertensive emergency (severe hypertension >= 180/110 with symptoms suggesting acute target-organ damage, e.g. hypertensive encephalopathy / retinopathy), after stopping antihypertensives",
+        "match": [
+          "hypertensive emergenc",
+          "hypertensive encephalopath",
+          "hypertensive crisis",
+          "malignant hypertension",
+          "accelerated hypertension",
+          "hypertensive (emergenc|crisis|crises)",
+          "malignant (phase )?hypertension",
+          "hypertensive retinopath"
+        ],
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 53,
+            "quote": "Hypertensive emergency is defined as severe elevation of blood pressure associated with new or progressive end organ damage/complication such as acute heart failure,"
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 49,
+            "quote": "Severe hypertension is defined as persistent elevated SBP >180 mmHg and/or DBP >110 mmHg."
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 51,
+            "quote": "Possible precipitating factors for hypertensive urgency include non-adherence to anti-hypertensive medications,"
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 49,
+            "quote": "Severe hypertension is defined as persistent elevated SBP >180 mmHg and/or DBP >110 mmHg."
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 53,
+            "quote": "Hypertensive emergency is defined as severe elevation of blood pressure associated with new or progressive end organ damage/complication"
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 51,
+            "quote": "Possible precipitating factors for hypertensive urgency include non-adherence to anti-hypertensive medications"
+          }
+        ]
+      },
+      "acceptable_alternatives": [
+        {
+          "label": "Hypertensive urgency (if no acute target-organ damage is found)",
+          "match": [
+            "hypertensive urgenc"
+          ]
+        },
+        {
+          "label": "Severe hypertension / hypertensive crisis",
+          "match": [
+            "severe hypertension",
+            "hypertensive crisis",
+            "uncontrolled hypertension"
+          ]
+        },
+        {
+          "label": "Hypertensive urgency, if no acute target-organ damage is found",
+          "match": [
+            "hypertensive urgenc"
+          ]
+        },
+        {
+          "label": "Severe (uncontrolled) hypertension",
+          "match": [
+            "severe (uncontrolled )?hypertension",
+            "uncontrolled hypertension"
+          ]
+        }
+      ]
+    },
+    "red_flags": [
+      {
+        "id": "acute-target-organ-damage",
+        "label": "Symptoms/signs of acute target-organ damage (heart failure, ACS, AKI, dissection, SAH, hypertensive encephalopathy)",
+        "match": [
+          "target[- ]organ",
+          "end[- ]organ",
+          "\\bTOD\\b",
+          "encephalopath",
+          "confus|altered (mental|conscious)|drows",
+          "seizure|convuls",
+          "focal (neuro|deficit)|neurological deficit|weakness|hemipar"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 49,
+            "quote": "symptoms and signs of acute target organ damage/complication. These include acute heart failure, acute coronary syndromes, acute renal failure, dissecting aneurysm, subarachnoid haemorrhage, hypertensive encephalopathy"
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 49,
+            "quote": "symptoms and signs of acute target organ damage/complication. These include acute heart failure, acute coronary syndromes, acute renal failure, dissecting aneurysm, subarachnoid haemorrhage, hypertensive encephalopathy and preeclampsia/eclampsia"
+          },
+          {
+            "source": "MTS 2022.pdf",
+            "page": 9,
+            "quote": "HEADACHE • Altered mental state • Neuro deﬁcits • Pain Score > 7 • Sudden onset • Assoc neck pain"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "retinopathy-grade-3-4",
+        "label": "Grade III/IV retinal changes (haemorrhages, exudates, papilloedema) - accelerated/malignant hypertension",
+        "match": [
+          "papill?o?edema",
+          "retinopath",
+          "retinal (haemorrh|hemorrh|change|exud)",
+          "fundoscop|funduscop|fundus",
+          "cotton[- ]wool",
+          "flame",
+          "retinal (ha?emorrhage|change)",
+          "exudate",
+          "grade (III|IV|3|4)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 51,
+            "quote": "III or IV retinal changes (also known as accelerated and malignant hypertension)"
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 35,
+            "quote": "Retina • Haemorrhages or exudates • Papilloedema"
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 51,
+            "quote": "these include patients with grade III or IV retinal changes (also known as accelerated and malignant hypertension)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "differentials": [
+      {
+        "id": "hypertensive-encephalopathy",
+        "label": "Hypertensive encephalopathy",
+        "match": [
+          "hypertensive encephalopath",
+          "\\bPRES\\b",
+          "posterior reversible",
+          "\\bPRES\\b|posterior reversible"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 53,
+            "quote": "dissecting aneurysm, acute coronary syndromes, hypertensive encephalopathy, acute renal failure, subarachnoid haemorrhage and/or intracranial haemorrhage."
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 49,
+            "quote": "symptoms and signs of acute target organ damage/complication. These include acute heart failure, acute coronary syndromes, acute renal failure, dissecting aneurysm, subarachnoid haemorrhage, hypertensive encephalopathy and preeclampsia/eclampsia"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "intracranial-haemorrhage",
+        "label": "Intracerebral / intracranial haemorrhage (haemorrhagic stroke)",
+        "match": [
+          "intracerebral (haem|hem|bleed)",
+          "intracranial (haem|hem|bleed)",
+          "\\bICH\\b",
+          "haemorrhagic stroke|hemorrhagic stroke",
+          "intracerebral ha?emorrhage|\\bICH\\b",
+          "ha?emorrhagic stroke",
+          "intracranial (ha?emorrhage|bleed)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 53,
+            "quote": "dissecting aneurysm, acute coronary syndromes, hypertensive encephalopathy, acute renal failure, subarachnoid haemorrhage and/or intracranial haemorrhage."
+          },
+          {
+            "source": "CPG Management of Spontaneous Intracerebral Haemorrhage (1st Edition) 2025.pdf",
+            "page": 20,
+            "quote": "headache occurs in half of patients with intracerebral haemorrhage due to stretching of meningeal pain fibres or irritation caused by blood in the cerebrospinal fluid and ventricles."
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 53,
+            "quote": "Hypertensive emergency is defined as severe elevation of blood pressure associated with new or progressive end organ damage/complication"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "subarachnoid-haemorrhage",
+        "label": "Subarachnoid haemorrhage",
+        "match": [
+          "subarachnoid",
+          "\\bSAH\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 53,
+            "quote": "dissecting aneurysm, acute coronary syndromes, hypertensive encephalopathy, acute renal failure, subarachnoid haemorrhage and/or intracranial haemorrhage."
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 49,
+            "quote": "symptoms and signs of acute target organ damage/complication. These include acute heart failure, acute coronary syndromes, acute renal failure, dissecting aneurysm, subarachnoid haemorrhage, hypertensive encephalopathy and preeclampsia/eclampsia"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "ischaemic-stroke",
+        "label": "Acute ischaemic stroke",
+        "match": [
+          "ischa?emic stroke",
+          "cerebral infarct",
+          "\\bCVA\\b",
+          "isch(a)?emic stroke|cerebral infarct|\\bCVA\\b|\\bstroke\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 36,
+            "quote": "Neurological examination to look for evidence of stroke"
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 55,
+            "quote": "Acute ischemic stroke Refer Chapter 7.4 Hypertension and Stroke"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "aortic-dissection",
+        "label": "Aortic dissection",
+        "match": [
+          "aortic dissect",
+          "dissecting aneurysm",
+          "dissection",
+          "(aortic )?dissect"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 53,
+            "quote": "dissecting aneurysm, acute coronary syndromes, hypertensive encephalopathy, acute renal failure, subarachnoid haemorrhage and/or intracranial haemorrhage."
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 49,
+            "quote": "symptoms and signs of acute target organ damage/complication. These include acute heart failure, acute coronary syndromes, acute renal failure, dissecting aneurysm, subarachnoid haemorrhage, hypertensive encephalopathy and preeclampsia/eclampsia"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "secondary-hypertension",
+        "label": "Secondary causes (renal, endocrine e.g. phaeochromocytoma, drugs)",
+        "match": [
+          "secondary (cause|hypertension)",
+          "ph(a)?eochromocytoma",
+          "renovascular",
+          "renal artery stenosis",
+          "cushing",
+          "conn",
+          "pha?eochromocytoma",
+          "amphetamine|cocaine|sympathomimetic",
+          "renal artery stenosis|renovascular"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 49,
+            "quote": "particularly looking for signs of acute target organ damage/ complication and causes of secondary hypertension."
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 49,
+            "quote": "The commonest reason of severe hypertension is long-standing poorly controlled essential hypertension."
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 49,
+            "quote": "The evaluation of these patients should include a thorough history and physical examination, particularly looking for signs of acute target organ damage/ complication and causes of secondary hypertension."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "assess-target-organ-damage",
+        "label": "Thorough history and examination for acute target-organ damage and secondary causes",
+        "match": [
+          "target[- ]organ",
+          "end[- ]organ",
+          "neurolog\\w* exam",
+          "secondary (cause|hypertension)",
+          "(target|end)[- ]organ (damage|involvement|dysfunction)",
+          "\\bTOD\\b|\\bEOD\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 49,
+            "quote": "The evaluation of these patients should include a thorough history and physical examination, particularly looking for signs of acute target organ damage/ complication and causes of secondary hypertension."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "fundoscopy",
+        "label": "Fundus examination (fundoscopy) for retinopathy / papilloedema",
+        "match": [
+          "fundoscop",
+          "funduscop",
+          "fundus",
+          "ophthalmoscop",
+          "retina",
+          "fundoscop|funduscop|fundus|ophthalmoscop"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 36,
+            "quote": "• Fundus examination • Examination for carotid bruit, abdominal bruit, presence of peripheral pulses and radio-femoral delay"
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 36,
+            "quote": "• Measure BP appropriately. (refer to Chapter 2) • Fundus examination"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "controlled-bp-reduction",
+        "label": "Controlled BP reduction: no more than 25% in first hour, then to 160/100 over 2-6 h, then to normal over 24-48 h",
+        "match": [
+          "(10|20|25)\\s*%",
+          "160\\s*/\\s*100",
+          "no more than 25",
+          "(gradual|controlled|cautious)\\w* (bp |blood pressure )?(reduc|lower)",
+          "(reduc|lower)\\w* (the )?(bp|blood pressure).{0,30}(gradual|control|cautious)",
+          "25 ?%",
+          "160 ?/ ?(90|100)",
+          "(gradual|controlled|cautious|slow).{0,25}(reduc|lower)",
+          "10 ?(-|–|to) ?25 ?%"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 17,
+            "quote": "Reduce BP by no more than 25% within the first hour; then, if stable, to 160/100 mmHg within the next 2 to 6 hours; and then cautiously to normal during the following 24 to 48 hours in all other situations."
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 17,
+            "quote": "Reduce BP by 10%-25% within minutes to hours but not lower than 160/100 mmHg. This is best achieved with parenteral drugs."
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 60,
+            "quote": "Reduce SBP by no more than 25% within the first hour; then, if stable, to 160/100 mmHg within the next 2 to 6 hours; and then cautiously to normal during the following 24 to 48 hours in all other situations."
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 53,
+            "quote": "should have their BP reduced by 10%-25% within certain minutes to hours but not lower than 160/90 mmHg."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "admit-monitor",
+        "label": "Admit for immediate intervention and close BP monitoring",
+        "match": [
+          "admit",
+          "(close|continuous|frequent) (bp |blood pressure )?monitor",
+          "arterial line",
+          "\\bHDU\\b",
+          "\\bICU\\b",
+          "(close|continuous|frequent) (BP|blood pressure) monitor",
+          "\\bHDU\\b|\\bICU\\b|\\bCCU\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 53,
+            "quote": "should be admitted for immediate intervention and monitoring."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "investigations": [
+      {
+        "id": "renal-function",
+        "label": "Renal function (creatinine, eGFR, electrolytes)",
+        "match": [
+          "renal (function|profile)",
+          "\\bRFT\\b",
+          "\\bBUSE",
+          "creatinine",
+          "electrolyte",
+          "\\bU&?E\\b",
+          "\\beGFR\\b",
+          "renal (profile|function)",
+          "\\bRFT\\b|\\bBUSE|\\bU ?& ?E\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 36,
+            "quote": "Renal function tests (creatinine, eGFR, serum electrolytes)"
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 36,
+            "quote": "• Full blood count • Blood glucose • Renal function tests (creatinine, eGFR, serum electrolytes)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "urinalysis",
+        "label": "Urinalysis (protein, haematuria)",
+        "match": [
+          "urinalysis",
+          "urine (dip|feme|analysis|microscopy)",
+          "\\bUFEME\\b",
+          "proteinuria",
+          "haematuria|hematuria",
+          "urinalysis|urine (dip|FEME|analysis)|UFEME"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 36,
+            "quote": "Urinalysis (dip stick: albuminuria/microalbuminuria & microscopic haematuria)"
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 36,
+            "quote": "• Urinalysis (dip stick: albuminuria/microalbuminuria & microscopic haematuria) • Electrocardiogram (ECG)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "ecg",
+        "label": "ECG",
+        "match": [
+          "\\bECG\\b",
+          "\\bEKG\\b",
+          "electrocardiogra",
+          "12[- ]lead"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 36,
+            "quote": "Electrocardiogram (ECG)"
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 36,
+            "quote": "• Urinalysis (dip stick: albuminuria/microalbuminuria & microscopic haematuria) • Electrocardiogram (ECG)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "fbc",
+        "label": "Full blood count",
+        "match": [
+          "\\bFBC\\b",
+          "full blood count",
+          "complete blood count",
+          "\\bCBC\\b",
+          "\\bFBC\\b|full blood count|\\bCBC\\b",
+          "glucose|\\bRBS\\b|\\bCBG\\b|\\bBSL\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 36,
+            "quote": "• Full blood count • Blood glucose • Renal function tests (creatinine, eGFR, serum electrolytes)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "ct-brain",
+        "label": "CT brain if stroke-like features / to exclude intracranial haemorrhage",
+        "match": [
+          "\\bCT\\b.{0,20}(brain|head)",
+          "(brain|head)\\s+CT",
+          "computed tomograph",
+          "\\bCTB\\b",
+          "\\bNCCT\\b",
+          "neuroimaging",
+          "\\bMRI\\b",
+          "(brain|head) \\bCT\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Spontaneous Intracerebral Haemorrhage (1st Edition) 2025.pdf",
+            "page": 21,
+            "quote": "In patients presenting with stroke-like symptoms, neuroimaging is essential for distinguishing between ischaemic and haemorrhagic stroke."
+          },
+          {
+            "source": "CPG Management of Spontaneous Intracerebral Haemorrhage (1st Edition) 2025.pdf",
+            "page": 21,
+            "quote": "Computed tomography scan or magnetic resonance imaging, depending on availability, should be used to confirm the diagnosis of intracerebral haemorrhage."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_allowed": [
+      {
+        "id": "iv-labetalol",
+        "label": "IV labetalol 20 mg slow, then 40-80 mg every 10 min (max 200 mg)",
+        "match": [
+          "labetalol",
+          "trandate",
+          "nicardipine",
+          "(i\\.?v\\.?|intravenous) (antihypertensive|nitrate|GTN|glyceryl)",
+          "nitroglycerin|isosorbide|\\bGTN\\b",
+          "hydralazine",
+          "esmolol"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 56,
+            "quote": "20 mg injected slowly for at least 2 min; followed by 40-80 mg every 10 min."
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 55,
+            "quote": "A recent meta-analysis showed that IV labetalol have comparable efficacy and safety compared to nicardipine"
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 60,
+            "quote": "Treat hypertensive emergencies with intravenous drugs with specific targets based upon clinical scenarios. (Grade B)"
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 53,
+            "quote": "This is best achieved with parenteral drugs. (Table 6-D)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "iv-nicardipine",
+        "label": "IV nicardipine infusion 5 mg/h, titrate to max 15 mg/h",
+        "match": [
+          "nicardipine"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 57,
+            "quote": "Slow IVI at an initial rate of 5 mg/hr. Increase infusion rate as necessary, up to max 15 mg/hr."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "oral-agents-if-urgency",
+        "label": "Oral agents (nifedipine retard, captopril, oral labetalol) if this proves to be hypertensive urgency",
+        "match": [
+          "nifedipine (retard|sr|la|xl)",
+          "captopril",
+          "oral (labetalol|antihypertensive)",
+          "labetalol"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 60,
+            "quote": "However oral nifedipine retard can be used and has been recommended as first line therapy for hypertensive urgencies."
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 56,
+            "quote": "20 mg injected slowly for at least 2 min; followed by 40-80 mg every 10 min. Max: 200 mg"
+          },
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 55,
+            "quote": "A recent meta-analysis showed that IV labetalol have comparable efficacy and safety compared to nicardipine with the later showing more predictable and consistent BP control."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_forbidden": [
+      {
+        "id": "sublingual-nifedipine",
+        "label": "Sublingual (fast-acting) nifedipine",
+        "match": [
+          "sublingual nifedipine",
+          "nifedipine.{0,20}sublingual",
+          "\\bs/?l nifedipine",
+          "nifedipine\\s*\\(?s/?l\\b",
+          "nifedipine.{0,15}(bite|capsule).{0,15}(tongue|sublingual)",
+          "sublingual.{0,20}nifedipine",
+          "\\bSL nifedipine",
+          "(short|fast|immediate)[- ]acting nifedipine"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 60,
+            "quote": "Several serious side effects have been reported with the administration of sublingual fast-acting nifedipine and therefore this is no longer recommended."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "nitroprusside-in-encephalopathy",
+        "label": "Sodium nitroprusside if hypertensive encephalopathy (intracranial oedema)",
+        "match": [
+          "nitroprusside",
+          "\\bSNP\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+            "page": 55,
+            "quote": "Avoid nitroprusside because it can lead to intracranial oedema."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "disposition": {
+      "acceptable": [
+        "ADMIT_ICU_HDU",
+        "ADMIT_WARD"
+      ],
+      "preferred": "ADMIT_ICU_HDU",
+      "evidence": [
+        {
+          "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+          "page": 53,
+          "quote": "should be admitted for immediate intervention and monitoring."
+        },
+        {
+          "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+          "page": 53,
+          "quote": "should be admitted for immediate intervention and monitoring."
+        },
+        {
+          "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+          "page": 51,
+          "quote": "These patients may be admitted."
+        }
+      ],
+      "note": "The CPG says patients with hypertensive emergency should be admitted for immediate intervention and monitoring, without naming the unit. HDU/ICU is preferred because titrated IV infusions and close BP monitoring are needed (nitroprusside needs intra-arterial monitoring). Ward admission is acceptable. If assessment finds no acute target-organ damage (urgency), the urgency pathway applies: rest, oral agents, and admit or refer if she does not respond. / A hypertensive emergency needs admission and IV titration with close monitoring, so HDU/ICU is preferred. A ward is acceptable if there is no acute target-organ damage (urgency pathway: oral agents, and the CPG says 'may be admitted'). Discharge is not acceptable: BP is above 220/130 with symptoms and pain score 8."
+    },
+    "sources_forbidden": [
+      {
+        "doc_type": "PAEDIATRIC_PROTOCOL",
+        "why": "adult patient"
+      }
+    ]
+  },
+  "disputed": [
+    {
+      "section": "red_flags",
+      "id": "neuro-deficit-stroke",
+      "label": "Neurological deficit / stroke features",
+      "match": [
+        "neuro\\w* deficit",
+        "stroke",
+        "hemipare",
+        "weakness",
+        "dysarthri",
+        "aphasi",
+        "facial (droop|weakness)"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+          "page": 36,
+          "quote": "Neurological examination to look for evidence of stroke"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "red_flags",
+      "id": "altered-consciousness-seizure",
+      "label": "Confusion, reduced consciousness or seizures (encephalopathy / ICH)",
+      "match": [
+        "confus",
+        "drows",
+        "altered (mental|conscious)",
+        "seizure",
+        "convuls",
+        "\\bGCS\\b"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MTS 2022.pdf",
+          "page": 9,
+          "quote": "• Altered mental state • Neuro deﬁcits • Pain Score > 7"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "red_flags",
+      "id": "chest-pain-dissection-acs",
+      "label": "Chest pain (ACS or aortic dissection)",
+      "match": [
+        "chest pain",
+        "acute coronary|\\bACS\\b|myocardial (infarct|isch)",
+        "(aortic )?dissect"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+          "page": 49,
+          "quote": "symptoms and signs of acute target organ damage/complication. These include acute heart failure, acute coronary syndromes, acute renal failure, dissecting aneurysm, subarachnoid haemorrhage, hypertensive encephalopathy and preeclampsia/eclampsia"
+        },
+        {
+          "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+          "page": 53,
+          "quote": "symptoms such as chest pain, difficulty in breathing or altered mental status occurs"
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "red_flags",
+      "id": "acute-heart-failure",
+      "label": "Acute heart failure / pulmonary oedema (breathlessness)",
+      "match": [
+        "heart failure",
+        "pulmonary o?edema",
+        "breathless|dyspno|shortness of breath|difficulty (in )?breathing"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+          "page": 49,
+          "quote": "symptoms and signs of acute target organ damage/complication. These include acute heart failure, acute coronary syndromes, acute renal failure, dissecting aneurysm, subarachnoid haemorrhage, hypertensive encephalopathy and preeclampsia/eclampsia"
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "red_flags",
+      "id": "acute-kidney-injury",
+      "label": "Acute kidney injury",
+      "match": [
+        "acute (kidney|renal) (injury|failure)|\\bAKI\\b",
+        "oliguri|ha?ematuria|proteinuria"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+          "page": 49,
+          "quote": "symptoms and signs of acute target organ damage/complication. These include acute heart failure, acute coronary syndromes, acute renal failure, dissecting aneurysm, subarachnoid haemorrhage, hypertensive encephalopathy and preeclampsia/eclampsia"
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "differentials",
+      "id": "acs-ahf-aki",
+      "label": "Acute coronary syndrome, acute heart failure or acute kidney injury",
+      "match": [
+        "acute coronary",
+        "\\bACS\\b",
+        "heart failure",
+        "pulmonary o?edema",
+        "acute (kidney|renal) (injury|failure)",
+        "\\bAKI\\b"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+          "page": 49,
+          "quote": "symptoms and signs of acute target organ damage/complication. These include acute heart failure, acute coronary syndromes, acute renal failure, dissecting aneurysm, subarachnoid haemorrhage, hypertensive encephalopathy"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "parenteral-antihypertensive",
+      "label": "Use parenteral (IV) antihypertensive, titrated",
+      "match": [
+        "(iv|intravenous|parenteral) (labetalol|nicardipine|hydralazine|nitroglycerin|gtn|antihypertensive)",
+        "(labetalol|nicardipine).{0,30}(infusion|iv|intravenous)",
+        "parenteral"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+          "page": 60,
+          "quote": "Treat hypertensive emergencies with intravenous drugs with specific targets based upon clinical scenarios. (Grade B)"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "avoid-precipitous-drop",
+      "label": "Avoid rapid or precipitous BP lowering (risk of ischaemia)",
+      "match": [
+        "(avoid|not|without).{0,30}(rapid|precipitous|abrupt|excessive).{0,20}(reduc|lower|drop|fall)",
+        "(ischa?emi|hypoperfusion).{0,40}(rapid|precipitous)"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+          "page": 60,
+          "quote": "Rapid reduction of BP (within minutes to hours) in hypertensive urgencies should be avoided as it may precipitate ischaemic events."
+        },
+        {
+          "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+          "page": 51,
+          "quote": "The aim of management is to reduce BP in a controlled, predictable and safe manner, to avoid provoking or aggravating acute coronary syndrome, cerebral or renal ischaemia."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "actions",
+      "id": "repeat-bp-after-rest",
+      "label": "Repeat BP after rest (distinguishes urgency from emergency)",
+      "match": [
+        "repeat.{0,20}(BP|blood pressure)",
+        "(BP|blood pressure).{0,30}(repeat|recheck|after.{0,10}rest)"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+          "page": 51,
+          "quote": "Blood pressure measurement should be repeated after 30 minutes of bed rest."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "investigations",
+      "id": "blood-glucose",
+      "label": "Blood glucose",
+      "match": [
+        "glucose",
+        "blood sugar",
+        "\\bCBG\\b",
+        "\\bRBS\\b",
+        "\\bDXT\\b"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+          "page": 36,
+          "quote": "• Full blood count • Blood glucose • Renal function tests (creatinine, eGFR, serum electrolytes)"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "iv-hydralazine",
+      "label": "IV hydralazine 5-10 mg slow injection",
+      "match": [
+        "hydralazine"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+          "page": 56,
+          "quote": "Initial: 5-10 mg via slow inj, may repeat after 20-30 min."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "oral-agents-if-urgency",
+      "label": "Oral agents (captopril, nifedipine retard, labetalol) if this proves to be hypertensive urgency",
+      "match": [
+        "captopril",
+        "nifedipine (retard|SR|LA|XL|slow)|(retard|slow[- ]release|sustained[- ]release) nifedipine",
+        "oral (labetalol|antihypertensive)"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+          "page": 51,
+          "quote": "Oral drugs proven to be effective are outlined in Table 6-B."
+        },
+        {
+          "source": "CPG Management of Hypertension (5th Edition) 2018 v3.8.pdf",
+          "page": 60,
+          "quote": "However oral nifedipine retard can be used and has been recommended as first line therapy for hypertensive urgencies."
+        }
+      ],
+      "proposed_by": "B"
+    }
+  ],
+  "adjudication": {
+    "method": "two independent extraction passes (A, B); agreed items scored",
+    "notes": [],
+    "open_questions": {
+      "A": [
+        "Emergency vs urgency: blurred vision plus headache suggests acute target-organ involvement (encephalopathy or retinopathy). However, the HTN CPG 2018 counts grade III/IV retinopathy without overt target-organ symptoms as urgency. Primary label is emergency; urgency is accepted as an alternative.",
+        "The HTN CPG table contradicts itself on the BP floor: 160/90 on p53 vs 160/100 on p17/p59. The gold uses 160/100.",
+        "Disposition unit is not specified by the source (only 'admitted'). HDU preferred is my choice.",
+        "Analgesia for pain score 8 headache is not covered by a specific KKM statement for this presentation, so it is omitted.",
+        "CT brain is optional: the ICH CPG requires neuroimaging for stroke-like symptoms, and the intake reports no focal deficit."
+      ],
+      "B": [
+        "Emergency or urgency cannot be settled from the intake alone. Headache is listed as a 'non-specific' symptom (p49), and the CPG classes grade III/IV retinopathy without overt target-organ symptoms as urgency (p51). Blurred vision plus pain 8 makes emergency (possible encephalopathy) the more defensible label, so urgency is kept as an acceptable alternative.",
+        "For urgency the CPG says there is 'no role for intravenous BP lowering drugs' (p51). IV agents are therefore not listed as forbidden, because this case is most likely an emergency.",
+        "CT brain is marked required on the strength of the ICH CPG (to confirm or exclude ICH), not the HTN CPG, which does not list imaging for severe hypertension."
+      ]
+    }
+  }
+}

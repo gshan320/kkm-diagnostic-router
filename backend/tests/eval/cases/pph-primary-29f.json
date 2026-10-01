@@ -1,0 +1,254 @@
+{
+  "id": "pph-primary-29f",
+  "title": "Primary postpartum haemorrhage with shock, home delivery (29F)",
+  "tier": "management",
+  "provenance": "Vignette written 2026-09-30; expected answers quoted from the MOH PPH Quick Reference Guide 2016.",
+  "intake": {
+    "age": 29,
+    "gender": "female",
+    "weight_kg": 62,
+    "vitals": {
+      "systolic_bp": 88,
+      "diastolic_bp": 50,
+      "heart_rate": 128,
+      "respiratory_rate": 24,
+      "temperature": 36.8,
+      "spo2": 97,
+      "gcs": 15,
+      "pain_score": 5
+    },
+    "complaint": "Heavy vaginal bleeding 2 hours after delivering her baby at home, soaking pads, feeling faint.",
+    "history": "Second baby, uncomplicated pregnancy, delivered by a traditional birth attendant."
+  },
+  "scored_sections": [
+    "triage",
+    "diagnosis",
+    "red_flags",
+    "actions",
+    "investigations",
+    "drugs",
+    "disposition",
+    "grounding"
+  ],
+  "expected": {
+    "triage": {
+      "level": 1,
+      "acceptable": [
+        1
+      ],
+      "note": "SBP 88 with tachycardia 128: MTS p4 L1 decompensated shock."
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Primary postpartum haemorrhage",
+        "match": [
+          "post-?partum ha?emorrhag",
+          "\\bPPH\\b"
+        ]
+      },
+      "acceptable_alternatives": [
+        {
+          "label": "Uterine atony",
+          "match": [
+            "uterine atony"
+          ]
+        }
+      ]
+    },
+    "red_flags": [
+      {
+        "id": "hypovolaemic-shock",
+        "label": "Hypovolaemic / haemorrhagic shock",
+        "match": [
+          "shock",
+          "hypovol",
+          "hypotens"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Quick Reference Guide Postpartum Haemorrhage (PPH) 2016.pdf",
+            "page": 36,
+            "quote": "IV access (2 large bore ≥16G): Fluid ± blood"
+          }
+        ]
+      },
+      {
+        "id": "coagulopathy",
+        "label": "Coagulopathy / DIC",
+        "match": [
+          "\\bDIC\\b",
+          "\\bDIVC\\b",
+          "coagulopath"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Quick Reference Guide Postpartum Haemorrhage (PPH) 2016.pdf",
+            "page": 41,
+            "quote": "Consumptive coagulopathy from massive blood loss"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "call-help",
+        "label": "Call for help / obstetric emergency (Red Alert)",
+        "match": [
+          "red alert",
+          "obstetric",
+          "\\bO ?& ?G\\b",
+          "call for help"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Quick Reference Guide Postpartum Haemorrhage (PPH) 2016.pdf",
+            "page": 36,
+            "quote": "Activate RED ALERT"
+          }
+        ]
+      },
+      {
+        "id": "iv-access",
+        "label": "Two large-bore IV lines with fluid/blood",
+        "match": [
+          "large[- ]bore",
+          "two (?:IV|intravenous|peripheral)",
+          "\\b1[46] ?G\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Quick Reference Guide Postpartum Haemorrhage (PPH) 2016.pdf",
+            "page": 36,
+            "quote": "IV access (2 large bore ≥16G)"
+          }
+        ]
+      },
+      {
+        "id": "uterine-massage",
+        "label": "Uterine massage",
+        "match": [
+          "massage",
+          "rub(?:bing)? up"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Quick Reference Guide Postpartum Haemorrhage (PPH) 2016.pdf",
+            "page": 20,
+            "quote": "Massage uterus"
+          }
+        ]
+      },
+      {
+        "id": "mtp",
+        "label": "Massive transfusion protocol",
+        "match": [
+          "massive transfusion",
+          "\\bMTP\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Quick Reference Guide Postpartum Haemorrhage (PPH) 2016.pdf",
+            "page": 20,
+            "quote": "Consider Massive Transfusion Protocol activation"
+          }
+        ]
+      }
+    ],
+    "investigations": [
+      {
+        "id": "crossmatch",
+        "label": "Group and crossmatch",
+        "match": [
+          "cross[- ]?match",
+          "group and (?:cross|save)",
+          "\\bGXM\\b",
+          "\\bGSH\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Quick Reference Guide Postpartum Haemorrhage (PPH) 2016.pdf",
+            "page": 36,
+            "quote": "IV access (2 large bore ≥16G): Fluid ± blood"
+          }
+        ]
+      },
+      {
+        "id": "fbc-coag",
+        "label": "FBC and coagulation",
+        "match": [
+          "\\bFBC\\b|full blood count|haemoglobin|hemoglobin",
+          "coagulation|\\bPT\\b|\\bAPTT\\b|fibrinogen"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Quick Reference Guide Postpartum Haemorrhage (PPH) 2016.pdf",
+            "page": 41,
+            "quote": "Consumptive coagulopathy from massive blood loss"
+          }
+        ]
+      }
+    ],
+    "drugs_allowed": [
+      {
+        "id": "uterotonic",
+        "label": "Oxytocin / uterotonic",
+        "match": [
+          "oxytocin|syntocinon|carbetocin|carboprost|misoprostol"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "MOH Quick Reference Guide Postpartum Haemorrhage (PPH) 2016.pdf",
+            "page": 20,
+            "quote": "Ensure 3rd stage oxytocin given"
+          }
+        ]
+      },
+      {
+        "id": "tranexamic",
+        "label": "Tranexamic acid",
+        "match": [
+          "tranexamic"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Quick Reference Guide Postpartum Haemorrhage (PPH) 2016.pdf",
+            "page": 23,
+            "quote": "IV tranexamic acid"
+          }
+        ]
+      }
+    ],
+    "drugs_forbidden": [],
+    "disposition": {
+      "acceptable": [
+        "RESUSCITATION_BAY",
+        "ADMIT_ICU_HDU",
+        "ADMIT_WARD"
+      ],
+      "preferred": "RESUSCITATION_BAY",
+      "evidence": [
+        {
+          "source": "MOH Quick Reference Guide Postpartum Haemorrhage (PPH) 2016.pdf",
+          "page": 36,
+          "quote": "Activate RED ALERT"
+        }
+      ]
+    },
+    "sources_forbidden": [
+      {
+        "doc_type": "PAEDIATRIC_PROTOCOL",
+        "why": "adult patient"
+      }
+    ]
+  }
+}

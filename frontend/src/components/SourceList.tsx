@@ -13,6 +13,8 @@ const DOC_TYPE_LABEL: Record<string, string> = {
   // Neither of these is a clinical guideline: see config.CLINICAL_DOC_TYPES.
   HTA_REPORT: "HTA report — not a guideline",
   PATIENT_FLOW_POLICY: "State policy — disposition only",
+  // Indexed only where no KKM document covers the condition (config.py).
+  EXTERNAL_GUIDELINE: "Non-KKM guideline — international",
 };
 
 export default function SourceList({ sources }: { sources: RetrievedSource[] }) {

@@ -1,0 +1,1289 @@
+{
+  "id": "rhabdo-exertional-55m",
+  "title": "Exertional rhabdomyolysis, 55-year-old marathon runner (the 2026-09-30 baseline case)",
+  "tier": "management",
+  "provenance": "Vignette written 2026-09-30 for the evaluation harness; expected answers extracted from the cited documents.",
+  "intake": {
+    "age": 55,
+    "gender": "male",
+    "weight_kg": 80,
+    "vitals": {
+      "gcs": 15,
+      "pain_score": 7
+    },
+    "complaint": "Severe bilateral lower extremity pain, generalised muscle weakness, and dark tea-coloured urine for two days.",
+    "history": "High-intensity workouts and marathons.",
+    "facility": "state_or_tertiary_with_pci_and_ct"
+  },
+  "scored_sections": [
+    "triage",
+    "diagnosis",
+    "red_flags",
+    "differentials",
+    "actions",
+    "investigations",
+    "drugs",
+    "disposition",
+    "grounding"
+  ],
+  "expected": {
+    "triage": {
+      "level": 3,
+      "acceptable": [
+        2,
+        3
+      ],
+      "time_to_treatment": "under 30 minutes",
+      "note": "Both extractors: level 3. A: Only GCS 15 and pain score 7 are recorded. Adult vital-signs table p7: 'Pain Score 4 - 7' sits in the x~244 column = Level 3 (Severe Pain 8-10 is Level 2 at x~131). Limb pain/swelling complaint p10: 'Not able to bear weight' is Level 3 (x~244); primary triage p4 'Cannot sit / stand unsupported' is Level 3 (x~350). No HR/BP/RR/SpO2/temperature are given; tachycardia >120, SBP<90, temp >39 or GCS drop would upgrade to Level 2, and a suspected compartment syndrome is a Level 2 cell in primary-triage Bleeding (p5, x~246). Hence acceptable [2,3]. B: Only GCS 15 and pain score 7 are recorded. Pain 7 is in the Level 3 cell of adult vital signs (p7, x~244); Severe Pain (8-10) would be Level 2. Complaint cells that apply: Limb pain row Level 3 'Not able to bear weight' (p10, x~244) and Genito-urinary Level 3 'Frank haematuria' (p9, x~244) if the tea-coloured urine counts as haematuria; primary triage Level 3 'Cannot sit / stand unsupported' (p4, x~350) if he cannot stand. HR, BP, RR, SpO2 and temperature are missing: HR > 120, SBP < 90 or Temp > 39 would each make it Level 2 (p7, x~131), and a cold, dusky, pulseless limb (compartment syndrome) would give Limb pain Level 2 (p10, x~131). So 3 is expected and 2 is defensible.",
+      "evidence": [
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• Temp 37.5 - 39 C • Pain Score 4 - 7 • Appears unwell"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 10,
+          "quote": "• Generalized oedema • Not able to bear weight"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 3,
+          "quote": "Level 3 - Urgent - under 30 minutes"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "If modiﬁers do not differentiate between two triage levels, the higher triage level modiﬁer should be selected."
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "Temp 37.5 - 39 C • Pain Score 4 - 7 • Appears unwell"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 10,
+          "quote": "Generalized oedema • Not able to bear weight"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 9,
+          "quote": "Frank haematuria • Acute Urinary Retention"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "Altered mental state • Cannot communicate • Cannot sit / stand unsupported"
+        }
+      ]
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Exertional rhabdomyolysis",
+        "match": [
+          "rhabdomyoly",
+          "\\brhabdo\\b",
+          "exertional\\s+rhabdo",
+          "\\bER\\b.{0,40}(exertion|muscle)",
+          "rhabdomyol",
+          "exertional (muscle|myo)",
+          "myoglobinuri"
+        ],
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 3,
+            "quote": "A diagnosis of exertional rhabdomyolysis (ER) is made when there are severe muscle symptoms (pain, stiffness, and/or weakness) AND laboratory evidence of myonecrosis (CK level ≥5X ULN) in the setting of recent exercise."
+          },
+          {
+            "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+            "page": 1,
+            "quote": "Rhabdomyolysis presentation may vary from asymptomatic to commonly implicated clinical features, including acute muscle weakness, pain/tenderness, and swelling (dolor, tumor) of the affected extremity or body region."
+          },
+          {
+            "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+            "page": 1,
+            "quote": "Darkened (tea-colored) urine may be an additional common finding."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 3,
+            "quote": "A diagnosis of exertional rhabdomyolysis (ER) is made when there are severe muscle symptoms (pain, stiffness, and/or weakness) AND laboratory evidence of myonecrosis (CK level ≥5X ULN) in the setting of recent exercise."
+          },
+          {
+            "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+            "page": 1,
+            "quote": "including acute muscle weakness, pain/tenderness, and swelling (dolor, tumor) of the affected extremity or body region.12 Darkened (tea-colored) urine may be an additional common finding."
+          }
+        ]
+      },
+      "acceptable_alternatives": [
+        {
+          "label": "Rhabdomyolysis (unspecified cause) with myoglobinuria",
+          "match": [
+            "myoglobinuri",
+            "rhabdomyoly"
+          ]
+        },
+        {
+          "label": "Heat injury (heat exhaustion with muscle damage)",
+          "match": [
+            "heat\\s+injur",
+            "exertional\\s+heat\\s+illness"
+          ]
+        },
+        {
+          "label": "Rhabdomyolysis with acute kidney injury",
+          "match": [
+            "rhabdomyol.{0,60}(AKI|acute kidney injury|renal)",
+            "(AKI|acute kidney injury).{0,60}rhabdomyol"
+          ]
+        }
+      ]
+    },
+    "red_flags": [
+      {
+        "id": "acute-kidney-injury",
+        "label": "Acute kidney injury (most common systemic complication)",
+        "match": [
+          "acute\\s+kidney\\s+injur",
+          "\\bAKI\\b",
+          "renal\\s+(failure|impairment|injury)",
+          "myoglobin(uric)?\\s+nephropath",
+          "acute kidney injury",
+          "acute renal (failure|injury)",
+          "renal (failure|impairment)",
+          "rising creatinine"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+            "page": 1,
+            "quote": "AKI is the most common systemic complication of rhabdomyolysis and is responsible for most of the morbidity and mortality associated with rhabdomyolysis."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 3,
+            "quote": "Acute kidney injury (See KDIGO criteria)"
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 3,
+            "quote": "Suspicion for potential compartment syndrome • Acute kidney injury (See KDIGO criteria)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "hyperkalaemia-arrhythmia",
+        "label": "Hyperkalaemia with risk of cardiac arrhythmia",
+        "match": [
+          "hyperkal",
+          "high\\s+potassium",
+          "raised\\s+(serum\\s+)?potassium",
+          "\\bK\\+?\\s*>\\s*[5-7]",
+          "high potassium",
+          "\\bK\\+? ?(>|above|raised|elevated)",
+          "arrhythmi"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+            "page": 1,
+            "quote": "Hyperkalemia is the electrolyte abnormality that requires timely correction to reduce risk of cardiac arrhythmia."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 18,
+            "quote": "Potassium released from damaged muscles and decreased urinary clearance from acute kidney injury can be potentially life-threatening."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 3,
+            "quote": "Metabolic abnormality (e.g., hyperkalemia, hyperphosphatemia, acidosis)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "compartment-syndrome",
+        "label": "Acute compartment syndrome",
+        "match": [
+          "compartment\\s+syndrome",
+          "compartment\\s+pressure",
+          "fasciotom",
+          "compartment syndrome",
+          "compartment pressure"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 12,
+            "quote": "Early signs of an ACS include severe pain worse with passive stretching, decreased peripheral sensation, and swelling. Paresis and the loss of a pulse are late signs."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 3,
+            "quote": "Suspicion for potential compartment syndrome"
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 12,
+            "quote": "An orthopedic or general surgeon should be consulted emergently if compartment syndrome is suspected."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 18,
+            "quote": "In the proper clinical setting, the following signs and symptoms should raise suspicion of a diagnosis of compartment syndrome"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "ck-over-20000",
+        "label": "CK > 20,000 U/L as a high-risk marker",
+        "match": [
+          "20[, ]?000",
+          "CK.{0,30}(high[- ]risk|markedly|very\\s+high)",
+          "very high CK",
+          "CK.{0,30}(high[- ]risk|markedly)"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 12,
+            "quote": "A CK >20,000 U/L should be considered a high-risk marker and triaged to a higher level of care for possible inpatient treatment."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "dic",
+        "label": "Disseminated intravascular coagulation",
+        "match": [
+          "\\bDIC\\b",
+          "\\bDIVC\\b",
+          "disseminated\\s+intravascular",
+          "coagulopath",
+          "disseminated intravascular coagul"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+            "page": 1,
+            "quote": "Morbidity can present early or late, including hyperkalemia, hepatic dysfunction, cardiac dysfunction, AKI, acute renal failure (ARF), disseminated intravascular coagulation (DIC), and compartment syndrome."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "differentials": [
+      {
+        "id": "exertional-heat-illness",
+        "label": "Exertional heat illness / heat stroke",
+        "match": [
+          "heat\\s*stroke",
+          "heat[-\\s]+(related\\s+)?(illness|exhaustion|injury)",
+          "hyperthermi",
+          "heat ?stroke",
+          "heat (illness|injury|exhaustion)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 7,
+            "quote": "Exertional rhabdomyolysis may be associated with the spectrum of exertional heat illness, including heat exhaustion, heat injury, and heat stroke."
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 4,
+            "quote": "This condition is also seen in athletes or military personnel while training, especially during warm weather when any necessary precautions are not taken to reduce the risk of heat related illness."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 5,
+            "quote": "and is commonly co-morbid with exertional heat illness, in particular, heat stroke."
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 4,
+            "quote": "The serious complications of heat stroke include encephalopathy, rhabdomyolysis, acute renal failure, acute respiratory distress syndrome, myocardial injury and intravascular injury."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "exercise-induced-haemolysis",
+        "label": "Exercise-induced haemolysis / haemoglobinuria",
+        "match": [
+          "h(a)?emoglobinuri",
+          "h(a)?emoly",
+          "footstrike",
+          "ha?emoglobinuri",
+          "ha?emoly"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 8,
+            "quote": "exertional rhabdomyolysis (ICD-10: M62.82 – Rhabdomyolysis), or other causes for cola-colored urine such as exercise-induced hemolysis."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 10,
+            "quote": "Of note, exercise- induced hemolysis is quite common and often results in hemoglobinuria, especially after long- distance running or marching"
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 8,
+            "quote": "or other causes for cola-colored urine such as exercise-induced hemolysis."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 9,
+            "quote": "one must consider hemoglobinuria (e.g., exercise-induced hemolysis), myoglobinuria (implies rhabdomyolysis), urine discoloration due to medications"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "haematuria-renal-urologic",
+        "label": "Haematuria from glomerular / urological causes",
+        "match": [
+          "h(a)?ematuria",
+          "glomerulonephritis",
+          "IgA\\s+nephropath",
+          "urolithiasis|renal\\s+(stone|calcul)",
+          "ha?ematuria",
+          "IgA nephropathy",
+          "urolithiasis|renal stone|calcul"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 9,
+            "quote": "When urine sediment is red or dark, the differential diagnosis includes hematuria due to glomerular, nonglomerular, and urologic causes"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "doms",
+        "label": "Delayed onset muscle soreness / physiologic muscle breakdown",
+        "match": [
+          "\\bDOMS\\b",
+          "delayed[- ]onset\\s+muscle\\s+soreness",
+          "physiologic(al)?\\s+muscle\\s+breakdown",
+          "delayed[- ]onset muscle soreness",
+          "physiologic(al)? muscle breakdown"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 7,
+            "quote": "ER and DOMS can have overlapping symptoms, but key symptoms and findings of ER which help distinguish it from typical physiologic muscle breakdown and/or DOMS include:"
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 7,
+            "quote": "Delayed onset muscle soreness (DOMS) can be a symptom of physiologic muscle breakdown"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "metabolic-myopathy",
+        "label": "Underlying metabolic myopathy",
+        "match": [
+          "metabolic\\s+myopath",
+          "McArdle",
+          "CPT\\s*(II|2)",
+          "myopath",
+          "metabolic myopath",
+          "glycogen storage|lipid metabolism|McArdle|CPT"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 7,
+            "quote": "This may represent a metabolic myopathy, especially if recurrent or occurring after a low exercise load, however the full differential diagnosis for dark urine must be considered."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 7,
+            "quote": "This may represent a metabolic myopathy, especially if recurrent or occurring after a low exercise load"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "iv-fluid-resuscitation",
+        "label": "IV isotonic fluid resuscitation (saline or Ringer's lactate)",
+        "match": [
+          "IV\\s+fluid",
+          "intravenous\\s+(fluid|hydration|crystalloid)",
+          "(normal|0\\.9%?)\\s*saline",
+          "ringer",
+          "hartmann",
+          "crystalloid",
+          "aggressive\\s+(hydration|fluid)",
+          "(IV|intravenous).{0,40}(fluid|saline|crystalloid|hydration|Hartmann|Ringer)",
+          "(normal saline|0\\.9% ?(NaCl|saline)|Hartmann|lactated Ringer|Ringer'?s)",
+          "aggressive (hydration|fluid)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+            "page": 1,
+            "quote": "A starting rate of 400 mL/hour can be initiated, with goal-directed therapy of urine output of 1 mL/kg/hour to 3 mL/kg/hour, and up to 300 cc/hour."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 17,
+            "quote": "aggressive intravenous fluid (IV) therapy with isotonic fluids (5% dextrose and 0.45 normal saline (NS), lactated Ringer’s solution, or NS with or without bicarbonate)17 should ideally be initiated with a target urine output of 200-300 ml/hr."
+          },
+          {
+            "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+            "page": 1,
+            "quote": "Either lactated Ringer’s solution or saline (0.9% or 0.45%) is an acceptable fluid for resuscitation in rhabdomyolysis. A starting rate of 400 mL/hour can be initiated"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "urine-output-monitoring",
+        "label": "Monitor urine output / strict fluid input-output charting",
+        "match": [
+          "urine\\s+output",
+          "input.{0,10}output",
+          "\\bI\\s*/\\s*O\\b",
+          "fluid\\s+balance",
+          "strict\\s+(in|intake)",
+          "\\bUO\\b|\\bUOP\\b",
+          "urine output",
+          "input[ /-]*(and|&)?[ /-]*output",
+          "\\bI/?O\\b chart",
+          "fluid balance",
+          "strict (in|I).{0,10}out"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 17,
+            "quote": "Treatment of the warfighter with ER is focused on preventing complications, and is guided by continual assessment of vital signs, serial physical examinations, laboratories, and urine output."
+          },
+          {
+            "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+            "page": 1,
+            "quote": "with goal-directed therapy of urine output of 1 mL/kg/hour to 3 mL/kg/hour, and up to 300 cc/hour."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 17,
+            "quote": "Strict “in and out” measurements are critical in the management of ER"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "serial-ck",
+        "label": "Serial CK measurement until peak and downtrend",
+        "match": [
+          "serial\\s+CK",
+          "repeat\\s+CK",
+          "trend(ing)?\\s+(the\\s+)?CK",
+          "CK.{0,30}(6|12)[- ]?hourly",
+          "CK.{0,20}\\bq\\s*6",
+          "serial\\s+creatine\\s+kinase",
+          "serial CK",
+          "repeat(ed)? CK",
+          "(trend|monitor|follow).{0,30}\\bCK\\b",
+          "\\bCK\\b.{0,40}(6|12|q6|q12|daily|serial|trend)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+            "page": 1,
+            "quote": "A strategy for disease monitoring with serial CK measurement should be additionally undertaken."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 18,
+            "quote": "NSAIDs should be avoided and CK followed (drawn periodically, q6-12 hours)."
+          },
+          {
+            "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+            "page": 1,
+            "quote": "Interval CK values should be followed until a peak concentration is identified (typically at 24–72 hours), discontinued once the CK is reliably downtrending."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 18,
+            "quote": "and CK followed (drawn periodically, q6-12 hours)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "cardiac-monitoring-hyperkalaemia",
+        "label": "ECG / continuous cardiac monitoring for hyperkalaemia and prompt correction",
+        "match": [
+          "cardiac\\s+monitor",
+          "continuous\\s+ECG",
+          "ECG\\s+monitor",
+          "telemetry",
+          "treat.{0,20}hyperkal",
+          "cardiac monitor",
+          "continuous ECG",
+          "ECG monitor"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 18,
+            "quote": "Continuous ECG monitoring should be considered in the event of ECG changes or the potassium is >6 MEq/dL."
+          },
+          {
+            "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+            "page": 1,
+            "quote": "Hyperkalemia is the electrolyte abnormality that requires timely correction to reduce risk of cardiac arrhythmia."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "screen-high-risk-markers",
+        "label": "Screen for high-risk markers (CK >20,000, AKI, electrolyte derangement, compartment syndrome, sickle cell trait)",
+        "match": [
+          "high[- ]risk\\s+marker",
+          "sickle\\s+cell",
+          "risk\\s+stratif",
+          "high[- ]risk (marker|feature)",
+          "admi(t|ssion)"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 11,
+            "quote": "After diagnosing a warfighter with ER, the clinician must carefully screen for initial \"high risk\" markers that have been shown to place the patient at increased risk for complications."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 3,
+            "quote": "Decision to admit must be individualized. Those with any high-risk markers should be strongly considered for admission."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "drug-supplement-history",
+        "label": "Take medication, supplement and energy-drink history",
+        "match": [
+          "supplement",
+          "statin",
+          "medication\\s+history",
+          "energy\\s+drink",
+          "drug\\s+history",
+          "stimulant",
+          "sickle",
+          "drug history|medication history"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 8,
+            "quote": "The provider should specifically inquire about and document the use of medications (e.g. statins, antipsychotics, stimulants),5 dietary supplements"
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 4,
+            "quote": "Obtain and document a detailed history of supplement use in all cases of ER"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "nephrology-referral",
+        "label": "Nephrology consult if refractory hyperkalaemia/acidosis or AKI (RRT by standard indications)",
+        "match": [
+          "nephrolog",
+          "dialys",
+          "renal\\s+replacement",
+          "\\bRRT\\b|\\bCRRT\\b|h(a)?emodialys",
+          "dialysis|\\bRRT\\b|renal replacement|haemodialysis|hemodialysis"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 17,
+            "quote": "In addition, when fluid resuscitation fails to correct intractable hyperkalemia and acidosis, nephrology consultation for dialysis should be considered."
+          },
+          {
+            "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+            "page": 1,
+            "quote": "The utilization of RRT in patients with rhabdomyolysis should be based on traditional indications for AKI and the degree of renal impairment."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 17,
+            "quote": "when fluid resuscitation fails to correct intractable hyperkalemia and acidosis, nephrology consultation for dialysis should be considered."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "watch-fluid-overload",
+        "label": "Monitor for fluid overload during aggressive hydration",
+        "match": [
+          "fluid\\s+overload",
+          "pulmonary\\s+o?edema",
+          "volume\\s+overload",
+          "fluid overload",
+          "pulmonary o?edema",
+          "volume overload"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 17,
+            "quote": "Overload and flash pulmonary edema may occur with the aggressive hydration and the warfighter must be evaluated periodically for dyspnea, rales and evidence of fluid overload."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "investigations": [
+      {
+        "id": "serum-ck",
+        "label": "Serum creatine kinase (CK)",
+        "match": [
+          "\\bCK\\b",
+          "creatine\\s+(phospho)?kinase",
+          "creatinine\\s+kinase",
+          "\\bCPK\\b",
+          "creatin(e|ine) (phospho)?kinase"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 3,
+            "quote": "Serum CK is “gold standard” for diagnosis and monitoring of ER; serum myoglobin is best used for risk prediction"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 10,
+            "quote": "6.1.8. Muscle enzymes (Creatinine kinase)"
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 10,
+            "quote": "CK remains the accepted gold standard biomarker for diagnosis of rhabdomyolysis"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "renal-function",
+        "label": "Renal function (urea/BUN, creatinine)",
+        "match": [
+          "(?:serum|plasma|blood) (?:urea|creatinine)(?! kinase)",
+          "\\burea\\b",
+          "\\bBUN\\b",
+          "\\bBUSE\\b",
+          "\\bRP\\b",
+          "renal (?:profile|panel|function test)",
+          "\\bU&E\\b",
+          "\\bRFT\\b",
+          "^creatinine$",
+          "serum creatinine"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 8,
+            "quote": "the possibility of severe muscle injury should be evaluated at this point with a serum CK, blood chemistry profile (including potassium, bicarbonate, calcium, phosphorus, blood urea nitrogen [BUN] and creatinine)"
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 10,
+            "quote": "Acute kidney injury due to inadequacy of volume, dehydration and may also due to rhadomyolysis, or direct thermal injury to renal parenchyma."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 8,
+            "quote": "blood chemistry profile (including potassium, bicarbonate, calcium, phosphorus, blood urea nitrogen [BUN] and creatinine), and a urinalysis (UA) with microscopic examination."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ],
+        "note": "Tightened 2026-09-30: 'urine analysis for myoglobin and creatinine' (run 10) is not renal function."
+      },
+      {
+        "id": "calcium-phosphate",
+        "label": "Serum calcium and phosphate",
+        "match": [
+          "calcium",
+          "phosph",
+          "\\bCa\\b|\\bCa2?\\+",
+          "\\bLFTs?\\b",
+          "liver function",
+          "\\bAST\\b",
+          "\\bPT\\b|\\bINR\\b|\\bAPTT\\b|coagulation",
+          "uric acid",
+          "phosphate"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 9,
+            "quote": "Hypocalcaemia occur due to binding of calcium to damage muscles"
+          },
+          {
+            "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+            "page": 1,
+            "quote": "Hyperkalemia, hyperphosphatemia, and hypocalcemia are electrolyte abnormalities most commonly encountered when treating rhabdomyolysis."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 17,
+            "quote": "Further laboratory tests should include: serum and urine myoglobin, serum calcium, BUN, creatinine, phosphate, uric acid, PT/PTT/INR, and LFTs, if not already obtained."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "urinalysis-microscopy",
+        "label": "Urinalysis with microscopy (dipstick blood without RBCs suggests myoglobin)",
+        "match": [
+          "urinalysis",
+          "urine\\s+(dipstick|FEME|microscop|analysis)",
+          "\\bUFEME\\b|\\bUA\\b",
+          "dipstick",
+          "urine (dipstick|FEME|microscopy|analysis)",
+          "\\bUFEME\\b",
+          "\\bUA\\b",
+          "urine myoglobin",
+          "myoglobin"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 9,
+            "quote": "After a history and exam, urinalysis with microscopy must be performed."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 10,
+            "quote": "The orthotoluidine portion of the dipstick turns blue in the presence of hemoglobin or myoglobin, so if the urine sediment does not contain erythrocytes, the positive dipstick reading may reflect the presence of myoglobin in the appropriate clinical setting."
+          },
+          {
+            "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+            "page": 10,
+            "quote": "6.1.9. Urine analysis for protein, cast and myoglobin"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "ecg",
+        "label": "12-lead ECG (hyperkalaemia changes)",
+        "match": [
+          "\\bECG\\b",
+          "\\bEKG\\b",
+          "electrocardiogra",
+          "12[- ]lead"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 17,
+            "quote": "In addition, an ECG should be conducted to assist in the assessment and management of hyperkalemia."
+          },
+          {
+            "source": "Malaysian Consensus on the Management of Acute and Persistent Hyperkalaemia 2024.pdf",
+            "page": 12,
+            "quote": "12-lead ECG for all patients K+ ≥5.5 mmol/L (monitor cardiac rhythm if K+ ≥6.0 mmol/L)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_allowed": [
+      {
+        "id": "isotonic-crystalloid",
+        "label": "IV 0.9% saline or Ringer's lactate",
+        "match": [
+          "(normal|0\\.9%?)\\s*saline",
+          "\\bNS\\b",
+          "ringer",
+          "hartmann",
+          "crystalloid",
+          "sodium\\s+chloride\\s+0\\.9",
+          "normal saline|0\\.9% ?(NaCl|saline|sodium chloride)",
+          "Hartmann",
+          "(lactated )?Ringer"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+            "page": 1,
+            "quote": "Fluid management LR or NaCl (0.9 or 0.45%) initiated at 400 cc/hour."
+          },
+          {
+            "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+            "page": 1,
+            "quote": "Either lactated Ringer’s solution or saline (0.9% or 0.45%) is an acceptable fluid for resuscitation in rhabdomyolysis."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "paracetamol",
+        "label": "Paracetamol (acetaminophen) for pain",
+        "match": [
+          "paracetamol",
+          "acetaminophen",
+          "\\bPCM\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 18,
+            "quote": "Pain should be controlled with acetaminophen and very limited use of opiates."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "opioid-limited",
+        "label": "Opioid analgesia (IV morphine protocol for severe pain), used sparingly",
+        "match": [
+          "morphine",
+          "opioid",
+          "opiate",
+          "fentanyl",
+          "tramadol"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 18,
+            "quote": "Pain should be controlled with acetaminophen and very limited use of opiates."
+          },
+          {
+            "source": "MOH Pain Management in Emergency and Trauma Department (2nd Edition) 2020.pdf",
+            "page": 10,
+            "quote": "SEVERE PAIN Pain Score 7-10 (* for acute pain only) IV Morphine pain protocol"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_forbidden": [
+      {
+        "id": "nsaids",
+        "label": "NSAIDs (nephrotoxic in rhabdomyolysis)",
+        "match": [
+          "\\bNSAIDs?\\b",
+          "non[- ]steroidal",
+          "diclofenac",
+          "ibuprofen",
+          "naproxen",
+          "mefenamic",
+          "ketorolac",
+          "celecoxib|etoricoxib|\\bCOX[- ]?2",
+          "celecoxib|etoricoxib|COX-?2"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 18,
+            "quote": "NSAIDs should be avoided and CK followed (drawn periodically, q6-12 hours)."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 18,
+            "quote": "acetaminophen and very limited use of opiates. NSAIDs should be avoided"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "diuretics-for-urine-output",
+        "label": "Loop diuretics / mannitol to force urine output or prevent AKI",
+        "match": [
+          "furosemide|frusemide|lasix",
+          "mannitol",
+          "loop\\s+diuretic",
+          "diuretic",
+          "loop diuretic",
+          "forced diuresis"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+            "page": 1,
+            "quote": "Given these significant limitations, the use of sodium bicarbonate or diuretics for prevention of AKI in rhabdomyolysis is not recommended."
+          },
+          {
+            "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+            "page": 17,
+            "quote": "In the absence of symptomatic volume overload, furosemide (or other diuretics) should not be used solely for the purpose of increasing urine output"
+          },
+          {
+            "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+            "page": 1,
+            "quote": "the use of sodium bicarbonate or diuretics for prevention of AKI in rhabdomyolysis is not recommended."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "disposition": {
+      "acceptable": [
+        "ADMIT_WARD",
+        "ADMIT_ICU_HDU"
+      ],
+      "preferred": "ADMIT_WARD",
+      "evidence": [
+        {
+          "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+          "page": 3,
+          "quote": "Inpatient admission criteria: Decision to admit must be individualized. Those with any high-risk markers should be strongly considered for admission."
+        },
+        {
+          "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+          "page": 17,
+          "quote": "considerations for ICU admission include the need for invasive cardiopulmonary monitoring, and conditions that may prompt consideration for dialysis e.g. congestive heart failure, persistent hyperkalemia or persistent metabolic acidosis."
+        },
+        {
+          "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+          "page": 3,
+          "quote": "Outpatient treatment criteria: ER patients with no high-risk markers (see above) generally may be treated as outpatients."
+        },
+        {
+          "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+          "page": 3,
+          "quote": "Decision to admit must be individualized. Those with any high-risk markers should be strongly considered for admission."
+        },
+        {
+          "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+          "page": 17,
+          "quote": "considerations for ICU admission include the need for invasive cardiopulmonary monitoring, and conditions that may prompt consideration for dialysis e.g. congestive heart failure, persistent hyperkalemia or persistent metabolic acidosis."
+        }
+      ],
+      "note": "Severe symptoms with two days of tea-coloured urine warrant IV fluids and inpatient care pending CK/renal/potassium results; ICU/HDU if AKI needing dialysis consideration, persistent hyperkalaemia or acidosis. Outpatient management (DISCHARGE_WITH_FOLLOW_UP) is only defensible after labs exclude every high-risk marker (CK <=20,000, no AKI, no metabolic abnormality, no compartment syndrome), which cannot be known at triage, so it is not listed as acceptable. / Two days of dark urine with severe pain and generalised weakness needs IV fluids and serial CK/renal monitoring, so admission is expected. ICU/HDU if AKI needing dialysis, persistent hyperkalaemia or acidosis. CHAMP allows outpatient care only with no high-risk markers and CK <= 20,000 U/L, which cannot be shown at triage."
+    },
+    "sources_forbidden": [
+      {
+        "doc_type": "PAEDIATRIC_PROTOCOL",
+        "why": "adult patient"
+      }
+    ]
+  },
+  "disputed": [
+    {
+      "section": "red_flags",
+      "id": "metabolic-derangement",
+      "label": "Metabolic abnormalities (acidosis, hyperphosphataemia, hyponatraemia)",
+      "match": [
+        "acidosis",
+        "hyperphosphat",
+        "hyponatr",
+        "metabolic\\s+(abnormalit|derangement)"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+          "page": 12,
+          "quote": "Common metabolic abnormalities considered \"high risk\" include, but are not limited to, hyper- and hypokalemia, acidosis, hyperphosphatemia, and hyponatremia."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "differentials",
+      "id": "drug-induced-myotoxicity",
+      "label": "Drug / supplement-induced muscle injury (statins, stimulants)",
+      "match": [
+        "statin",
+        "supplement",
+        "stimulant",
+        "drug[- ]induced\\s+(myopathy|rhabdo)"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+          "page": 13,
+          "quote": "Drugs increasing risk for ER: Statins, antipsychotics (e.g., haloperidol), stimulants"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "assess-compartments-surgical-referral",
+      "label": "Examine limbs for compartment syndrome; emergent orthopaedic/surgical consult if suspected",
+      "match": [
+        "compartment",
+        "fasciotom",
+        "orthop(a)?edic",
+        "passive\\s+stretch"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+          "page": 12,
+          "quote": "An orthopedic or general surgeon should be consulted emergently if compartment syndrome is suspected."
+        },
+        {
+          "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+          "page": 18,
+          "quote": "Clinical suspicion should be followed by urgent consultation with a general or orthopedic surgeon to expeditiously measure compartment pressures."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "serum-potassium",
+      "label": "Serum potassium / electrolytes",
+      "match": [
+        "potassium",
+        "electrolyte",
+        "\\bK\\+",
+        "\\bBUSE\\b|\\bU\\s*&\\s*E"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 9,
+          "quote": "To detect hypokalemia or hyperkalemia that can occurs in early phases of heat stroke and muscle damages and during treatment"
+        },
+        {
+          "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+          "page": 8,
+          "quote": "blood chemistry profile (including potassium, bicarbonate, calcium, phosphorus, blood urea nitrogen [BUN] and creatinine)"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "myoglobin",
+      "label": "Urine / serum myoglobin",
+      "match": [
+        "myoglobin"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "MOH Clinical Guidelines on Management of Heat Related Illness at Health Clinic and Emergency and Trauma Department 2016.pdf",
+          "page": 10,
+          "quote": "6.1.9. Urine analysis for protein, cast and myoglobin"
+        },
+        {
+          "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+          "page": 8,
+          "quote": "Urine or serum myoglobin should be considered dependent upon military treatment facility resources."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "lft-coag-uric",
+      "label": "LFTs/AST, coagulation (PT/PTT/INR), uric acid",
+      "match": [
+        "\\bLFTs?\\b",
+        "liver\\s+function",
+        "\\bAST\\b|\\bALT\\b|transaminase",
+        "\\bPT\\b|\\bINR\\b|\\bAPTT\\b|\\bPTT\\b|coagulation",
+        "uric\\s+acid"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+          "page": 17,
+          "quote": "Further laboratory tests should include: serum and urine myoglobin, serum calcium, BUN, creatinine, phosphate, uric acid, PT/PTT/INR, and LFTs, if not already obtained."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "bicarbonate-blood-gas",
+      "label": "Bicarbonate / blood gas for acidosis",
+      "match": [
+        "bicarbonate",
+        "\\bHCO3",
+        "blood\\s+gas",
+        "\\bABG\\b|\\bVBG\\b"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
+          "page": 8,
+          "quote": "blood chemistry profile (including potassium, bicarbonate, calcium, phosphorus, blood urea nitrogen [BUN] and creatinine)"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_forbidden",
+      "id": "routine-bicarbonate",
+      "label": "Routine sodium bicarbonate (urine alkalinisation) to prevent AKI",
+      "match": [
+        "(sodium )?bicarbonate",
+        "alkalini[sz]",
+        "NaHCO3"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "AAST Rhabdomyolysis Guideline Summary 2022.txt",
+          "page": 1,
+          "quote": "the use of sodium bicarbonate or diuretics for prevention of AKI in rhabdomyolysis is not recommended."
+        }
+      ],
+      "proposed_by": "B"
+    }
+  ],
+  "adjudication": {
+    "method": "two independent extraction passes (A, B); agreed items scored",
+    "notes": [],
+    "open_questions": {
+      "A": [
+        "KKM corpus has no exertional-rhabdomyolysis guidance; nearly all management items rely on the non-KKM CHAMP/USUHS (military) and AAST documents. The MOH Heat Related Illness 2016 guideline is heat-stroke specific; its investigation list (CK, urine myoglobin, K, Ca, renal function) was reused as KKM corroboration.",
+        "Sodium bicarbonate: AAST says bicarbonate (and diuretics) for AKI prevention is not recommended, while CHAMP allows optional urine alkalinisation for positive urine myoglobin or metabolic acidosis. Not listed as forbidden; adjudicator to decide.",
+        "CHAMP says hypocalcaemia should only be treated with dysrhythmia or seizures (routine calcium replacement discouraged); not listed as a forbidden drug because it is conditional.",
+        "Pain score 7: MOH Pain Management in ETD calls 7-10 severe (IV morphine), while MTS puts 7 in Level 3 (4-7). Triage used MTS; analgesia item cites both."
+      ],
+      "B": [
+        "KKM documents have no exertional rhabdomyolysis guidance; most items rely on the non-KKM CHAMP/USUHS and AAST copies. The MOH Heat Related Illness 2016 guideline supports only the CK/urine myoglobin investigations and the heat-stroke differential.",
+        "Bicarbonate: AAST says it is not recommended for AKI prevention, but CHAMP (p18) allows optional urine alkalinisation when there is myoglobinuria or acidosis. I marked it forbidden with required=false; the adjudicator may prefer to drop it.",
+        "Triage is under-specified because the intake has no HR/BP/RR/SpO2/temperature; 2 is in 'acceptable' for that reason."
+      ]
+    }
+  }
+}

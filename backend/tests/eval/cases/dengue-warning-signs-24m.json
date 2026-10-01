@@ -1,0 +1,1046 @@
+{
+  "id": "dengue-warning-signs-24m",
+  "title": "Dengue with warning signs, 24-year-old man",
+  "tier": "management",
+  "provenance": "Vignette written 2026-09-30 for the evaluation harness; expected answers extracted from the cited documents.",
+  "intake": {
+    "age": 24,
+    "gender": "male",
+    "weight_kg": 68,
+    "vitals": {
+      "systolic_bp": 104,
+      "diastolic_bp": 80,
+      "heart_rate": 108,
+      "respiratory_rate": 20,
+      "temperature": 37.8,
+      "spo2": 98,
+      "gcs": 15,
+      "pain_score": 5
+    },
+    "complaint": "Fever for 4 days with abdominal pain and vomiting 4 times today; feeling lethargic.",
+    "history": "Neighbour diagnosed with dengue last week. Gum bleeding this morning.",
+    "fever_history": "fever_reported_before_arrival",
+    "onset": "4 days",
+    "facility": "state_or_tertiary_with_pci_and_ct"
+  },
+  "scored_sections": [
+    "triage",
+    "diagnosis",
+    "red_flags",
+    "differentials",
+    "actions",
+    "investigations",
+    "drugs",
+    "disposition",
+    "grounding"
+  ],
+  "expected": {
+    "triage": {
+      "level": 2,
+      "acceptable": [
+        2
+      ],
+      "time_to_treatment": "under 10 minutes",
+      "note": "Both extractors: level 2. A: DENGUE, SUSPECTED row p8, Level 2 column (x~131): 'Fever onset 3 - 6 days' (day 4), 'Lethargy / Near-fainting' (lethargic), 'SBP < HR' (104 < 108) and 'SBP - DBP < 30' (104-80 = 24) all apply. Level 3 cells (x~244) also apply ('Abdominal pain', 'Persistent vomiting', HR 100-120, Temp 37.5-39, pain 4-7), and gum bleeding is 'ENT Bleeding', Level 3 in primary triage (p5 x~356). Most urgent = Level 2. No adult Level 1 shock cell is documented (cold peripheries, absent radial pulse and severe tachycardia are not recorded). B: The 'Dengue, suspected' complaint row (adult, p8) gives Level 2 (x~131) for 'Fever onset 3 - 6 days', 'Lethargy / Near-fainting', 'SBP < HR' and 'SBP - DBP < 30'. This patient has fever on day 4, lethargy, SBP 104 < HR 108 and pulse pressure 24, so all four apply. Abdominal pain and persistent vomiting alone would be Level 3 (x~244). Vital signs: HR 108 and Temp 37.8 are Level 3 (p7, x~244); pain 5 is Level 3.",
+      "evidence": [
+        {
+          "source": "MTS 2022.pdf",
+          "page": 8,
+          "quote": "• Fever onset 3 - 6 days • Abdominal pain • Persistent vomiting • FBC - HCT > 45 (M); HCT > 40 (F)"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 3,
+          "quote": "Level 2 - Emergency - under 10 minutes"
+        },
+        {
+          "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 29,
+          "quote": "Dengue patients with deteriorating vital signs must be uptriaged"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 8,
+          "quote": "Fever onset 3 - 6 days • Abdominal pain • Persistent vomiting"
+        }
+      ]
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Dengue fever with warning signs (critical phase), possible early compensated shock",
+        "match": [
+          "dengue.{0,40}warning\\s+sign",
+          "warning\\s+signs?.{0,40}dengue",
+          "\\bDWS\\b",
+          "\\bDF\\s*(with|\\+)\\s*WS\\b",
+          "severe\\s+dengue",
+          "dengue\\s+(shock|h(a)?emorrhagic)",
+          "\\bDSS\\b|\\bDHF\\b",
+          "\\bdengue\\b",
+          "dengue.{0,40}warning sign",
+          "warning signs?.{0,40}dengue",
+          "\\bDF ?(with )?WS\\b",
+          "dengue with warning"
+        ],
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 16,
+            "quote": "altered conscious level, clinical fluid accumulation, tender liver or mucosal bleed are the clinical warning signs of dengue infection with high possibility of rapid progression to severe dengue."
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 16,
+            "quote": "The critical phase often occurs after third day of fever (may occur"
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 15,
+            "quote": "Abdominal pain, persistent vomiting and/or diarrhoea, restlessness, altered conscious level, clinical fluid accumulation, mucosal bleed or tender liver are the clinical warning signs of dengue infection with high possibility of complications."
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 26,
+            "quote": "Any abdominal pain/tenderness • Persistent vomiting ( • >3 times over 24 hours)"
+          }
+        ]
+      },
+      "acceptable_alternatives": [
+        {
+          "label": "Dengue with compensated shock (dengue shock syndrome)",
+          "match": [
+            "compensated\\s+shock",
+            "dengue\\s+shock",
+            "\\bDSS\\b"
+          ]
+        },
+        {
+          "label": "Dengue with compensated shock (severe dengue)",
+          "match": [
+            "compensated (dengue )?shock",
+            "dengue shock",
+            "severe dengue",
+            "\\bDSS\\b"
+          ]
+        },
+        {
+          "label": "Dengue fever / dengue infection (unspecified)",
+          "match": [
+            "\\bdengue\\b"
+          ]
+        }
+      ]
+    },
+    "red_flags": [
+      {
+        "id": "warning-signs-present",
+        "label": "Warning signs: abdominal pain, persistent vomiting, lethargy, mucosal (gum) bleeding",
+        "match": [
+          "warning\\s+sign",
+          "persistent\\s+vomiting",
+          "mucosal\\s+bleed",
+          "gum\\s+bleed",
+          "letharg",
+          "compensated shock",
+          "narrow(ing|ed)? pulse pressure",
+          "pulse pressure",
+          "(raised|high) diastolic",
+          "\\bshock\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 26,
+            "quote": "Spontaneous bleeding tendency • Lethargy/restlessness/confusion • Tender liver"
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 16,
+            "quote": "altered conscious level, clinical fluid accumulation, tender liver or mucosal bleed are the clinical warning signs of dengue infection with high possibility of rapid progression to severe dengue."
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 34,
+            "quote": "Recognition of shock in its early stage (compensated shock) and prompt fluid resuscitation will give a good clinical outcome."
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 34,
+            "quote": "Pulse pressure of <20 mmHg and systolic pressure <90 mmHg are late signs of shock in adults."
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 16,
+            "quote": "Central nervous system – lethargy, restlessness, apprehension,"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "rising-hct-falling-platelets",
+        "label": "Rising haematocrit with rapid fall in platelets (plasma leakage)",
+        "match": [
+          "(rising|raised|increasing)\\s+(HCT|h(a)?ematocrit)",
+          "h(a)?emoconcentrat",
+          "plasma\\s+leak",
+          "thrombocytop",
+          "(rising|raised|increasing) (HCT|ha?ematocrit)",
+          "(HCT|ha?ematocrit).{0,30}(ris|rais|increas)",
+          "plasma leak",
+          "ha?emoconcentrat"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 27,
+            "quote": "4.  Laboratory criteria: Rising HCT accompanied by reducing platelet count"
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 26,
+            "quote": "Raised HCT with rapid drop in platelet:"
+          },
+          {
+            "source": "QR Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 2,
+            "quote": "Clinical deterioration may occur in the critical phase and is marked by plasma"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "significant-bleeding",
+        "label": "Significant / occult bleeding (HCT not as high as expected, drop in HCT without improvement)",
+        "match": [
+          "occult\\s+bleed",
+          "significant\\s+bleed",
+          "h(a)?ematemesis|mel(a)?ena|GI\\s+bleed",
+          "bleed",
+          "ha?emorrhag",
+          "gum",
+          "melaena|malaena|haematemesis|hematemesis"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "QR Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 5,
+            "quote": "HCT not as high as expected for the degree of shock to be explained by plasma leakage"
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 26,
+            "quote": "Spontaneous bleeding tendency"
+          },
+          {
+            "source": "QR Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 5,
+            "quote": "A drop in HCT without clinical improvement despite adequate fluid replacement (40-60 ml/kg)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "fluid-accumulation",
+        "label": "Third-space fluid accumulation (pleural effusion, ascites)",
+        "match": [
+          "pleural\\s+effusion",
+          "ascites",
+          "third[- ]space",
+          "fluid\\s+accumulation",
+          "pleural effusion",
+          "fluid accumulation"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 26,
+            "quote": "Third space fluid accumulation (such as ascites, pleural and"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "differentials": [
+      {
+        "id": "sepsis",
+        "label": "Bacterial sepsis",
+        "match": [
+          "\\bsepsis\\b",
+          "septic",
+          "bacter(ia)?l\\s+infection",
+          "sepsis",
+          "bacter(ial|aemia)"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 25,
+            "quote": "Co-morbidities (consider sepsis particularly in patients with diabetes"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "iv-crystalloid-graded",
+        "label": "IV crystalloid (0.9% saline) per graded regime: 5 ml/kg/h x1-2 h, then 3, then 2 ml/kg/h, guided by HCT and clinical response",
+        "match": [
+          "IV\\s+fluid",
+          "intravenous\\s+(fluid|crystalloid|hydration)",
+          "(normal|0\\.9%?)\\s*saline",
+          "crystalloid",
+          "ml\\s*/\\s*kg\\s*/\\s*h",
+          "graded\\s+(fluid\\s+)?bolus",
+          "fluid\\s+(therapy|regime|resuscitation)",
+          "admi(t|ssion)",
+          "(IV|intravenous) (fluid|drip|hydration|crystalloid)",
+          "fluid therapy"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 33,
+            "quote": "Start with 5 ml/kg/hour for 1–2 hours, then reduce to 3 ml/kg/hr for 2–4 • hours, and then reduce to 2 ml/kg/hr or less according to the clinical response."
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 32,
+            "quote": "IV fluid therapy should also be considered in patients who are vomiting, severe diarrhoea and not tolerating orally."
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 29,
+            "quote": "All dengue patients requiring admission should be • immediately started on an appropriate fluid therapy [oral or intravenous (IV)]."
+          },
+          {
+            "source": "QR Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 3,
+            "quote": "All dengue patients requiring admission should be immediately started"
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 34,
+            "quote": "o vomiting, unable to tolerate oral fluids or severe diarrhoea"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "compensated-shock-resuscitation",
+        "label": "If compensated shock confirmed: isotonic crystalloid 5-10 ml/kg/h for 1 hour, reassess (Algorithm A)",
+        "match": [
+          "5\\s*[-–]\\s*10\\s*ml\\s*/\\s*kg",
+          "fluid\\s+resuscitation",
+          "bolus",
+          "(5|10) ?- ?10 ?ml/kg",
+          "fluid (resuscitation|bolus)"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "QR Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 6,
+            "quote": "Fluid resuscitation with isotonic crystalloid 5-10 ml/kg/hr for 1 hour"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "input-output-vitals-monitoring",
+        "label": "Serial vital signs (CCTVR, BP, pulse pressure) and strict hourly fluid input/output charting",
+        "match": [
+          "input.{0,10}output",
+          "\\bI\\s*/\\s*O\\b",
+          "fluid\\s+(balance|chart)",
+          "urine\\s+output",
+          "CCTVR",
+          "serial\\s+(vital|obs|monitor)",
+          "monitor",
+          "vital signs",
+          "\\bCCTVR\\b",
+          "input[ /-]*(and|&)?[ /-]*output",
+          "urine output",
+          "fluid balance",
+          "\\bI/?O\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 29,
+            "quote": "strict monitoring of ongoing fluid losses and hourly fluid input/output charting"
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 32,
+            "quote": "Frequent monitoring of clinical and laboratory parameters must be carried out every 2-4 hours until patients improve. Aim for urine output of 0.5-1.0 ml/kg/hr."
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 29,
+            "quote": "serial monitoring of vital signs"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "notify-health-office",
+        "label": "Notify the district health office within 24 hours",
+        "match": [
+          "notif",
+          "health\\s+office",
+          "\\bPKD\\b",
+          "health office"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 2,
+            "quote": "the nearest health office within 24 hours of diagnosis, followed by the written standard notification format."
+          },
+          {
+            "source": "QR Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 2,
+            "quote": "All suspected dengue cases must be notified (telephone/fax/e-notification) to"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "dengue-checklist",
+        "label": "Complete the dengue assessment checklist",
+        "match": [
+          "checklist",
+          "assessment\\s+chart"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 29,
+            "quote": "Dengue assessment checklist should be filled by the attending doctor"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "investigations": [
+      {
+        "id": "fbc-hct",
+        "label": "FBC with haematocrit (baseline before fluids, then serial)",
+        "match": [
+          "\\bFBC\\b",
+          "full\\s+blood\\s+count",
+          "h(a)?ematocrit",
+          "\\bHCT\\b|\\bPCV\\b",
+          "platelet",
+          "full blood count",
+          "\\bHCT\\b",
+          "ha?ematocrit"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 28,
+            "quote": "These tests must be done immediately in cases of suspected dengue infection : FBC and HCT"
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 33,
+            "quote": "Obtain a baseline HCT before fluid therapy."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "ns1-rct",
+        "label": "Dengue NS1 antigen / rapid combo test",
+        "match": [
+          "\\bNS1\\b",
+          "rapid\\s+combo",
+          "\\bRCT\\b",
+          "dengue\\s+(serology|IgM|antigen|test)",
+          "combo test",
+          "dengue (serology|IgM|IgG|rapid)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 23,
+            "quote": "Dengue rapid combo test or non-structural protein 1 antigen (NS1 Ag)"
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 23,
+            "quote": "should be taken as soon as dengue infection is suspected."
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 28,
+            "quote": "Point of care testing e.g. Rapid combo test (RCT) or NS1 antigen"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "rp-lft",
+        "label": "Renal profile and LFT/AST",
+        "match": [
+          "renal\\s+(profile|function)",
+          "\\bRP\\b|\\bRFT\\b|\\bBUSE\\b",
+          "creatinine",
+          "\\bLFTs?\\b|liver\\s+function",
+          "\\bAST\\b|\\bALT\\b",
+          "renal profile|\\bRP\\b|\\bBUSE\\b|creatinine",
+          "\\bLFTs?\\b|liver function|\\bAST\\b",
+          "lactate|blood gas|\\bVBG\\b|\\bABG\\b",
+          "\\bGXM\\b|cross[- ]?match|group and (cross|match)",
+          "\\bCK\\b|creatine kinase"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 28,
+            "quote": "In suspected severe dengue, the following investigations should be done: Blood gases and serum lactate • LFT/AST and RP"
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 28,
+            "quote": "In suspected severe dengue, the following investigations should be done:"
+          },
+          {
+            "source": "QR Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 6,
+            "quote": "Obtain FBC, HCT, RP, LFT, RBS, PT/APTT, CK, Lactate/HCO"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "cxr-ultrasound-leak",
+        "label": "Chest X-ray and ultrasound for plasma leakage (should not delay admission)",
+        "match": [
+          "\\bCXR\\b|chest\\s+x[- ]?ray",
+          "ultraso",
+          "\\bUSG\\b|\\bPOCUS\\b",
+          "\\bCXR\\b|chest (x-?ray|radiograph)",
+          "ultraso(und|nograph)|\\bUSG\\b|\\bPOCUS\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 28,
+            "quote": "Chest x-ray and ultrasound (where available) are required in patients suspected to have vascular leakage. However, it should not delay admission."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_allowed": [
+      {
+        "id": "crystalloid-0-9-saline",
+        "label": "Isotonic crystalloid (0.9% saline)",
+        "match": [
+          "(normal|0\\.9%?)\\s*saline",
+          "\\bNS\\b",
+          "crystalloid",
+          "hartmann|ringer",
+          "normal saline|0\\.9% ?(NaCl|saline|sodium chloride)",
+          "Hartmann|Ringer"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 34,
+            "quote": "Crystalloids solution should be the fluid of choice for non-shock dengue"
+          },
+          {
+            "source": "QR Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 5,
+            "quote": "Give crystalloids solution (such as 0.9% saline)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "paracetamol",
+        "label": "Paracetamol (max 4 g/day) for fever/pain",
+        "match": [
+          "paracetamol",
+          "acetaminophen",
+          "\\bPCM\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 76,
+            "quote": "Take paracetamol (not more than 4 gram per day)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_forbidden": [
+      {
+        "id": "nsaids-aspirin",
+        "label": "NSAIDs including aspirin and mefenamic acid",
+        "match": [
+          "\\bNSAIDs?\\b",
+          "non[- ]steroidal",
+          "aspirin",
+          "mefenamic|ponstan",
+          "diclofenac",
+          "ibuprofen",
+          "naproxen",
+          "ketorolac",
+          "celecoxib|etoricoxib|\\bCOX[- ]?2"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 76,
+            "quote": "Do not take non steroidal anti-inflammatory (NSAIDS) eg. aspirin / • mefenamic acid (ponstan) or steroids."
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 76,
+            "quote": "Do not take non steroidal anti-inflammatory (NSAIDS) eg. aspirin /"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "steroids",
+        "label": "Corticosteroids (routine)",
+        "match": [
+          "(cortico)?steroid",
+          "prednisolone",
+          "dexamethasone",
+          "hydrocortisone",
+          "methylprednisolone"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 76,
+            "quote": "Do not take non steroidal anti-inflammatory (NSAIDS) eg. aspirin / • mefenamic acid (ponstan) or steroids."
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 76,
+            "quote": "mefenamic acid (ponstan) or steroids. If you are already taking these medications, please consult your doctor."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "intramuscular-injections",
+        "label": "Intramuscular injections",
+        "match": [
+          "intramuscular",
+          "\\bIM\\s+(injection|inj)",
+          "\\bIM\\b",
+          "\\bIM (injection|route)\\b",
+          "\\bIMI\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 76,
+            "quote": "Antibiotics are not required • Do not take injection • Do not do massage / cupping / quasa"
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 76,
+            "quote": "Antibiotics are not required • Do not take injection"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "prophylactic-platelet-transfusion",
+        "label": "Prophylactic platelet / FFP transfusion without bleeding or planned procedure",
+        "match": [
+          "prophylactic\\s+(platelet|FFP|transfusion)",
+          "platelet\\s+transfusion",
+          "\\bFFP\\b",
+          "prophylactic (platelet|FFP|transfusion)",
+          "platelet transfusion",
+          "platelet concentrate"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 42,
+            "quote": "Prophylactic transfusion of packed cells and/or blood components is only indicated when invasive procedure or an operation is decided."
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 43,
+            "quote": "There is no role for routine prophylactic transfusion with platelets and"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "antibiotics-routine",
+        "label": "Routine antibiotics",
+        "match": [
+          "antibiotic",
+          "ceftriaxone|amoxicillin|augmentin|doxycycline|penicillin"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 76,
+            "quote": "Antibiotics are not required • Do not take injection • Do not do massage / cupping / quasa"
+          },
+          {
+            "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+            "page": 76,
+            "quote": "Antibiotics are not required • Do not take injection"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "disposition": {
+      "acceptable": [
+        "ADMIT_WARD",
+        "ADMIT_ICU_HDU"
+      ],
+      "preferred": "ADMIT_WARD",
+      "evidence": [
+        {
+          "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 27,
+          "quote": "Warning signs (refer to Table 3) • Bleeding manifestations • Inability to tolerate oral fluids • Reduced urine output"
+        },
+        {
+          "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 34,
+          "quote": "All patients with dengue shock should be managed in high dependency or intensive care units."
+        },
+        {
+          "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 26,
+          "quote": "Absence of warning signs (refer to Table 3)"
+        },
+        {
+          "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 27,
+          "quote": "Warning signs (refer to Table 3) • Bleeding manifestations • Inability to tolerate oral fluids"
+        },
+        {
+          "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 34,
+          "quote": "All patients with dengue shock should be managed in high dependency or intensive care units."
+        }
+      ],
+      "note": "Warning signs are present, so home treatment (Table 4 requires absence of warning signs) is excluded and admission is required. HR 108 with pulse pressure 24 and raised diastolic (80) may be early compensated shock; if confirmed (CRT > 2 s, cool peripheries), manage in HDU/ICU. Discharge is not acceptable. / He has warning signs, mucosal bleeding and cannot tolerate oral fluids (vomiting x4), so admission is required. Discharge is excluded (Table 4 home-care criteria need no warning signs). If he is judged to be in compensated shock (HR 108 > SBP 104, diastolic 80, pulse pressure 24, lethargy), HDU/ICU applies."
+    },
+    "sources_forbidden": [
+      {
+        "doc_type": "PAEDIATRIC_PROTOCOL",
+        "why": "adult patient"
+      }
+    ]
+  },
+  "disputed": [
+    {
+      "section": "red_flags",
+      "id": "compensated-shock-signs",
+      "label": "Signs of compensated shock: tachycardia, narrowing pulse pressure with raised diastolic, prolonged CRT, cool extremities",
+      "match": [
+        "compensated\\s+shock",
+        "narrow(ing|ed)?\\s+pulse\\s+pressure",
+        "pulse\\s+pressure",
+        "tachycardi",
+        "\\bCRT\\b|capillary\\s+refill",
+        "cool|cold\\s+(peripher|extremit)"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 17,
+          "quote": "Prolonged capillary • refill time (>2 sec) Cool extremities • Weak & thready • peripheral pulses Tachycardia • Normal systlic • pressure with raised diastolic pressure"
+        },
+        {
+          "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 34,
+          "quote": "Recognition of shock in its early stage (compensated shock) and prompt fluid resuscitation will give a good clinical outcome."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "red_flags",
+      "id": "late-shock-signs",
+      "label": "Late shock: pulse pressure < 20 mmHg, SBP < 90 mmHg",
+      "match": [
+        "pulse\\s+pressure.{0,20}(<|less\\s+than|below)\\s*20",
+        "SBP\\s*(<|less\\s+than|below)\\s*90",
+        "hypotensi",
+        "decompensated"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 34,
+          "quote": "Pulse pressure of <20 mmHg and systolic pressure <90 mmHg are late signs of shock in adults."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "differentials",
+      "id": "leptospirosis-typhus-malaria",
+      "label": "Leptospirosis / typhus / malaria (exposure history)",
+      "match": [
+        "leptospir",
+        "typhus|scrub",
+        "malaria"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 25,
+          "quote": "Jungle trekking and swimming in waterfall (consider leptospirosis,"
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "actions",
+      "id": "reassess-abc",
+      "label": "Proactive ongoing reassessment of airway, breathing, circulation in ED",
+      "match": [
+        "reassess",
+        "airway,?\\s+breathing",
+        "\\bABC\\b"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 28,
+          "quote": "Proactive ongoing clinical reassessment of airway, breathing and circulatory status must be done."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "baseline-hct-then-graded-fluid",
+      "label": "Baseline HCT before fluids; graded crystalloid regime (5 ml/kg/h then taper) adjusted to response",
+      "match": [
+        "baseline (HCT|ha?ematocrit)",
+        "5 ?ml/kg",
+        "graded (fluid|bolus)",
+        "(HCT|ha?ematocrit) before"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "QR Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 5,
+          "quote": "Obtain a baseline HCT before fluid therapy."
+        },
+        {
+          "source": "QR Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 5,
+          "quote": "Start with 5 ml/kg/hour for 1–2 hours, then reduce to 3 ml/kg/hr for 2–4 hours, and then"
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "investigations",
+      "id": "blood-gas-lactate",
+      "label": "Blood gas and serum lactate (suspected severe dengue / shock)",
+      "match": [
+        "blood\\s+gas",
+        "\\bABG\\b|\\bVBG\\b",
+        "lactate"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 28,
+          "quote": "In suspected severe dengue, the following investigations should be done: Blood gases and serum lactate"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "gxm-coag-ck",
+      "label": "Group and cross-match, coagulation profile, CK",
+      "match": [
+        "\\bGXM\\b",
+        "cross[- ]?match",
+        "group\\s+and\\s+(cross|screen)",
+        "\\bPT\\b|\\bAPTT\\b|coagulation",
+        "\\bCK\\b|creatine\\s+kinase"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "QR Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 6,
+          "quote": "Obtain FBC, HCT, RP, LFT, RBS, PT/APTT, CK, Lactate/HCO"
+        },
+        {
+          "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 28,
+          "quote": "Creatine kinase (CK) to detect myocarditis and rhabdomyolysis"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "dengue-igm",
+      "label": "Dengue IgM (a negative result before day 5-7 does not exclude dengue)",
+      "match": [
+        "IgM",
+        "IgG",
+        "serology"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 23,
+          "quote": "Dengue IgM is usually positive after day 5-7 of illness."
+        },
+        {
+          "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 23,
+          "quote": "negative IgM taken before day 5-7 of illness does not exclude dengue infection."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "colloid-if-intractable-shock",
+      "label": "Colloid for repeated boluses in intractable shock",
+      "match": [
+        "colloid",
+        "gelofusin|gelatin",
+        "starch|\\bHES\\b|voluven"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Dengue Infection in Adults (3rd Edition) 2015.pdf",
+          "page": 34,
+          "quote": "However colloid may be preferable as the fluid of choice in patients with intractable shock in the initial resuscitation."
+        }
+      ],
+      "proposed_by": "A"
+    }
+  ],
+  "adjudication": {
+    "method": "two independent extraction passes (A, B); agreed items scored",
+    "notes": [],
+    "open_questions": {
+      "A": [
+        "Compensated shock or not: the intake has HR 108, BP 104/80 (pulse pressure 24, raised diastolic) and lethargy, but no CRT or extremity temperature. The CPG's Table 1 compensated-shock features partly fit. Preferred disposition is ADMIT_WARD with HDU acceptable; adjudicator may prefer HDU.",
+        "NSAID/steroid/injection prohibitions come from the CPG's patient home-care leaflet (Appendix 9), not the clinician recommendations; no clinician-facing sentence in the adult CPG explicitly bans NSAIDs.",
+        "The graded fluid bolus (Table 8) is for 'persistent warning signs with increasing or persistently high HCT'; HCT is not yet known at triage."
+      ],
+      "B": [
+        "Whether he is already in compensated shock is borderline. Tachycardia above SBP, raised diastolic (80) with pulse pressure 24, and lethargy match the compensated-shock column of Table 1, but CRT and extremity temperature are not recorded. I labelled the primary diagnosis 'with warning signs' and put compensated shock as an acceptable alternative and a red flag.",
+        "The adult CPG says 'avoid NSAIDs/steroids/injections' only in the patient Home Care Leaflet (Appendix 9); the clinician chapters give no explicit prohibition. The paediatric CPG's 'Do not prescribe ... NSAIDs or intramuscular injections' is the clearer statement, but it is for children."
+      ]
+    }
+  }
+}

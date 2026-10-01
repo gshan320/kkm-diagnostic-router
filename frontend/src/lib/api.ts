@@ -1,5 +1,7 @@
 import type {
   CorpusStats,
+  FlagReason,
+  TriagePreview,
   ProgressResponse,
   InquiryRequest,
   InquiryResponse,
@@ -52,12 +54,16 @@ async function post<TRequest, TResponse>(
   return (await response.json()) as TResponse;
 }
 
+/** Labels this app's requests in the backend audit store, so evaluation
+ *  runs and direct API calls can be told apart from clinician use. */
+const CLIENT = { "X-Client": "ui" };
+
 /** `jobId` opts into live progress readable at fetchProgress(jobId). */
 export const runTriage = (request: TriageRequest, jobId?: string) =>
   post<TriageRequest, TriageResponse>(
     "/api/v1/triage",
     request,
-    jobId ? { "X-Job-Id": jobId } : {},
+    jobId ? { ...CLIENT, "X-Job-Id": jobId } : CLIENT,
   );
 
 /** Progress of an in-flight run. Returns null on any failure: a progress poll
@@ -75,7 +81,7 @@ export async function fetchProgress(jobId: string): Promise<ProgressResponse | n
 }
 
 export const runInquiry = (request: InquiryRequest) =>
-  post<InquiryRequest, InquiryResponse>("/api/v1/compare-inquire", request);
+  post<InquiryRequest, InquiryResponse>("/api/v1/compare-inquire", request, CLIENT);
 
 export async function fetchStats(): Promise<CorpusStats | null> {
   try {
@@ -86,5 +92,28 @@ export async function fetchStats(): Promise<CorpusStats | null> {
     return null;
   }
 }
+
+/** The deterministic triage (MTS table + red-flag rules), no model: ~1 s.
+ *  Returns null on failure - the full report is still coming. */
+export async function runPreview(request: TriageRequest): Promise<TriagePreview | null> {
+  try {
+    return await post<TriageRequest, TriagePreview>("/api/v1/triage/preview", request);
+  } catch {
+    return null;
+  }
+}
+
+/** A clinician's one-click objection to an audited report. */
+export const flagReport = (reportId: string, reason: FlagReason, note: string) =>
+  post<{ reason: FlagReason; note: string }, { ok: boolean; flags: number }>(
+    `/api/v1/reports/${encodeURIComponent(reportId)}/flag`,
+    { reason, note },
+  );
+
+/** A corpus PDF opened at a page, served by the backend. */
+export const sourcePdfUrl = (filename: string, page?: number | string | null) =>
+  `${API_BASE}/api/v1/sources/pdf/${encodeURIComponent(filename)}${
+    page && String(page) !== "N/A" ? `#page=${page}` : ""
+  }`;
 
 export { API_BASE };

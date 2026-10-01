@@ -1,0 +1,40 @@
+{
+  "id": "published-pmc9676116-biliary-pancreatitis",
+  "title": "Published case: severe right upper-quadrant and epigastric pain in a 62-year-old man (PMC9676116)",
+  "tier": "published",
+  "provenance": "Clinical Case Reports 2022; PMC9676116 via MedCaseReasoning (CC BY 4.0). Arrival findings only - the amylase, lipase and liver results are withheld.",
+  "intake": {
+    "age": 62,
+    "gender": "male",
+    "vitals": {
+      "systolic_bp": 130,
+      "diastolic_bp": 80,
+      "heart_rate": 80,
+      "respiratory_rate": 20,
+      "temperature": 37.0,
+      "spo2": 99
+    },
+    "complaint": "Severe right upper-quadrant abdominal pain, moderate epigastric pain and chest pain, with nausea and vomiting.",
+    "history": "COVID-19 infection 14 days ago, then mild right upper-quadrant discomfort that became severe over 3 days, worse after eating and not relieved by changing position. Chest pain atypical for a cardiac cause. No alcohol, no trauma, no known chronic disease. Mother and sisters had cholecystectomies. ECG: bradyarrhythmia, T-wave inversion in V1 and ST elevation V2-V6. Chest and abdominal X-rays unremarkable apart from gallbladder sludge.",
+    "ecg_findings": [
+      "st_elevations_or_depressions"
+    ],
+    "facility": "state_or_tertiary_with_pci_and_ct"
+  },
+  "scored_sections": [
+    "diagnosis"
+  ],
+  "expected": {
+    "diagnosis": {
+      "primary": {
+        "label": "Biliary (gallstone) pancreatitis",
+        "match": [
+          "pancreatitis"
+        ],
+        "evidence": []
+      },
+      "acceptable_alternatives": []
+    }
+  },
+  "disputed": []
+}

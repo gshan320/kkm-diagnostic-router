@@ -1,0 +1,1070 @@
+{
+  "id": "dengue-child-8y",
+  "title": "Dengue with warning signs, 8-year-old girl",
+  "tier": "management",
+  "provenance": "Vignette written 2026-09-30 for the evaluation harness; expected answers extracted from the cited documents.",
+  "intake": {
+    "age": 8,
+    "gender": "female",
+    "weight_kg": 25,
+    "vitals": {
+      "systolic_bp": 90,
+      "diastolic_bp": 76,
+      "heart_rate": 128,
+      "respiratory_rate": 26,
+      "temperature": 37.2,
+      "spo2": 97,
+      "gcs": 15,
+      "pain_score": 4
+    },
+    "complaint": "Fever for 5 days, now abdominal pain and cold hands; less active than usual.",
+    "history": "Vomited three times today. Passed urine only once since the morning.",
+    "perfusion": "crt_over_2_seconds",
+    "fever_history": "fever_reported_before_arrival",
+    "onset": "5 days",
+    "facility": "state_or_tertiary_with_pci_and_ct"
+  },
+  "scored_sections": [
+    "triage",
+    "diagnosis",
+    "red_flags",
+    "differentials",
+    "actions",
+    "investigations",
+    "drugs",
+    "disposition"
+  ],
+  "expected": {
+    "triage": {
+      "level": 1,
+      "acceptable": [
+        1,
+        2
+      ],
+      "time_to_treatment": null,
+      "note": "Both extractors: level 1. A: Paediatric tables (MTS p12-18) apply (age 8, <12). Paediatric complaint pages 15-18 have their own header: x~131 = Level 1, x~244 = Level 2, x~358 = Level 3, x~453 = Level 4. DENGUE, SUSPECTED (p16) Level 1 cells: 'Fever onset 3 - 6 days' (day 5), 'Lethargy / Near-fainting' ('less active than usual'), 'Shock' (cold hands + CRT > 2 s + pulse pressure 14 mmHg + HR 128 + reduced urine = compensated shock by the dengue CPG definition). Paediatric primary triage CIRCULATION p13: 'Cold Peripheries' is Level 1 (x~137), 'CRT > 2 secs' is Level 2 (x~252). Paediatric vitals p14 (<12 years row; x~194 L1, 282 L2, 369 L3, 456 L4): SBP 90 sits on the 80-90 (L2) / 90-130 (L4) boundary, so L2 under the higher-modifier rule; HR 128 is in 120-150 = L3; RR 26 is in 25-40 = L3. Level 2 is acceptable if 'cold hands' is not taken as cold peripheries and shock is not called at triage; the L2 dengue cells (abdominal pain, persistent vomiting) apply regardless. B: Paediatric complaints list, 'Dengue, suspected' row (p16): Level 1 (x~131) is 'Fever onset 3 - 6 days', 'Lethargy / Near-fainting', 'Respiratory Distress', 'Shock'; Level 2 (x~244) is fever 3-6 days with abdominal pain or persistent vomiting. She is on day 5 and has compensated shock by the paediatric CPG criteria: cold extremities, CRT > 2 s, HR 128, pulse pressure 14 (<= 20), reduced urine output. That gives Level 1. The paediatric primary triage circulation row (p13) independently puts 'Cold Peripheries' at Level 1 (x~138-152) and 'CRT > 2 secs' at Level 2 (x~252-266). Paediatric vital signs for age < 12 years (p14): HR 128 is Level 3 ('120 - 150', x~370); SBP 90 falls on the boundary between the Level 2 cell '80 - 90 mmHg' (x~282) and the Level 4 cell '90 - 130 mmHg' (x~456); RR 26 is Level 3 ('25 - 40', x~370). Level 2 is acceptable if 'cold hands' is not read as cold peripheries and 'shock' is not recognised at triage.",
+      "evidence": [
+        {
+          "source": "MTS 2022.pdf",
+          "page": 13,
+          "quote": "Capillary Refill Time • Cold Peripheries • CRT > 5 secs • CRT > 2 secs"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 16,
+          "quote": "• Fever onset 3 - 6 days • Abdominal pain • Persistent vomiting • Inter-facility transfers"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 14,
+          "quote": "• SBP < 80 mmHg • 80 - 90 mmHg • > 130 mmHg • 90 - 130 mmHg"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 3,
+          "quote": "Level 1 - Resuscitation - 0 minutes (requires rapid team activation mechanism)"
+        },
+        {
+          "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+          "page": 60,
+          "quote": "Any criteria that include 6 Refer doctor immediately for resuscitation Critical zone"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 13,
+          "quote": "Cold Peripheries • CRT > 5 secs"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 16,
+          "quote": "Fever onset 3 - 6 days • Abdominal pain • Persistent vomiting • Inter-facility transfers"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 12,
+          "quote": "Children identiﬁed with danger signs must be moved to Resuscitation, immediate Emergency Care or Urgent attention."
+        }
+      ]
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Severe dengue: dengue with warning signs in compensated shock (critical phase)",
+        "match": [
+          "compensated\\s+(dengue\\s+)?shock",
+          "dengue\\s+shock",
+          "\\bDSS\\b",
+          "severe\\s+dengue",
+          "dengue.{0,40}shock",
+          "compensated (dengue )?shock",
+          "dengue shock",
+          "severe dengue",
+          "dengue.{0,40}\\bshock\\b"
+        ],
+        "evidence": [
+          {
+            "source": "QR Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 3,
+            "quote": "Clear and alert Cold extremities Prolonged (>2 sec) Weak & thready peripheral pulses Tachycardia Narrowed pulse pressure (≤20 mmHg) Tachypnoea Reducing trend"
+          },
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 59,
+            "quote": "Diastolic pressure rises towards systolic pressure and pulse pressure (difference between systolic and diastolic pressures) narrows"
+          },
+          {
+            "source": "Paediatric Protocols for Malaysian Hospitals (5th Edition) 2025.pdf",
+            "page": 541,
+            "quote": "Criteria for Severe Dengue 1. Severe plasma leakage leading to: • Shock (Dengue Shock Syndrome)"
+          },
+          {
+            "source": "QR Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 3,
+            "quote": "Cold extremities Prolonged (>2 sec) Weak & thready peripheral pulses Tachycardia Narrowed pulse pressure (≤20 mmHg) Tachypnoea Reducing trend"
+          },
+          {
+            "source": "QR Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 3,
+            "quote": "*unless the child is touched, parameters of shock will be missed e.g. cold extremities, weak peripheral pulses, prolonged CRT"
+          }
+        ]
+      },
+      "acceptable_alternatives": [
+        {
+          "label": "Dengue with warning signs (without naming shock) - under-calls severity",
+          "match": [
+            "dengue.{0,40}warning\\s+sign",
+            "warning\\s+signs?.{0,40}dengue"
+          ]
+        },
+        {
+          "label": "Dengue with warning signs",
+          "match": [
+            "dengue.{0,40}warning sign",
+            "warning signs?.{0,40}dengue",
+            "dengue with warning"
+          ]
+        }
+      ]
+    },
+    "red_flags": [
+      {
+        "id": "compensated-shock-signs",
+        "label": "Compensated shock: cold extremities, CRT > 2 s, tachycardia, narrowed pulse pressure (<= 20 mmHg), reducing urine output",
+        "match": [
+          "compensated\\s+shock",
+          "narrow(ed|ing)?\\s+pulse\\s+pressure",
+          "pulse\\s+pressure",
+          "\\bCRT\\b|capillary\\s+refill",
+          "cold\\s+(hands|extremit|peripher)",
+          "(reduced|reducing|poor)\\s+urine",
+          "oligur",
+          "pulse pressure",
+          "narrow(ed|ing)? (pulse )?pressure",
+          "\\bPP\\b ?(of )?1[0-9]"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 24,
+            "quote": "Narrowed pulse pressure (≤20 mmHg) Unrecordable Respiratory rate Normal respiratory rate for age Tachypnoea Metabolic acidosis/ hyperpnoea Urine output Normal Reducing trend Oliguria/anuria"
+          },
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 24,
+            "quote": "*unless the child is touched, parameters of shock will be missed e.g. cold extremities, weak peripheral pulses, prolonged CRT"
+          },
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 34,
+            "quote": "clinical - increased central to peripheral temperature gradient, bleeding episodes, hepatomegaly, pulse pressure <20 mmHg, systolic BP <90 mmHg"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "decompensation-signs",
+        "label": "Progression to decompensated shock: altered mental state, cold clammy mottled skin, feeble pulses, hypotension",
+        "match": [
+          "decompensat",
+          "hypotensi",
+          "mottl",
+          "clammy",
+          "feeble|absent\\s+pulse",
+          "(restless|drowsy|confus)",
+          "decompensated",
+          "unrecordable (BP|blood pressure)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 3,
+            "quote": "Change of mental state (restless, drowsy) Cold, clammy extremities Very prolonged, mottled skin Feeble or absent peripheral pulses"
+          },
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 39,
+            "quote": "All dengue children with decompensated shock should be managed more vigorously."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "warning-signs",
+        "label": "Warning signs: abdominal pain, persistent vomiting, lethargy",
+        "match": [
+          "warning\\s+sign",
+          "persistent\\s+vomiting",
+          "abdominal\\s+(pain|tenderness)",
+          "letharg",
+          "warning sign",
+          "persistent vomiting",
+          "abdominal pain"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 3,
+            "quote": "• Persistent vomiting - (≥2 episodes of vomiting that amounts to fatigue or requires intravenous (IV) fluids"
+          },
+          {
+            "source": "QR Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 3,
+            "quote": "• Abdominal pain - abdominal tenderness and continuous pain (not intermittent)"
+          },
+          {
+            "source": "QR Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 3,
+            "quote": "Abdominal pain - abdominal tenderness and continuous pain (not intermittent)"
+          },
+          {
+            "source": "QR Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 3,
+            "quote": "Persistent vomiting - (≥2 episodes of vomiting that amounts to fatigue or requires intravenous (IV) fluids"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "occult-bleeding",
+        "label": "Occult bleeding: falling HCT with unstable vital signs",
+        "match": [
+          "occult\\s+bleed",
+          "(falling|decreasing|drop(ping)?)\\s+(HCT|h(a)?ematocrit)",
+          "h(a)?emorrhag",
+          "bleed",
+          "occult bleed",
+          "(drop|fall|decreas)(ing)? (in )?(HCT|ha?ematocrit)",
+          "(HCT|ha?ematocrit).{0,20}(drop|fall|decreas)"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 39,
+            "quote": "Decreasing HCT with unstable vital signs indicates bleeding which may be occult. Transfuse patient with fresh whole blood or packed cells."
+          },
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 39,
+            "quote": "Decreasing HCT with unstable vital signs indicates bleeding which may be occult."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "fluid-overload-resp-distress",
+        "label": "Fluid overload / respiratory distress (PICU criteria)",
+        "match": [
+          "fluid\\s+overload",
+          "respiratory\\s+(distress|failure)",
+          "pleural\\s+effusion",
+          "ascites",
+          "\\bPICU\\b|\\bHDU\\b|intensive care|high[- ]dependency",
+          "fluid overload",
+          "respiratory distress"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 37,
+            "quote": "• prolonged and/or decompensated shock • severe bleeding with severe disseminated intravascular coagulopathy • fluid overload • respiratory distress and failure"
+          },
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 37,
+            "quote": "Dengue patients should be referred to paediatric intensive care units/high dependency unit in the event of life-threatening situation"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "differentials": [
+      {
+        "id": "septic-shock",
+        "label": "Septic shock / bacterial co-infection",
+        "match": [
+          "septic\\s+shock",
+          "\\bsepsis\\b",
+          "co-?infection",
+          "bacter(ia)?(l)?\\s+infection",
+          "septic shock",
+          "sepsis",
+          "bacter(ial|aemia)"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "QR Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 7,
+            "quote": "• septic shock (co-infection)"
+          },
+          {
+            "source": "QR Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 7,
+            "quote": "concurrent bleeding and leaking • septic shock (co-infection)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "abc-high-flow-oxygen",
+        "label": "Stabilise airway, breathing, circulation; high-flow mask oxygen",
+        "match": [
+          "high[- ]flow\\s+(mask\\s+)?oxygen",
+          "oxygen",
+          "\\bO2\\b",
+          "airway,?\\s+breathing",
+          "\\bABC\\b",
+          "high[- ]flow (mask )?oxygen",
+          "intraosseous|\\bIO\\b",
+          "(IV|intravenous) access",
+          "\\bABC\\b|airway, breathing"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 6,
+            "quote": "Stabilise airway, breathing and circulation Give high flow mask oxygen"
+          },
+          {
+            "source": "QR Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 6,
+            "quote": "Give high flow mask oxygen Secure intravenous (IV)/intraosseous access within 5 minutes"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "reassess-and-titrate",
+        "label": "Reassess after bolus (vitals, CRT, HCT, urine output); repeat bolus if shock persists and HCT high; step fluids down when improving",
+        "match": [
+          "reassess",
+          "repeat\\s+(the\\s+)?(bolus|HCT)",
+          "titrat",
+          "step\\s*down|reduce\\s+(the\\s+)?(IV\\s+)?fluid",
+          "repeat (HCT|ha?ematocrit)",
+          "(check|recheck) (HCT|ha?ematocrit)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 38,
+            "quote": "Reassess the patient’s condition (vital signs, CRT, HCT and urine output)."
+          },
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 38,
+            "quote": "If the HCT increases or still high with evidence of shock, repeat crystalloid solution at 10 - 20 ml/kg over an hour."
+          },
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 38,
+            "quote": "If vital signs are still unstable (i.e. shock persists), check HCT urgently after the first fluid bolus."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "continuous-monitoring-urine-catheter",
+        "label": "Continuous ECG and pulse oximetry; perfusion checks every 15-30 min; hourly urine output (catheter), target 0.5-1 ml/kg/h",
+        "match": [
+          "continuous\\s+(ECG|cardiac|monitor)",
+          "pulse\\s+oximet",
+          "(urinary|bladder|urine|foley)\\s+catheter",
+          "hourly\\s+urine",
+          "urine\\s+output",
+          "every\\s+15",
+          "(every|q) ?15",
+          "15 ?- ?30 min",
+          "hourly urine",
+          "urine output",
+          "monitor"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 40,
+            "quote": "In local setting, children with shock should at least have continuous ECG and pulse oximetry monitoring."
+          },
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 40,
+            "quote": "A continuous bladder catheter is essential in close monitoring of urine output. An acceptable urine output would be at least 0.5 - 1 ml/kg/hour."
+          },
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 39,
+            "quote": "peripheral perfusion (every 15 - 30 minutes until the patient is out of shock, then 1 - 2 hourly)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "notify",
+        "label": "Notify nearest health office within 24 hours",
+        "match": [
+          "notif",
+          "health\\s+office",
+          "health office"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "QR Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 2,
+            "quote": "Notification should be done for all suspected dengue cases from private and public health facilities by telephone/fax/e-notification to the nearest health office within 24 hours of diagnosis."
+          },
+          {
+            "source": "QR Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 2,
+            "quote": "Notification should be done for all suspected dengue cases from private and public health"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "senior-paediatric-care",
+        "label": "Managed by senior staff / paediatrician",
+        "match": [
+          "paediatrician|pediatrician",
+          "senior",
+          "specialist",
+          "paediatric (team|registrar|specialist)"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 39,
+            "quote": "Children with compensated shock should be closely monitored in hospitals with paediatricians and managed by senior staffs."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "investigations": [
+      {
+        "id": "reference-hct-fbc",
+        "label": "Reference HCT / FBC before IV fluids, repeat before and after boluses",
+        "match": [
+          "\\bHCT\\b|h(a)?ematocrit|\\bPCV\\b",
+          "\\bFBC\\b",
+          "full\\s+blood\\s+count",
+          "platelet",
+          "\\bHCT\\b|ha?ematocrit",
+          "\\bFBC\\b|full blood count",
+          "\\bGXM\\b|cross[- ]?match|group and (cross|match)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 38,
+            "quote": "Obtain a reference HCT before starting IV fluid therapy."
+          },
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 40,
+            "quote": "HCT should be monitored before and after fluid boluses until stable, then 4 - 6 hourly."
+          },
+          {
+            "source": "QR Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 6,
+            "quote": "Obtain reference haematocrit (HCT) and blood for cross match"
+          },
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 37,
+            "quote": "All patients in shock should have their blood sample taken and cross-matched carried out."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "dengue-combo-test",
+        "label": "Dengue rapid combo test (NS1 Ag / IgM / IgG)",
+        "match": [
+          "\\bNS1\\b",
+          "combo\\s+test",
+          "\\bRCT\\b",
+          "dengue\\s+(serology|IgM|test)",
+          "combo test",
+          "dengue (serology|IgM|IgG|rapid)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 2,
+            "quote": "Children suspected of dengue infection should be tested with a combination of NS1 Antigen/IgM/IgG rapid test (dengue rapid combo test)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "blood-glucose",
+        "label": "Blood glucose before fluid resuscitation",
+        "match": [
+          "glucose",
+          "\\bDXT\\b|\\bCBG\\b|\\bRBS\\b|\\bBSL\\b|dextrostix",
+          "blood\\s+sugar",
+          "lactate",
+          "blood gas|\\bVBG\\b|\\bABG\\b",
+          "renal profile|\\bBUSE\\b|\\bRP\\b|creatinine",
+          "\\bLFTs?\\b|liver function",
+          "blood (sugar|glucose)|\\bRBS\\b|\\bDXT\\b|dextrostix"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 40,
+            "quote": "blood glucose (before fluid resuscitation and repeat as indicated)"
+          },
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 36,
+            "quote": "In shock: Monitor ABG/VBG and lactate closely"
+          },
+          {
+            "source": "QR Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 5,
+            "quote": "Obtain reference haematocrit (HCT); renal profile and liver function test if possible"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_allowed": [
+      {
+        "id": "isotonic-crystalloid",
+        "label": "Isotonic crystalloid (0.9% saline / Hartmann's / Ringer's lactate)",
+        "match": [
+          "(normal|0\\.9%?)\\s*saline",
+          "\\bNS\\b",
+          "hartmann",
+          "ringer",
+          "crystalloid",
+          "normal saline|0\\.9% ?(NaCl|saline|sodium chloride)",
+          "Hartmann",
+          "Ringer"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 6,
+            "quote": "Commence Normal Saline/Hartmann’s solution/Ringer’s Lactate at 10 - 20 ml/kg over an hour"
+          },
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 38,
+            "quote": "Isotonic crystalloid solutions should be used in resuscitation and maintenance therapy in children with dengue."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "paracetamol-10mgkg",
+        "label": "Paracetamol 10 mg/kg/dose, max 3-4 doses in 24 h",
+        "match": [
+          "paracetamol",
+          "acetaminophen",
+          "\\bPCM\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 33,
+            "quote": "The recommended dose is 10 mg/kg/ dose, not more than 3 - 4 times in 24 hours in children."
+          },
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 33,
+            "quote": "Acetaminophen (paracetamol) may be used for the treatment of fever and pain."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "colloid-if-persistent-shock",
+        "label": "Colloid only for persistent shock after ~40 ml/kg crystalloid",
+        "match": [
+          "colloid",
+          "gelofusin|gelatin",
+          "albumin",
+          "gelofusine|gelatin",
+          "dextran"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 38,
+            "quote": "Consider changing to colloid solution at 10 - 20 ml/kg over an hour after resuscitation with 40 ml/kg of crystalloid solution."
+          },
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 38,
+            "quote": "Colloid solutions may be used in persistent shock despite resuscitation with the crystalloid solutions."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_forbidden": [
+      {
+        "id": "nsaids-aspirin",
+        "label": "Aspirin, ibuprofen and other NSAIDs",
+        "match": [
+          "\\bNSAIDs?\\b",
+          "non[- ]steroidal",
+          "aspirin",
+          "acetylsalicylic",
+          "ibuprofen",
+          "mefenamic",
+          "diclofenac",
+          "aspirin|acetylsalicylic"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 33,
+            "quote": "Do not prescribe acetylsalicylic acid (aspirin), ibuprofen or other non-steroidal anti-inflammatory agents (NSAIDs) or intramuscular injections, as these aggravate gastritis or bleeding."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "intramuscular-injections",
+        "label": "Intramuscular injections",
+        "match": [
+          "intramuscular",
+          "\\bIM\\s+(injection|inj)",
+          "\\bIM\\b",
+          "\\bIM (injection|route)\\b",
+          "\\bIMI\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 33,
+            "quote": "Do not prescribe acetylsalicylic acid (aspirin), ibuprofen or other non-steroidal anti-inflammatory agents (NSAIDs) or intramuscular injections, as these aggravate gastritis or bleeding."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "glucose-containing-fluids",
+        "label": "Glucose-containing / hypotonic fluids for resuscitation (e.g. 1/2 GNS)",
+        "match": [
+          "dextrose",
+          "glucose[- ]containing",
+          "\\bGNS\\b|glucose\\s+(normal\\s+)?saline",
+          "D5|D10",
+          "hypotonic",
+          "D5|D10|glucose[- ]containing",
+          "dextrose saline"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 37,
+            "quote": "Most children with dengue in shock respond well to judicious treatment with isotonic crystalloid solutions.34, level III; 35, level I These fluids should not contain glucose."
+          },
+          {
+            "source": "Paediatric Protocols for Malaysian Hospitals (5th Edition) 2025.pdf",
+            "page": 549,
+            "quote": "Hypotonic fluids can cause fluid overload; also, avoid glucose- containing fluids, such as 1/2Glucose Normal Saline (GNS or I/2 GNS)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "hes",
+        "label": "Hydroxyethyl starch (HES)",
+        "match": [
+          "hydroxyethyl\\s+starch",
+          "\\bHES\\b",
+          "voluven",
+          "starch",
+          "hydroxyethyl starch",
+          "voluven|tetrastarch"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "Paediatric Protocols for Malaysian Hospitals (5th Edition) 2025.pdf",
+            "page": 549,
+            "quote": "Hydroxyethyl starch (HES) is currently not recommended in DSS."
+          },
+          {
+            "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+            "page": 38,
+            "quote": "Thus, HES was not recommended for paediatric patients."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "disposition": {
+      "acceptable": [
+        "ADMIT_ICU_HDU",
+        "ADMIT_WARD"
+      ],
+      "preferred": "ADMIT_ICU_HDU",
+      "evidence": [
+        {
+          "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+          "page": 39,
+          "quote": "Children with compensated shock should be closely monitored in hospitals with paediatricians and managed by senior staffs."
+        },
+        {
+          "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+          "page": 34,
+          "quote": "The admission criteria for children with dengue infection include: 10, level III  age <12 months  presence of warning signs  features of severe dengue"
+        },
+        {
+          "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+          "page": 39,
+          "quote": "Those with prolonged and/or decompensated shock should be admitted to the high-dependency or intensive care unit."
+        },
+        {
+          "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+          "page": 60,
+          "quote": "Any criteria that include 6 Refer doctor immediately for resuscitation Critical zone"
+        },
+        {
+          "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+          "page": 39,
+          "quote": "Children with compensated shock should be closely monitored in hospitals with paediatricians and managed by senior staffs."
+        },
+        {
+          "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+          "page": 39,
+          "quote": "Those with prolonged and/or decompensated shock should be admitted to the high-dependency or intensive care unit."
+        },
+        {
+          "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+          "page": 34,
+          "quote": "presence of warning signs"
+        }
+      ],
+      "note": "Resuscitation in the ED critical zone first, then admission under paediatrics. The CPG mandates HDU/PICU only for prolonged or decompensated shock, so a monitored paediatric ward bed is also acceptable. HDU is preferred because of the required continuous ECG/SpO2, 15-30 minute perfusion checks and catheterised hourly urine output. Discharge is excluded (warning signs are an admission criterion). / Resuscitate in the ED red zone first, then admit under paediatrics. The CPG mandates HDU/PICU only for prolonged or decompensated shock. Compensated shock requires close monitoring by senior paediatric staff, which in practice is an HDU-level bed, so ADMIT_WARD (paediatric, closely monitored) is also acceptable."
+    }
+  },
+  "disputed": [
+    {
+      "section": "differentials",
+      "id": "other-febrile-illness",
+      "label": "Other febrile illnesses (influenza, chikungunya, infectious mononucleosis, scarlet fever, COVID-19, drug reaction)",
+      "match": [
+        "influenza",
+        "chikungunya",
+        "infectious\\s+mononucleosis|glandular\\s+fever",
+        "scarlet\\s+fever",
+        "COVID",
+        "measles"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "Paediatric Protocols for Malaysian Hospitals (5th Edition) 2025.pdf",
+          "page": 542,
+          "quote": "The other febrile illness (OFI) that a child might present with during initial stages among others are: influenza, chikungunya, Infectious mononucleosis, scarlet fever, COVID-19, drug reactions etc."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "iv-io-access-5min",
+      "label": "Secure IV / intraosseous access within 5 minutes",
+      "match": [
+        "intraosseous",
+        "\\bIO\\b",
+        "IV\\s+(access|cannula|line)",
+        "intravenous\\s+access",
+        "within\\s+(5|five)\\s+min"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+          "page": 38,
+          "quote": "Secure IV/intraosseous (IO) access within five minutes."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "actions",
+      "id": "transfuse-if-bleeding",
+      "label": "Transfuse fresh whole blood / packed cells if HCT falls with unstable vitals",
+      "match": [
+        "transfus",
+        "packed\\s+(red\\s+)?cells",
+        "whole\\s+blood",
+        "\\bPRBC"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+          "page": 39,
+          "quote": "Decreasing HCT with unstable vital signs indicates bleeding which may be occult. Transfuse patient with fresh whole blood or packed cells."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "gxm",
+      "label": "Blood for group and cross-match",
+      "match": [
+        "\\bGXM\\b",
+        "cross[- ]?match",
+        "group\\s+and\\s+(cross|screen)"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+          "page": 37,
+          "quote": "All patients in shock should have their blood sample taken and cross-matched carried out."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "renal-liver-coag",
+      "label": "Renal, liver and coagulation profiles",
+      "match": [
+        "renal\\s+(profile|function)",
+        "\\bRP\\b|\\bBUSE\\b|creatinine",
+        "\\bLFTs?\\b|liver\\s+function|\\bAST\\b|\\bALT\\b",
+        "coagulation|\\bPT\\b|\\bAPTT\\b|\\bINR\\b"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+          "page": 40,
+          "quote": "other organ functions (e.g. renal, liver and coagulation profiles) before resuscitation and as indicated"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "blood-gas-lactate",
+      "label": "Blood gas with HCT, lactate and acidosis (capillary/venous)",
+      "match": [
+        "blood\\s+gas",
+        "\\bVBG\\b|\\bABG\\b|\\bCBG\\b",
+        "lactate"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+          "page": 40,
+          "quote": "If blood gas machine is available, HCT, lactate and acidosis level should be repeatedly analysed using capillary or venous blood to monitor changes in the circulation."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "bedside-ultrasound",
+      "label": "Bedside ultrasound for pleural effusion / ascites",
+      "match": [
+        "ultraso",
+        "\\bPOCUS\\b|\\bUSG\\b",
+        "\\bCXR\\b|chest\\s+x[- ]?ray"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+          "page": 40,
+          "quote": "If previously not detectable, pleural effusion and ascites are usually detectable after fluid boluses. Monitoring with bedside ultrasonography may be used if available."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "blood-transfusion-if-bleeding",
+      "label": "Fresh whole blood / packed cells if HCT falls with unstable vitals",
+      "match": [
+        "transfus",
+        "packed (red )?cells",
+        "whole blood",
+        "\\bPRBC\\b|\\bPCV\\b transfusion"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+          "page": 39,
+          "quote": "Transfuse patient with fresh whole blood or packed cells."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "drugs_forbidden",
+      "id": "early-colloid",
+      "label": "Colloid as first-line (early) resuscitation fluid",
+      "match": [
+        "(first[- ]line|initial|early)\\s+colloid",
+        "colloid\\s+(first|as\\s+first)"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+          "page": 37,
+          "quote": "Early intervention with colloidal solutions is not indicated."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_forbidden",
+      "id": "steroids",
+      "label": "Corticosteroids",
+      "match": [
+        "(cortico)?steroid",
+        "dexamethasone",
+        "prednisolone",
+        "hydrocortisone",
+        "methylprednisolone"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Dengue Fever in Children (2nd Edition) 2020.pdf",
+          "page": 61,
+          "quote": "Steroids should be avoided. • Antibiotics are not required."
+        }
+      ],
+      "proposed_by": "B"
+    }
+  ],
+  "adjudication": {
+    "method": "two independent extraction passes (A, B); agreed items scored",
+    "notes": [],
+    "open_questions": {
+      "A": [
+        "Triage 1 vs 2 hinges on reading 'cold hands' as MTS paediatric 'Cold Peripheries' (Level 1) and on calling compensated shock at triage (dengue Level 1 'Shock' cell). CRT > 2 s alone is Level 2.",
+        "The 8-year-old falls in the MTS '< 12 years' vital-sign row (not '< 8 years'). SBP 90 is printed in both the L2 (80-90) and L4 (90-130) ranges.",
+        "Preferred disposition HDU vs monitored paediatric ward: the CPG does not require HDU for compensated shock.",
+        "The paediatric dengue CPG Table 1 cell text is interleaved in extraction; compensated-shock quotes are taken from the QR (p3) where the column text is contiguous."
+      ],
+      "B": [
+        "The case title says 'dengue with warning signs', but the intake meets the paediatric CPG compensated-shock column: cold hands, CRT > 2 s, HR 128, pulse pressure 14, reduced urine output. I made compensated shock the primary diagnosis and 'warning signs' an acceptable alternative. The adjudicator may want to swap them.",
+        "Triage 1 rests on the 'Shock' and 'Cold Peripheries' Level 1 cells. The paediatric SBP of 90 sits on the boundary between the L2 cell '80 - 90' and the L4 cell '90 - 130'.",
+        "Preferred disposition HDU versus paediatric ward: the CPG wording supports 'closely monitored ... senior staffs' for compensated shock but names HDU/ICU only for prolonged or decompensated shock."
+      ]
+    }
+  }
+}

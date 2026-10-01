@@ -1,0 +1,125 @@
+{
+  "id": "avulsed-incisor-16m",
+  "title": "Avulsed permanent upper incisor, 30 minutes, stored in milk (16M)",
+  "tier": "management",
+  "provenance": "Vignette written 2026-09-30; expected answers quoted from the MOH CPG Management of Avulsed Permanent Anterior Teeth 3rd Ed 2019.",
+  "intake": {
+    "age": 16,
+    "gender": "male",
+    "weight_kg": 60,
+    "vitals": {
+      "systolic_bp": 118,
+      "diastolic_bp": 72,
+      "heart_rate": 90,
+      "respiratory_rate": 18,
+      "temperature": 36.8,
+      "spo2": 99,
+      "gcs": 15,
+      "pain_score": 6
+    },
+    "complaint": "Upper front tooth knocked out playing football 30 minutes ago, brought the tooth in a cup of milk.",
+    "history": "No loss of consciousness, no other injury."
+  },
+  "scored_sections": [
+    "triage",
+    "diagnosis",
+    "actions",
+    "grounding"
+  ],
+  "expected": {
+    "triage": {
+      "level": 3,
+      "acceptable": [
+        3,
+        4
+      ]
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Avulsed permanent incisor",
+        "match": [
+          "avuls",
+          "knocked[- ]out"
+        ]
+      }
+    },
+    "actions": [
+      {
+        "id": "replant",
+        "label": "Replant (within the time window)",
+        "match": [
+          "replant|reimplant|re-?implant"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Avulsed Permanent Anterior Teeth (3rd Edition) 2019.pdf",
+            "page": 23,
+            "quote": "<60 minutes stored in recommended storage medium"
+          }
+        ]
+      },
+      {
+        "id": "crown",
+        "label": "Handle by the crown, not the root",
+        "match": [
+          "\\bcrown\\b|touch\\w* (?:the )?root"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Avulsed Permanent Anterior Teeth (3rd Edition) 2019.pdf",
+            "page": 23,
+            "quote": "Handle the tooth by its crown. Do not touch the root."
+          }
+        ]
+      },
+      {
+        "id": "storage",
+        "label": "Keep in milk / saline / saliva",
+        "match": [
+          "\\bmilk\\b|saline|saliva|storage medi"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Avulsed Permanent Anterior Teeth (3rd Edition) 2019.pdf",
+            "page": 13,
+            "quote": "fresh milk/saline/ patient’s saliva"
+          }
+        ]
+      },
+      {
+        "id": "dental",
+        "label": "Dental referral",
+        "match": [
+          "dental|dentist|oral surg|maxillofacial"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Avulsed Permanent Anterior Teeth (3rd Edition) 2019.pdf",
+            "page": 14,
+            "quote": "Refer to Dental Specialist"
+          }
+        ]
+      },
+      {
+        "id": "tetanus",
+        "label": "Tetanus status",
+        "match": [
+          "tetanus|\\bATT\\b|\\bADT\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Avulsed Permanent Anterior Teeth (3rd Edition) 2019.pdf",
+            "page": 52,
+            "quote": "tetanus injection"
+          }
+        ]
+      }
+    ],
+    "sources_forbidden": []
+  }
+}

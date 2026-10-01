@@ -1,0 +1,47 @@
+{
+  "id": "ktas-row360-expert5",
+  "title": "KTAS record 360: for medication (Small cell lung cancer left)",
+  "tier": "ktas",
+  "provenance": "Moon SH et al. PLoS ONE 2019;14(9):e0216972, supporting data S1 (CC BY 4.0), spreadsheet row 360.",
+  "intake": {
+    "age": 57,
+    "gender": "male",
+    "vitals": {
+      "systolic_bp": 133.0,
+      "diastolic_bp": 74.0,
+      "heart_rate": 98.0,
+      "respiratory_rate": 20.0,
+      "temperature": 36.0,
+      "pain_score": 3
+    },
+    "complaint": "For medication.",
+    "history": "Alert on arrival."
+  },
+  "scored_sections": [
+    "triage",
+    "disposition"
+  ],
+  "expected": {
+    "triage": {
+      "level": 5,
+      "acceptable": [
+        4,
+        5
+      ],
+      "reference_scale": "KTAS",
+      "time_to_treatment": null,
+      "note": "KTAS expert level 5 (triage nurse gave 5). KTAS is not MTS: scored as a +/-1 band; a level LESS urgent than the band is the safety failure.",
+      "evidence": []
+    },
+    "disposition": {
+      "acceptable": [
+        "DISCHARGE_WITH_FOLLOW_UP",
+        "REFER_SPECIALIST"
+      ],
+      "preferred": "DISCHARGE_WITH_FOLLOW_UP",
+      "note": "The disposition this patient actually received.",
+      "evidence": []
+    }
+  },
+  "disputed": []
+}

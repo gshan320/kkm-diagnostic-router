@@ -1,0 +1,713 @@
+[
+ {
+  "id": "nag-a1-cardiovascular-infections",
+  "title": "National Antimicrobial Guideline 2024 - A1 Cardiovascular Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-a-adult/a1-cardiovascular-infections",
+  "population": "adult",
+  "topics": [
+   "A1 CARDIOVASCULAR INFECTIONS",
+   "INFECTIVE ENDOCARDITIS",
+   "CATHETER RELATED INFECTIONS",
+   "TREATMENT OF CARDIAC IMPLANTABLE ELECTRONIC DEVICES (CIED) INFECTIONS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-a10-otorhinolaryngology-infections",
+  "title": "National Antimicrobial Guideline 2024 - A10: Otorhinolaryngology Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-a-adult/a10-otorhinolaryngology-infections",
+  "population": "adult",
+  "topics": [
+   "A10: OTORHINOLARYNGOLOGY INFECTIONS",
+   "THROAT AND UPPER RESPIRATORY TRACT",
+   "NOSE",
+   "EAR"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-a11-respiratory-infections",
+  "title": "National Antimicrobial Guideline 2024 - A11: Respiratory Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-a-adult/a11-respiratory-infections",
+  "population": "adult",
+  "topics": [
+   "A11: RESPIRATORY INFECTIONS",
+   "COMMUNITY ACQUIRED PNEUMONIA (CAP)",
+   "VIRAL PNEUMONIA",
+   "LUNG ABSCESS AND EMPYEMA",
+   "INFECTIVE EXACERBATION OF CHRONIC OBSTRUCTIVE PULMONARY DISEASE (COPD)",
+   "HOSPITAL ACQUIRED PNEUMONIA (HAP/VAP)",
+   "ASPIRATION PNEUMONIA"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-a12-sepsis",
+  "title": "National Antimicrobial Guideline 2024 - A12: Sepsis",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-a-adult/a12-sepsis",
+  "population": "adult",
+  "topics": [
+   "A12: SEPSIS",
+   "GUIDE FOR CHOICE OF EMPIRICAL THERAPY IN SEPSIS OR SEPTIC SHOCK"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-a13-sexually-transmitted-infections",
+  "title": "National Antimicrobial Guideline 2024 - A13: Sexually Transmitted Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-a-adult/a13-sexually-transmitted-infections",
+  "population": "adult",
+  "topics": [
+   "A13: SEXUALLY TRANSMITTED INFECTIONS",
+   "ANOGENITAL ULCER DISEASE",
+   "URETHRAL DISCHARGE",
+   "VAGINAL DISCHARGE"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-a14-skin-soft-tissue-infections",
+  "title": "National Antimicrobial Guideline 2024 - A14: Skin & Soft Tissue Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-a-adult/a14-skin-soft-tissue-infections",
+  "population": "adult",
+  "topics": [
+   "A14: SKIN & SOFT TISSUE INFECTIONS",
+   "PURULENT SKIN & SOFT TISSUE INFECTION",
+   "NON-PURULENT SKIN & SOFT TISSUE INFECTION",
+   "0 PERIPHERAL PHLEBITIS/THROMBOPHLEBITIS",
+   "0 PRESSURE INJURY ( BED SORE/PRESSURE SORE/DECUBITUS ULCER)",
+   "0 MYCOBACTERIAL INFECTIONS",
+   "FUNGAL INFECTIONS",
+   "0 VIRAL INFECTIONS",
+   "0 PARASITIC INFESTATION",
+   "SURGICAL INFECTIONS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-a15-trauma-related-infections",
+  "title": "National Antimicrobial Guideline 2024 - A15: Trauma Related Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-a-adult/a15-trauma-related-infections",
+  "population": "adult",
+  "topics": [
+   "A15: TRAUMA RELATED INFECTIONS",
+   "ABDOMINA L",
+   "2 . ORAL & DENTAL",
+   "3 . ORTHOPAEDIC",
+   "4 . CENTRAL NERVOUS SYSTEM",
+   "5 . RESPIRATORY"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-a16-tropical-infections",
+  "title": "National Antimicrobial Guideline 2024 - A16: Tropical Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-a-adult/a16-tropical-infections",
+  "population": "adult",
+  "topics": [
+   "A16: TROPICAL INFECTIONS",
+   "TYPHOID FEVER",
+   "CHOLERA",
+   "RICKETTSIAL DISEASES",
+   "BRUCELLOSIS",
+   "LEPTOSPIROSIS",
+   "TETANUS",
+   "MELIOIDOSIS",
+   "MALARIA",
+   "9 . FILARIASIS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-a17-urinary-tract-infections",
+  "title": "National Antimicrobial Guideline 2024 - A17: Urinary Tract Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-a-adult/a17-urinary-tract-infections",
+  "population": "adult",
+  "topics": [
+   "A17: URINARY TRACT INFECTIONS",
+   "ASYMPTOMATIC BACTERIURIA",
+   "UNCOMPLICATED UTI",
+   "COMPLICATED UTI",
+   "UROSEPSIS",
+   "RECURRENT UTI",
+   "BALANITIS",
+   "SURGICAL INFECTIONS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-a2-central-nervous-infections",
+  "title": "National Antimicrobial Guideline 2024 - A2 :Central Nervous Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-a-adult/a2-central-nervous-infections",
+  "population": "adult",
+  "topics": [
+   "A2 :CENTRAL NERVOUS INFECTIONS",
+   "MENINGITIS (ACUTE)",
+   "2 . MENINGITIS (CHRONIC)"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-a3-chemoprophyxlaxis",
+  "title": "National Antimicrobial Guideline 2024 - A3 : Chemoprophyxlaxis",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-a-adult/a3-chemoprophyxlaxis",
+  "population": "adult",
+  "topics": [
+   "A3 : CHEMOPROPHYXLAXIS",
+   "i. SURGICAL CHEMOPROHYLAXIS",
+   "CARDIAC SURGERY",
+   "VASCULAR SURGERY",
+   "CARDIAC / VASCULAR SURGERY",
+   "GENERAL SURGERY",
+   "HEPATOBILIARY SURGERY",
+   "NEUROSURGERY",
+   "OBSTETRICS & GYNAECOLOGY SURGERY",
+   "OPHTHALMOLOGY SURGERY",
+   "ORAL / DENTAL SURGERY",
+   "ORTHOPAEDIC SURGERY",
+   "OTORHINOLARYNGOLOGY (ORL) SURGERY",
+   "PLASTIC SURGERY",
+   "UROLOGICAL SURGERY",
+   "ii. NON-SURGICAL CHEMOPROPHYLAXIS",
+   "Prophylactic Regimens for High-risk Dental Procedures in High-risk Patients",
+   "Secondary Prevention of Rheumatic Fever"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-a4-gastrointestinal-infections",
+  "title": "National Antimicrobial Guideline 2024 - A4 : Gastrointestinal Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-a-adult/a4-gastrointestinal-infections",
+  "population": "adult",
+  "topics": [
+   "A4 : GASTROINTESTINAL INFECTIONS",
+   "HELICOBACTER PYLORI INFECTION",
+   "OROPHARYNGEAL CANDIDIASIS",
+   "ESOPHAGITIS",
+   "INFECTIOUS DIARRHOEA",
+   "CLOSTRIDIUM DIFFICILE INFECTION (CDI)",
+   "SPONTANEOUS BACTERIAL PERITONITIS (SBP)",
+   "LIVER ABSCESS",
+   "CHOLECYSTITIS",
+   "CHOLANGITIS",
+   "SURGICAL INFECTIONS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-a5-infections-in-immunocompromised-patients",
+  "title": "National Antimicrobial Guideline 2024 - A5 : Infections In Immunocompromised Patients",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-a-adult/a5-infections-in-immunocompromised-patients",
+  "population": "adult",
+  "topics": [
+   "A5 : INFECTIONS IN IMMUNOCOMPROMISED PATIENTS",
+   "HEMATOLOGY-ONCOLOGY",
+   "OPPORTUNISTIC INFECTION (OI) IN PATIENTS WITH HUMAN IMMUNODEFICIENCY VIRUS (HIV)"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-a6-obstetrics-gyneacological-infections",
+  "title": "National Antimicrobial Guideline 2024 - A6: Obstetrics & Gyneacological Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-a-adult/a6-obstetrics-gyneacological-infections",
+  "population": "adult",
+  "topics": [
+   "A6: OBSTETRICS & GYNEACOLOGICAL INFECTIONS",
+   "PELVIC INFLAMMATORY DISEASE (PID)",
+   "ENDOMETR ITIS",
+   "SEPTIC MISCARRIAGE",
+   "CHORIOAMNIONITIS",
+   "INTRAPARTUM ANTIBIOTIC PROPHYLAXIS (IAP) FOR GROUP B STREPTOCOCCUS (GBS) POSITIVE MOTHERS",
+   "PRETERM PREMATURE RUPTURE OF MEMBRANES (PPROM)",
+   "POSTPARTUM MASTITIS",
+   "LOWER SEGMENT CAESAREAN SECTION (LSCS) WOUND INFECTION",
+   "9 . BARTHOLIN'S GLAND ABSCESS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-a7-ocular-infections",
+  "title": "National Antimicrobial Guideline 2024 - A7: Ocular Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-a-adult/a7-ocular-infections",
+  "population": "adult",
+  "topics": [
+   "A7: OCULAR INFECTIONS",
+   "EYELID",
+   "CONJUCTIVA",
+   "CORNEA",
+   "RETINA",
+   "ENDOPHTHALMITIS",
+   "OCULAR",
+   "DACRYOCYSTITIS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-a8-oraldental-infections",
+  "title": "National Antimicrobial Guideline 2024 - A8: Oral/Dental Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-a-adult/a8-oraldental-infections",
+  "population": "adult",
+  "topics": [
+   "A8: ORAL/DENTAL INFECTIONS",
+   "ANTIMICROBIAL USE FOR BACTERIAL INFECTIONS",
+   "ANTIMICROBIAL USE FOR FUNGAL INFECTIONS",
+   "ANTIMICROBIAL USE FOR VIRAL INFECTIONS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-a9-orthopaedic-infections",
+  "title": "National Antimicrobial Guideline 2024 - A9: Orthopaedic Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-a-adult/a9-orthopaedic-infections",
+  "population": "adult",
+  "topics": [
+   "A9: ORTHOPAEDIC INFECTIONS",
+   "BONE AND JOINT INFECTIONS",
+   "COMPLICATED SKIN & SOFT TISSUE INFECTION"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-b1-cardiovascular-infections",
+  "title": "National Antimicrobial Guideline 2024 - B1: Cardiovascular Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-b-paediatrics/b1-cardiovascular-infections",
+  "population": "paediatric",
+  "topics": [
+   "B1: CARDIOVASCULAR INFECTIONS",
+   "ACUTE MYOCARDITIS",
+   "ACUTE PERICARDITIS",
+   "INFECTIVE ENDOCARDITIS",
+   "CULTURE-NEGATIVE ENDOCARDITIS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-b10-respiratory-infections",
+  "title": "National Antimicrobial Guideline 2024 - B10: Respiratory Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-b-paediatrics/b10-respiratory-infections",
+  "population": "paediatric",
+  "topics": [
+   "B10: RESPIRATORY INFECTIONS",
+   "COMMUNITY-ACQUIRED PNEUMONIA (CAP)",
+   "SEVERE COMMUNITY-ACQUIRED PNEUMONIA",
+   "EMPYEMA THORACIS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-b11-skin-soft-tissue-infections",
+  "title": "National Antimicrobial Guideline 2024 - B11: Skin & Soft Tissue Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-b-paediatrics/b11-skin-soft-tissue-infections",
+  "population": "paediatric",
+  "topics": [
+   "B11: SKIN & SOFT TISSUE INFECTIONS",
+   "ABSCESS",
+   "CELLULITIS",
+   "HANSEN'S DISEASE (LEPROSY)",
+   "IMPETIGO",
+   "NECROTISING FASCIITIS",
+   "SCALDED SKIN SYNDROME (SSSS)",
+   "ANIMAL BITES",
+   "SCABIES",
+   "TINEA CAPITIS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-b12-tropical-infections",
+  "title": "National Antimicrobial Guideline 2024 - B12: Tropical Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-b-paediatrics/b12-tropical-infections",
+  "population": "paediatric",
+  "topics": [
+   "B12: TROPICAL INFECTIONS",
+   "SCRUB TYPHUS",
+   "BRUCELLOSIS",
+   "LEPTOSPIROSIS",
+   "TETANUS",
+   "MELIOIDOSIS",
+   "MALARIA"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-b13-urinary-tract-infections",
+  "title": "National Antimicrobial Guideline 2024 - B13: Urinary Tract Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-b-paediatrics/b13-urinary-tract-infections",
+  "population": "paediatric",
+  "topics": [
+   "B13: URINARY TRACT INFECTIONS",
+   "ACUTE PYELONEPHRITIS",
+   "LOWER URINARY TRACT INFECTION",
+   "PROPHYLAXIS FOR UTI"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-b14-vascular-infections",
+  "title": "National Antimicrobial Guideline 2024 - B14: Vascular Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-b-paediatrics/b14-vascular-infections",
+  "population": "paediatric",
+  "topics": [
+   "B14: VASCULAR INFECTIONS",
+   "CATHETER-RELATED BLOODSTREAM INFECTION (CRBSI)",
+   "SUPPURATIVE THROMBOPHLEBITIS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-b2-central-nervous-infections",
+  "title": "National Antimicrobial Guideline 2024 - B2: Central Nervous Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-b-paediatrics/b2-central-nervous-infections",
+  "population": "paediatric",
+  "topics": [
+   "B2: CENTRAL NERVOUS INFECTIONS",
+   "MENINGITIS",
+   "ENCEPHALITIS",
+   "BRAIN ABSCESS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-b3-chemoprophylaxis",
+  "title": "National Antimicrobial Guideline 2024 - B3: Chemoprophylaxis",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-b-paediatrics/b3-chemoprophylaxis",
+  "population": "paediatric",
+  "topics": [
+   "B3: CHEMOPROPHYLAXIS",
+   "i . SURGICAL",
+   "CARDIAC SURGERY",
+   "ABDOMINAL SURGERY",
+   "HEPATOBILIARY SURGERY",
+   "NEUROSURGERY",
+   "ORTHOPAEDIC SURGERY",
+   "OTORHINOLARYNGOLOGY SURGERY ( HEAD & NECK)",
+   "PLASTIC SURGERY",
+   "THORACIC SURGERY",
+   "UROLOGY SURGERY",
+   "INTERVENTIONAL RADIOLOGY",
+   "ii . NON-SURGICAL",
+   "CARDIOVASCULAR",
+   "INFECTIONS IN IMMUNOCOMPROMISED",
+   "TROPICAL INFECTION",
+   "OTHER INFECTIONS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-b4-gastrointestinal-infections",
+  "title": "National Antimicrobial Guideline 2024 - B4: Gastrointestinal Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-b-paediatrics/b4-gastrointestinal-infections",
+  "population": "paediatric",
+  "topics": [
+   "B4: GASTROINTESTINAL INFECTIONS",
+   "1 . GASTROENTERITIS",
+   "DYSENTERY",
+   "TYPHOID FEVER",
+   "CHOLERA",
+   "PERITONITIS",
+   "LIVER ABSCESS",
+   "CHOLANGITIS",
+   "ENTEROCOLITIS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-b5-infections-in-immunocompromised-patients",
+  "title": "National Antimicrobial Guideline 2024 - B5: Infections In Immunocompromised Patients",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-b-paediatrics/b5-infections-in-immunocompromised-patients",
+  "population": "paediatric",
+  "topics": [
+   "B5: INFECTIONS IN IMMUNOCOMPROMISED PATIENTS",
+   "FEBRILE NEUTROPENIA"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-b6-neonatal-infections",
+  "title": "National Antimicrobial Guideline 2024 - B6: Neonatal Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-b-paediatrics/b6-neonatal-infections",
+  "population": "paediatric",
+  "topics": [
+   "B6: NEONATAL INFECTIONS",
+   "CONGENITAL & PERINATAL INFECTIONS",
+   "G ROUP B S TREPTOCOCCUS ( GBS)"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-b7-ocular-infections",
+  "title": "National Antimicrobial Guideline 2024 - B7: Ocular Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-b-paediatrics/b7-ocular-infections",
+  "population": "paediatric",
+  "topics": [
+   "B7: OCULAR INFECTIONS",
+   "PRESEPTAL CELLULITIS",
+   "ORBITAL CELULLITIS / ABSCESS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-b8-orthopaedic-infections",
+  "title": "National Antimicrobial Guideline 2024 - B8: Orthopaedic Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-b-paediatrics/b8-orthopaedic-infections",
+  "population": "paediatric",
+  "topics": [
+   "B8: ORTHOPAEDIC INFECTIONS",
+   "SEPTIC ARTHRITIS (SA) & OSTEOMYELITIS (OM)"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-b9-otorhinolaryngology-infections",
+  "title": "National Antimicrobial Guideline 2024 - B9: Otorhinolaryngology Infections",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-b-paediatrics/b9-otorhinolaryngology-infections",
+  "population": "paediatric",
+  "topics": [
+   "B9: OTORHINOLARYNGOLOGY INFECTIONS",
+   "TONSILLITIS/PHARYNGITIS",
+   "RHINOSINUSITIS",
+   "ACUTE OTITIS MEDIA",
+   "ACUTE OTITIS EXTERNA",
+   "DIPHTHERIA",
+   "ACUTE EPIGLOTTITIS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-c1-acute-bronchitis-and-pneumonia",
+  "title": "National Antimicrobial Guideline 2024 - C1: Acute Bronchitis And Pneumonia",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-c-clinical-pathways-in-primary-care/c1-acute-bronchitis-and-pneumonia",
+  "population": "all",
+  "topics": [
+   "C1: ACUTE BRONCHITIS AND PNEUMONIA",
+   "CLINICAL PATHWAYS IN PRIMARY CARE",
+   "C1: ACUTE BRONCHITIS AND PNEUMONIA"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-c2-acute-otitis-media",
+  "title": "National Antimicrobial Guideline 2024 - C2: Acute Otitis Media",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-c-clinical-pathways-in-primary-care/c2-acute-otitis-media",
+  "population": "all",
+  "topics": [
+   "C2: ACUTE OTITIS MEDIA"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-c3-acute-pharyngitis",
+  "title": "National Antimicrobial Guideline 2024 - C3: Acute Pharyngitis",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-c-clinical-pathways-in-primary-care/c3-acute-pharyngitis",
+  "population": "all",
+  "topics": [
+   "C3: ACUTE PHARYNGITIS",
+   "CLINICAL PATHWAYS IN PRIMARY CARE",
+   "C3: ACUTE PHARYNGITIS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-c4-acute-rhinosinusitis",
+  "title": "National Antimicrobial Guideline 2024 - C4: Acute Rhinosinusitis",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-c-clinical-pathways-in-primary-care/c4-acute-rhinosinusitis",
+  "population": "all",
+  "topics": [
+   "C4: ACUTE RHINOSINUSITIS",
+   "CLINICAL PATHWAY IN PRIMARY CARE",
+   "C4: ACUTE RHINOSINUSITIS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-c5-acute-gastroenteritis",
+  "title": "National Antimicrobial Guideline 2024 - C5: Acute Gastroenteritis",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-c-clinical-pathways-in-primary-care/c5-acute-gastroenteritis",
+  "population": "all",
+  "topics": [
+   "C5: ACUTE GASTROENTERITIS",
+   "CLINICAL PATHWAYS IN PRIMARY CARE",
+   "C5: ACUTE GASTROENTERITIS"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-c6-skin-and-soft-tissue-infection",
+  "title": "National Antimicrobial Guideline 2024 - C6: Skin And Soft Tissue Infection",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-c-clinical-pathways-in-primary-care/c6-skin-and-soft-tissue-infection",
+  "population": "all",
+  "topics": [
+   "C6: SKIN AND SOFT TISSUE INFECTION",
+   "CLINICAL PATHWAYS IN PRIMARY CARE",
+   "C6: SKIN AND SOFT TISSUE INFECTION"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-c7-urinary-tract-infection-in-non-pregnancy",
+  "title": "National Antimicrobial Guideline 2024 - C7: Urinary Tract Infection In Non-Pregnancy",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-c-clinical-pathways-in-primary-care/c7-urinary-tract-infection-in-non-pregnancy",
+  "population": "all",
+  "topics": [
+   "C7: URINARY TRACT INFECTION IN NON-PREGNANCY",
+   "CLINICAL PATHWAYS IN PRIMARY CARE",
+   "C7: URINARY TRACT INFECTION IN NON-PREGNANCY"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-c8-urinary-tract-infection-in-pregnancy-asymptomatic-bacteriuria",
+  "title": "National Antimicrobial Guideline 2024 - C8. Urinary Tract Infection In Pregnancy (Asymptomatic Bacteriuria)",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-c-clinical-pathways-in-primary-care/c8-urinary-tract-infection-in-pregnancy-asymptomatic-bacteriuria",
+  "population": "all",
+  "topics": [
+   "C8. URINARY TRACT INFECTION IN PREGNANCY (ASYMPTOMATIC BACTERIURIA)",
+   "CLINICAL PATHWAYS IN PRIMARY CARE",
+   "C8. URINARY TRACT INFECTION IN PREGNANCY (ASYMPTOMATIC BACTERIURIA)"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "nag-c9-urinary-tract-infection-in-pregnancy-symptomatic",
+  "title": "National Antimicrobial Guideline 2024 - C9. Urinary Tract Infection In Pregnancy (Symptomatic)",
+  "publisher": "Ministry of Health Malaysia, Pharmaceutical Services Programme",
+  "url": "https://sites.google.com/moh.gov.my/nag/contents/section-c-clinical-pathways-in-primary-care/c9-urinary-tract-infection-in-pregnancy-symptomatic",
+  "population": "all",
+  "topics": [
+   "C9. URINARY TRACT INFECTION IN PREGNANCY (SYMPTOMATIC)",
+   "CLINICAL PATHWAYS IN PRIMARY CARE",
+   "C9. URINARY TRACT INFECTION IN PREGNANCY (SYMPTOMATIC)"
+  ],
+  "role": "antimicrobial",
+  "checked": "2026-09-30",
+  "status": 200
+ },
+ {
+  "id": "mahtas-cpg-list",
+  "title": "MaHTAS Clinical Practice Guidelines - full list",
+  "publisher": "Ministry of Health Malaysia",
+  "url": "https://mymahtas.moh.gov.my/index.php/docman-list/publications/cpg-list",
+  "population": "all",
+  "topics": [],
+  "role": "fallback_guideline",
+  "checked": "2026-09-30",
+  "status": 200
+ }
+]

@@ -67,6 +67,12 @@ ANTIPLATELETS = (r"\baspirin", r"acetylsalicylic", r"\bclopidogrel", r"\bticagre
 ANTICOAGULANTS = (r"\bwarfarin", r"\bheparin", r"\benoxaparin", r"\bdabigatran",
                   r"\brivaroxaban", r"\bapixaban", r"\bedoxaban", r"\bfondaparinux",
                   r"\bDOAC\b", r"\bNOAC\b", r"\bLMWH\b")
+# The oral subset. Parenteral anticoagulation (heparin, enoxaparin,
+# fondaparinux) is standard ACS care alongside dual antiplatelets; only an
+# ORAL anticoagulant makes "triple therapy". Found 2026-09-30: the triple-
+# therapy caution fired on heparin in a shocked STEMI.
+ORAL_ANTICOAGULANTS = (r"\bwarfarin", r"\bdabigatran", r"\brivaroxaban", r"\bapixaban", r"\bedoxaban",
+                       r"\bDOAC\b", r"\bNOAC\b", r"oral anticoagula")
 THROMBOLYTICS = (r"\balteplase", r"\bstreptokinase", r"\btenecteplase", r"\breteplase",
                  r"thrombolysi", r"fibrinolysi", r"fibrinolytic")
 NSAIDS = (r"\bibuprofen", r"\bdiclofenac", r"mefenamic", r"\bnaproxen", r"\bketorolac",
@@ -137,7 +143,7 @@ RULES: tuple[Rule, ...] = (
          "falls further over the critical phase."),
 
     Rule("anticoagulant_added_to_antiplatelets",
-         ANTICOAGULANTS,
+         ORAL_ANTICOAGULANTS,
          (r"\bSTEMI\b", r"\bNSTEMI\b", r"acute coronary", r"myocardial infarction",
           r"\bACS\b", r"\bPCI\b"),
          "CAUTION",

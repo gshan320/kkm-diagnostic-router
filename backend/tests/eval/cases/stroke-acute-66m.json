@@ -1,0 +1,1144 @@
+{
+  "id": "stroke-acute-66m",
+  "title": "Acute stroke within the thrombolysis window, 66-year-old man",
+  "tier": "management",
+  "provenance": "Vignette written 2026-09-30 for the evaluation harness; expected answers extracted from the cited documents.",
+  "intake": {
+    "age": 66,
+    "gender": "male",
+    "weight_kg": 70,
+    "vitals": {
+      "systolic_bp": 182,
+      "diastolic_bp": 98,
+      "heart_rate": 84,
+      "respiratory_rate": 18,
+      "temperature": 36.6,
+      "spo2": 97,
+      "gcs": 14,
+      "capillary_blood_glucose": 7.2,
+      "pain_score": 0
+    },
+    "complaint": "Sudden weakness of the right arm and leg with slurred speech, noticed 1 hour ago.",
+    "history": "Hypertension and diabetes on medication.",
+    "comorbidities": [
+      "diabetes"
+    ],
+    "onset": "1 hour ago, witnessed by his wife",
+    "arrival_mode": "ambulance",
+    "facility": "state_or_tertiary_with_pci_and_ct"
+  },
+  "scored_sections": [
+    "triage",
+    "diagnosis",
+    "red_flags",
+    "differentials",
+    "actions",
+    "investigations",
+    "drugs",
+    "disposition",
+    "grounding"
+  ],
+  "expected": {
+    "triage": {
+      "level": 2,
+      "acceptable": [
+        2
+      ],
+      "time_to_treatment": "under 10 minutes",
+      "note": "Both extractors: level 2. A: LETHARGY / WEAKNESS complaint p10: 'Acute Stroke < 3 H' is in the x~131 column = Level 2 (onset 1 h). Primary triage CONSCIOUS LEVELS p4: 'Obvious Neuro deficits' is at x~246 = Level 2. Adult vitals p7: GCS 14 does not meet 'GCS < 13 or drop > 2' (Level 2); BP 182/98 does not exceed 180/110 (diastolic 98), so the BP cells do not apply; CBG 7.2 is normal. No Level 1 criterion (unresponsive, airway unprotected) is present. Stroke-team activation and the door-to-CT <= 25 min target apply regardless of level. B: Lethargy/weakness complaint row: 'Acute Stroke < 3 H' is Level 2 (adult p10, x~131); 'Acute Stroke > 3 H' is Level 3 (x~244). Primary triage conscious-level row: 'Obvious Neuro deficits' is Level 2 (p4, x~246). Vital signs: BP 182/98 does not reach 'BP > 180/110' (which needs DBP > 110), GCS 14 is not < 13, and glucose 7.2 is normal, so none of these escalate. No Level 1 criterion (unresponsive, unprotected airway) is present.",
+      "evidence": [
+        {
+          "source": "MTS 2022.pdf",
+          "page": 10,
+          "quote": "• Post exposure to drugs, bites, stings, toxins, environment • Acute Stroke < 3 H"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "• Confused, agitated, disoriented • Obvious Neuro deﬁcits • Ongoing Seizures"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 7,
+          "quote": "• Severe Pain (8 - 10) • GCS < 13 or drop > 2"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 3,
+          "quote": "Level 2 - Emergency - under 10 minutes"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 10,
+          "quote": "toxins, environment • Acute Stroke < 3 H"
+        },
+        {
+          "source": "MTS 2022.pdf",
+          "page": 4,
+          "quote": "Confused, agitated, disoriented • Obvious Neuro deﬁcits • Ongoing Seizures"
+        }
+      ]
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Acute stroke, presumed acute ischaemic stroke (left hemisphere), within the thrombolysis window",
+        "match": [
+          "(acute\\s+)?ischa?emic\\s+stroke",
+          "\\bAIS\\b",
+          "acute\\s+stroke",
+          "cerebral\\s+infarct",
+          "\\bCVA\\b",
+          "cerebrovascular\\s+accident",
+          "\\bstroke\\b",
+          "(acute )?ischa?emic stroke",
+          "acute stroke",
+          "cerebral infarct"
+        ],
+        "evidence": [
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 85,
+            "quote": "Acute disabling stroke within 4.5 hours of presentation or last known/seen to be well."
+          },
+          {
+            "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+            "page": 3,
+            "quote": "Ischaemic stroke is the most common stroke, and hypertension was the most common risk factor followed by diabetes mellitus."
+          },
+          {
+            "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+            "page": 4,
+            "quote": "Computed tomography (CT) brain is mandatory and preferred imaging in the emergency setting to differentiate haemorrhage from ischaemia, determine the site(s), cause, and extent of the lesion."
+          },
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 85,
+            "quote": "Acute disabling stroke within 4.5 hours of presentation or last known/seen to be well."
+          }
+        ]
+      },
+      "acceptable_alternatives": [
+        {
+          "label": "Acute stroke, type undetermined until CT (ischaemic vs haemorrhagic)",
+          "match": [
+            "acute\\s+stroke",
+            "stroke.{0,40}(ischa?emic|h(a)?emorrhagic)\\s+(or|vs|versus)",
+            "\\bCVA\\b"
+          ]
+        },
+        {
+          "label": "Acute stroke, type undetermined (ischaemic vs haemorrhagic)",
+          "match": [
+            "stroke",
+            "\\bCVA\\b",
+            "cerebrovascular accident"
+          ]
+        }
+      ]
+    },
+    "red_flags": [
+      {
+        "id": "bp-thrombolysis-threshold",
+        "label": "BP must be <= 185/110 before alteplase (currently 182/98, close to threshold)",
+        "match": [
+          "185\\s*/\\s*110",
+          "185",
+          "blood\\s+pressure.{0,40}(threshold|before|prior)",
+          "185 ?/ ?110",
+          "blood pressure.{0,40}(thromboly|alteplase)",
+          "(thromboly|alteplase).{0,60}(blood pressure|\\bBP\\b)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 85,
+            "quote": "Pre-treatment systolic BP is >185mmHg or diastolic BP is >110mmHg."
+          },
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 87,
+            "quote": "If BP is not maintained ≤185/110 mmHg, do not administer Alteplase (Level ll-2, Grade B)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "neuro-deterioration-ich",
+        "label": "Neurological deterioration / symptomatic intracranial haemorrhage (stop infusion, urgent CT)",
+        "match": [
+          "deteriorat",
+          "h(a)?emorrhagic\\s+transformation",
+          "intracranial\\s+h(a)?emorrhage",
+          "\\bsICH\\b|\\bICH\\b",
+          "severe\\s+headache",
+          "ha?emorrhag",
+          "\\bICH\\b",
+          "intracerebral (bleed|ha?emorrhage)",
+          "bleed"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 86,
+            "quote": "If the patient develops severe headache, acute hypertension, nausea or vomiting or worsening neurological symptoms with an increase of the NIHSS by 4 and reduction of the GCS by 2, discontinue the infusion and obtain a CT scan of the brain."
+          },
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 85,
+            "quote": "NCCT or MRI brain shows no haemorrhage or established large infarct core."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "differentials": [
+      {
+        "id": "hypoglycaemia-metabolic",
+        "label": "Metabolic mimics (hypoglycaemia, hyperglycaemia, hyponatraemia)",
+        "match": [
+          "hypoglyc(a)?emi",
+          "metabolic\\s+(mimic|encephalopathy)",
+          "hyponatr",
+          "stroke\\s+mimic",
+          "hypoglyc",
+          "metabolic (encephalopathy|mimic|cause)",
+          "stroke mimic"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 43,
+            "quote": "Metabolic / toxic encephalopathy (hypoglycaemia, non-ketotic, hyperglycaemia, hyponatraemia, Wernicke-Korsakoff syndrome or drug intoxication)"
+          },
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 43,
+            "quote": "Metabolic / toxic encephalopathy (hypoglycaemia, non-ketotic, hyperglycaemia, hyponatraemia,"
+          },
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 43,
+            "quote": "Stroke mimics commonly confound the clinical diagnosis of stroke (Table 3.2)."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "todds-paresis",
+        "label": "Post-ictal Todd's paresis",
+        "match": [
+          "todd",
+          "post[- ]?ictal",
+          "seizure",
+          "post-?ictal"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 43,
+            "quote": "Epileptic seizures (postictal Todd’s paresis)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "structural-lesion",
+        "label": "Structural intracranial lesion (subdural haematoma, tumour, AVM)",
+        "match": [
+          "subdural",
+          "tumou?r",
+          "space[- ]occupying",
+          "\\bAVM\\b|arteriovenous",
+          "tumou?r|space[- ]occupying|\\bSOL\\b",
+          "\\bAVM\\b|arteriovenous malformation"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 43,
+            "quote": "Structural intracranial lesions (e.g. subdural haematoma, brain tumour or arteriovenous malformation)"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "hypertensive-encephalopathy",
+        "label": "Hypertensive encephalopathy",
+        "match": [
+          "hypertensive\\s+encephalopathy",
+          "hypertensive encephalopathy",
+          "\\bPRES\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 43,
+            "quote": "brain abscess or tuberculoma  Head injury  Hypertensive encephalopathy  Relapsing Multiple Sclerosis"
+          },
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 43,
+            "quote": "Hypertensive encephalopathy"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "activate-stroke-team",
+        "label": "Activate stroke team / code stroke and radiology; fast-track assessment",
+        "match": [
+          "stroke\\s+team",
+          "code\\s+stroke",
+          "stroke\\s+(alert|activation|pathway)",
+          "activate",
+          "neurolog(ist|y)\\s+(team|on[- ]call)",
+          "eligib",
+          "stroke (team|pathway|code|activation)",
+          "code stroke",
+          "thrombolysis (pathway|work-?up|candidate|assessment)",
+          "neurolog"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+            "page": 25,
+            "quote": "Basic history, examination, and tests  Activate stroke team and radiology"
+          },
+          {
+            "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+            "page": 14,
+            "quote": "All patients presenting to an ED with suspected acute stroke must have immediate clinical evaluation and investigations to establish the diagnosis and to determine the eligibility for intravenous thrombolytic therapy and/or EVT"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "iv-thrombolysis",
+        "label": "IV thrombolysis if eligible (door-to-needle <= 60 min)",
+        "match": [
+          "thromboly",
+          "alteplase",
+          "\\brt-?PA\\b",
+          "tenecteplase",
+          "\\bIVT\\b",
+          "door[- ]to[- ]needle",
+          "door[- ]to[- ](CT|needle|imaging)",
+          "\\bDTN\\b",
+          "25 ?min",
+          "60 ?min"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 81,
+            "quote": "Door to CT ≤25 min Door to needle ≤60 min Door to groin ≤120 min"
+          },
+          {
+            "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+            "page": 5,
+            "quote": "Intravenous alteplase (0.9 mg/kg; maximum dose of 90mg) is recommended for the definite onset stroke for up to 4.5 hours from the onset."
+          },
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 81,
+            "quote": "Door to MD consult and initial work up ≤10 min Door to neuro consult ≤15 min Door to CT ≤25 min Door to needle ≤60 min"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "evt-assessment",
+        "label": "Assess for endovascular thrombectomy (LVO within 6 h; bridging IVT then EVT without delay)",
+        "match": [
+          "thrombectomy",
+          "\\bEVT\\b",
+          "endovascular",
+          "drip\\s*(and|&)\\s*ship",
+          "interventional\\s+(neuro)?radiolog",
+          "large vessel occlusion|\\bLVO\\b",
+          "drip (and|&) ship"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+            "page": 17,
+            "quote": "AIS patients who arrive within 4.5 hours of stroke onset and are eligible for rtPA treatment should be considered for thrombolytic treatment prior to EVT."
+          },
+          {
+            "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+            "page": 17,
+            "quote": "EVT is indicated for AIS with large vessel occlusion; proximal middle cerebral artery segment 1 (M1)/proximal M2 occlusion/internal carotid artery (ICA), and presenting within 6 hours from onset."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "nihss",
+        "label": "Stroke severity scale (NIHSS)",
+        "match": [
+          "\\bNIHSS\\b",
+          "NIH\\s+stroke\\s+scale",
+          "national\\s+institutes?\\s+of\\s+health\\s+stroke",
+          "NIH stroke scale",
+          "National Institutes? of Health Stroke Scale"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+            "page": 14,
+            "quote": "A standardized stroke severity scale should be used such as the National Institutes of Health Stroke Scale (NIHSS) to assess stroke severity in the ED"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "bp-management",
+        "label": "BP: keep <= 185/110 to allow lysis and <= 180/105 during/after; if not lysed, do not treat unless > 220/120; avoid drastic lowering",
+        "match": [
+          "180\\s*/\\s*105",
+          "185\\s*/\\s*110",
+          "220\\s*/\\s*120",
+          "permissive\\s+hypertension",
+          "blood\\s+pressure",
+          "\\bBP\\b",
+          "185 ?/ ?110",
+          "180 ?/ ?105",
+          "blood pressure (control|management|target)",
+          "\\bBP\\b (control|target|management|<)"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 87,
+            "quote": "Blood pressure should be kept ≤180/105 mmHg during and post thrombolysis."
+          },
+          {
+            "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+            "page": 15,
+            "quote": "Do not treat hypertension if systolic BP is <220mmHg or diastolic BP is <120mmHg. Mild hypertension is desirable at 160-180/90-100 mmHg."
+          },
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 87,
+            "quote": "If BP is not maintained ≤185/110 mmHg, do not administer Alteplase"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "swallow-screen-nbm",
+        "label": "Nil by mouth until swallow screen",
+        "match": [
+          "swallow",
+          "\\bNBM\\b",
+          "nil\\s+by\\s+mouth",
+          "dysphagia\\s+screen",
+          "\\bNBM\\b|nil by mouth",
+          "dysphagia screen"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+            "page": 14,
+            "quote": "Patients with acute stroke should have their swallowing ability screened as early as possible after arrival at the hospital and before being given any oral food, fluid, or medication"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "post-lysis-monitoring",
+        "label": "Neuro obs and BP every 15 min during infusion and 1 h after, then 30-minutely; no NG/catheter for 24 h",
+        "match": [
+          "every\\s+15\\s*min",
+          "15[- ]minut",
+          "neuro(logical)?\\s+(obs|observation|assessment|check)",
+          "GCS\\s+(monitor|chart|hourly)",
+          "neuro(logical)? (obs|assessment|observation)s?",
+          "(every|q) ?15 ?min",
+          "\\bGCS\\b.{0,20}(hourly|monitor|chart)"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 86,
+            "quote": "Perform neurological assessments* every 15 minutes during the infusion of Alteplase and 1-hour post IVT, and every 30 minutes for the next 4 hours and then every hour until 24 hours lapses from the onset of treatment."
+          },
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 86,
+            "quote": "Perform neurological assessments* every 15 minutes during the infusion of Alteplase and 1-hour post IVT, and every 30 minutes for the next 4 hours"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "oxygen-only-if-low",
+        "label": "Oxygen only if SpO2 < 95% (not needed at 97%)",
+        "match": [
+          "oxygen",
+          "\\bO2\\b",
+          "SpO2\\s*(<|below)\\s*95"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+            "page": 14,
+            "quote": "Patients with acute stroke should only receive supplemental oxygen only if their oxygen saturation is below 95%."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "glucose-control",
+        "label": "Glucose control 7.8-10 mmol/L after thrombolysis, avoid hypoglycaemia",
+        "match": [
+          "7\\.8",
+          "6\\.0?\\s*[-–]\\s*10",
+          "glucose\\s+(control|target|monitor)",
+          "hypoglyc",
+          "6(\\.0)? ?- ?10(\\.0)? ?mmol",
+          "glyca?emic control",
+          "glucose (control|target)"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 88,
+            "quote": "Keep blood glucose level between 7.8-10.0 mmol/L. Avoid hypoglycaemia. (Level I, Grade A)"
+          },
+          {
+            "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+            "page": 15,
+            "quote": "treat hyperglycaemia to keep the blood glucose levels between 6.0-10.0 mmol/L and ensure that hypoglycaemia is avoided."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "investigations": [
+      {
+        "id": "ct-brain-immediate",
+        "label": "Immediate non-contrast CT brain (door-to-CT <= 25 min)",
+        "match": [
+          "\\bNCCT\\b",
+          "CT\\s+(brain|head)",
+          "computed\\s+tomograph",
+          "non[- ]contrast\\s+CT",
+          "\\bCT\\b",
+          "\\bCT\\b.{0,15}(brain|head)",
+          "computed tomography",
+          "CT scan"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+            "page": 14,
+            "quote": "All patients with suspected stroke who are candidates for intravenous thrombolysis and/ or EVT should undergo at least CT scan immediately."
+          },
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 81,
+            "quote": "Door to CT ≤25 min Door to needle ≤60 min Door to groin ≤120 min"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "cta",
+        "label": "CT angiography for suspected LVO (no need to wait for renal profile)",
+        "match": [
+          "\\bCTA\\b",
+          "CT\\s+angiogra",
+          "angiogra",
+          "CT\\s+perfusion|\\bCTP\\b",
+          "\\bFBC\\b|full blood count|platelet",
+          "coagulation|clotting|\\bPT\\b|\\bINR\\b|\\bAPTT\\b",
+          "\\bU ?& ?E\\b|\\bBUSE\\b|renal profile|electrolytes"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 85,
+            "quote": "Criteria for CTA include NIHSS>6, presence of cortical signs or brain stem involvement."
+          },
+          {
+            "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+            "page": 26,
+            "quote": "Renal profile is not required for plain CT brain or CT angiography"
+          },
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 66,
+            "quote": "Urea & electrolytes Hydration status, excludes electrolyte imbalances Clotting profile*"
+          },
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 85,
+            "quote": "A platelet count <100,000/microliter"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "blood-glucose",
+        "label": "Blood glucose on arrival (done: 7.2 mmol/L)",
+        "match": [
+          "glucose",
+          "\\bCBG\\b|\\bRBS\\b|\\bDXT\\b|\\bBSL\\b",
+          "blood\\s+sugar",
+          "\\bCBG\\b|\\bRBS\\b|\\bDXT\\b|dextrostix|\\bBSL\\b|capillary blood"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+            "page": 14,
+            "quote": "All patients with suspected acute stroke should have their blood glucose level checked upon arrival at the ED"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_allowed": [
+      {
+        "id": "iv-alteplase",
+        "label": "IV alteplase 0.9 mg/kg (70 kg -> 63 mg: 6.3 mg bolus, rest over 60 min), max 90 mg",
+        "match": [
+          "alteplase",
+          "\\brt-?PA\\b",
+          "\\btPA\\b",
+          "actilyse",
+          "thromboly",
+          "\\bIVT\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+            "page": 17,
+            "quote": "Dose: 0.9 mg/kg, max 90 mg, 10% bolus and remaining dose given as infusion over 1 hour."
+          },
+          {
+            "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+            "page": 5,
+            "quote": "Intravenous alteplase (0.9 mg/kg; maximum dose of 90mg) is recommended for the definite onset stroke for up to 4.5 hours from the onset."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "tenecteplase-alternative",
+        "label": "Tenecteplase 0.25 mg/kg (max 25 mg) before EVT / if alteplase unavailable",
+        "match": [
+          "tenecteplase",
+          "\\bTNK",
+          "\\bTNK\\b"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 87,
+            "quote": "Tenecteplase might be considered as an alternative to Alteplase when Alteplase is not available."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "iv-labetalol-if-needed",
+        "label": "IV labetalol (or nicardipine) only if BP rises > 185/110 before, or > 180/105 during/after, lysis",
+        "match": [
+          "labetalol",
+          "nicardipine",
+          "antihypertensive",
+          "hydralazine"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 87,
+            "quote": "Labetalol 10–20 mg IV over 1–2 min, may repeat once; or"
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "drugs_forbidden": [
+      {
+        "id": "antithrombotics-24h-post-lysis",
+        "label": "Antiplatelets / anticoagulants within 24 h of alteplase",
+        "match": [
+          "aspirin",
+          "clopidogrel",
+          "antiplatelet",
+          "heparin",
+          "enoxaparin",
+          "anticoagula",
+          "heparin|enoxaparin|\\bLMWH\\b"
+        ],
+        "required": true,
+        "evidence": [
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 86,
+            "quote": "Avoid antiplatelet and anticoagulation drugs for the first 24 hours after administration of Alteplase."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "streptokinase",
+        "label": "Streptokinase for stroke",
+        "match": [
+          "streptokinase"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 87,
+            "quote": "Streptokinase is contraindicated. (Level I, Grade A)"
+          },
+          {
+            "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+            "page": 87,
+            "quote": "Streptokinase is contraindicated."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "prophylactic-antiseizure",
+        "label": "Prophylactic anti-seizure medication",
+        "match": [
+          "prophylactic\\s+(anti[- ]?(seizure|epileptic|convulsant)|phenytoin|levetiracetam)",
+          "seizure\\s+prophylaxis",
+          "prophylactic (anti-?convulsant|anti-?seizure|anti-?epileptic)",
+          "(phenytoin|levetiracetam|valproate).{0,30}prophyla"
+        ],
+        "required": false,
+        "evidence": [
+          {
+            "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+            "page": 16,
+            "quote": "The use of prophylactic anti-seizure medications is not recommended."
+          }
+        ],
+        "agreed_by": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "disposition": {
+      "acceptable": [
+        "ADMIT_ICU_HDU",
+        "ADMIT_WARD"
+      ],
+      "preferred": "ADMIT_ICU_HDU",
+      "evidence": [
+        {
+          "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+          "page": 86,
+          "quote": "Admit the patient to an intensive care unit or a stroke unit for monitoring."
+        },
+        {
+          "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+          "page": 25,
+          "quote": "Close neurology monitoring and admit to stroke care unit"
+        },
+        {
+          "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+          "page": 86,
+          "quote": "Admit the patient to an intensive care unit or a stroke unit for monitoring."
+        },
+        {
+          "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+          "page": 5,
+          "quote": "The use of comprehensive specialized stroke care centres (stroke units) that incorporates rehabilitation services are able to reduce mortality and disabilities among stroke patients."
+        }
+      ],
+      "note": "After IVT and/or EVT, admit to an ICU or stroke unit. ADMIT_ICU_HDU stands for ICU or acute stroke unit; ADMIT_WARD is acceptable if the stroke unit is a ward-level unit. The patient must not leave ED before CT and a reperfusion decision. / After thrombolysis: ICU or stroke unit, so ADMIT_WARD is acceptable when it means an acute stroke unit. REFER_SPECIALIST is acceptable for neurology/EVT referral if LVO is found."
+    },
+    "sources_forbidden": [
+      {
+        "doc_type": "PAEDIATRIC_PROTOCOL",
+        "why": "adult patient"
+      }
+    ]
+  },
+  "disputed": [
+    {
+      "section": "red_flags",
+      "id": "time-critical-window",
+      "label": "Time-critical: within 4.5 h IVT and 6 h EVT windows",
+      "match": [
+        "4\\.5\\s*h",
+        "within\\s+(the\\s+)?(thromboly|reperfusion)",
+        "time\\s+is\\s+brain",
+        "window"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+          "page": 85,
+          "quote": "For patients that are found to be eligible for IVT, the benefit of therapy is time dependent, and treatment should be initiated as quickly as possible."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "red_flags",
+      "id": "large-vessel-occlusion",
+      "label": "Possible large vessel occlusion (EVT candidate)",
+      "match": [
+        "large\\s+vessel\\s+occlusion",
+        "\\bLVO\\b",
+        "\\bM1\\b|middle\\s+cerebral\\s+artery",
+        "thrombectomy",
+        "\\bEVT\\b"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+          "page": 17,
+          "quote": "EVT is indicated for AIS with large vessel occlusion; proximal middle cerebral artery segment 1 (M1)/proximal M2 occlusion/internal carotid artery (ICA), and presenting within 6 hours from onset."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "red_flags",
+      "id": "raised-icp",
+      "label": "Raised intracranial pressure / mass effect",
+      "match": [
+        "intracranial\\s+pressure",
+        "\\bICP\\b",
+        "mass\\s+effect",
+        "herniation",
+        "cerebral\\s+o?edema"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+          "page": 15,
+          "quote": "Regular observation is mandatory to recognise impaired pulmonary function (pulse oxymeter), circulatory function (pulse rate, blood pressure), NIHSS score, head chart, GCS, and complications from mass effect."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "red_flags",
+      "id": "neuro-deterioration-post-tpa",
+      "label": "Severe headache, vomiting or neurological worsening during/after alteplase: stop infusion, repeat CT",
+      "match": [
+        "(stop|discontinue).{0,30}(infusion|alteplase)",
+        "(worsening|deteriorat).{0,30}(neuro|GCS|NIHSS)",
+        "symptomatic (ICH|ha?emorrhage)"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+          "page": 86,
+          "quote": "If the patient develops severe headache, acute hypertension, nausea or vomiting or worsening neurological symptoms with an increase of the NIHSS by 4 and reduction of the GCS by 2, discontinue the infusion and obtain a CT scan of the brain."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "red_flags",
+      "id": "coagulopathy-anticoagulant",
+      "label": "Anticoagulant use / coagulopathy / thrombocytopenia (thrombolysis contraindications)",
+      "match": [
+        "anticoagula",
+        "\\bINR\\b",
+        "warfarin|DOAC|NOAC|dabigatran|rivaroxaban|apixaban",
+        "platelet"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+          "page": 85,
+          "quote": "Prothrombin time (PT) >15 seconds, aPTT >40s or INR >1.7"
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "differentials",
+      "id": "intracerebral-haemorrhage",
+      "label": "Haemorrhagic stroke (intracerebral haemorrhage)",
+      "match": [
+        "ha?emorrhagic stroke",
+        "intracerebral ha?emorrhage",
+        "\\bICH\\b",
+        "intracranial (bleed|ha?emorrhage)"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+          "page": 4,
+          "quote": "Computed tomography (CT) brain is mandatory and preferred imaging in the emergency setting to differentiate haemorrhage from ischaemia"
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "actions",
+      "id": "screen-contraindications",
+      "label": "Screen IVT contraindications (anticoagulant use, recent surgery/bleeding/stroke, coagulopathy, platelets)",
+      "match": [
+        "contraindicat",
+        "anticoagula",
+        "(recent|previous)\\s+(surgery|stroke|bleed)",
+        "exclusion\\s+criteria",
+        "eligib"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+          "page": 25,
+          "quote": "Review neuroimaging with/without radiologist  Rule out contraindication  Administer IVT and/or EVT"
+        },
+        {
+          "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+          "page": 85,
+          "quote": "Prothrombin time (PT) >15 seconds, aPTT >40s or INR >1.7 VIII. A platelet count <100,000/microliter"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "fbc-coag",
+      "label": "FBC (platelets) and clotting profile (PT/INR/aPTT) before thrombolysis",
+      "match": [
+        "\\bFBC\\b",
+        "full\\s+blood\\s+count",
+        "platelet",
+        "coagulation|clotting\\s+profile",
+        "\\bINR\\b|\\bPT\\b|\\baPTT\\b|\\bAPTT\\b"
+      ],
+      "required": true,
+      "evidence": [
+        {
+          "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+          "page": 66,
+          "quote": "Urea & electrolytes Hydration status, excludes electrolyte imbalances Clotting profile* Baseline"
+        },
+        {
+          "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+          "page": 66,
+          "quote": "Full blood count Exclude anaemia, polycythaemia, thrombocytosis, thrombocytopenia, etc."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "urea-electrolytes",
+      "label": "Urea and electrolytes / renal profile",
+      "match": [
+        "urea",
+        "electrolyte",
+        "renal\\s+(profile|function)",
+        "\\bBUSE\\b|\\bRP\\b|\\bU\\s*&\\s*E"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+          "page": 66,
+          "quote": "Urea & electrolytes Hydration status, excludes electrolyte imbalances"
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "investigations",
+      "id": "cta-if-lvo-suspected",
+      "label": "CT angiography if EVT candidate (NIHSS > 6, cortical signs)",
+      "match": [
+        "\\bCTA\\b",
+        "CT angiogra",
+        "CT perfusion|\\bCTP\\b"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+          "page": 85,
+          "quote": "Criteria for CTA include NIHSS>6, presence of cortical signs or brain stem involvement."
+        }
+      ],
+      "proposed_by": "B"
+    },
+    {
+      "section": "drugs_allowed",
+      "id": "isotonic-iv-drip",
+      "label": "IV isotonic drip for hydration while NBM",
+      "match": [
+        "(normal|0\\.9%?)\\s*saline",
+        "IV\\s+(drip|fluid|hydration)",
+        "isotonic"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+          "page": 88,
+          "quote": "Keep NBM and put on an IV drip to ensure adequate hydration. Avoid hypotonic solution."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_forbidden",
+      "id": "hypotonic-fluids",
+      "label": "Hypotonic IV solutions",
+      "match": [
+        "hypotonic",
+        "dextrose\\s+(5|10)%|D5W|\\bD5\\b",
+        "half[- ]normal|0\\.45%"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "CPG Management of Ischaemic Stroke (3rd Edition) 2020 v20230403.pdf",
+          "page": 88,
+          "quote": "Keep NBM and put on an IV drip to ensure adequate hydration. Avoid hypotonic solution."
+        }
+      ],
+      "proposed_by": "A"
+    },
+    {
+      "section": "drugs_forbidden",
+      "id": "urgent-anticoagulation",
+      "label": "Urgent routine anticoagulation (heparin) for acute stroke",
+      "match": [
+        "(urgent|immediate|full[- ]dose|therapeutic) (anticoagula|heparin)",
+        "heparin infusion"
+      ],
+      "required": false,
+      "evidence": [
+        {
+          "source": "QR Management of Ischaemic Stroke (3rd Edition) 2020 v20210315.pdf",
+          "page": 11,
+          "quote": "Urgent routine anticoagulation with the goal of improving neurological outcomes or preventing early recurrent stroke is not recommended."
+        }
+      ],
+      "proposed_by": "B"
+    }
+  ],
+  "adjudication": {
+    "method": "two independent extraction passes (A, B); agreed items scored",
+    "notes": [],
+    "open_questions": {
+      "A": [
+        "BP 182/98 is below the 185/110 alteplase cut-off, so no pre-lysis lowering is required. A report that insists on lowering BP before lysis is over-treating but not unsafe; a report applying the 'do not treat unless >220/120' rule is correct only if lysis is not given.",
+        "Level 2 (MTS 'Acute Stroke < 3 H') vs Level 1: MTS offers no Level 1 cell for a GCS 14 stroke. Adjudicator may accept 1 if the ED's code-stroke pathway routes to resus.",
+        "GCS 14 with dysarthria: EVT eligibility depends on CTA/NIHSS, which the intake does not give. CTA is marked required because the facility is CT-capable and the patient is within 6 h."
+      ],
+      "B": [
+        "Blood pressure: the thrombolysis pathway needs BP <= 185/110 before and <= 180/105 after alteplase; at 182/98 he is eligible but close to the ceiling. The general-management table (QR p15) says 'Do not treat hypertension if systolic BP is <220mmHg or diastolic BP is <120mmHg', which applies to patients not being thrombolysed. The two can look contradictory to a grader.",
+        "The forbidden item for antiplatelets/anticoagulants is conditional on alteplase being given. Aspirin before the CT/thrombolysis decision is also inappropriate, but no quote says so directly."
+      ]
+    }
+  }
+}

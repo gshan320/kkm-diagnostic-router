@@ -1,0 +1,67 @@
+{
+  "id": "mimic-stay38074673-esi4",
+  "title": "MIMIC-IV-ED demo stay 38074673: Clogged foley",
+  "tier": "mimic",
+  "provenance": "MIMIC-IV-ED Demo v2.2 (ODbL), stay_id 38074673; age from MIMIC-IV Demo hosp/patients.",
+  "intake": {
+    "age": 91,
+    "gender": "female",
+    "vitals": {
+      "systolic_bp": 165.0,
+      "diastolic_bp": 51.0,
+      "heart_rate": 66.0,
+      "respiratory_rate": 14.0,
+      "temperature": 36.6,
+      "spo2": 99.0,
+      "pain_score": 8
+    },
+    "complaint": "Clogged foley.",
+    "history": "",
+    "arrival_mode": "walk_in"
+  },
+  "scored_sections": [
+    "triage",
+    "disposition",
+    "diagnosis"
+  ],
+  "expected": {
+    "triage": {
+      "level": 4,
+      "acceptable": [
+        3,
+        4,
+        5
+      ],
+      "reference_scale": "ESI",
+      "time_to_treatment": null,
+      "note": "ESI acuity 4 assigned at triage. ESI is not MTS: scored as a +/-1 band.",
+      "evidence": []
+    },
+    "disposition": {
+      "acceptable": [
+        "DISCHARGE_WITH_FOLLOW_UP",
+        "REFER_SPECIALIST"
+      ],
+      "preferred": "DISCHARGE_WITH_FOLLOW_UP",
+      "note": "The disposition this patient actually received.",
+      "evidence": []
+    },
+    "diagnosis": {
+      "primary": {
+        "label": "Blocked catheter / catheter complication with UTI",
+        "match": [
+          "catheter (blockage|obstruct|block)",
+          "blocked (urinary |foley |suprapubic )?catheter",
+          "cystostomy",
+          "catheter[- ]associated",
+          "\\bCAUTI\\b",
+          "urinary tract infection",
+          "\\bUTI\\b"
+        ],
+        "evidence": []
+      },
+      "acceptable_alternatives": []
+    }
+  },
+  "disputed": []
+}
