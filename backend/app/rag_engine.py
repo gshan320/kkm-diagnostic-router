@@ -1505,6 +1505,81 @@ def _topic_gate(
     return kept, notes
 
 
+# --------------------------------------------- action quantities grounding
+# 2026-10-02 (MedGemma 1.5 4B trial, rhabdo 55M 80 kg): the only immediate
+# action read "IV 0.9% NaCl at 30-50 ml/kg/hr (or 1 ml/kg/hr) [S1]" - 2.4-4 L
+# an hour, and 1 ml/kg/hr is a urine-output target, not a rate. Neither figure
+# was in the cited page or any retrieved passage, and nothing caught it: the
+# dose checks read drug_recommendations, and _check_dose_completeness only asks
+# whether a number is PRESENT. A number in an action must now be written in a
+# passage the model read (or the FUKKM entry of a drug it recommends); one that
+# is not is taken out of the action and named in the safety block.
+
+_ACTION_QTY_RE = re.compile(
+    r"(?P<num>\d+(?:\.\d+)?(?:\s*(?:-|to|–)\s*\d+(?:\.\d+)?)?)\s*"
+    r"(?P<unit>(?:ml|mls|millilitres?|l|litres?|liters?|mg|mcg|micrograms?|g|grams?|"
+    r"units?|iu|mmol|meq)\b(?:\s*/\s*(?:kg|hr|hour|h|min|minute|day|24\s*h(?:ours?)?)\b)*)",
+    re.IGNORECASE,
+)
+_NUM_RE = re.compile(r"\d+(?:\.\d+)?")
+_UNIT_BASE = {"mls": "ml", "millilitre": "ml", "millilitres": "ml", "liter": "l", "liters": "l",
+              "litre": "l", "litres": "l", "microgram": "mcg", "micrograms": "mcg", "gram": "g",
+              "grams": "g", "units": "unit", "iu": "unit"}
+
+
+def _quantities(text: str) -> set[tuple[str, str, bool]]:
+    """(number, unit, per-kg) for every quantity in `text`; a range gives one
+    entry per end. Unit-aware, because a bare '1' is in every passage and
+    '30 ml' is not '30 ml/kg'."""
+    out: set[tuple[str, str, bool]] = set()
+    for m in _ACTION_QTY_RE.finditer(text):
+        unit = m.group("unit").lower()
+        base = re.match(r"[a-z]+", unit).group(0)
+        key = (_UNIT_BASE.get(base, base), "/kg" in re.sub(r"\s+", "", unit))
+        out.update((str(float(n)), *key) for n in _NUM_RE.findall(m.group("num")))
+    return out
+
+
+def _ground_action_quantities(
+    diagnostic: DiagnosticSchema, chunks: list[Retrieved]
+) -> None:
+    """Strip any dose, volume or rate in a model-written immediate action whose
+    numbers appear in no retrieved passage and no FUKKM entry of a recommended
+    drug. Quantities are checked as a whole: '30-50 ml/kg/hr' needs both 30 and
+    50 in the same passage. Server-added actions (origin 'source') quote their
+    passage verbatim and are skipped."""
+    texts = [c.text for c in chunks]
+    for drug in diagnostic.drug_recommendations:
+        match = formulary.lookup(str(drug.drug_name or ""), str(drug.route or ""), "")
+        if match:
+            texts.extend(e.dosage for e in match.entries if e.dosage)
+    known = [_quantities(t) for t in texts]
+    removed: list[str] = []
+    for a in diagnostic.immediate_actions:
+        if a.origin == "source":
+            continue
+        text = str(a.action or "")
+        out = text
+        for m in _ACTION_QTY_RE.finditer(text):
+            want = _quantities(m.group(0))
+            if any(want <= k for k in known):
+                continue
+            out = out.replace(m.group(0), "[dose/rate removed]", 1)
+            removed.append(f"action {a.sequence}: '{m.group(0)}'")
+        if out != text:
+            # "(or [dose/rate removed])" and similar leftovers read as noise.
+            a.action = re.sub(r"\(\s*or\s*\[dose/rate removed\]\s*\)", "", out).strip()
+    if removed:
+        note = (
+            "UNSOURCED QUANTITY REMOVED - written by the model but found in no retrieved "
+            "KKM passage or FUKKM entry: " + "; ".join(removed)
+            + ". Take the dose or rate from the cited guideline, not from this report."
+        )
+        prev = diagnostic.dose_completeness_warning
+        diagnostic.dose_completeness_warning = f"{prev} {note}".strip() if prev else note
+        log.warning("GROUNDING  %s", note)
+
+
 # ------------------------------------------------- dose completeness check
 # "Administer intravenous fluids" is not an instruction for a 20 kg shocked
 # child; the retrieved chunk says 5-7 ml/kg. Measured: every model tested,
@@ -1950,12 +2025,41 @@ def _quoted_disposition_floor(diagnostic: DiagnosticSchema, req: TriageRequest) 
     log.warning("GROUNDING  %s", note)
 
 
+# 2026-10-02: KKM states no clinical admission criterion for many diagnoses
+# (exertional rhabdomyolysis is the case that showed it; AskCPG reached the same
+# gap). The national patient-flow guideline does state WHO decides and against
+# WHAT - the hospital's own criteria, with the specialist. Quoted verbatim from
+# the OCR text (tests/test_action_quantities.py checks both against it); it is a
+# process statement, never a clinical threshold, so it never moves the level.
+ADMISSION_PROCESS_QUOTES = (
+    ("MOH Patient Flow Management Guideline 2022 p19",
+     "Kes akan dinilai mengikut kriteria yang telah ditetapkan untuk kemasukan ke wad"),
+    ("MOH Patient Flow Management Guideline 2022 p4",
+     "Jururawat di BMU akan membuat penilaian dan akan menempatkan pesakit mengikut "
+     "disiplin serta kritikaliti pesakit selepas berbincang dengan pakar"),
+)
+
+
+def _admission_process_note(diagnostic: DiagnosticSchema) -> None:
+    """ED observation with no KKM admission criterion to test against: say so,
+    and name the process KKM does set, instead of leaving the choice looking
+    settled."""
+    current = str(getattr(diagnostic.disposition, "value", diagnostic.disposition))
+    if current != "ED_OBSERVATION":
+        return
+    quotes = "; ".join(f'{where}: "{q}"' for where, q in ADMISSION_PROCESS_QUOTES)
+    note = ("[No KKM admission criterion found for this diagnosis. Admit-or-observe is decided "
+            "against the hospital's own admission criteria, with the specialist - " + quotes + ".]")
+    diagnostic.disposition_justification = f"{diagnostic.disposition_justification} {note}".strip()
+
+
 def _card_disposition_floor(diagnostic: DiagnosticSchema, req: TriageRequest) -> None:
     """F1 for any condition with a card: raise to admission when the patient
     meets an admission criterion its KKM source states. Raise only; the note
     quotes the criterion and names the finding that met it."""
     hit = cards.admission(_cards_for(diagnostic, req), _patient_state(req), req.age, bool(req.pregnant))
     if hit is None:
+        _admission_process_note(diagnostic)
         return
     item, target, finding = hit
     current = str(getattr(diagnostic.disposition, "value", diagnostic.disposition))
@@ -4359,7 +4463,7 @@ class RagEngine:
   "red_flags": [{"flag": "<red flag>", "why_it_matters": "<why>", "source_id": "S1"}],
   "primary_diagnosis": {"condition": "<diagnosis>", "confidence": "HIGH", "reasoning": "<reasoning from THIS patient's findings>", "supporting_cpg": "<guideline title>"},
   "differential_diagnoses": [{"condition": "<condition>", "discriminating_feature": "<what separates it>"}],
-  "immediate_actions": [{"sequence": 1, "action": "<action, with mg/kg or ml/kg where the weight is known>", "timeframe": "<when>", "source_id": "S1"}],
+  "immediate_actions": [{"sequence": 1, "action": "<action; a dose, volume or rate ONLY as written in the cited passage, else no number>", "timeframe": "<when>", "source_id": "S1"}],
   "investigations": [{"test": "<test>", "rationale": "<why>", "urgency": "STAT"}],
   "drug_recommendations": [{"drug_name": "<drug>", "indication": "<indication>", "adult_dose": "<dose>", "paediatric_dose": "<mg/kg or ml/kg dose>", "route": "<route>", "frequency": "<frequency>", "duration": "<duration>", "prescriber_category": "<FUKKM category from a retrieved chunk, else NOT_IN_RETRIEVED_SOURCES>", "prescriber_category_meaning": "<what that category means>", "cautions": "<cautions>", "source_id": "S1"}],
   "prescriber_category_warning": "<name any drug whose category was NOT in the retrieved chunks, else empty>",
@@ -4466,6 +4570,7 @@ shown are placeholders illustrating the type - they are NOT recommendations.
         _ground_prescriber_categories(diagnostic, sources)
         _check_drug_indications(diagnostic, chunks, self._corpus)
         _check_avoid_statements(diagnostic, req)
+        _ground_action_quantities(diagnostic, chunks)
         _check_dose_completeness(diagnostic, req)
         _check_dosing(diagnostic, req, chunks)
         _check_contraindications(diagnostic, req)

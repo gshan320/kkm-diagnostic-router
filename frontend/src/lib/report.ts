@@ -633,9 +633,9 @@ function referencesBlock(result: TriageResponse): string {
 function selectionBlock(result: TriageResponse): string {
   const notes = (result.retrieval_notes ?? []).filter((n) => n.trim());
   if (notes.length === 0) return "";
-  return `<p class="note"><strong>How the sources were chosen:</strong> ${notes
-    .map((n) => esc(n))
-    .join(" · ")}</p>`;
+  return `<details class="appendix"><summary>How the sources were chosen</summary>
+  <ul class="bullets note">${notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>
+</details>`;
 }
 
 function citationsBlock(result: TriageResponse): string {
@@ -836,6 +836,9 @@ tr.flag th { border-left: 3px solid #c81e1e; }
   font-size: 8.5pt; font-weight: 600;
 }
 .note { margin: 4px 0 0; font-size: 8.5pt; color: #64748b; }
+.appendix { margin-top: 14px; font-size: 8.5pt; color: #475569; }
+.appendix summary { cursor: pointer; font-weight: 600; color: #334155; }
+.appendix[open] summary { margin-bottom: 6px; }
 .none { margin: 0; font-size: 9.5pt; color: #64748b; font-style: italic; }
 .bullets { margin: 4px 0 0; padding-left: 18px; font-size: 9.5pt; }
 .bullets li { margin-bottom: 3px; }
@@ -975,7 +978,41 @@ function contraindicationsBlock(result: TriageResponse): string {
     ? `<p class="wrap muted">${esc(d.citation_warning)}</p>`
     : "";
 
-  return section("Safety checks — automated", `${lead}${missing}${silent}${table}${notes}${cites}`);
+  return `<details class="appendix"><summary>Safety checks — full detail</summary>
+  ${lead}${missing}${silent}${table}${notes}${cites}
+</details>`;
+}
+
+/** The glance version of the safety checks, right under the triage outcome.
+ *  Each line is short on purpose; the reasoning, quotes and per-check notes are
+ *  in the collapsed "full detail" block at the end. An ABSOLUTE contraindication
+ *  stays up here: the item was already taken out of the plan, but a reader must
+ *  not learn that only at the bottom of the page. */
+function safetySummary(result: TriageResponse): string {
+  const d = result.diagnostic;
+  const lines: string[] = [];
+  const abs = new Set((d.contraindications ?? []).filter((c) => c.severity === "ABSOLUTE").map((c) => c.item));
+  const cau = new Set((d.contraindications ?? []).filter((c) => c.severity !== "ABSOLUTE").map((c) => c.item));
+  if (abs.size)
+    lines.push(`<p class="wrap alert"><strong>Removed as absolutely contraindicated:</strong> ${[...abs]
+      .map(esc).join(" · ")}</p>`);
+  if (cau.size)
+    lines.push(`<p class="wrap"><strong>Caution:</strong> ${[...cau].map(esc).join(" · ")}</p>`);
+  const gaps = d.completeness_gaps ?? [];
+  if (gaps.length)
+    lines.push(`<p class="wrap"><strong>Not addressed:</strong> ${gaps.map((g) => esc(g.element)).join(" · ")}</p>`);
+  const kg = d.knowledge_gaps ?? [];
+  if (kg.length)
+    lines.push(`<p class="wrap"><strong>Not covered by KKM:</strong> ${kg.length} element${kg.length > 1 ? "s" : ""} — see full detail</p>`);
+  const corrections = [
+    d.parse_warning, d.consistency_warning, d.avoid_warning, d.differential_warning,
+    d.second_pass_note, d.complication_note, d.citation_alignment_note,
+    d.dose_completeness_warning, d.drug_indication_warning, d.urgency_warning, d.redirection_warning,
+  ].filter((w) => w && w.trim()).length;
+  if (corrections)
+    lines.push(`<p class="wrap muted">${corrections} automated correction${corrections > 1 ? "s" : ""} applied — see full detail at the end.</p>`);
+  if (d.citation_warning?.trim()) lines.push(`<p class="wrap muted">${esc(d.citation_warning)}</p>`);
+  return lines.length ? section("Safety checks", lines.join("\n  ")) : "";
 }
 
 /** The backend audit row this report was recorded as. A report with no audit
@@ -993,6 +1030,17 @@ function buildCell(result: TriageResponse): string {
   if (!p || !p.code_fingerprint) return "—";
   const dirty = p.git_dirty ? " (uncommitted)" : "";
   return `code ${esc(p.code_fingerprint)}${dirty} · corpus ${esc(p.corpus_fingerprint)}`;
+}
+
+/** Section numbers follow the order the sections are printed in, so a
+ *  reorder never leaves "4 · " above "3 · ". Each block's own number is
+ *  dropped and the sequence re-applied; unnumbered blocks get none. */
+function numbered(blocks: string[]): string {
+  let n = 0;
+  return blocks
+    .filter((b) => b.trim())
+    .map((b) => b.replace(/<h2>(\d+ · )?/, (m, num) => (num ? `<h2>${++n} · ` : m)))
+    .join("\n  ");
 }
 
 export function buildReportHtml(
@@ -1047,26 +1095,29 @@ export function buildReportHtml(
         </tr>
       </tbody>
     </table>
-    <p class="banner">Decision-support output for registered clinicians. Not a
-    medical device, not clinically validated, not for patient-facing use. Every
-    recommendation must be verified against the cited source before acting.</p>
   </header>
 
-  ${patientBlock(request, d.onset_derived ?? "")}
-  ${triageBlock(result)}
+  ${numbered([
+    triageBlock(result),
+    safetySummary(result),
+    diagnosisBlock(result),
+    redFlagsBlock(result),
+    actionsBlock(result),
+    investigationsBlock(result),
+    drugsBlock(result),
+    dispositionBlock(result),
+    cautionsBlock(result),
+    patientBlock(request, d.onset_derived ?? ""),
+    vitalsInterpretationBlock(result),
+    gapsBlock(result),
+    citationsBlock(result),
+    referencesBlock(result),
+  ])}
   ${contraindicationsBlock(result)}
-  ${cautionsBlock(result)}
-  ${redFlagsBlock(result)}
-  ${diagnosisBlock(result)}
-  ${actionsBlock(result)}
-  ${investigationsBlock(result)}
-  ${drugsBlock(result)}
-  ${dispositionBlock(result)}
-  ${vitalsInterpretationBlock(result)}
-  ${gapsBlock(result)}
-  ${citationsBlock(result)}
   ${selectionBlock(result)}
-  ${referencesBlock(result)}
+  <p class="banner">Decision-support output for registered clinicians. Not a
+  medical device, not clinically validated, not for patient-facing use. Every
+  recommendation must be verified against the cited source before acting.</p>
   ${signOff()}
 
   <footer class="footer">
