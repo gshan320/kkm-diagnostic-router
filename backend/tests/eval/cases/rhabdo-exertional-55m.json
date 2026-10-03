@@ -1055,38 +1055,24 @@
     ],
     "disposition": {
       "acceptable": [
+        "ED_OBSERVATION",
         "ADMIT_WARD",
         "ADMIT_ICU_HDU"
       ],
       "preferred": "ADMIT_WARD",
       "evidence": [
         {
-          "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
-          "page": 3,
-          "quote": "Inpatient admission criteria: Decision to admit must be individualized. Those with any high-risk markers should be strongly considered for admission."
+          "source": "MOH Patient Flow Management Guideline (Garis Panduan Pengurusan Aliran Pesakit) 2022.pdf",
+          "page": 19,
+          "quote": "Kes akan dinilai mengikut kriteria yang telah ditetapkan untuk kemasukan ke wad"
         },
         {
-          "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
-          "page": 17,
-          "quote": "considerations for ICU admission include the need for invasive cardiopulmonary monitoring, and conditions that may prompt consideration for dialysis e.g. congestive heart failure, persistent hyperkalemia or persistent metabolic acidosis."
-        },
-        {
-          "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
-          "page": 3,
-          "quote": "Outpatient treatment criteria: ER patients with no high-risk markers (see above) generally may be treated as outpatients."
-        },
-        {
-          "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
-          "page": 3,
-          "quote": "Decision to admit must be individualized. Those with any high-risk markers should be strongly considered for admission."
-        },
-        {
-          "source": "CHAMP USUHS Clinical Practice Guideline for the Management of Exertional Rhabdomyolysis 2020.pdf",
-          "page": 17,
-          "quote": "considerations for ICU admission include the need for invasive cardiopulmonary monitoring, and conditions that may prompt consideration for dialysis e.g. congestive heart failure, persistent hyperkalemia or persistent metabolic acidosis."
+          "source": "MOH Patient Flow Management Guideline (Garis Panduan Pengurusan Aliran Pesakit) 2022.pdf",
+          "page": 4,
+          "quote": "Jururawat di BMU akan membuat penilaian dan akan menempatkan pesakit mengikut disiplin serta kritikaliti pesakit selepas berbincang dengan pakar"
         }
       ],
-      "note": "Severe symptoms with two days of tea-coloured urine warrant IV fluids and inpatient care pending CK/renal/potassium results; ICU/HDU if AKI needing dialysis consideration, persistent hyperkalaemia or acidosis. Outpatient management (DISCHARGE_WITH_FOLLOW_UP) is only defensible after labs exclude every high-risk marker (CK <=20,000, no AKI, no metabolic abnormality, no compartment syndrome), which cannot be known at triage, so it is not listed as acceptable. / Two days of dark urine with severe pain and generalised weakness needs IV fluids and serial CK/renal monitoring, so admission is expected. ICU/HDU if AKI needing dialysis, persistent hyperkalaemia or acidosis. CHAMP allows outpatient care only with no high-risk markers and CK <= 20,000 U/L, which cannot be shown at triage."
+      "note": "Revised 2026-10-03 under the KKM-only source policy. The earlier key (ADMIT_WARD/ADMIT_ICU_HDU only) rested entirely on CHAMP USUHS 2020, which left the index on 2026-09-30. No indexed KKM document states an admission criterion for exertional rhabdomyolysis; the Patient Flow Guideline 2022 says admission is decided against the hospital's own criteria with the specialist (p19, p4). ED_OBSERVATION pending CK/renal/potassium is therefore acceptable when the report says that decision is open (rag_engine._admission_process_note). Admission remains preferred: two days of dark urine with severe pain needs IV fluids and serial CK. DISCHARGE_WITH_FOLLOW_UP and REFER_SPECIALIST stay unacceptable - high-risk markers cannot be excluded at triage."
     },
     "sources_forbidden": [
       {

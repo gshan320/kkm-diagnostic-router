@@ -91,7 +91,13 @@ def page_text(source: str, page: int) -> str | None:
             doc = pymupdf.open(path)
             if not 1 <= page <= len(doc):
                 return None
-            return doc[page - 1].get_text()
+            text = doc[page - 1].get_text()
+            # A scanned page has no text layer; ingest indexed its OCR sidecar.
+            if not text.strip():
+                from app.ingest import _ocr_pages
+                ocr = _ocr_pages(path)
+                text = ocr[page - 1] if page <= len(ocr) else ""
+            return text
         text = path.read_text(encoding="utf-8", errors="ignore")
         if path.suffix.lower() in (".html", ".htm"):
             text = html.unescape(re.sub(r"<[^>]+>", " ", text))

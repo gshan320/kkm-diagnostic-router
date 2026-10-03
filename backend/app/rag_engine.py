@@ -2461,6 +2461,11 @@ def _gap_quote_hit(label: str, gap, corpus: dict, age: float, state: str = "") -
     if not parts:
         return "", "", None
     patterns = [re.compile(p, re.I) for p in el.present]
+    # Fix 2026-10-03: the CK row quoted Snakebite p99 "Serial blood results
+    # every 4 - 6 hours" over s4.5.4 "Creatine kinase: ... Serial monitoring to
+    # monitor trend". A sentence that names the test the element is about fits
+    # it better than one about bloods in general.
+    test_rx = [re.compile(rx, re.I) for rx, _ in _TEST_SYNONYMS if re.search(rx, gap.element, re.I)]
     name_words = {w for w in re.findall(r"[a-z]{4,}", gap.element.lower())} - _GAP_NAME_STOP
     best: tuple[tuple, str, str, int] | None = None
     for idx, (text, meta) in enumerate(zip(corpus["docs"], corpus["metas"])):
@@ -2476,17 +2481,29 @@ def _gap_quote_hit(label: str, gap, corpus: dict, age: float, state: str = "") -
         # "6.1.7. Renal Function Test / Acute kidney injury due to ..." into
         # pieces too short to quote, so the renal-profile gap had no quote and
         # was never filled (2026-10-01). It re-joins wraps and keeps bullets apart.
-        units = distill.sentences(text or "")[1]
+        # A unit is cut at each numbered heading glued into it first: "... sea
+        # snake bites. 4.5.4 Creatine kinase: For early detection of ..." kept
+        # only its snakebite head, so the CK line was never a candidate
+        # (2026-10-03). A piece that opens a heading starts a new section.
+        pieces: list[tuple[str, bool]] = []
+        for u in distill.sentences(text or "")[1]:
+            for j, piece in enumerate(re.split(r"\s+(?=\d+(?:\.\d+)+\.?\s)", re.sub(r"\s+", " ", u).strip())):
+                pieces.append((piece, j > 0))
+        units = [p for p, _ in pieces]
         # A pair of adjacent sentences as well: "Creatine kinase: For early
         # detection of rhabdomyolysis. Serial monitoring to monitor trend."
-        # states one instruction across two (Snakebite s4.5.4).
-        for sent in units + [f"{x} {y}" for x, y in zip(units, units[1:])]:
+        # states one instruction across two (Snakebite s4.5.4) - never across
+        # a heading.
+        pairs = [f"{x} {y}" for (x, _), (y, opens) in zip(pieces, pieces[1:]) if not opens]
+        for sent in units + pairs:
             sent = re.sub(r"^\d+(?:\.\d+)*\.?\s+", "", re.sub(r"\s+", " ", sent).strip())
             # ...and stop at the next numbered heading ("... parenchyma. 6.1.8."),
             # with stray page numbers in front removed ("85 90 Serial blood ...").
             sent = re.split(r"\s+\d+(?:\.\d+)+\.?(?=\s|$)", sent)[0].strip()
             sent = re.sub(r"^(?:\d+\s+)+(?=[A-Za-z])", "", sent)
-            if not 30 <= len(sent) <= 320:
+            # A list's lead-in cut from its items ("Indication for observation
+            # and admission: i.") says nothing on its own.
+            if not 30 <= len(sent) <= 320 or re.search(r":\s*(?:[ivx]{1,4}|[a-z]|\d{1,2})[.)]?$", sent):
                 continue
             # Guards found 2026-10-01 once the Snakebite guideline could answer
             # rhabdomyolysis gaps: a table row is not a sentence; a line about a
@@ -2509,11 +2526,13 @@ def _gap_quote_hit(label: str, gap, corpus: dict, age: float, state: str = "") -
             # The sentence must also be ABOUT the element. "heat stroke" in the
             # guideline's scope statement matched "other causes of dark urine"
             # on 2026-09-30 and was quoted as though it answered it.
-            if name_words and not overlap and hits < 2:
+            names_test = any(rx.search(positive) for rx in test_rx)
+            if name_words and not overlap and hits < 2 and not names_test:
                 continue
-            # KKM before non-KKM, then the best-covering sentence - a
-            # recommendation over a description, anything over a list.
-            score = (meta.get("doc_type") != config.DOC_TYPE_EXTERNAL,
+            # KKM before non-KKM, then a sentence naming the element's test, then
+            # the best-covering sentence - a recommendation over a description,
+            # anything over a list.
+            score = (meta.get("doc_type") != config.DOC_TYPE_EXTERNAL, names_test,
                      hits * 3 + overlap + (2 if _RECOMMENDS.search(sent) else 0) - (2 if _listy(sent) else 0)
                      + title_fit)
             if best is None or score > best[0]:
@@ -2691,8 +2710,58 @@ def _check_finding_consistency(diagnostic: DiagnosticSchema, req: TriageRequest)
                                  f"{label} are managed differently; confirm which applies")
                 break
     if notes:
-        diagnostic.consistency_warning = "INCONSISTENT - " + "; ".join(dict.fromkeys(notes)) + "."
-        log.warning("GROUNDING  %s", diagnostic.consistency_warning)
+        note = "INCONSISTENT - " + "; ".join(dict.fromkeys(notes)) + "."
+        diagnostic.consistency_warning = f"{diagnostic.consistency_warning} {note}".strip()
+        log.warning("GROUNDING  %s", note)
+
+
+# 2026-10-03 (rhabdo run, 82%): ice packs and a mist fan were recommended while
+# the report's own differential set heat stroke aside. An action that treats a
+# condition the report set aside is not this patient's plan. Removed when the
+# finding that decides it was measured; when it was not (the temperature was
+# never taken), kept but made conditional on measuring it - the exclusion is
+# unproven (F4) and a real heat stroke must not lose its cooling.
+# (condition, regex on the condition, regex on an action, vitals field, what to measure)
+_CONDITION_ACTIONS = (
+    ("heat stroke", r"heat\s*stroke|hyperthermi\w*|heat[- ]related",
+     r"\bice\b|evaporative|mist fan|cold water|immersion|tepid spong\w*|\bcool(?:ing)?\b",
+     "temperature", "core temperature"),
+    ("hypoglycaemia", r"hypoglyc\w*", r"\bdextrose\b|\bD(?:10|50)\b|glucagon",
+     "capillary_blood_glucose", "capillary glucose"),
+)
+
+
+def _gate_set_aside_actions(diagnostic: DiagnosticSchema, req: TriageRequest) -> None:
+    """Actions that treat a differential the report set aside: removed, or made
+    conditional when the deciding finding was never measured."""
+    primary = str(diagnostic.primary_diagnosis.condition or "")
+    notes: list[str] = []
+    for label, cond_rx, act_rx, field, measure in _CONDITION_ACTIONS:
+        if re.search(cond_rx, primary, re.I):
+            continue
+        if not any(re.search(cond_rx, str(dd.condition or ""), re.I)
+                   and _ABSENCE.search(str(dd.discriminating_feature or ""))
+                   for dd in diagnostic.differential_diagnoses):
+            continue
+        measured = getattr(req.vitals, field, None) is not None
+        kept = []
+        for a in diagnostic.immediate_actions:
+            if not re.search(act_rx, a.action or "", re.I):
+                kept.append(a)
+                continue
+            if measured:
+                notes.append(f"removed \"{a.action}\" - it treats {label}, which the report set aside")
+                continue
+            if not a.action.startswith("Only if"):
+                notes.append(f"\"{a.action}\" treats {label}, which the report sets aside without a {measure} "
+                             f"- made conditional on measuring it")
+                a.action = f"Only if {label} is confirmed ({measure} not yet recorded - measure it first): {a.action}"
+            kept.append(a)
+        diagnostic.immediate_actions = kept
+    if notes:
+        note = "SET-ASIDE CONDITION - " + "; ".join(notes) + "."
+        diagnostic.consistency_warning = f"{diagnostic.consistency_warning} {note}".strip()
+        log.warning("GROUNDING  %s", note)
 
 
 # D1 (run 11): "renal function" was listed twice. Test names are compared on a
@@ -4574,6 +4643,7 @@ shown are placeholders illustrating the type - they are NOT recommendations.
         _check_dose_completeness(diagnostic, req)
         _check_dosing(diagnostic, req, chunks)
         _check_contraindications(diagnostic, req)
+        _gate_set_aside_actions(diagnostic, req)
         _dedupe_plan(diagnostic)
         _renumber_actions(diagnostic)
         _enforce_disposition(diagnostic, req)
@@ -4985,6 +5055,7 @@ shown are placeholders illustrating the type - they are NOT recommendations.
         corpus = self._corpus
         state = _patient_state(req)
         added: list[str] = []
+        merged: list[str] = []
         seq = max((a.sequence for a in diagnostic.immediate_actions), default=0)
         by_id = {c.chunk_id: i for i, c in enumerate(chunks, start=1)}
         for gap in gaps:
@@ -5021,6 +5092,21 @@ shown are placeholders illustrating the type - they are NOT recommendations.
             # ("TIMI RISK SCORE FOR UA/NSTEMI") is not one. A test list may be.
             if not is_test and not (_INSTRUCTION.search(quote) or _DOSE_IN_TEXT.search(quote)):
                 continue
+            # Fix 2026-10-03: "Serial CK and bloods" was appended beside the
+            # model's "Creatine kinase (CK)" row; D1 then merged the two, so the
+            # serial instruction vanished, the CK row wore the serial-bloods
+            # quote, and the merge spent a slot of the cap that compartment
+            # syndrome needed. A test the plan already orders is completed in
+            # place and costs no slot.
+            same = next((x for x in diagnostic.investigations
+                         if _canonical_test(x.test) == _canonical_test(gap.element)), None) if is_test else None
+            if same is not None:
+                if same.source_quote:
+                    continue
+                same.test = f"{same.test} - {gap.element}"
+                same.source_id, same.source_quote, same.source_where = f"[{sid}]", quote, where
+                merged.append(f"investigation: {same.test} [{sid}]")
+                continue
             if is_test:
                 diagnostic.investigations.append(Investigation(
                     test=gap.element, urgency="Urgent", rationale="",
@@ -5033,13 +5119,14 @@ shown are placeholders illustrating the type - they are NOT recommendations.
                     source_id=f"[{sid}]", origin="source", source_quote=quote, source_where=where))
                 added.append(f"action: {gap.element} [{sid}]")
         if trace:
-            trace.second_pass = f"quoted {len(added)} of {len(gaps)} gap(s) from source (no model call)"
-        if added:
+            trace.second_pass = (f"quoted {len(added) + len(merged)} of {len(gaps)} gap(s) from source "
+                                 "(no model call)")
+        if added or merged:
             diagnostic.second_pass_note = (
                 "Added from source for checklist elements the answer left out, each quoting its guideline "
-                "sentence: " + "; ".join(added) + ".")
+                "sentence: " + "; ".join(added + merged) + ".")
             log.info("QUOTED GAPS  %s", diagnostic.second_pass_note)
-        return len(added)
+        return len(added) + len(merged)
 
     def _second_stage(
         self,

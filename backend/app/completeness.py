@@ -312,7 +312,7 @@ PRESENTATIONS: tuple[Presentation, ...] = (
             Element("Serial CK and bloods",
                     (r"(?:repeat|serial|trend|recheck|every \d+.{0,6}h\w*).{0,40}(?:\bCK\b|creatine|labs?|bloods?)",
                      r"(?:labs?|laboratory results?|bloods?|\bCK\b).{0,30}every \d+",
-                     r"(?:\bCK\b|creatine kinase).{0,40}(?:repeat|serial|trend|recheck|every)"),
+                     r"(?:\bCK\b|creatine kinase).{0,60}(?:repeat|serial|trend|recheck|every)"),
                     "MOH Snakebite 2017 s4.5.4: \"Creatine kinase: For early detection of "
                     "rhabdomyolysis. Serial monitoring to monitor trend.\""),
             Element("12-lead ECG / cardiac monitoring",
